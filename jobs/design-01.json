@@ -1,0 +1,79 @@
+{
+ "id": "design-01",
+ "note": "도리 목소리 후보 6가지(서로 확실히 다른 방향), 후보마다 2번씩",
+ "tasks": [
+  {
+   "id": "boy",
+   "label": "장난기 많은 소년",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 1,
+   "takes": 2,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Cartoon hamster mascot. Cheerful little boy about 9 years old: high but soft and round voice, bright and bouncy, playful rising intonation, smiling while speaking, clear crisp pronunciation, brisk pace. Warm and friendly, never shrill, nasal or squeaky."
+  },
+  {
+   "id": "girl",
+   "label": "말랑한 여자아이",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 2,
+   "takes": 2,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Cute cartoon hamster mascot. Sweet, bubbly little girl around 8 years old: soft, slightly airy voice with a smile, gentle sing-song intonation, lively but easy on the ears, clear articulation, moderate pace."
+  },
+  {
+   "id": "anime",
+   "label": "리액션 큰 애니 마스코트",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 3,
+   "takes": 2,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Anime-style mascot of a tiny round animal: high, light and cute voice, very expressive and excited, big playful pitch swings, fast punchy delivery like a kids' TV show host, crisp diction, smooth tone without harshness."
+  },
+  {
+   "id": "soft",
+   "label": "포근하고 동글동글",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 4,
+   "takes": 2,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Soft, round, cuddly mascot voice. Youthful and gender-neutral, gentle mid-high pitch, warm and smiley, relaxed and pleasant to listen to for a long time, clear and calm articulation with a light playful bounce."
+  },
+  {
+   "id": "zh",
+   "label": "명랑한 꼬마(중국어 설명)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 5,
+   "takes": 2,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "可爱的卡通小仓鼠角色，像八九岁的小男孩，音调偏高但圆润柔和，语气开朗活泼、俏皮可爱，语调上扬有起伏，吐字清晰，语速稍快，听起来温暖不刺耳。"
+  },
+  {
+   "id": "sohee",
+   "label": "한국어 기본 목소리 Sohee + 귀엽게",
+   "mode": "custom",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+   "speaker": "Sohee",
+   "seed": 6,
+   "takes": 2,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Cheerful, cute and playful, slightly higher pitch than usual, bright smiling tone, lively but gentle."
+  }
+ ]
+}

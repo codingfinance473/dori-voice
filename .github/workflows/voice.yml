@@ -1,0 +1,87 @@
+name: dori-voice
+on:
+  push:
+    paths: ["jobs/**.json"]
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "jobs/ 아래 작업 파일 경로(비우면 마지막 커밋에서 바뀐 작업)"
+        required: false
+        default: ""
+permissions:
+  contents: write
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.p.outputs.matrix }}
+      count: ${{ steps.p.outputs.count }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
+      - id: p
+        run: |
+          M=$(python3 tools/plan.py "${{ inputs.job }}")
+          echo "matrix=$M" >> "$GITHUB_OUTPUT"
+          echo "count=$(echo "$M" | python3 -c 'import json,sys; print(len(json.load(sys.stdin)["include"]))')" >> "$GITHUB_OUTPUT"
+          echo "$M"
+  run:
+    needs: plan
+    if: needs.plan.outputs.count != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: 시스템 도구
+        run: sudo apt-get update -y -qq && sudo apt-get install -y -qq sox > /dev/null
+      - name: 파이썬 패키지 캐시
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-qwen-tts-0.1.1-torch-2.7.1-cpu
+      - name: 패키지 설치(CPU 전용 torch)
+        run: |
+          python -m pip install -q --upgrade pip
+          pip install -q torch==2.7.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install -q qwen-tts==0.1.1
+      - name: 모델 캐시
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-${{ hashFiles(matrix.job) }}-${{ matrix.task }}
+          restore-keys: hf-
+      - name: 목소리 만들기
+        run: python tools/gen.py "${{ matrix.job }}" "${{ matrix.task }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.jid }}--${{ matrix.task }}
+          path: out/${{ matrix.jid }}/${{ matrix.task }}
+          retention-days: 7
+  collect:
+    needs: [plan, run]
+    if: always() && needs.plan.outputs.count != '0'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { path: dl }
+      - name: 결과 커밋
+        run: |
+          shopt -s nullglob
+          for d in dl/*--*; do
+            n=$(basename "$d"); jid="${n%%--*}"; task="${n#*--}"
+            mkdir -p "out/$jid/$task" && cp -r "$d"/. "out/$jid/$task/"
+          done
+          for jid in $(ls dl | sed 's/--.*//' | sort -u); do
+            echo "{\"run\": \"${{ github.run_id }}\", \"status\": \"${{ needs.run.result }}\"}" > "out/$jid/done.json"
+          done
+          git config user.name "dori-voice-bot"; git config user.email "actions@users.noreply.github.com"
+          git add out
+          git commit -m "결과: $(ls dl | sed 's/--.*//' | sort -u | tr '\n' ' ') [skip ci]" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
