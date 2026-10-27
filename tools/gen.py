@@ -18,9 +18,18 @@ def main(job_path, task_id):
     torch.set_num_threads(os.cpu_count() or 2)
     from qwen_tts import Qwen3TTSModel
     t0 = time.time()
-    dtype = {"bf16": torch.bfloat16, "fp32": torch.float32}[task.get("dtype", "bf16")]
+    # CPU 확인: bf16 을 빠르게 계산하는 CPU(AVX512-BF16·AMX)면 bf16, 아니면 작은 모델(0.6B)은 fp32 가 훨씬 빠르다
+    info = Path("/proc/cpuinfo").read_text() if Path("/proc/cpuinfo").exists() else ""
+    cpu = next((l.split(":", 1)[1].strip() for l in info.splitlines() if l.startswith("model name")), "?")
+    fast_bf16 = ("avx512_bf16" in info) or ("amx_bf16" in info)
+    want = task.get("dtype", "auto")
+    if want == "auto":
+        want = "bf16" if (fast_bf16 or "1.7B" in task["model"]) else "fp32"
+    dtype = {"bf16": torch.bfloat16, "fp32": torch.float32}[want]
     m = Qwen3TTSModel.from_pretrained(task["model"], device_map="cpu", dtype=dtype)
-    meta = {"task": task, "load_s": round(time.time() - t0, 1), "cpu": os.cpu_count(), "outputs": []}
+    meta = {"task": task, "load_s": round(time.time() - t0, 1), "cpu": os.cpu_count(), "cpu_model": cpu, "fast_bf16": fast_bf16,
+            "dtype": want, "outputs": []}
+    print(f"[{task_id}] CPU {cpu} · bf16 가속 {fast_bf16} · {want}", flush=True)
     print(f"[{task_id}] 모델 준비 {meta['load_s']}s", flush=True)
     lang = task.get("language", "Korean")
     prompt = None
@@ -48,6 +57,7 @@ def main(job_path, task_id):
             sf.write(f, w, sr)
             rec = {"file": f.name, "text_index": ti, "take": k, "sec": round(len(w) / sr, 2), "gen_s": round(time.time() - s, 1), "sr": sr}
             meta["outputs"].append(rec)
+            (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
             print(f"[{task_id}] {rec}", flush=True)
     (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 

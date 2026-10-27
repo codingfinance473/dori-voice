@@ -57,8 +57,10 @@ jobs:
           key: hf-${{ hashFiles(matrix.job) }}-${{ matrix.task }}
           restore-keys: hf-
       - name: 목소리 만들기
+        timeout-minutes: 45
         run: python tools/gen.py "${{ matrix.job }}" "${{ matrix.task }}"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: ${{ matrix.jid }}--${{ matrix.task }}
           path: out/${{ matrix.jid }}/${{ matrix.task }}
