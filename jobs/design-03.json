@@ -1,0 +1,54 @@
+{
+ "id": "design-03",
+ "note": "2번(말랑한 여자아이)과 3번(애니 마스코트) 사이 후보 4개, 3번씩",
+ "tasks": [
+  {
+   "id": "mid_a",
+   "label": "2번 쪽에 가까운 중간",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 31,
+   "takes": 3,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Cute cartoon hamster mascot. Sweet, bubbly little girl around 8 years old, soft and slightly airy with a smile, but more expressive and excited than usual: playful pitch swings and lively reactions like a friendly kids' show mascot. Medium-fast pace, crisp diction, smooth and never shrill."
+  },
+  {
+   "id": "mid_b",
+   "label": "3번 쪽에 가까운 중간",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 32,
+   "takes": 3,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Anime-style mascot voice for a tiny round hamster with a sweet little-girl tone: high and light but soft and round, cheerful and expressive with playful rises, energetic yet gentle, clear articulation, brisk pace, never squeaky."
+  },
+  {
+   "id": "mid_c",
+   "label": "딱 중간",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 33,
+   "takes": 3,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Halfway between a sweet, soft-spoken little girl and an energetic anime mascot: bright, high, round voice with a smile; lively, bouncy intonation and excited reactions, but gentle and easy on the ears; clear pronunciation, moderately quick pace."
+  },
+  {
+   "id": "mid_d",
+   "label": "딱 중간(중국어 설명)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 34,
+   "takes": 3,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "介于甜美软萌的小女孩和活泼的动漫吉祥物之间：声音明亮、偏高、圆润，带着笑意；语调活泼跳跃、反应生动，但温柔不刺耳；吐字清晰，语速适中偏快。"
+  }
+ ]
+}
