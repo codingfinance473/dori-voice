@@ -1,0 +1,34 @@
+{
+ "task": {
+  "id": "soft",
+  "label": "포근하고 동글동글",
+  "mode": "design",
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+  "seed": 4,
+  "takes": 2,
+  "texts": [
+   "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+  ],
+  "instruct": "Soft, round, cuddly mascot voice. Youthful and gender-neutral, gentle mid-high pitch, warm and smiley, relaxed and pleasant to listen to for a long time, clear and calm articulation with a light playful bounce."
+ },
+ "load_s": 32.3,
+ "cpu": 2,
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 16.64,
+   "gen_s": 170.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 17.92,
+   "gen_s": 183.3,
+   "sr": 24000
+  }
+ ]
+}
