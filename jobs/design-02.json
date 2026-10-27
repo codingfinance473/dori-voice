@@ -1,0 +1,30 @@
+{
+ "id": "design-02",
+ "note": "design-01 에서 멈추지 않던 두 후보 다시(길이 상한·새 시드·3번씩)",
+ "tasks": [
+  {
+   "id": "girl",
+   "label": "말랑한 여자아이",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 22,
+   "takes": 3,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Cute cartoon hamster mascot. Sweet, bubbly little girl around 8 years old: soft, slightly airy voice with a smile, gentle sing-song intonation, lively but easy on the ears, clear articulation, moderate pace."
+  },
+  {
+   "id": "anime",
+   "label": "리액션 큰 애니 마스코트",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 23,
+   "takes": 3,
+   "texts": [
+    "유니클로 겨울템, 일본에서 사면 진짜 쌀까? 공식몰 가격으로 검산해 볼게! 히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야. 한국은 만 육천구백 원! 볼주머니 행!"
+   ],
+   "instruct": "Anime-style mascot of a tiny round animal: high, light and cute voice, very expressive and excited, big playful pitch swings, fast punchy delivery like a kids' TV show host, crisp diction, smooth tone without harshness."
+  }
+ ]
+}
