@@ -23,7 +23,6 @@ def main(job_path, task_id):
     meta = {"task": task, "load_s": round(time.time() - t0, 1), "cpu": os.cpu_count(), "outputs": []}
     print(f"[{task_id}] 모델 준비 {meta['load_s']}s", flush=True)
     lang = task.get("language", "Korean")
-    gen = task.get("gen", {})
     prompt = None
     if task["mode"] == "clone":
         ref = Path(task["voice"])
@@ -32,6 +31,9 @@ def main(job_path, task_id):
     for ti, text in enumerate(task["texts"]):
         for k in range(int(task.get("takes", 1))):
             torch.manual_seed(int(task.get("seed", 0)) * 1000 + ti * 10 + k)
+            # 멈추지 않고 계속 말하는 실패를 막는다: 12.5프레임/초, 한국어 초당 6~7자 → 글자당 3프레임이면 넉넉하다
+            gen = {**task.get("gen", {})}
+            gen.setdefault("max_new_tokens", 60 + 3 * len(text))
             s = time.time()
             if task["mode"] == "design":
                 wavs, sr = m.generate_voice_design(text=text, language=lang, instruct=task["instruct"], **gen)
