@@ -1,0 +1,71 @@
+{
+ "task": {
+  "id": "b06",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 41,
+  "takes": 2,
+  "texts": [
+   "안녕! 나는 가격 검산 담당 햄스터, 도리야!",
+   "히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야.",
+   "와, 네 개 다 사면 한국보다 육만 팔십구 원 덜 써! 볼주머니 행!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 32.3,
+ "cpu": 2,
+ "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.64,
+   "gen_s": 39.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.24,
+   "gen_s": 35.2,
+   "sr": 24000
+  },
+  {
+   "file": "01_0.wav",
+   "text_index": 1,
+   "take": 0,
+   "sec": 5.36,
+   "gen_s": 40.9,
+   "sr": 24000
+  },
+  {
+   "file": "01_1.wav",
+   "text_index": 1,
+   "take": 1,
+   "sec": 4.4,
+   "gen_s": 35.7,
+   "sr": 24000
+  },
+  {
+   "file": "02_0.wav",
+   "text_index": 2,
+   "take": 0,
+   "sec": 6.0,
+   "gen_s": 45.3,
+   "sr": 24000
+  },
+  {
+   "file": "02_1.wav",
+   "text_index": 2,
+   "take": 1,
+   "sec": 6.16,
+   "gen_s": 47.7,
+   "sr": 24000
+  }
+ ]
+}
