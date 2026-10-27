@@ -1,0 +1,34 @@
+{
+ "id": "clone-test-01",
+ "note": "고정한 도리 목소리(C)로 따라 읽기 — 0.6B(가벼움) vs 1.7B(고품질) 속도·또렷함 비교",
+ "tasks": [
+  {
+   "id": "b06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 41,
+   "takes": 2,
+   "texts": [
+    "안녕! 나는 가격 검산 담당 햄스터, 도리야!",
+    "히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야.",
+    "와, 네 개 다 사면 한국보다 육만 팔십구 원 덜 써! 볼주머니 행!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "b17",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "voice": "voices/dori",
+   "seed": 42,
+   "takes": 2,
+   "texts": [
+    "안녕! 나는 가격 검산 담당 햄스터, 도리야!",
+    "히트텍은 일본에서 천이백구십 엔, 원화로 만 구백십오 원이야.",
+    "와, 네 개 다 사면 한국보다 육만 팔십구 원 덜 써! 볼주머니 행!"
+   ],
+   "dtype": "auto"
+  }
+ ]
+}
