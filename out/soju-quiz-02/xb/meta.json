@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "xb",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 211,
+  "takes": 4,
+  "texts": [
+   "힌트 둘. 정답 나라는, 작년 과일 소주 수출 일 등이래."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 30.7,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.64,
+   "gen_s": 58.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 5.04,
+   "gen_s": 62.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 5.84,
+   "gen_s": 67.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.88,
+   "gen_s": 62.0,
+   "sr": 24000
+  }
+ ]
+}

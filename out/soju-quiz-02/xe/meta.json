@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "xe",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 215,
+  "takes": 4,
+  "texts": [
+   "힌트 하나. 구십오 개 나라가 사 갔는데, 일 등도 네 병 중에 한 병이 안 된대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 30.8,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 7.12,
+   "gen_s": 66.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 6.24,
+   "gen_s": 59.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 6.8,
+   "gen_s": 63.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 7.6,
+   "gen_s": 67.3,
+   "sr": 24000
+  }
+ ]
+}
