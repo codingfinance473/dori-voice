@@ -1,0 +1,46 @@
+{
+ "id": "gim-quiz-02",
+ "note": "EP.01 김 — 받아쓰기가 흔들린 3줄 다시(아깝게 2등, 검산 끝, 볼주머니에 쏙)",
+ "tasks": [
+  {
+   "id": "x11b",
+   "texts": [
+    "내가 찍은 일본은 이억 천만 달러, 아깝게 이 등!",
+    "내가 찍은 일본은 이억 천만 달러. 아깝게 이 등이야!"
+   ],
+   "seed": 91,
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "takes": 3,
+   "dtype": "auto"
+  },
+  {
+   "id": "x14b",
+   "texts": [
+    "검산 끝!",
+    "검산, 끝!",
+    "이걸로 검산 끝!"
+   ],
+   "seed": 92,
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "takes": 3,
+   "dtype": "auto"
+  },
+  {
+   "id": "x16",
+   "texts": [
+    "볼주머니에 쏙! 다음엔 소주 퀴즈로 올게.",
+    "볼주머니에 쏙! 다음엔 소주 퀴즈야. 안녕!"
+   ],
+   "seed": 93,
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "takes": 3,
+   "dtype": "auto"
+  }
+ ]
+}
