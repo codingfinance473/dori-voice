@@ -1,0 +1,66 @@
+{
+ "id": "soju-quiz-02",
+ "note": "EP.02 소주 — 받아쓰기에서 흔들린 줄 다시 만들기(힌트 1·2, 정리, 끝인사)",
+ "tasks": [
+  {
+   "id": "xa",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 210,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 구십오 개 나라가 사 갔는데, 일 등도 네 병 중 한 병이 안 된대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "xe",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 215,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 구십오 개 나라가 사 갔는데, 일 등도 네 병 중에 한 병이 안 된대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "xb",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 211,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 정답 나라는, 작년 과일 소주 수출 일 등이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "xc",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 212,
+   "takes": 4,
+   "texts": [
+    "정리하면, 이천 이십사 년 일 등은 미국!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "xd",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 213,
+   "takes": 4,
+   "texts": [
+    "다음엔 화장품 퀴즈로 올게."
+   ],
+   "dtype": "auto"
+  }
+ ]
+}
