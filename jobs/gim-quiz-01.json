@@ -1,0 +1,92 @@
+{
+ "id": "gim-quiz-01",
+ "note": "도리의 정보주머니 숫자 퀴즈 EP.01 김 — 확정 목소리 C(ref.wav)로 대사 20줄, 줄마다 3번",
+ "tasks": [
+  {
+   "id": "a",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 70,
+   "takes": 3,
+   "texts": [
+    "한국 김을 해외에서 제일 많이 사 가는 나라는 어디게?",
+    "작년 김 수출이 십일억 달러를 넘었대. 역대 최대래!",
+    "일본, 중국, 미국. 셋 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "b",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 71,
+   "takes": 3,
+   "texts": [
+    "삼!",
+    "이!",
+    "일!",
+    "삼! 이! 일!",
+    "정답은…",
+    "미국!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "c",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 72,
+   "takes": 3,
+   "texts": [
+    "나는 일본! 초밥이랑 주먹밥에 김 엄청 쓰잖아.",
+    "힌트 하나. 김 수출은 이 년 만에 삼억 달러 넘게 늘었대.",
+    "힌트 둘. 일 등이랑 이 등은 둘 다 이억 달러를 넘었대. 거의 붙어 있대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "d",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 73,
+   "takes": 3,
+   "texts": [
+    "미국은 이억 이천만 달러래!",
+    "내가 찍은 일본은 이억 천만 달러, 아깝게 이 등!",
+    "근데 다섯 번째로 많이 사 간 나라는 어딘지 알아? 러시아래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "e",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 74,
+   "takes": 3,
+   "texts": [
+    "그런데 올해는 칠월까지 칠억 달러. 작년 같은 때보다 일 점 오 퍼센트 줄었대.",
+    "정리하면, 작년 십일월까지 일 등은 미국!",
+    "검산 끝!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "f",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 75,
+   "takes": 3,
+   "texts": [
+    "너는 처음에 뭐 찍었어? 댓글로 알려 줘!",
+    "볼주머니에 쏙! 다음엔 소주 퀴즈로 올게."
+   ],
+   "dtype": "auto"
+  }
+ ]
+}
