@@ -1,0 +1,70 @@
+{
+ "task": {
+  "id": "se",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 114,
+  "takes": 3,
+  "texts": [
+   "근데 이천십 년엔 일본이 팔십이 점 칠 퍼센트였대!",
+   "열 병 중 여덟 병 넘게 일본으로 간 거야."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 25.4,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.88,
+   "gen_s": 50.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.84,
+   "gen_s": 42.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.08,
+   "gen_s": 44.6,
+   "sr": 24000
+  },
+  {
+   "file": "01_0.wav",
+   "text_index": 1,
+   "take": 0,
+   "sec": 2.8,
+   "gen_s": 36.1,
+   "sr": 24000
+  },
+  {
+   "file": "01_1.wav",
+   "text_index": 1,
+   "take": 1,
+   "sec": 3.2,
+   "gen_s": 38.9,
+   "sr": 24000
+  },
+  {
+   "file": "01_2.wav",
+   "text_index": 1,
+   "take": 2,
+   "sec": 3.68,
+   "gen_s": 41.9,
+   "sr": 24000
+  }
+ ]
+}

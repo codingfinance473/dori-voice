@@ -1,0 +1,70 @@
+{
+ "task": {
+  "id": "sb",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 111,
+  "takes": 3,
+  "texts": [
+   "일본, 중국, 미국, 베트남. 넷 중에 하나야!",
+   "나는 중국! 가깝고 사람도 엄청 많잖아."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 27.7,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 5.12,
+   "gen_s": 37.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.72,
+   "gen_s": 35.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 5.2,
+   "gen_s": 38.6,
+   "sr": 24000
+  },
+  {
+   "file": "01_0.wav",
+   "text_index": 1,
+   "take": 0,
+   "sec": 4.32,
+   "gen_s": 32.9,
+   "sr": 24000
+  },
+  {
+   "file": "01_1.wav",
+   "text_index": 1,
+   "take": 1,
+   "sec": 2.96,
+   "gen_s": 25.7,
+   "sr": 24000
+  },
+  {
+   "file": "01_2.wav",
+   "text_index": 1,
+   "take": 2,
+   "sec": 5.68,
+   "gen_s": 39.7,
+   "sr": 24000
+  }
+ ]
+}
