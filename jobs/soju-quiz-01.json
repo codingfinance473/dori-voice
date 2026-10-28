@@ -1,0 +1,97 @@
+{
+ "id": "soju-quiz-01",
+ "note": "숫자 퀴즈 EP.02 소주 — 도리 목소리 C, 새 대사 13줄(같은 대사는 EP.01 소리 재사용)",
+ "tasks": [
+  {
+   "id": "sa",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 110,
+   "takes": 3,
+   "texts": [
+    "한국 소주를 해외에서 제일 많이 사 가는 나라는 어디게?",
+    "이천이십사 년에 소주 수출이 처음으로 이억 달러를 찍었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "sb",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 111,
+   "takes": 3,
+   "texts": [
+    "일본, 중국, 미국, 베트남. 넷 중에 하나야!",
+    "나는 중국! 가깝고 사람도 엄청 많잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "sc",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 112,
+   "takes": 3,
+   "texts": [
+    "힌트 하나. 구십오 개 나라가 사 갔는데, 일 등도 네 병 중 한 병이 안 된대.",
+    "힌트 둘. 정답 나라는 작년 과일소주 수출 일 등이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "sd",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 113,
+   "takes": 3,
+   "texts": [
+    "미국이 이십사 점 삼 퍼센트로 일 등이래!",
+    "내가 찍은 중국은 십구 점 구 퍼센트, 아깝게 이 등!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "se",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 114,
+   "takes": 3,
+   "texts": [
+    "근데 이천십 년엔 일본이 팔십이 점 칠 퍼센트였대!",
+    "열 병 중 여덟 병 넘게 일본으로 간 거야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "sf",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 115,
+   "takes": 3,
+   "texts": [
+    "그리고 작년엔 과일소주 수출이 처음으로 일억 달러를 넘었대!",
+    "정리하면, 이천이십사 년 일 등은 미국!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "sg",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 116,
+   "takes": 3,
+   "texts": [
+    "볼주머니에 쏙! 다음엔 화장품 퀴즈로 올게.",
+    "다음엔 화장품 퀴즈로 올게."
+   ],
+   "dtype": "auto"
+  }
+ ]
+}
