@@ -1,0 +1,30 @@
+{
+ "id": "soju-quiz-03",
+ "note": "EP.02 소주 — 힌트 2 한 줄 더('정답'이 '장담'으로 들림)",
+ "tasks": [
+  {
+   "id": "ya",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 310,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 이 나라는 작년 과일 소주 수출 일 등이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "yb",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 311,
+   "takes": 4,
+   "texts": [
+    "힌트 둘! 정답 나라는, 작년 과일 소주 수출 일 등이래."
+   ],
+   "dtype": "auto"
+  }
+ ]
+}
