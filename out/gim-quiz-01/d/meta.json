@@ -1,0 +1,95 @@
+{
+ "task": {
+  "id": "d",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 73,
+  "takes": 3,
+  "texts": [
+   "미국은 이억 이천만 달러래!",
+   "내가 찍은 일본은 이억 천만 달러, 아깝게 이 등!",
+   "근데 다섯 번째로 많이 사 간 나라는 어딘지 알아? 러시아래!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 22.8,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 3.04,
+   "gen_s": 38.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 2.72,
+   "gen_s": 35.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 2.4,
+   "gen_s": 33.8,
+   "sr": 24000
+  },
+  {
+   "file": "01_0.wav",
+   "text_index": 1,
+   "take": 0,
+   "sec": 4.4,
+   "gen_s": 48.6,
+   "sr": 24000
+  },
+  {
+   "file": "01_1.wav",
+   "text_index": 1,
+   "take": 1,
+   "sec": 4.4,
+   "gen_s": 48.1,
+   "sr": 24000
+  },
+  {
+   "file": "01_2.wav",
+   "text_index": 1,
+   "take": 2,
+   "sec": 3.68,
+   "gen_s": 42.5,
+   "sr": 24000
+  },
+  {
+   "file": "02_0.wav",
+   "text_index": 2,
+   "take": 0,
+   "sec": 5.28,
+   "gen_s": 54.1,
+   "sr": 24000
+  },
+  {
+   "file": "02_1.wav",
+   "text_index": 2,
+   "take": 1,
+   "sec": 4.4,
+   "gen_s": 46.6,
+   "sr": 24000
+  },
+  {
+   "file": "02_2.wav",
+   "text_index": 2,
+   "take": 2,
+   "sec": 9.6,
+   "gen_s": 86.1,
+   "sr": 24000
+  }
+ ]
+}

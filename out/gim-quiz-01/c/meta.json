@@ -1,0 +1,95 @@
+{
+ "task": {
+  "id": "c",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 72,
+  "takes": 3,
+  "texts": [
+   "나는 일본! 초밥이랑 주먹밥에 김 엄청 쓰잖아.",
+   "힌트 하나. 김 수출은 이 년 만에 삼억 달러 넘게 늘었대.",
+   "힌트 둘. 일 등이랑 이 등은 둘 다 이억 달러를 넘었대. 거의 붙어 있대!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 22.6,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 6.08,
+   "gen_s": 61.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.08,
+   "gen_s": 45.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 10.96,
+   "gen_s": 97.1,
+   "sr": 24000
+  },
+  {
+   "file": "01_0.wav",
+   "text_index": 1,
+   "take": 0,
+   "sec": 4.24,
+   "gen_s": 45.6,
+   "sr": 24000
+  },
+  {
+   "file": "01_1.wav",
+   "text_index": 1,
+   "take": 1,
+   "sec": 4.96,
+   "gen_s": 50.8,
+   "sr": 24000
+  },
+  {
+   "file": "01_2.wav",
+   "text_index": 1,
+   "take": 2,
+   "sec": 5.12,
+   "gen_s": 51.7,
+   "sr": 24000
+  },
+  {
+   "file": "02_0.wav",
+   "text_index": 2,
+   "take": 0,
+   "sec": 5.76,
+   "gen_s": 56.1,
+   "sr": 24000
+  },
+  {
+   "file": "02_1.wav",
+   "text_index": 2,
+   "take": 1,
+   "sec": 5.92,
+   "gen_s": 57.3,
+   "sr": 24000
+  },
+  {
+   "file": "02_2.wav",
+   "text_index": 2,
+   "take": 2,
+   "sec": 7.68,
+   "gen_s": 69.4,
+   "sr": 24000
+  }
+ ]
+}

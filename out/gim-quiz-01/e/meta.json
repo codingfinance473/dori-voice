@@ -1,0 +1,95 @@
+{
+ "task": {
+  "id": "e",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 74,
+  "takes": 3,
+  "texts": [
+   "그런데 올해는 칠월까지 칠억 달러. 작년 같은 때보다 일 점 오 퍼센트 줄었대.",
+   "정리하면, 작년 십일월까지 일 등은 미국!",
+   "검산 끝!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 20.4,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 7.2,
+   "gen_s": 65.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 7.12,
+   "gen_s": 64.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 6.24,
+   "gen_s": 59.2,
+   "sr": 24000
+  },
+  {
+   "file": "01_0.wav",
+   "text_index": 1,
+   "take": 0,
+   "sec": 2.96,
+   "gen_s": 36.3,
+   "sr": 24000
+  },
+  {
+   "file": "01_1.wav",
+   "text_index": 1,
+   "take": 1,
+   "sec": 3.68,
+   "gen_s": 40.8,
+   "sr": 24000
+  },
+  {
+   "file": "01_2.wav",
+   "text_index": 1,
+   "take": 2,
+   "sec": 4.24,
+   "gen_s": 45.4,
+   "sr": 24000
+  },
+  {
+   "file": "02_0.wav",
+   "text_index": 2,
+   "take": 0,
+   "sec": 0.8,
+   "gen_s": 21.9,
+   "sr": 24000
+  },
+  {
+   "file": "02_1.wav",
+   "text_index": 2,
+   "take": 1,
+   "sec": 1.12,
+   "gen_s": 24.1,
+   "sr": 24000
+  },
+  {
+   "file": "02_2.wav",
+   "text_index": 2,
+   "take": 2,
+   "sec": 0.8,
+   "gen_s": 21.5,
+   "sr": 24000
+  }
+ ]
+}
