@@ -138,7 +138,7 @@ def main(epdir):
            "가격은 확인 시각 기준이며 이후 바뀔 수 있어요.",
            "영상 속 목소리는 AI로 만들었어요. 캐릭터 도리는 그림이에요.", "",
            "출처"]
-    up += [f"- {s_['kind']}: {s_['name']} ({s_['date']}) {s_['url']}" for s_ in facts["sources"]]
+    up += [f"- {s_['kind']}: {s_['name']} ({s_['date']})" for s_ in facts["sources"]]   # 설명란에 URL 은 넣지 않는다(들어가지 않음, 2026-10-29) — 링크는 증거 파일에만
     up += ["", "## 해시태그 (5개)", keep.get("tags", "#"), "",
            "## 상품 태그 (유튜브 스튜디오 → 수익 창출 → 쇼핑에서 직접 연결)"]
     for f in facts["items"]:

@@ -1,4 +1,4 @@
-"""도리 목소리 C 작업 올리기·기다리기 — 사용자 비공개 저장소 codingfinance473/dori-voice 의 깃허브 액션(Qwen3-TTS 0.6B Base, voices/dori).
+"""도리 목소리 C 작업 올리기·기다리기 — 사용자 저장소 codingfinance473/dori-voice(2026-10-29부터 공개 — 액션 무료) 의 깃허브 액션(Qwen3-TTS 0.6B Base, voices/dori).
 
   python3 voice/voice_job.py make <작업id> L02 L06 … [--takes 4] [--note "EP.03 화장품"] [--trailer "커밋 끝줄"] [--dry]
       voice/lines.json 의 say 를 줄마다 작업(task) 하나로 jobs/<작업id>.json 에 쓰고 push 한다.
@@ -75,7 +75,7 @@ def wait(jid, every=20, limit=3600):
             info = subprocess.run(["gh", "run", "view", str(rid[1]), "-R", rid[0]], capture_output=True, text=True).stdout
             print(f"실행이 결과 없이 끝났어요(결론: {concl}).\n{info}")
             if "spending limit" in info or "payments have failed" in info:
-                print("→ 깃허브 액션 사용 한도(비공개 저장소 무료 시간) 또는 결제 문제로 작업이 시작되지 않았어요. 저장소 주인이 결제·한도를 확인하거나, 무료 시간이 다시 생긴 뒤 같은 작업을 'gh workflow run' 으로 다시 돌립니다.")
+                print("→ 깃허브 액션 사용 한도(비공개 저장소 무료 시간) 또는 결제 문제로 작업이 시작되지 않았어요. 저장소가 공개인지 확인하고(공개면 무료), 공개로 바꾼 뒤 같은 실행을 'gh run rerun' 이나 'gh workflow run' 으로 다시 돌립니다.")
             sys.exit(3)
         time.sleep(every)
     sys.exit(f"{limit}초 안에 안 끝났어요 — gh run list -R codingfinance473/dori-voice 로 확인")
