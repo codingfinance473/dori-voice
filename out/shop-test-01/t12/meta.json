@@ -1,0 +1,45 @@
+{
+ "task": {
+  "id": "t12",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 514,
+  "takes": 3,
+  "texts": [
+   "다음엔 어느 도시 영수증을 검산할까? 댓글로 알려 줘!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 22.5,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 5.36,
+   "gen_s": 62.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.96,
+   "gen_s": 59.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 5.04,
+   "gen_s": 60.3,
+   "sr": 24000
+  }
+ ]
+}
