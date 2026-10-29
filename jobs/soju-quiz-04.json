@@ -1,0 +1,78 @@
+{
+ "id": "soju-quiz-04",
+ "note": "EP.02 소주 — 2026년 1~7월 최신 자료로 다시 만들기(새 대사 6줄)",
+ "tasks": [
+  {
+   "id": "na",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 410,
+   "takes": 4,
+   "texts": [
+    "작년 소주 수출은 이억 달러 가까이 됐대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "nb",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 411,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 일 등 나라는 혼자서 삼십 퍼센트 넘게 사 갔대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "nc",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 412,
+   "takes": 4,
+   "texts": [
+    "미국이 삼십 점 이 퍼센트로 일 등이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "nd",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 413,
+   "takes": 4,
+   "texts": [
+    "이 등은 일본, 내가 찍은 중국은 삼 등이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "ne",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 414,
+   "takes": 4,
+   "texts": [
+    "미국 비중은 해마다 커져서, 올해는 삼십 퍼센트를 넘었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "nf",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 415,
+   "takes": 4,
+   "texts": [
+    "정리하면, 올해 칠월까지 일 등은 미국!"
+   ],
+   "dtype": "auto"
+  }
+ ]
+}
