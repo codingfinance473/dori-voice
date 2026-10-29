@@ -1,0 +1,22 @@
+{
+ "v": 1,
+ "item": "d",
+ "side": "kr",
+ "kind": "product_page",
+ "code": "E481610",
+ "currency": "KRW",
+ "url": "https://www.uniqlo.com/kr/ko/products/E481610-000/00",
+ "page_title": "젠더리스 라운드미니숄더백 | UNIQLO KR",
+ "captured_at": "2026-10-23T16:46:22.067Z",
+ "tz_offset_min": 540,
+ "method": "browser-dom",
+ "selector": ".fr-ec-price-text--large",
+ "n_matches": 1,
+ "price_text": "19,900원",
+ "price": 19900,
+ "price_box": "19,900원 4.8 (224)",
+ "sale_flag": false,
+ "heading": "라운드미니숄더백",
+ "code_in_url": true,
+ "sig": "7453df45b7da1470"
+}

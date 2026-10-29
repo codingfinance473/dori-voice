@@ -1,0 +1,250 @@
+{
+ "checked_at": "2026-10-23T17:33:20.639836+00:00",
+ "max_age_h": 24.0,
+ "ok": true,
+ "errors": [],
+ "warnings": [],
+ "items": {
+  "a": {
+   "local": {
+    "price": 1290,
+    "currency": "JPY",
+    "first": "2026-10-23T16:33:26.900000+00:00",
+    "last": "2026-10-23T16:43:18.217000+00:00",
+    "last_kst": "2026-10-24 01:43",
+    "label": "10/24 01:33~01:43",
+    "urls": [
+     "https://www.uniqlo.com/jp/ja/products/E461003-000/00"
+    ],
+    "kinds": [
+     "product_page",
+     "search_list",
+     "server_state"
+    ],
+    "n": 3,
+    "tax_policy": "INCLUSIVE",
+    "names": [
+     "히트텍 크루넥 T/9분소매",
+     "ヒートテッククルーネックT/9分袖"
+    ]
+   },
+   "kr": {
+    "price": 16900,
+    "currency": "KRW",
+    "first": "2026-10-23T16:44:28.412000+00:00",
+    "last": "2026-10-23T16:46:00.146000+00:00",
+    "last_kst": "2026-10-24 01:46",
+    "label": "10/24 01:44~01:46",
+    "urls": [
+     "https://www.uniqlo.com/kr/ko/products/E461003-000/00"
+    ],
+    "kinds": [
+     "product_page",
+     "server_state"
+    ],
+    "n": 2,
+    "tax_policy": "INCLUSIVE",
+    "names": [
+     "히트텍크루넥T(9부)"
+    ]
+   }
+  },
+  "b": {
+   "local": {
+    "price": 7990,
+    "currency": "JPY",
+    "first": "2026-10-23T16:33:34.917000+00:00",
+    "last": "2026-10-23T16:43:25.449000+00:00",
+    "last_kst": "2026-10-24 01:43",
+    "label": "10/24 01:33~01:43",
+    "urls": [
+     "https://www.uniqlo.com/jp/ja/products/E470067-000/00"
+    ],
+    "kinds": [
+     "product_page",
+     "search_list",
+     "server_state"
+    ],
+    "n": 3,
+    "tax_policy": "INCLUSIVE",
+    "names": [
+     "울트라 라이트 다운 재킷/NANODESIGN",
+     "ウルトラライトダウンジャケット/NANODESIGN"
+    ]
+   },
+   "kr": {
+    "price": 99900,
+    "currency": "KRW",
+    "first": "2026-10-23T16:44:36.630000+00:00",
+    "last": "2026-10-23T16:46:06.022000+00:00",
+    "last_kst": "2026-10-24 01:46",
+    "label": "10/24 01:44~01:46",
+    "urls": [
+     "https://www.uniqlo.com/kr/ko/products/E470067-000/00"
+    ],
+    "kinds": [
+     "product_page",
+     "server_state"
+    ],
+    "n": 2,
+    "tax_policy": "INCLUSIVE",
+    "names": [
+     "울트라라이트다운재킷"
+    ]
+   }
+  },
+  "c": {
+   "local": {
+    "price": 2990,
+    "currency": "JPY",
+    "first": "2026-10-23T16:33:42.996000+00:00",
+    "last": "2026-10-23T16:43:32.607000+00:00",
+    "last_kst": "2026-10-24 01:43",
+    "label": "10/24 01:33~01:43",
+    "urls": [
+     "https://www.uniqlo.com/jp/ja/products/E450195-000/00"
+    ],
+    "kinds": [
+     "product_page",
+     "search_list",
+     "server_state"
+    ],
+    "n": 3,
+    "tax_policy": "INCLUSIVE",
+    "names": [
+     "양털 재킷",
+     "フリースジャケット"
+    ]
+   },
+   "kr": {
+    "price": 39900,
+    "currency": "KRW",
+    "first": "2026-10-23T16:46:13.997000+00:00",
+    "last": "2026-10-23T16:46:14.200000+00:00",
+    "last_kst": "2026-10-24 01:46",
+    "label": "10/24 01:46",
+    "urls": [
+     "https://www.uniqlo.com/kr/ko/products/E450195-000/00"
+    ],
+    "kinds": [
+     "product_page",
+     "server_state"
+    ],
+    "n": 2,
+    "tax_policy": "INCLUSIVE",
+    "names": [
+     "후리스풀집재킷"
+    ]
+   }
+  },
+  "d": {
+   "local": {
+    "price": 1500,
+    "currency": "JPY",
+    "first": "2026-10-23T16:33:50.972000+00:00",
+    "last": "2026-10-23T16:42:06.822000+00:00",
+    "last_kst": "2026-10-24 01:42",
+    "label": "10/24 01:33~01:42",
+    "urls": [
+     "https://www.uniqlo.com/jp/ja/products/E481610-000/00"
+    ],
+    "kinds": [
+     "product_page",
+     "server_state"
+    ],
+    "n": 2,
+    "tax_policy": "INCLUSIVE",
+    "names": [
+     "라운드 미니 숄더백",
+     "ラウンドミニショルダーバッグ"
+    ]
+   },
+   "kr": {
+    "price": 19900,
+    "currency": "KRW",
+    "first": "2026-10-23T16:46:22.067000+00:00",
+    "last": "2026-10-23T16:46:22.256000+00:00",
+    "last_kst": "2026-10-24 01:46",
+    "label": "10/24 01:46",
+    "urls": [
+     "https://www.uniqlo.com/kr/ko/products/E481610-000/00"
+    ],
+    "kinds": [
+     "product_page",
+     "server_state"
+    ],
+    "n": 2,
+    "tax_policy": "INCLUSIVE",
+    "names": [
+     "라운드미니숄더백"
+    ]
+   }
+  }
+ },
+ "fx": {
+  "kind": "ecos_api",
+  "source": "한국은행 ECOS 731Y001 주요국 통화의 대원화환율(서울외국환중개 매매기준율)",
+  "date": "20261023",
+  "rate": 846.12,
+  "per": 100,
+  "currency": "JPY",
+  "fetched_at": "2026-10-23T17:33:11.642349+00:00",
+  "url": "https://ecos.bok.or.kr/ (통계표 731Y001, 항목 0000002)",
+  "key_used": "sample"
+ },
+ "literals": [
+  {
+   "text": "2026년 11월 1일",
+   "source": "tax",
+   "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html",
+   "needle": "2026年11月1日購入分から",
+   "context": "象者(以下「購入者 」といいます。)は、免税店での購入時に消費税が免除され、税抜価格(免税)で購入することができますが、2026年11月1日購入分からは、制度改正により、出国時に空海港(税関)で物品を国外に持ち出すことが確認された後に消費税相当額を返金する「リファンド方",
+   "captured_at": "2026-10-23T16:52:45.163Z",
+   "captured_kst": "2026-10-24 01:52"
+  },
+  {
+   "text": "90일",
+   "source": "tax",
+   "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html",
+   "needle": "90日以内",
+   "context": "レット(旅行者向け) <出国時の持出し確認(税関確認)について> ○免税の適用を受けるためには、免税対象物品の購入日から90日以内に、出国時に空海港に設置された免税手続用の端末(キオスク端末又は電子端末)へパスポートを提示し、税関確認を受ける必要があ",
+   "captured_at": "2026-10-23T16:52:45.163Z",
+   "captured_kst": "2026-10-24 01:52"
+  },
+  {
+   "text": "5,000",
+   "source": "tax",
+   "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html",
+   "needle": "5,000円以上",
+   "context": "、かつ、罰則の適用対象となります。 <免税対象物品>※2026年11月1日以降 〇同一店舗における1日の購入額(税抜)が5,000円以上の購入が対象です。 1.購入する物品を国外に持ち出す必要があります。 2.金及び白金の地金等や消費税が非課税とされる物品",
+   "captured_at": "2026-10-23T16:52:45.163Z",
+   "captured_kst": "2026-10-24 01:52"
+  },
+  {
+   "text": "계산은 세금 포함 가격으로",
+   "source": "tax_claims",
+   "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html",
+   "needle": "税込価格(課税)で免税対象物品を購入",
+   "context": "で物品を国外に持ち出すことが確認された後に消費税相当額を返金する「リファンド方式」に移行します。 ○購入者は、免税店にて税込価格(課税)で免税対象物品を購入することとなります。 ○出国時の持出し確認後に消費税相当額が返金(リファンド)されることとなります。 ※消費税免税制度リ",
+   "captured_at": "2026-10-23T17:33:15.633Z",
+   "captured_kst": "2026-10-24 02:33"
+  },
+  {
+   "text": "출국할 때 세관 확인 뒤 소비세 상당액을 돌려받는다",
+   "source": "tax_claims",
+   "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html",
+   "needle": "出国時の持出し確認後に消費税相当額が返金",
+   "context": "する「リファンド方式」に移行します。 ○購入者は、免税店にて税込価格(課税)で免税対象物品を購入することとなります。 ○出国時の持出し確認後に消費税相当額が返金(リファンド)されることとなります。 ※消費税免税制度リファンド方式リーフレット(旅行者向け) <出国時の持出し確認(税",
+   "captured_at": "2026-10-23T17:33:15.633Z",
+   "captured_kst": "2026-10-24 02:33"
+  }
+ ],
+ "time_basis": {
+  "first": "2026-10-23T16:33:26.900000+00:00",
+  "last": "2026-10-23T16:46:22.256000+00:00",
+  "first_kst": "2026-10-24 01:33",
+  "last_kst": "2026-10-24 01:46",
+  "label": "10/24 01:33~01:46"
+ },
+ "digest": "81fba90bb924b768"
+}

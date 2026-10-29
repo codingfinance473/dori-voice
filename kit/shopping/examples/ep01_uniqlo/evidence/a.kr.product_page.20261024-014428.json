@@ -1,0 +1,22 @@
+{
+ "v": 1,
+ "item": "a",
+ "side": "kr",
+ "kind": "product_page",
+ "code": "E461003",
+ "currency": "KRW",
+ "url": "https://www.uniqlo.com/kr/ko/products/E461003-000/00",
+ "page_title": "남성 히트텍크루넥T(9부) | UNIQLO KR",
+ "captured_at": "2026-10-23T16:44:28.412Z",
+ "tz_offset_min": 540,
+ "method": "browser-dom",
+ "selector": ".fr-ec-price-text--large",
+ "n_matches": 1,
+ "price_text": "16,900원",
+ "price": 16900,
+ "price_box": "16,900원 4.8 (416)",
+ "sale_flag": false,
+ "heading": "히트텍크루넥T(9부)",
+ "code_in_url": true,
+ "sig": "ff142e95c2bfb57b"
+}

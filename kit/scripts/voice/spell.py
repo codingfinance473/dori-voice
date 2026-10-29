@@ -31,6 +31,26 @@ def norm(s):
     return s.replace("%", "퍼센트")
 
 
+def ko_num(n):
+    """한자어 수 읽기: 2924 → 이천구백이십사, 12900 → 만이천구백 (가격 검산 대사·받아쓰기 대조용)."""
+    if n == 0: return "영"
+    D, out = "영일이삼사오육칠팔구", ""
+    for big, name in ((10 ** 8, "억"), (10 ** 4, "만"), (1, "")):
+        q, n = divmod(n, big)
+        if not q: continue
+        part = ""
+        for unit, un in ((1000, "천"), (100, "백"), (10, "십"), (1, "")):
+            d, q = divmod(q, unit)
+            if d: part += ("" if d == 1 and un else D[d]) + un
+        out += ("" if part == "일" and name == "만" else part) + name
+    return out
+
+
+def ko(t):
+    """숫자를 한글 읽기로 바꾼 꼴 — 받아쓰기가 숫자로 적든 한글로 적든 같은 말로 본다."""
+    return re.sub(r"\d+", lambda m: ko_num(int(m.group())), t)
+
+
 def variants(k, alt):
     v = list(alt.get(k, [k]))
     if re.fullmatch(r"\d+\.\d+", k):  # 소수: 점 빼기·'점'·'쩜'
@@ -39,9 +59,15 @@ def variants(k, alt):
     return [norm(x) for x in v]
 
 
+def ko_text(text):
+    """받아쓰기 원문 → 한글 읽기 꼴. 천 단위 쉼표(1,290)만 숫자로 잇고 '59,8' 같은 쉼표는 끊어 읽는다(가격 검산 voice.py 와 같은 기준)."""
+    t = re.sub(r"(?<=\d),(?=\d{3}(?!\d))", "", text)
+    return norm(ko(t))
+
+
 def ok(text, keys, alt):
-    t = norm(text)
-    return all(any(a in t for a in variants(k, alt)) for k in keys)
+    t = norm(text); tk = ko_text(text)
+    return all(any((a in t and not re.search(r"\d", a)) or ko(a) in tk for a in variants(k, alt)) for k in keys)
 
 
 def num_form(s, nf):

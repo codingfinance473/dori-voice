@@ -1,0 +1,31 @@
+{
+ "v": 1,
+ "item": "b",
+ "side": "kr",
+ "kind": "server_state",
+ "code": "E470067",
+ "currency": "KRW",
+ "url": "https://www.uniqlo.com/kr/ko/products/E470067-000/00",
+ "page_title": "남성 울트라라이트다운재킷 | UNIQLO KR",
+ "captured_at": "2026-10-23T16:46:06.022Z",
+ "tz_offset_min": 540,
+ "method": "page-refetch",
+ "source": "__PRELOADED_STATE__",
+ "http_status": 200,
+ "parse_error": null,
+ "n_matches": 1,
+ "distinct_values": [
+  99900
+ ],
+ "price": 99900,
+ "price_basis": "base",
+ "price_currency": "KRW",
+ "promo": null,
+ "dual_price": false,
+ "tax_policy": "INCLUSIVE",
+ "price_flags": [],
+ "heading": "울트라라이트다운재킷",
+ "code_in_url": true,
+ "sale_flag": false,
+ "sig": "c2716291af2109ed"
+}

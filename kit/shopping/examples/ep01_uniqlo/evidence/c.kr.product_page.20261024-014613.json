@@ -1,0 +1,22 @@
+{
+ "v": 1,
+ "item": "c",
+ "side": "kr",
+ "kind": "product_page",
+ "code": "E450195",
+ "currency": "KRW",
+ "url": "https://www.uniqlo.com/kr/ko/products/E450195-000/00",
+ "page_title": "젠더리스 후리스풀집재킷 | UNIQLO KR",
+ "captured_at": "2026-10-23T16:46:13.997Z",
+ "tz_offset_min": 540,
+ "method": "browser-dom",
+ "selector": ".fr-ec-price-text--large",
+ "n_matches": 1,
+ "price_text": "39,900원",
+ "price": 39900,
+ "price_box": "39,900원 4.7 (999+)",
+ "sale_flag": false,
+ "heading": "후리스풀집재킷",
+ "code_in_url": true,
+ "sig": "ef5bdb42316a4a64"
+}

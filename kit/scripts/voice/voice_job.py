@@ -18,12 +18,15 @@ def repo():
     sys.exit("dori-voice 저장소를 찾지 못했어요 — 클론하고 DORI_VOICE_REPO 를 지정하세요")
 
 
-def git(R, *a): return subprocess.run(["git", "-C", str(R), *a], check=True, capture_output=True, text=True).stdout
+def git(R, *a):
+    r = subprocess.run(["git", "-C", str(R), *a], capture_output=True, text=True)
+    if r.returncode: sys.exit(f"git {' '.join(a)} 실패: {r.stderr.strip()}")
+    return r.stdout
 
 
 def make(jid, ids, takes=4, note="", trailer="", dry=False):
     R = repo(); L = {l["id"]: l for l in json.load(open("voice/lines.json", encoding="utf-8"))}
-    if not dry: git(R, "pull", "-q", "--rebase", "origin", "main")
+    if not dry: git(R, "pull", "-q", "--rebase", "--autostash", "origin", "main")
     if (R / "jobs" / f"{jid}.json").exists(): sys.exit(f"{jid} 는 이미 있어요 — 새 작업 id 를 쓰세요")
     tasks, seed0 = [], zlib.crc32(jid.encode()) % 900 + 100
     for i, lid in enumerate(ids):
@@ -50,7 +53,7 @@ def wait(jid, every=20, limit=3600):
     while time.time() - t0 < limit:
         subprocess.run(["git", "-C", str(R), "fetch", "-q", "origin"], capture_output=True)
         if subprocess.run(["git", "-C", str(R), "cat-file", "-e", f"origin/main:out/{jid}/done.json"], capture_output=True).returncode == 0:
-            git(R, "pull", "-q", "--rebase", "origin", "main")
+            git(R, "pull", "-q", "--rebase", "--autostash", "origin", "main")
             n = len(list((R / "out" / jid).glob("*/*.wav")))
             print(f"끝: {jid} — 소리 {n}개 (done.json 의 status 가 failure 여도 Post 캐시 단계만 실패한 경우가 많다 — 파일 수로 확인)")
             return

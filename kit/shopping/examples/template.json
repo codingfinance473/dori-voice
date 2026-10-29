@@ -1,0 +1,32 @@
+{
+  "mode": "web",
+  "verify": "strict",
+  "max_age_h": 24,
+  "round_krw": 1,
+  "series": "도리의 가격 검산",
+  "ep": 1,
+  "title": "",
+  "place": "",
+  "store": "",
+  "currency": "JPY",
+  "currency_sym": "¥",
+  "currency_ko": "엔",
+  "fx": { "official": "ecos" },
+  "local_rule": { "tax_rate": 10, "tax_included": true, "refund_min_pretax": 5000, "source": "tax" },
+  "literals": [],
+  "thresholds": { "local_win": -15, "kr_win": 5 },
+  "hook": { "kicker": "", "sticker": "한국보다<br>진짜 쌀까?", "note": "가격은 두 나라 공식몰 정가예요. 세금 포함, 쿠폰·할인 제외" },
+  "voice": { "preset": "E", "accept": [] },
+  "music": { "style": "fresh" },
+  "items": [
+    { "id": "a", "role": "best", "name": "", "code": "",
+      "local": { "source": "", "url": "" },
+      "kr": { "seller": "", "url": "", "taggable": false },
+      "media": { "type": "none", "icon": "pack" } }
+  ],
+  "notes": {},
+  "summary": { "refund": false },
+  "outro": { "ask": "다음엔 뭘 검산할까?" },
+  "sources": [],
+  "lines": []
+}

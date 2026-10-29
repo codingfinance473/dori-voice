@@ -1,0 +1,319 @@
+{
+  "mode": "web",
+  "series": "도리의 가격 검산",
+  "ep": 1,
+  "title": "유니클로 겨울템, 일본이 쌀까?",
+  "place": "일본",
+  "store": "유니클로",
+  "currency": "JPY",
+  "currency_sym": "¥",
+  "currency_ko": "엔",
+  "fx": {
+    "official": "ecos"
+  },
+  "local_rule": {
+    "tax_rate": 10,
+    "tax_included": true,
+    "refund_min_pretax": 5000,
+    "source": "tax"
+  },
+  "thresholds": {
+    "local_win": -15,
+    "kr_win": 5
+  },
+  "hook": {
+    "kicker": "11월부터 일본 면세가 바뀐다",
+    "sticker": "한국보다<br>진짜 쌀까?",
+    "note": "가격은 두 나라 공식몰 정가예요. 세금 포함, 쿠폰·할인 제외"
+  },
+  "voice": {
+    "preset": "E"
+  },
+  "music": {
+    "style": "fresh"
+  },
+  "items": [
+    {
+      "id": "a",
+      "role": "best",
+      "name": "히트텍 크루넥 T(9부)",
+      "code": "E461003",
+      "local": {
+        "price": 1290,
+        "source": "유니클로 일본 공식몰",
+        "url": "https://www.uniqlo.com/jp/ja/products/E461003-000/00"
+      },
+      "kr": {
+        "price": 16900,
+        "seller": "유니클로 한국 공식몰",
+        "url": "https://www.uniqlo.com/kr/ko/products/E461003-000/00",
+        "taggable": false
+      },
+      "media": {
+        "type": "none",
+        "icon": "longtee",
+        "color": "#8E9AAF"
+      }
+    },
+    {
+      "id": "b",
+      "role": "best",
+      "name": "울트라 라이트 다운 재킷",
+      "code": "E470067",
+      "local": {
+        "price": 7990,
+        "source": "유니클로 일본 공식몰",
+        "url": "https://www.uniqlo.com/jp/ja/products/E470067-000/00"
+      },
+      "kr": {
+        "price": 99900,
+        "seller": "유니클로 한국 공식몰",
+        "url": "https://www.uniqlo.com/kr/ko/products/E470067-000/00",
+        "taggable": false
+      },
+      "media": {
+        "type": "none",
+        "icon": "down",
+        "color": "#5B6F95"
+      }
+    },
+    {
+      "id": "c",
+      "role": "best",
+      "name": "후리스 풀집 재킷",
+      "code": "E450195",
+      "local": {
+        "price": 2990,
+        "source": "유니클로 일본 공식몰",
+        "url": "https://www.uniqlo.com/jp/ja/products/E450195-000/00"
+      },
+      "kr": {
+        "price": 39900,
+        "seller": "유니클로 한국 공식몰",
+        "url": "https://www.uniqlo.com/kr/ko/products/E450195-000/00",
+        "taggable": false
+      },
+      "media": {
+        "type": "none",
+        "icon": "fleece",
+        "color": "#C9B79C"
+      }
+    },
+    {
+      "id": "d",
+      "role": "best",
+      "name": "라운드 미니 숄더백",
+      "code": "E481610",
+      "local": {
+        "price": 1500,
+        "source": "유니클로 일본 공식몰",
+        "url": "https://www.uniqlo.com/jp/ja/products/E481610-000/00"
+      },
+      "kr": {
+        "price": 19900,
+        "seller": "유니클로 한국 공식몰",
+        "url": "https://www.uniqlo.com/kr/ko/products/E481610-000/00",
+        "taggable": false
+      },
+      "media": {
+        "type": "none",
+        "icon": "bag",
+        "color": "#A9BB95"
+      }
+    }
+  ],
+  "notes": {
+    "tax": {
+      "sticker": "반전",
+      "title": "11월부터 일본 면세가 바뀌어요",
+      "items": [
+        {
+          "text": "계산은 세금 포함 가격으로",
+          "small": "2026년 11월 1일 구매분부터"
+        },
+        {
+          "text": "출국할 때 세관 확인 뒤 소비세를 돌려받아요",
+          "small": "구매일부터 90일 안에 출국하며 세관 확인"
+        },
+        {
+          "text": "한 가게에서 하루 세전 {total.refund_min_card} 이상",
+          "small": "히트텍 하나({a.local_card})만으로는 대상이 아니에요"
+        }
+      ],
+      "source": "일본 관광청 면세점 사이트(여행자용 안내)"
+    }
+  },
+  "summary": {
+    "refund": true
+  },
+  "outro": {
+    "ask": "다음엔 어떤 브랜드를 검산할까?",
+    "hold": 4.0
+  },
+  "sources": [
+    {
+      "kind": "면세 제도",
+      "name": "일본 관광청 면세점 사이트(여행자용 안내)",
+      "url": "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html"
+    }
+  ],
+  "lines": [
+    {
+      "id": "L01",
+      "scene": "hook",
+      "say": "유니클로 겨울템, 일본에서 사면 진짜 쌀까?",
+      "sub": "유니클로 겨울템 | 일본에서 사면 진짜 쌀까?",
+      "expr": "focus",
+      "arms": "hold",
+      "cues": {
+        "receipt": "^",
+        "total": "진짜"
+      }
+    },
+    {
+      "id": "L02",
+      "scene": "hook",
+      "say": "공식몰 가격으로 검산해 볼게!",
+      "sub": "두 나라 공식몰 가격으로 검산!",
+      "expr": "happy",
+      "arms": "wave"
+    },
+    {
+      "id": "L03",
+      "scene": "item:a",
+      "say": "히트텍 크루넥 티, 일본은 {a.local_say}, 원화로 {a.krw_say}.",
+      "sub": "① 히트텍 크루넥 T | 일본 {a.local_sub} = {a.krw_sub}",
+      "arms": "point",
+      "cues": {
+        "card": "^",
+        "local": "일본은",
+        "krw": "원화로"
+      }
+    },
+    {
+      "id": "L04",
+      "scene": "item:a",
+      "say": "한국은 {a.kr_say}. 볼주머니 행!",
+      "sub": "한국 {a.kr_sub} | 볼주머니 행!",
+      "expr": "focus",
+      "arms": "hold",
+      "cues": {
+        "kr": "^",
+        "diff": "볼주머니",
+        "stamp": "$"
+      }
+    },
+    {
+      "id": "L05",
+      "scene": "item:b",
+      "say": "울트라 라이트 다운은 {b.save_say}이나 차이 나!",
+      "sub": "② 울트라 라이트 다운 | {b.save_sub} 차이!",
+      "arms": "point",
+      "cues": {
+        "card": "^",
+        "diff": "이나",
+        "stamp": "$"
+      }
+    },
+    {
+      "id": "L06",
+      "scene": "item:c",
+      "say": "후리스 풀집 재킷도 {c.pct_say}나 싸네.",
+      "sub": "③ 후리스 풀집 재킷 | {c.pct_sub}나 싸다",
+      "arms": "point",
+      "cues": {
+        "card": "^",
+        "diff": "재킷도",
+        "stamp": "$"
+      }
+    },
+    {
+      "id": "L07",
+      "scene": "item:d",
+      "say": "라운드 미니 숄더백도 {d.pct_say} 싸!",
+      "sub": "④ 라운드 미니 숄더백 | {d.pct_sub} 싸다!",
+      "arms": "point",
+      "cues": {
+        "card": "^",
+        "diff": "숄더백도",
+        "stamp": "$"
+      }
+    },
+    {
+      "id": "L08",
+      "scene": "note:tax",
+      "say": "근데 반전. 십일 월부터 일본 면세는 출국할 때 돌려받는 방식이래.",
+      "sub": "근데 반전! | 11월부터 면세는 출국할 때 환급",
+      "expr": "surprise",
+      "arms": "up",
+      "cues": {
+        "title": "반전",
+        "b1": "십일",
+        "b2": "출국할"
+      }
+    },
+    {
+      "id": "L09",
+      "scene": "note:tax",
+      "say": "그리고 한 가게에서 하루 세전 {total.refund_min_say} 이상 사야 돼.",
+      "sub": "한 가게·하루 세전 {total.refund_min_sub} 이상 | 그래야 환급 대상",
+      "expr": "focus",
+      "arms": "think",
+      "cues": {
+        "b3": "^"
+      }
+    },
+    {
+      "id": "L10",
+      "scene": "summary",
+      "say": "네 개 다 사면 한국보다 {total.saved_say} 덜 써!",
+      "sub": "4개 합계 | {total.saved_sub} 덜 쓴다!",
+      "expr": "happy",
+      "arms": "up",
+      "cues": {
+        "bars": "^",
+        "result": "덜"
+      }
+    },
+    {
+      "id": "L11",
+      "scene": "outro",
+      "say": "다음엔 어떤 브랜드를 검산할까? 댓글로 알려 줘!",
+      "sub": "다음 검산 브랜드는? | 댓글로 알려 줘!",
+      "expr": "happy",
+      "arms": "wave",
+      "cues": {
+        "ask": "^",
+        "source": "어떤"
+      }
+    }
+  ],
+  "verify": "strict",
+  "literals": [
+    {
+      "text": "2026년 11월 1일",
+      "source": "tax",
+      "needle": "2026年11月1日購入分から"
+    },
+    {
+      "text": "90일",
+      "source": "tax",
+      "needle": "90日以内"
+    },
+    {
+      "text": "5,000",
+      "source": "tax",
+      "needle": "5,000円以上"
+    },
+    {
+      "text": "계산은 세금 포함 가격으로",
+      "source": "tax_claims",
+      "needle": "税込価格(課税)で免税対象物品を購入"
+    },
+    {
+      "text": "출국할 때 세관 확인 뒤 소비세 상당액을 돌려받는다",
+      "source": "tax_claims",
+      "needle": "出国時の持出し確認後に消費税相当額が返金"
+    }
+  ]
+}

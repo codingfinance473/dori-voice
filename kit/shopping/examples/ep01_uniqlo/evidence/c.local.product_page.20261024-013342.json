@@ -1,0 +1,22 @@
+{
+ "v": 1,
+ "item": "c",
+ "side": "local",
+ "kind": "product_page",
+ "code": "E450195",
+ "currency": "JPY",
+ "url": "https://www.uniqlo.com/jp/ja/products/E450195-000/00",
+ "page_title": "유니클로 공식 | 양털 재킷 (남녀 겸용)",
+ "captured_at": "2026-10-23T16:33:42.996Z",
+ "tz_offset_min": 540,
+ "method": "browser-dom",
+ "selector": ".fr-ec-price-text--large",
+ "n_matches": 1,
+ "price_text": "¥ 2,990",
+ "price": 2990,
+ "price_box": "¥ 2,990 4.4 (999+)",
+ "sale_flag": false,
+ "heading": "양털 재킷",
+ "code_in_url": true,
+ "sig": "59ab9b6e5bbf3ba4"
+}

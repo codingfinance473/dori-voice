@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>가격 검산 엔진</title>
+<style>
+@font-face{font-family:Jua;src:url(fonts/Jua-Regular.ttf),local('Noto Sans CJK KR Bold')}
+@font-face{font-family:Pre;font-weight:500;src:url(fonts/Pretendard-Medium.woff2)}
+@font-face{font-family:Pre;font-weight:600;src:url(fonts/Pretendard-SemiBold.woff2)}
+@font-face{font-family:Pre;font-weight:700;src:url(fonts/Pretendard-Bold.woff2)}
+@font-face{font-family:Pre;font-weight:800;src:url(fonts/Pretendard-ExtraBold.woff2)}
+:root{--paper:#FFF6EC;--ink:#3E2F25;--sub:#8A776A;--soft:#B07A55;--card:#FFFFFF;
+  --local:#E0533D;--same:#8C8F96;--korea:#2F6FDB;--only:#8E5BD6;--yellow:#FFE27A;--mint:#8FD3C1;
+  --round:Jua,Pre,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--paper);font-family:Pre,sans-serif;color:var(--ink)}
+.abs{position:absolute}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55}
+#paperTex{position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply}
+#hdr{left:60px;top:214px;width:840px}
+#hdr .lab{font-family:var(--round);font-size:34px;color:var(--soft);letter-spacing:-.5px;white-space:nowrap}
+#hdr .ttl{font-family:var(--round);font-size:58px;line-height:1.15;margin-top:2px;letter-spacing:-1px;white-space:nowrap}
+#topchips{left:60px;top:160px;display:flex;gap:10px;align-items:center}
+.tchip{height:44px;padding:0 16px;border-radius:22px;font-weight:700;font-size:24px;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tchip b{border-radius:8px;padding:2px 9px;font-size:21px;color:#fff}
+.tchip.ad{background:#FFE1D3;color:#A23F25}.tchip.ad b{background:#A23F25}
+.tchip.ai{background:#E4EEF9;color:#3B5B85}.tchip.ai b{background:#3B5B85}
+.tchip.tm{background:#EFE8DD;color:#6B5A4D}.tchip.tm b{background:#8A776A}
+.tchip.wmc{background:#D33B3B;color:#fff}
+#disc{left:60px;top:340px;width:840px;padding:26px 30px;border-radius:30px;background:#FFF0E8;border:3px solid #F2B39C;
+  font-size:34px;font-weight:700;color:#8E361F;line-height:1.45;word-break:keep-all}
+#disc b{display:inline-block;background:#A23F25;color:#fff;border-radius:10px;padding:0 12px;margin-right:10px}
+#wm{left:520px;top:160px;height:44px;padding:0 16px;border-radius:12px;background:#D33B3B;color:#fff;font-weight:800;font-size:22px;
+  display:flex;align-items:center;white-space:nowrap}
+#wmBig{left:-200px;top:820px;width:1480px;text-align:center;transform:rotate(-24deg);font-family:var(--round);font-size:110px;color:rgba(211,59,59,.10);white-space:nowrap}
+.scene{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0}
+.card{position:absolute;background:var(--card);border-radius:40px;box-shadow:0 14px 36px rgba(120,80,40,.12),0 2px 6px rgba(120,80,40,.06)}
+/* 영수증(사진 또는 도리의 검산 영수증) */
+.rcpt{left:150px;top:350px;width:640px;height:820px;border-radius:14px 14px 0 0;overflow:hidden;background:#FFFEFB;
+  box-shadow:0 14px 36px rgba(120,80,40,.14);font-family:Pre;padding:44px 50px 0}
+.rcpt .zig{position:absolute;left:0;right:0;bottom:-1px;height:26px;background:
+  linear-gradient(135deg,var(--paper) 25%,transparent 25%) -13px 0/26px 26px,linear-gradient(225deg,var(--paper) 25%,transparent 25%) -13px 0/26px 26px}
+.rcpt .st{font-family:var(--round);font-size:46px;text-align:center}
+.rcpt .dt{font-size:25px;color:var(--sub);text-align:center;margin-top:8px;font-weight:600}
+.rcpt .hr{border-top:4px dashed #E2D7CA;margin:22px 0}
+.rcpt .ln{display:flex;justify-content:space-between;gap:16px;font-size:31px;font-weight:600;line-height:1.85;color:#4A3B30}
+.rcpt .ln span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rcpt .ln .tf{font-size:21px;font-weight:700;color:#B3542F;border:2px solid #E7A98E;border-radius:6px;padding:0 6px;margin-left:8px;vertical-align:4px}
+.rcpt .tot{display:flex;justify-content:space-between;font-size:40px;font-weight:800;margin-top:4px}
+.rcpt .krw{display:flex;justify-content:space-between;font-size:30px;font-weight:700;color:var(--sub);margin-top:10px}
+.rcpt .note{position:absolute;left:50px;right:50px;bottom:44px;font-size:22px;color:#A89786;font-weight:600;line-height:1.5}
+.rphoto{left:150px;top:350px;width:640px;height:820px;border-radius:24px;overflow:hidden;background:#F3EEE7;box-shadow:0 14px 36px rgba(120,80,40,.14)}
+.blurbox{position:absolute;backdrop-filter:blur(18px);background:rgba(232,226,218,.92);border-radius:8px}
+.qsticker{left:300px;top:930px;width:540px;padding:26px 30px;background:var(--yellow);border-radius:26px;font-family:var(--round);font-size:58px;
+  line-height:1.25;text-align:center;box-shadow:0 10px 24px rgba(140,100,20,.18);word-break:keep-all}
+.qsticker.one{width:auto;left:260px;padding:18px 34px;font-size:50px;white-space:nowrap}
+.rcpt.auto{height:auto;padding-bottom:30px}
+.rcpt.auto .ln{line-height:1.62}
+.rcpt.auto .dt{white-space:nowrap}
+.rcpt.auto .note{position:static;margin-top:18px}
+.rcpt.auto .zig{bottom:-1px}
+.kicker{left:96px;top:330px;padding:12px 24px;background:#E0533D;color:#fff;border-radius:16px;font-family:var(--round);font-size:36px;
+  box-shadow:0 8px 18px rgba(160,60,30,.22);white-space:nowrap;z-index:3}
+/* 품목 */
+.ititle{left:60px;top:352px;width:840px;display:flex;align-items:center;gap:20px}
+.sticker{display:inline-block;background:var(--yellow);font-family:var(--round);font-size:38px;padding:8px 22px;border-radius:16px;
+  box-shadow:0 6px 14px rgba(140,100,20,.16);white-space:nowrap;flex:none}
+.sticker.tw{background:#FFD3C7}.sticker.rg{background:#D9E3F7}
+.iname{font-family:var(--round);font-size:54px;letter-spacing:-1px;white-space:nowrap}
+.media{left:60px;top:440px;width:840px;height:372px;border-radius:36px;overflow:hidden;background:#EFE6DA}
+.media img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.media .illu{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.mchip{position:absolute;left:22px;bottom:20px;background:rgba(255,255,255,.92);border-radius:16px;padding:6px 16px;font-size:23px;font-weight:700;color:#6B5A4D}
+.code{position:absolute;right:22px;top:20px;background:rgba(255,255,255,.92);border-radius:16px;padding:6px 14px;font-size:21px;font-weight:700;color:#8A776A}
+.calc{left:60px;top:834px;width:840px;height:326px;padding:12px 36px}
+.row{display:flex;align-items:center;justify-content:space-between;height:75px;border-bottom:2px dashed #EEE4D8}
+.row:last-child{border-bottom:0}
+.row .lab{font-size:29px;font-weight:700;color:var(--sub);white-space:nowrap}
+.row .lab small{display:block;font-size:21px;font-weight:600;color:#AA9888;margin-top:1px}
+.row .val{font-size:44px;font-weight:800;letter-spacing:-.5px;white-space:nowrap}
+.row.diff .val{font-size:46px}
+.pctchip{display:inline-block;font-size:30px;font-weight:800;color:#fff;border-radius:12px;padding:3px 12px;margin-left:12px;vertical-align:6px}
+.stamp{right:196px;top:628px;min-width:300px;height:150px;padding:0 30px;display:flex;align-items:center;justify-content:center;border-radius:26px;transform-origin:85% 50%;
+  border:9px solid currentColor;font-family:var(--round);font-size:58px;letter-spacing:-1px;background:rgba(255,255,255,.80);filter:url(#ink);white-space:nowrap}
+.mark{left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+/* 알아 둘 점 */
+.ntitle{left:60px;top:352px;width:840px;display:flex;align-items:center;gap:20px}
+.ntitle .t{font-family:var(--round);font-size:50px;letter-spacing:-1px;white-space:nowrap}
+.ncard{left:60px;top:450px;width:840px;padding:30px 40px 26px}
+.nrow{display:flex;gap:22px;align-items:flex-start;padding:18px 0;border-bottom:2px dashed #EEE4D8}
+.nrow:last-of-type{border-bottom:0}
+.nrow .no{flex:none;width:58px;height:58px;border-radius:50%;background:#FFE9DD;color:#C4502F;font-family:var(--round);font-size:34px;display:flex;align-items:center;justify-content:center}
+.nrow .tx{font-size:36px;font-weight:700;line-height:1.38;word-break:keep-all;color:var(--ink)}
+.nrow .tx small{display:block;font-size:24px;font-weight:600;color:#9C8B7C;margin-top:6px}
+.nsrc{font-size:22px;font-weight:600;color:#A89786;margin-top:16px}
+/* 합계 */
+.stitle{left:60px;top:352px;font-family:var(--round);font-size:56px}
+.sum{left:60px;top:436px;width:840px;padding:30px 40px 28px}
+.bar{margin-bottom:24px}
+.bar .bl{display:flex;justify-content:space-between;font-size:30px;font-weight:700;color:var(--sub)}
+.bar .bl b{font-size:40px;color:var(--ink);font-weight:800}
+.bar .tr{height:44px;border-radius:22px;background:#F3ECE3;margin-top:10px;overflow:hidden}
+.bar .fill{height:100%;border-radius:22px}
+.res{font-family:var(--round);font-size:70px;margin-top:4px;letter-spacing:-1px;white-space:nowrap}
+.res small{font-family:Pre;font-size:30px;font-weight:700;color:var(--sub);margin-left:12px;letter-spacing:0}
+.refund{margin-top:12px;font-size:27px;font-weight:700;color:#3B7F6A;background:#E6F4EE;border-radius:16px;padding:10px 18px;word-break:keep-all}
+.chips{left:60px;width:840px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chip{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;border-radius:22px;padding:9px 16px 9px 20px;font-size:25px;font-weight:700;
+  box-shadow:0 6px 16px rgba(120,80,40,.08)}
+.chip span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.chip i{font-style:normal;font-family:var(--round);font-size:24px;border:3px solid currentColor;border-radius:10px;padding:0 8px;white-space:nowrap;flex:none}
+.snote{grid-column:1 / -1;font-size:22px;font-weight:600;color:#9C8B7C;margin-top:4px;word-break:keep-all;line-height:1.5}
+/* 마무리 */
+.ask{left:60px;top:370px;width:840px;font-family:var(--round);font-size:74px;line-height:1.25;letter-spacing:-1px;word-break:keep-all}
+.ask small{display:block;font-size:46px;color:var(--soft);margin-top:12px}
+.src{left:60px;top:640px;width:840px;padding:28px 36px;font-size:24px;font-weight:600;line-height:1.7;color:#6B5A4D;word-break:keep-all}
+.src b{color:var(--ink);font-weight:800;margin-right:6px}
+.src .t{font-family:var(--round);font-size:34px;color:var(--ink);margin-bottom:6px}
+/* 말풍선 */
+#bubble{left:404px;top:1226px;width:500px;min-height:150px;background:#fff;border-radius:40px;padding:26px 34px;
+  box-shadow:0 12px 30px rgba(120,80,40,.13);display:flex;align-items:center}
+#bubble:before{content:"";position:absolute;left:-26px;top:70px;border:16px solid transparent;border-right:30px solid #fff;border-left:0}
+#btext{font-family:var(--round);font-size:41px;line-height:1.38;letter-spacing:-.5px;word-break:keep-all;color:var(--ink)}
+#dori{left:26px;top:1150px;width:372px;height:400px}
+#preload,#preload2{position:absolute;left:0;top:-4000px;width:1000px;opacity:0;font-family:var(--round)}
+#preload2{top:-3000px;font-family:Pre;font-weight:800}
+</style>
+<script src="data.js"></script>
+<script src="dori.js"></script>
+</head><body>
+<div id="stage">
+  <div id="bg" class="abs" style="inset:0">
+    <div class="blob" id="b1" style="width:760px;height:760px;background:radial-gradient(circle,#FFD9C2,transparent 70%)"></div>
+    <div class="blob" id="b2" style="width:700px;height:700px;background:radial-gradient(circle,#D8EEDF,transparent 70%)"></div>
+    <div class="blob" id="b3" style="width:640px;height:640px;background:radial-gradient(circle,#FFEDB0,transparent 70%)"></div>
+    <svg id="paperTex" width="1080" height="1920"><filter id="pn"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/>
+      <feColorMatrix values="0 0 0 0 .55  0 0 0 0 .45  0 0 0 0 .35  0 0 0 .22 0"/></filter><rect width="100%" height="100%" filter="url(#pn)"/></svg>
+  </div>
+  <svg width="0" height="0" style="position:absolute"><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/></filter></svg>
+  <div id="hdr" class="abs"><div class="lab"></div><div class="ttl"></div></div>
+  <svg id="fx" class="abs" width="1080" height="1920" style="left:0;top:0"></svg>
+  <div id="scenes"></div>
+  <div id="wmBig" class="abs"></div>
+  <div id="disc" class="abs"><b>광고</b>이 영상의 상품 태그로 구매하면 채널이 수수료를 받아요</div>
+  <div id="topchips" class="abs"></div>
+  <div id="wm" class="abs">예시 데이터 · 실제 가격 아님</div>
+  <div id="dori" class="abs"></div>
+  <div id="bubble" class="abs"><div id="btext"></div></div>
+  <div id="preload"></div><div id="preload2"></div>
+</div>
+<script>
+// ---- 데이터: render.py 가 window.DATA = {episode, facts, timeline, media, notes} 를 넣는다 ----
+const D = window.DATA, F = D.facts, T = D.timeline, E = D.episode;
+const WEB = (F.mode || E.mode || 'web') === 'web';
+const $ = (s, el = document) => el.querySelector(s);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const eOut = k => 1 - Math.pow(1 - clamp(k), 3);
+const eIn = k => Math.pow(clamp(k), 2);
+const eBack = k => { k = clamp(k); const c = 1.9; return 1 + (c + 1) * Math.pow(k - 1, 3) + c * Math.pow(k - 1, 2); };
+const rise = (t, t0, d = .35) => clamp((t - t0) / d);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const VCOL = { local: 'var(--local)', same: 'var(--same)', korea: 'var(--korea)', only: 'var(--only)' };
+const VHEX = { local: '#E0533D', same: '#8C8F96', korea: '#2F6FDB', only: '#8E5BD6' };
+const items = Object.fromEntries(F.items.map(f => [f.id, f]));
+const epItems = Object.fromEntries(E.items.map(i => [i.id, i]));
+const PLACE = E.place || '현지';
+function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
+const md = d => { const m = String(d || '').match(/^(\d{4})-?(\d{2})-?(\d{2})/); return m ? `${+m[2]}/${+m[3]}` : String(d || ''); };
+function fit(el, maxW, minPx) { // 한 줄 글자가 넘치면 글자 크기를 줄인다
+  let px = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollWidth > maxW && px > minPx) { px -= 2; el.style.fontSize = px + 'px'; }
+}
+
+// ---- 상품 그림(일반 아이콘 — 브랜드 로고·실제 포장을 그리지 않는다) ----
+function shade(hex, k) { const n = parseInt(hex.slice(1), 16); let r = n >> 16, g = (n >> 8) & 255, b = n & 255; r = Math.round(r * k); g = Math.round(g * k); b = Math.round(b * k); return `rgb(${Math.min(255, r)},${Math.min(255, g)},${Math.min(255, b)})`; }
+const IC = {
+  tee: c => `<path d="M95,72 l45,-24 q20,22 40,0 l45,24 l42,52 l-38,26 l-16,-20 v130 h-106 v-130 l-16,20 l-38,-26z" fill="${c}" stroke="${shade(c, .75)}" stroke-width="7" stroke-linejoin="round"/><path d="M140,48 q20,26 40,0" fill="none" stroke="${shade(c, .75)}" stroke-width="7"/>`,
+  longtee: c => `<path d="M100,70 l40,-22 q20,22 40,0 l40,22 l26,60 l16,96 l-34,6 l-18,-90 v118 h-100 v-118 l-18,90 l-34,-6 l16,-96z" fill="${c}" stroke="${shade(c, .75)}" stroke-width="7" stroke-linejoin="round"/><path d="M140,48 q20,26 40,0" fill="none" stroke="${shade(c, .75)}" stroke-width="7"/>`,
+  down: c => `<path d="M100,66 l30,-20 h60 l30,20 l28,54 l12,110 l-34,6 l-14,-96 v124 h-104 v-124 l-14,96 l-34,-6 l12,-110z" fill="${c}" stroke="${shade(c, .7)}" stroke-width="7" stroke-linejoin="round"/><g stroke="${shade(c, .72)}" stroke-width="5" fill="none"><path d="M110,110 h100"/><path d="M110,150 h100"/><path d="M110,190 h100"/><path d="M110,230 h100"/></g><path d="M160,48 v222" stroke="${shade(c, .55)}" stroke-width="5"/><rect x="130" y="40" width="60" height="22" rx="10" fill="${shade(c, .85)}"/>`,
+  fleece: c => `<path d="M102,70 l28,-22 h60 l28,22 l26,58 l12,104 l-34,6 l-14,-92 v124 h-104 v-124 l-14,92 l-34,-6 l12,-104z" fill="${c}" stroke="${shade(c, .72)}" stroke-width="7" stroke-linejoin="round"/><path d="M160,50 v220" stroke="${shade(c, .5)}" stroke-width="6"/><circle cx="160" cy="70" r="7" fill="${shade(c, .5)}"/><g fill="${shade(c, .86)}">${[...Array(18)].map((_, i) => `<circle cx="${120 + (i % 6) * 15 + (i % 6 >= 3 ? 34 : 0)}" cy="${112 + Math.floor(i / 6) * 50}" r="4"/>`).join('')}</g>`,
+  bag: c => `<path d="M70,60 q90,-70 180,0" fill="none" stroke="${shade(c, .7)}" stroke-width="10"/><path d="M80,130 q0,-55 80,-55 q80,0 80,55 v40 q0,70 -80,70 q-80,0 -80,-70z" fill="${c}" stroke="${shade(c, .72)}" stroke-width="7"/><path d="M84,150 q76,30 152,0" fill="none" stroke="${shade(c, .6)}" stroke-width="5"/><rect x="146" y="150" width="28" height="18" rx="5" fill="${shade(c, .6)}"/>`,
+  backpack: c => `<rect x="90" y="60" width="140" height="190" rx="40" fill="${c}" stroke="${shade(c, .72)}" stroke-width="7"/><rect x="112" y="150" width="96" height="70" rx="18" fill="${shade(c, .88)}" stroke="${shade(c, .72)}" stroke-width="5"/><path d="M130,62 q30,-40 60,0" fill="none" stroke="${shade(c, .7)}" stroke-width="8"/>`,
+  pants: c => `<path d="M110,50 h100 l14,210 h-48 l-16,-150 l-16,150 h-48z" fill="${c}" stroke="${shade(c, .72)}" stroke-width="7" stroke-linejoin="round"/><path d="M110,72 h100" stroke="${shade(c, .7)}" stroke-width="5"/>`,
+  socks: c => `<path d="M110,50 h52 v120 l40,40 q14,22 -8,34 q-14,8 -30,-4 l-54,-50z" fill="${c}" stroke="${shade(c, .72)}" stroke-width="7" stroke-linejoin="round"/><path d="M110,70 h52" stroke="${shade(c, .7)}" stroke-width="6"/><path d="M168,50 h52 v120 l40,40 q14,22 -8,34 q-14,8 -30,-4 l-54,-50z" fill="${shade(c, 1.1)}" stroke="${shade(c, .72)}" stroke-width="7" stroke-linejoin="round" transform="translate(-10,8)"/>`,
+  cap: c => `<path d="M80,170 q0,-100 90,-100 q90,0 90,100z" fill="${c}" stroke="${shade(c, .72)}" stroke-width="7"/><path d="M170,170 h110 q10,22 -20,26 h-90z" fill="${shade(c, .85)}" stroke="${shade(c, .72)}" stroke-width="7"/><circle cx="170" cy="72" r="8" fill="${shade(c, .7)}"/>`,
+  shoe: c => `<path d="M60,200 q0,-60 40,-90 l40,10 q20,40 70,50 q60,10 60,50 v10 h-210z" fill="${c}" stroke="${shade(c, .72)}" stroke-width="7" stroke-linejoin="round"/><rect x="60" y="216" width="214" height="22" rx="10" fill="#fff" stroke="${shade(c, .72)}" stroke-width="6"/>`,
+  tube: c => `<path d="M112,48 h96 l-12,196 h-72z" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><rect x="134" y="244" width="52" height="30" rx="7" fill="${c}"/><rect x="126" y="100" width="68" height="80" rx="12" fill="${c}" opacity=".45"/>`,
+  bottle: c => `<rect x="128" y="36" width="64" height="40" rx="10" fill="${c}"/><path d="M112,76 h96 v34 q30,18 30,58 v86 q0,18 -18,18 h-120 q-18,0 -18,-18 v-86 q0,-40 30,-58z" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><rect x="104" y="160" width="112" height="64" rx="12" fill="${c}" opacity=".45"/>`,
+  pump: c => `<path d="M150,40 h44 v12 h-30 v26 h-14z" fill="${shade(c, .8)}"/><rect x="138" y="76" width="44" height="22" rx="6" fill="${shade(c, .8)}"/><rect x="110" y="98" width="100" height="160" rx="26" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><rect x="122" y="150" width="76" height="64" rx="10" fill="${c}" opacity=".5"/>`,
+  jar: c => `<rect x="95" y="60" width="130" height="36" rx="10" fill="${c}"/><rect x="85" y="96" width="150" height="150" rx="30" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><rect x="110" y="140" width="100" height="62" rx="14" fill="${c}" opacity=".45"/>`,
+  mask: c => `<rect x="80" y="50" width="160" height="210" rx="16" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><rect x="80" y="50" width="160" height="40" rx="16" fill="${c}"/><ellipse cx="160" cy="170" rx="46" ry="56" fill="${c}" opacity=".35"/>`,
+  lipstick: c => `<rect x="130" y="150" width="60" height="110" rx="8" fill="${shade(c, .55)}"/><rect x="138" y="100" width="44" height="54" rx="6" fill="#E9DDD0"/><path d="M142,100 v-40 l36,-18 v58z" fill="${c}"/>`,
+  compact: c => `<ellipse cx="160" cy="190" rx="100" ry="40" fill="${shade(c, .8)}"/><ellipse cx="160" cy="170" rx="100" ry="40" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><ellipse cx="160" cy="170" rx="70" ry="26" fill="${c}" opacity=".5"/>`,
+  patch: c => `<rect x="50" y="90" width="220" height="140" rx="30" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><rect x="100" y="120" width="120" height="80" rx="16" fill="${c}" opacity=".6"/>`,
+  snack: c => `<path d="M70,70 l180,0 l-10,30 l10,30 l-10,30 l10,30 l-10,30 l10,30 l-180,0 l10,-30 l-10,-30 l10,-30 l-10,-30 l10,-30z" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><circle cx="160" cy="160" r="48" fill="${c}" opacity=".6"/><circle cx="160" cy="160" r="22" fill="${c}"/>`,
+  box: c => `<path d="M70,110 l90,-40 l90,40 v110 l-90,40 l-90,-40z" fill="${c}" opacity=".85" stroke="${shade(c, .7)}" stroke-width="7" stroke-linejoin="round"/><path d="M70,110 l90,40 l90,-40 M160,150 v110" fill="none" stroke="${shade(c, .7)}" stroke-width="6"/>`,
+  cup: c => `<path d="M100,90 h120 l-14,160 h-92z" fill="#fff" stroke="#C9B9A6" stroke-width="7" stroke-linejoin="round"/><rect x="92" y="74" width="136" height="24" rx="8" fill="${c}"/><rect x="112" y="140" width="96" height="50" rx="10" fill="${c}" opacity=".45"/>`,
+  can: c => `<rect x="115" y="60" width="90" height="190" rx="18" fill="${c}" stroke="${shade(c, .72)}" stroke-width="7"/><ellipse cx="160" cy="66" rx="40" ry="10" fill="${shade(c, 1.2)}"/><rect x="125" y="130" width="70" height="60" rx="8" fill="#fff" opacity=".6"/>`,
+  food: c => `<ellipse cx="160" cy="200" rx="120" ry="40" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><path d="M60,190 q100,-150 200,0z" fill="${c}" opacity=".7" stroke="${shade(c, .75)}" stroke-width="6"/><g stroke="#C9B9A6" stroke-width="6" stroke-linecap="round"><path d="M120,90 q-10,-20 0,-40"/><path d="M160,80 q-10,-20 0,-40"/><path d="M200,90 q-10,-20 0,-40"/></g>`,
+  pack: c => `<rect x="70" y="60" width="180" height="200" rx="22" fill="#fff" stroke="#C9B9A6" stroke-width="7"/><rect x="95" y="95" width="130" height="56" rx="14" fill="${c}"/><rect x="95" y="175" width="90" height="14" rx="7" fill="#E4D8CA"/><rect x="95" y="203" width="120" height="14" rx="7" fill="#E4D8CA"/>`
+};
+IC.shirt = IC.tee;
+const ICOL = { tee: '#9CB8E0', longtee: '#8E9AAF', down: '#5B6F95', fleece: '#C9B79C', bag: '#B9C7A6', backpack: '#7F9C8F', pants: '#6C7A93', socks: '#E3A27F', cap: '#D98C6A', shoe: '#E8E1D6',
+  tube: '#F3A3B5', bottle: '#9CC3E8', pump: '#B7D8C8', jar: '#F5C27A', mask: '#A8D5E2', lipstick: '#D9576B', compact: '#E7B9A6', patch: '#F7C9A8', snack: '#A9D79A', box: '#B98B6A', cup: '#F08A5D', can: '#7FB3D5', food: '#F7C9A8', pack: '#F5B38A' };
+const IBG = c => `linear-gradient(160deg, ${shade(c, 1.35)} 0%, #FFF8F1 75%)`;
+
+// ---- 장면 만들기 ----
+const SC = {};
+function addScene(id, html) {
+  const el = document.createElement('div'); el.className = 'scene'; el.innerHTML = html; $('#scenes').appendChild(el); SC[id] = el; return el;
+}
+function buildHook() {
+  const r = E.receipt || {}, H = E.hook || {};
+  let inner;
+  if (!WEB && D.media.receipt) {
+    const [iw, ih] = D.media.receipt_wh || [3, 4], bw = 640, bh = 820, k = Math.min(bw / iw, bh / ih), w = iw * k, h = ih * k;
+    inner = `<div class="rphoto abs"><div style="position:absolute;left:${(bw - w) / 2}px;top:${(bh - h) / 2}px;width:${w}px;height:${h}px">
+      <img src="${D.media.receipt}" style="width:100%;height:100%;object-fit:fill">${(r.blur || []).map(b => `<div class="blurbox" style="left:${b[0] * 100}%;top:${b[1] * 100}%;width:${b[2] * 100}%;height:${b[3] * 100}%"></div>`).join('')}</div>
+      <span class="mchip">직접 받은 영수증</span></div>`;
+  } else if (WEB) {
+    const lines = F.items.map(f => `<div class="ln"><span>${esc(f.name)}</span><span>${esc(f.local_card)}</span></div>`).join('');
+    const PTL = F.price_time || {}, wl = PTL.local_label || PTL.label;
+    const when = wl ? `${esc(wl)} 확인` : `${esc(F.check_date)} 확인`;
+    inner = `<div class="rcpt auto abs"><div class="st">도리의 검산 영수증</div><div class="dt">${esc(F.store)} · ${esc(PLACE)} · ${when}</div><div class="hr"></div>
+      <div class="lines">${lines}</div><div class="hr"></div>
+      <div class="tot"><span>합계</span><span>${esc(F.total.local_sum_local_card)}</span></div>
+      <div class="krw"><span>원화로</span><span>${esc(F.total.local_sum_card)}</span></div>
+      <div class="note">${esc(H.note || '가격은 공식몰·판매처 확인가예요. 세금 포함, 쿠폰 제외')}<br>원화는 ${esc(F.rate_card)}(${esc(F.rate_date_md)} ${esc(F.rate_basis)}) 환산 · 카드 결제액과는 달라요</div><div class="zig"></div></div>`;
+  } else {
+    const lines = F.items.map(f => `<div class="ln"><span>${esc(f.name)}${f.tax_free ? '<span class="tf">면세</span>' : ''}</span><span>${esc(f.local_card)}</span></div>`).join('');
+    inner = `<div class="rcpt abs"><div class="st">${esc(F.store)} · ${esc(PLACE)}</div><div class="dt">${esc(F.trip_date)}</div><div class="hr"></div>
+      <div class="lines">${lines}</div><div class="hr"></div>
+      <div class="tot"><span>합계</span><span>${esc(F.total.receipt_total_card || '')}</span></div>
+      <div class="krw"><span>카드 원화</span><span>${esc(F.total.receipt_krw_card || '')}</span></div>
+      <div class="note">영수증 내용을 다시 그렸어요</div><div class="zig"></div></div>`;
+  }
+  const stk = H.sticker || (WEB ? '한국보다<br>진짜 쌀까?' : `${esc(F.total.receipt_krw_card || '')}<br>진짜 아낀 건?`);
+  const auto = WEB && !D.media.receipt;
+  const el = addScene('hook', (H.kicker ? `<div class="kicker abs">${esc(H.kicker)}</div>` : '') + inner
+    + `<div class="qsticker abs${auto ? ' one' : ''}">${auto ? stk.replace(/<br\s*\/?>/g, ' ') : stk}</div>`);
+  if (H.kicker) { const rc = $('.rcpt', el) || $('.rphoto', el); if (rc) rc.style.top = auto ? '372px' : '392px'; $('.qsticker', el).style.top = '960px'; }
+  el.dataset.auto = auto ? '1' : '';
+}
+const when = (d, tm) => { const x = [d, tm].filter(Boolean).join(' '); return x ? ` · ${esc(x)} 확인` : ''; };
+function buildItem(f, n) {
+  const ei = epItems[f.id], m = D.media.items[f.id] || { type: 'none' };
+  const role = f.role, stk = role === 'twist' ? '<span class="sticker tw">반전</span>' : role === 'regret' ? '<span class="sticker rg">후회템</span>' : `<span class="sticker">검산 ${n}</span>`;
+  let media;
+  if (m.type === 'photo') media = `<img class="ph" src="${m.src}"><span class="mchip">직접 찍은 사진</span>`;
+  else if (m.type === 'video') media = `<img class="ph vid" src="${m.frames[0]}"><span class="mchip">직접 찍은 영상</span>`;
+  else {
+    const ic = (ei.media && ei.media.icon) || 'pack', c = (ei.media && ei.media.color) || ICOL[ic] || '#F5B38A';
+    media = `<div class="illu" style="background:${IBG(c)}"><svg width="330" height="310" viewBox="0 0 320 300">${(IC[ic] || IC.pack)(c)}</svg></div><span class="mchip">${WEB ? '그림은 이해를 돕는 일러스트' : '사진 없음 · 그림으로 대신'}</span>`;
+  }
+  if (f.code) media += `<span class="code">상품번호 ${esc(f.code)}</span>`;
+  const v = f.verdict, col = VCOL[v];
+  const krRow = f.kr_equiv != null
+    ? `<div class="lab">한국 가격<small>${esc(f.kr_seller_short || f.kr_seller)}${when(f.kr_checked_md, f.kr_time)}${f.size_note ? ' · ' + esc(f.size_note) : ''}</small></div><div class="val kr">${esc(f.kr_card)}</div>`
+    : `<div class="lab">한국 가격<small>국내 판매처를 찾지 못함</small></div><div class="val" style="color:#AA9888;font-size:38px">판매처 없음</div>`;
+  const diffRow = f.kr_equiv != null
+    ? `<div class="lab">차이</div><div class="val" style="color:${col}">${esc(f.diff_card)}<span class="pctchip" style="background:${col}">${esc(f.pct_card)}</span></div>`
+    : `<div class="lab">차이</div><div class="val" style="color:${col};font-size:38px">한국에선 못 사요</div>`;
+  const rateNote = F.rate_basis === '카드 실결제 환율' ? `카드 실결제 · ${esc(F.rate_card)}` : `${esc(F.rate_card)} · ${esc(F.rate_date_md)} ${esc(F.rate_basis)}`;
+  const locLab = WEB ? `${esc(PLACE)} 가격` : '현지 결제';
+  const locNote = WEB ? `${esc(f.local_src_short || f.local_src)}${when(f.local_checked_md, f.local_time)}${f.tax_incl ? ' · 세금 포함' : ''}` : `${esc(f.local_src || '영수증')}${f.tax_free ? ' · 면세가' : ''}`;
+  addScene('item:' + f.id, `
+    <div class="ititle abs">${stk}<span class="iname">${esc(f.name)}</span></div>
+    <div class="media abs">${media}</div>
+    <div class="calc card">
+      <div class="row" data-s="local"><div class="lab">${locLab}<small>${locNote}</small></div><div class="val">${esc(f.local_card)}</div></div>
+      <div class="row" data-s="krw"><div class="lab">원화로<small>${rateNote}</small></div><div class="val krw">${esc(f.krw_card)}</div></div>
+      <div class="row" data-s="kr">${krRow}</div>
+      <div class="row diff" data-s="diff">${diffRow}</div>
+    </div>
+    <div class="stamp abs" style="color:${col}">${esc(f.stamp)}</div>
+    <svg class="mark abs" viewBox="0 0 1080 1920"><path class="ring" d="" fill="none" stroke="${VHEX[v]}" stroke-width="6" stroke-linecap="round" opacity=".85"/></svg>`);
+}
+function buildNote(id) {
+  const N = (D.notes || {})[id] || {};
+  const rows = (N.items || []).slice(0, 3).map((it, i) => `<div class="nrow" data-s="b${i + 1}"><div class="no">${i + 1}</div><div class="tx">${esc(it.text)}${it.small ? `<small>${esc(it.small)}</small>` : ''}</div></div>`).join('');
+  addScene('note:' + id, `
+    <div class="ntitle abs"><span class="sticker tw">${esc(N.sticker || '알아 둘 점')}</span><span class="t">${esc(N.title || '')}</span></div>
+    <div class="ncard card">${rows}${N.source ? `<div class="nsrc">출처: ${esc(N.source)}</div>` : ''}</div>`);
+}
+function buildSummary() {
+  const t = F.total, mx = Math.max(t.local_sum, t.kr_sum) || 1, saved = t.saved >= 0, S = E.summary || {};
+  const chips = F.items.map(f => `<div class="chip"><span>${esc(f.name)}</span><i style="color:${VCOL[f.verdict]}">${esc(f.stamp)}</i></div>`).join('');
+  const refund = (S.refund && t.refund_eligible && !t.refund_border) ? `<div class="refund">+ 같은 날 한 가게에서 다 사면 면세 대상 · 출국 때 세관 확인 뒤 소비세 상당액 ${esc(t.tax_approx_local_card)}(${esc(t.refund_approx_krw_card)})을 돌려받아요</div>` : '';
+  addScene('summary', `
+    <div class="stitle abs">합계 검산</div>
+    <div class="sum card">
+      <div class="bar"><div class="bl"><span>${WEB ? esc(PLACE) + '에서 사면' : '현지에서 낸 돈'}</span><b class="v1">${esc(t.local_sum_card)}</b></div><div class="tr"><div class="fill f1" style="background:var(--local);width:0"></div></div></div>
+      <div class="bar"><div class="bl"><span>한국에서 사면</span><b class="v2">${esc(t.kr_sum_card)}</b></div><div class="tr"><div class="fill f2" style="background:var(--korea);width:0"></div></div></div>
+      <div class="res" style="color:${saved ? 'var(--local)' : 'var(--korea)'}">${esc(t.saved_card.replace('-', ''))} ${saved ? (WEB ? '덜 쓴다' : '아꼈다') : '더 쓴다'}<small>한국가 대비 ${Math.abs(t.saved_pct)}%</small></div>
+      ${refund}
+    </div>
+    <div class="chips abs">${chips}<div class="snote">${t.n_comp}개 기준${t.n - t.n_comp ? ` · 한국 판매처 없는 ${t.n - t.n_comp}개 제외` : ''}${WEB ? ' · ' + esc(PLACE) + ' 가격은 환급 전 세금 포함 · 원화는 매매기준율 환산이라 카드 결제액과 달라요' : ' · 짐 무게·이동 시간 제외'}</div></div>`);
+  SC.summary.dataset.mx = mx;
+}
+function buildOutro() {
+  const O = E.outro || {};
+  const by = k => F.sources.filter(s => s.kind === k);
+  const join = arr => [...new Set(arr.map(s => s.name))].join('·');
+  const dates = arr => [...new Set(arr.map(s => (s.date || '').slice(5).replace('-', '/')).filter(Boolean))].join(', ');
+  const loc = by('현지 가격'), kr = by('한국 가격'), extra = F.sources.filter(s => !['환율', '현지 가격', '한국 가격'].includes(s.kind));
+  const rate = F.rate_basis === '카드 실결제 환율' ? `카드 실결제 환율 ${esc(F.rate_card)} (${esc(F.rate_date)} 결제)`
+    : `${esc(F.rate_card)} · ${esc(F.rate_source || F.rate_basis)} (${esc(F.rate_date)} 고시)`;
+  const PT = F.price_time || {};
+  const rows = [
+    `<div><b>환율</b>${rate}</div>`,
+    WEB ? `<div><b>${esc(PLACE)} 가격</b>${esc(join(loc))} · ${esc(PT.local_label || dates(loc))} 확인 · 세금 포함 정가</div>` : '',
+    kr.length ? `<div><b>한국 가격</b>${esc(join(kr))} · ${esc(PT.kr_label || dates(kr))} 확인 · 쿠폰 제외</div>` : '',
+    ...extra.slice(0, 2).map(s => `<div><b>${esc(s.kind)}</b>${esc(s.name)}${s.date ? ' (' + esc(s.date) + ')' : ''}</div>`),
+    `<div><b>판정</b>한국 가격보다 ${Math.abs(F.thresholds.local_win)}% 이상 싸면 현지 이득 · ${F.thresholds.kr_win}% 이상 비싸면 그냥 한국에서</div>`,
+    F.has_tags ? `<div><b>광고</b>상품 태그는 한국 판매처예요. 태그로 사면 채널이 수수료를 받아요</div>` : '',
+    WEB ? `<div><b>주의</b>가격은 확인 시각(한국 시간) 기준이에요. 이후 바뀔 수 있어요</div>` : ''
+  ].join('');
+  addScene('outro', `
+    <div class="ask abs">${esc(O.ask || (WEB ? '다음엔 뭘 검산할까?' : '다음 검산할 도시는?'))}<small>${esc(O.small || '댓글로 알려 줘!')}</small></div>
+    <div class="src card"><div class="t">검산 기준</div>${rows}</div>`);
+}
+
+// ---- 초기화 ----
+$('#hdr .lab').textContent = (E.series || '도리의 가격 검산') + (E.ep ? ` · EP.${String(E.ep).padStart(2, '0')}` : '');
+$('#hdr .ttl').textContent = F.title;
+const WM = F.sample ? '예시 데이터 · 실제 가격 아님' : (F.verified === false ? '검증 전 · 올리지 마세요' : '');
+const TM = WEB && F.price_time && F.price_time.label && F.verified === true ? `<div class="tchip tm"><b>가격</b>${esc(F.price_time.label)} 확인</div>` : '';
+$('#topchips').innerHTML = (WM ? `<div class="tchip wmc">${esc(WM)}</div>` : '') + (F.has_tags ? '<div class="tchip ad"><b>광고</b>제휴 수수료</div>' : '') + '<div class="tchip ai">AI 목소리</div>' + TM;
+if (!F.has_tags) $('#disc').remove();
+$('#wm').remove();
+if (!WM) $('#wmBig').remove(); else $('#wmBig').textContent = WM;
+let nBest = 0;
+for (const sc of T.scenes) {
+  const [k, id] = sc.id.split(':');
+  if (k === 'hook') buildHook(); else if (k === 'item') buildItem(items[id], (items[id].role === 'best') ? ++nBest : 0);
+  else if (k === 'note') buildNote(id || 'main'); else if (k === 'summary') buildSummary(); else if (k === 'outro') buildOutro();
+}
+// ---- 배치(글꼴을 다 불러온 뒤 한 번 더) — 글자 넘침 줄이기, 합계 칩 위치, 질문 스티커 자리 ----
+function layout() {
+  const refit = (e, w, m) => { e.style.fontSize = ''; fit(e, w, m); };
+  if (SC.summary) { const s = $('.sum', SC.summary); $('.chips', SC.summary).style.top = (436 + s.offsetHeight + 22) + 'px'; }
+  refit($('#hdr .ttl'), 840, 40);
+  document.querySelectorAll('.iname').forEach(e => refit(e, 840 - e.previousElementSibling.offsetWidth - 20, 36));
+  document.querySelectorAll('.ntitle .t').forEach(e => refit(e, 840 - e.previousElementSibling.offsetWidth - 20, 34));
+  document.querySelectorAll('.row').forEach(r => { const sm = $('.lab small', r), v = $('.val', r); if (sm && v) refit(sm, r.clientWidth - v.offsetWidth - 28, 16); });
+  document.querySelectorAll('.rcpt.auto .dt').forEach(e => refit(e, 540, 18));
+  if (SC.hook && SC.hook.dataset.auto) { // 질문 스티커는 영수증 아래 빈자리에만 — 숫자를 가리지 않는다. 자리가 없으면 숨기고 말로만.
+    const rc = $('.rcpt', SC.hook), q = $('.qsticker', SC.hook);
+    if (q) { q.style.display = ''; const top = rc.offsetTop + rc.offsetHeight + 16;
+      if (top + q.offsetHeight <= 1220) { q.style.top = top + 'px'; q.style.left = Math.round(540 - q.offsetWidth / 2) + 'px'; } else q.style.display = 'none'; }
+  }
+}
+layout();
+const dori = Dori.mount($('#dori'));
+// 글꼴 조각을 미리 불러오도록 모든 문구를 숨은 칸에 넣는다
+$('#preload').textContent = T.lines.map(l => l.sub.map(s => s.text).join(' ')).join(' ') + $('#stage').innerText;
+$('#preload2').textContent = $('#stage').innerText + '0123456789₩¥$€£,.-+%';
+const vidCache = {};
+for (const [id, m] of Object.entries(D.media.items)) if (m.type === 'video') vidCache[id] = m.frames.map(src => { const im = new Image(); im.src = src; return im; });
+
+// ---- 시간 계산 ----
+function stepT(sid, step) { return (T.steps[sid] || {})[step]; }
+function blinkAt(t) {
+  const r = rng(11); let x = 1.2;
+  while (x < t + 1) { const d = .14; if (t >= x && t < x + d) return Math.sin(Math.PI * (t - x) / d); if (r() < .18 && t >= x + .26 && t < x + .26 + d) return Math.sin(Math.PI * (t - x - .26) / d); x += 2 + r() * 3; }
+  return 0;
+}
+const EXSET = Dori.EXPR, ARMS = Dori.ARMS;
+const REACT = { local: { expr: 'stuff', arms: 'cheeks', jump: 18, dur: 1.9 }, only: { expr: 'happy', arms: 'up', jump: 24, dur: 1.6 },
+  same: { expr: 'neutral', arms: 'think', jump: 0, dur: 1.6 }, korea: { expr: 'surprise', arms: 'up', jump: 30, dur: 0.9, then: { expr: 'sad', arms: 'rest', dur: 1.2 } } };
+function reactions() {
+  const out = [];
+  for (const sc of T.scenes) {
+    const [k, id] = sc.id.split(':');
+    if (k === 'item') { const st = stepT(sc.id, 'stamp'); if (st != null) { const R = REACT[items[id].verdict]; out.push({ t0: st, t1: st + R.dur, ...R }); if (R.then) out.push({ t0: st + R.dur, t1: st + R.dur + R.then.dur, ...R.then, jump: 0 }); } }
+    if (k === 'summary') { const st = stepT(sc.id, 'result'); if (st != null) out.push({ t0: st, t1: st + 1.6, expr: F.total.saved >= 0 ? 'happy' : 'sad', arms: F.total.saved >= 0 ? 'up' : 'rest', jump: F.total.saved >= 0 ? 26 : 0 }); }
+  }
+  for (const l of T.lines) if (l.react) out.push({ t0: l.react.t, t1: l.react.t + (l.react.dur || 1.4), expr: l.react.expr || 'happy', arms: l.react.arms || 'up', jump: l.react.jump ? 22 : 0 });
+  return out.sort((a, b) => a.t0 - b.t0);
+}
+const RX = reactions();
+const DEF_EXPR = { hook: ['focus', 'hold'], item: ['neutral', 'point'], note: ['focus', 'think'], summary: ['happy', 'rest'], outro: ['happy', 'wave'] };
+function baseState(t) {
+  const seq = T.lines.map(l => { const k = l.scene.split(':')[0]; return { t: l.t0 - 0.1, expr: l.expr || DEF_EXPR[k][0], arms: l.arms || DEF_EXPR[k][1] }; });
+  for (const r of RX) seq.push({ t: r.t0, expr: r.expr, arms: r.arms, rx: r }, { t: r.t1, end: true });
+  seq.sort((a, b) => a.t - b.t);
+  let cur = { expr: 'neutral', arms: 'rest' }, prev = cur, tc = -9, lineState = cur, rxActive = null;
+  for (const s of seq) {
+    if (s.t > t) break;
+    let nxt;
+    if (s.end) { nxt = lineState; rxActive = null; }
+    else if (s.rx) { nxt = { expr: s.expr, arms: s.arms }; rxActive = s.rx; }
+    else { lineState = { expr: s.expr, arms: s.arms }; if (rxActive) continue; nxt = lineState; }
+    prev = blendState(prev, cur, clamp((s.t - tc) / .3)); cur = nxt; tc = s.t;
+  }
+  return { prev, cur, k: eOut((t - tc) / .3), rx: rxActive };
+}
+function blendState(a, b, k) { return k >= 1 ? b : { mix: true, a, b, k }; }
+function resolve(s) {
+  if (!s.mix) { const e = EXSET[s.expr], a = ARMS[s.arms]; return { ...e, armL: a.l, armR: a.r, prop: a.prop }; }
+  const A = resolve(s.a), B = resolve(s.b); const o = {}; for (const k in B) o[k] = lerp(A[k] ?? B[k], B[k], s.k); return o;
+}
+
+// ---- 한 프레임 그리기 ----
+function render(t) {
+  const fr = Math.min(T.mouth.length - 1, Math.round(t * T.fps));
+  $('#b1').style.transform = `translate(${-120 + 60 * Math.sin(t * .21)}px,${120 + 50 * Math.cos(t * .17)}px)`;
+  $('#b2').style.transform = `translate(${520 + 70 * Math.cos(t * .19)}px,${760 + 60 * Math.sin(t * .23)}px)`;
+  $('#b3').style.transform = `translate(${300 + 80 * Math.sin(t * .15 + 1)}px,${1260 + 50 * Math.cos(t * .2)}px)`;
+  // 광고 표시(상품 태그가 있을 때만): 첫 2.6초 크게, 그 뒤 작은 칩
+  const dk = F.has_tags ? 1 - clamp((t - 2.4) / .35) : 0;
+  if (F.has_tags) { $('#disc').style.opacity = dk; $('#disc').style.transform = `translateY(${(1 - dk) * -30}px) scale(${.96 + .04 * dk})`; }
+  for (const sc of T.scenes) {
+    const el = SC[sc.id]; if (!el) continue;
+    const fin = eOut((t - sc.t0) / .35), fout = 1 - eIn((t - (sc.t1 - .3)) / .3);
+    const o = Math.min(fin, fout); el.style.opacity = o;
+    el.style.transform = `translateY(${(1 - fin) * 40}px)`;
+    el.style.visibility = o <= 0.001 ? 'hidden' : 'visible';
+    if (o <= 0.001) continue;
+    const [k, id] = sc.id.split(':');
+    if (k === 'hook') drawHook(el, sc, t); else if (k === 'item') drawItem(el, sc, items[id], t);
+    else if (k === 'note') drawNote(el, sc, t); else if (k === 'summary') drawSummary(el, sc, t); else if (k === 'outro') drawOutro(el, sc, t);
+  }
+  if (SC.hook && dk > 0) SC.hook.style.transform += ` translateY(${dk * 70}px)`;
+  drawDori(t, fr);
+  drawBubble(t);
+  drawFx(t);
+}
+function drawHook(el, sc, t) {
+  const tr = stepT(sc.id, 'receipt') ?? sc.t0, tt = stepT(sc.id, 'total') ?? sc.t0 + 2;
+  const rc = $('.rcpt', el) || $('.rphoto', el);
+  const k = eOut((t - (tr - .5)) / 1.2);
+  rc.style.clipPath = `inset(0 0 ${(1 - k) * 100}% 0)`;
+  rc.style.transform = `translateY(${(1 - k) * -30}px) rotate(${-1.5 + Math.sin(t * .8) * .4}deg)`;
+  el.querySelectorAll('.ln').forEach((ln, i) => { ln.style.opacity = clamp((t - (tr - .3) - i * .25) / .25); });
+  const kc = $('.kicker', el); if (kc) { const kk = eBack(rise(t, sc.t0 + .1, .45)); kc.style.opacity = clamp((t - sc.t0 - .1) / .2); kc.style.transform = `rotate(-3deg) scale(${.7 + .3 * kk})`; }
+  const q = $('.qsticker', el), qk = eBack(rise(t, tt, .45));
+  if (q) { q.style.opacity = clamp((t - tt) / .2); q.style.transform = `rotate(-4deg) scale(${.6 + .4 * qk})`; }
+}
+function drawItem(el, sc, f, t) {
+  const st = s => stepT(sc.id, s);
+  const tc = st('card') ?? sc.t0;
+  const tt = $('.ititle', el); const ck = eBack(rise(t, tc - .1, .45));
+  tt.style.transform = `translateX(${(1 - ck) * -60}px)`; tt.style.opacity = clamp((t - tc + .1) / .25);
+  const md = $('.media', el); md.style.transform = `scale(${.94 + .06 * eOut(rise(t, sc.t0, .5))})`;
+  const img = $('img.ph', el);
+  if (img) {
+    const z = 1.04 + .06 * clamp((t - sc.t0) / Math.max(1, sc.t1 - sc.t0));
+    img.style.transform = `scale(${z}) translateX(${-10 * clamp((t - sc.t0) / 8)}px)`;
+    if (img.classList.contains('vid')) { const fr = vidCache[f.id]; const n = Math.max(0, Math.floor((t - sc.t0) * T.fps)) % fr.length; if (img.getAttribute('src') !== fr[n].src) img.src = fr[n].src; }
+  } else {
+    const sv = $('.illu svg', el); if (sv) sv.style.transform = `translateY(${Math.sin((t - sc.t0) * 1.6) * 6}px) rotate(${Math.sin((t - sc.t0) * 1.1) * 2}deg)`;
+  }
+  const tl0 = st('local') ?? tc; const cd = $('.calc', el); const cdk = eOut((t - tl0 + .25) / .3); cd.style.opacity = cdk; cd.style.transform = `translateY(${(1 - cdk) * 24}px)`;
+  el.querySelectorAll('.row').forEach(r => {
+    const s0 = st(r.dataset.s); const k = s0 == null ? 0 : eBack(rise(t, s0 - .05, .4));
+    r.style.opacity = s0 == null ? 0 : clamp((t - s0 + .05) / .2); r.style.transform = `translateX(${(1 - k) * 40}px)`;
+  });
+  // 숫자는 처음부터 최종값만 보인다(세는 연출 없음 — 멈춘 화면에도 틀린 숫자가 없게). 나타날 때 살짝 튀기만 한다.
+  for (const [sel, s] of [['.val.krw', 'krw'], ['.val.kr', 'kr']]) { const e = $(sel, el), s0 = st(s); if (!e || s0 == null) continue; const k = eBack(rise(t, s0, .35)); e.style.display = 'inline-block'; e.style.transform = `scale(${.86 + .14 * k})`; e.style.transformOrigin = 'right center'; }
+  const ts = st('stamp'), sp = $('.stamp', el);
+  if (ts != null) { const k = rise(t, ts, .28); sp.style.opacity = clamp((t - ts) / .1); sp.style.transform = `rotate(-11deg) scale(${lerp(1.25, 1, eOut(k)) - (k >= 1 ? .04 * Math.exp(-(t - ts - .28) * 9) * Math.sin((t - ts) * 40) : 0)})`; }
+  else sp.style.opacity = 0;
+  const td = st('diff'), ring = $('.ring', el);
+  if (td != null && f.kr_equiv != null && t >= td) {
+    const tgt = $(f.krw <= f.kr_equiv ? '.val.krw' : '.val.kr', el);
+    const b = tgt.getBoundingClientRect(), sb = el.getBoundingClientRect();
+    const cx = b.left - sb.left + b.width / 2, cy = b.top - sb.top + b.height / 2, rx = b.width / 2 + 26, ry = b.height / 2 + 12;
+    const k = eOut((t - td) / .55), a1 = -2.2, a2 = a1 + k * Math.PI * 2.15; let d = '';
+    for (let i = 0; i <= 40; i++) { const a = lerp(a1, a2, i / 40), w = 1 + .04 * Math.sin(a * 3); d += (i ? 'L' : 'M') + (cx + Math.cos(a) * rx * w).toFixed(1) + ',' + (cy + Math.sin(a) * ry * w).toFixed(1); }
+    ring.setAttribute('d', d);
+  } else ring.setAttribute('d', '');
+}
+function drawNote(el, sc, t) {
+  const st = s => stepT(sc.id, s);
+  const tt = st('title') ?? sc.t0, ti = $('.ntitle', el), k = eBack(rise(t, tt - .1, .45));
+  ti.style.opacity = clamp((t - tt + .1) / .25); ti.style.transform = `translateX(${(1 - k) * -60}px)`;
+  const cd = $('.ncard', el), ck = eOut((t - tt) / .35); cd.style.opacity = ck; cd.style.transform = `translateY(${(1 - ck) * 24}px)`;
+  el.querySelectorAll('.nrow').forEach(r => { const s0 = st(r.dataset.s); const kk = s0 == null ? 0 : eBack(rise(t, s0 - .05, .4)); r.style.opacity = s0 == null ? 0 : clamp((t - s0 + .05) / .2); r.style.transform = `translateX(${(1 - kk) * 40}px)`; });
+  const sr = $('.nsrc', el); if (sr) { const last = Math.max(...['b1', 'b2', 'b3'].map(s => st(s) ?? -1)); sr.style.opacity = clamp((t - last - .3) / .3); }
+}
+function drawSummary(el, sc, t) {
+  const tb = stepT(sc.id, 'bars') ?? sc.t0, trs = stepT(sc.id, 'result') ?? sc.t0 + 1.5, mx = +el.dataset.mx;
+  const k1 = eOut((t - tb) / .8), k2 = eOut((t - tb - .25) / .8);
+  $('.f1', el).style.width = (F.total.local_sum / mx * 100 * k1) + '%';
+  $('.f2', el).style.width = (F.total.kr_sum / mx * 100 * k2) + '%';
+  const r = $('.res', el), rk = eBack(rise(t, trs, .45)); r.style.opacity = clamp((t - trs) / .2); r.style.transform = `scale(${.7 + .3 * rk})`; r.style.transformOrigin = 'left center';
+  const rf = $('.refund', el); if (rf) { const kk = eOut((t - trs - .6) / .4); rf.style.opacity = kk; rf.style.transform = `translateY(${(1 - kk) * 16}px)`; }
+  el.querySelectorAll('.chip,.snote').forEach((c, i) => { const k = eOut((t - sc.t0 - .2 - i * .12) / .35); c.style.opacity = k; c.style.transform = `translateX(${(1 - k) * -40}px)`; });  // 왼쪽에서 — 오른쪽 가림 영역에 들어가지 않게
+}
+function drawOutro(el, sc, t) {
+  const ta = stepT(sc.id, 'ask') ?? sc.t0, ts = stepT(sc.id, 'source') ?? sc.t0 + 1.2;
+  const a = $('.ask', el), k = eBack(rise(t, ta - .1, .5)); a.style.transform = `scale(${.8 + .2 * k})`; a.style.transformOrigin = 'left top'; a.style.opacity = clamp((t - ta + .1) / .25);
+  const s = $('.src', el), k2 = eOut((t - ts) / .45); s.style.opacity = k2; s.style.transform = `translateY(${(1 - k2) * 30}px)`;
+}
+function drawDori(t, fr) {
+  const bs = baseState(t); const p = resolve(blendState(bs.prev, bs.cur, bs.k));
+  const talking = T.mouth[fr] || 0;
+  p.mouth = talking * .9;
+  p.blink = blinkAt(t);
+  p.breath = Math.sin(t * 2 * Math.PI * .3);
+  p.sway = Math.sin(t * 1.3) * 1.2 + (talking > .2 ? Math.sin(t * 7) * .8 : 0);
+  let look = 0; for (const ss of Object.values(T.steps)) for (const v of Object.values(ss)) { const d = t - v; if (d > 0 && d < .7) look = Math.max(look, Math.sin(Math.PI * d / .7)); }
+  p.lookX = (p.lookX || 0) * .3 + look * .55; p.lookY = (p.lookY || 0) + look * -.5 + (bs.cur.expr === 'focus' ? .5 : 0);
+  let j = 0, sq = 0; for (const r of RX) { if (!r.jump) continue; const d = t - r.t0; if (d >= -.12 && d < 0) sq = Math.max(sq, (d + .12) / .12 * .5); else if (d >= 0 && d < .42) j = Math.max(j, r.jump * Math.sin(Math.PI * d / .42)); else if (d >= .42 && d < .58) sq = Math.max(sq, .6 * Math.sin(Math.PI * (d - .42) / .16)); }
+  p.jump = j; p.squash = sq;
+  if (bs.cur.arms === 'wave') p.armR += Math.sin(t * 9) * 16;
+  p.earTw = (Math.sin(t * 13) > .97 ? 8 : 0);
+  Dori.pose(dori, p);
+}
+function drawBubble(t) {
+  const b = $('#bubble'), tx = $('#btext');
+  let chunk = null; for (const l of T.lines) { if (t >= l.t0 - .08 && t <= l.t1 + .35) { for (const c of l.sub) if (t >= c.t0 - .08) chunk = c; } }
+  if (!chunk) { const nx = T.lines.find(l => l.t0 > t); const pv = [...T.lines].reverse().find(l => l.t1 < t); if (nx && pv && nx.t0 - pv.t1 < .8) { chunk = pv.sub[pv.sub.length - 1]; } }
+  if (!chunk) { b.style.opacity = 0; return; }
+  b.style.opacity = 1;
+  if (tx.textContent !== chunk.text) tx.textContent = chunk.text;
+  const k = eBack(rise(t, chunk.t0 - .08, .22)); tx.style.transform = `scale(${.94 + .06 * k})`; tx.style.transformOrigin = 'left center';
+}
+const BURSTS = [];
+for (const sc of T.scenes) { const [k, id] = sc.id.split(':'); if (k === 'item' && items[id].verdict === 'local') { const st = stepT(sc.id, 'stamp'); if (st != null) BURSTS.push({ t: st, x: 725, y: 725, n: 14, seed: 5 + BURSTS.length, kind: 'coin' }); } if (k === 'summary' && F.total.saved > 0) { const st = stepT(sc.id, 'result'); if (st != null) BURSTS.push({ t: st, x: 480, y: 700, n: 34, seed: 99, kind: 'conf' }); } }
+function drawFx(t) {
+  let h = '';
+  for (const B of BURSTS) {
+    const d = t - B.t; if (d < 0 || d > 1.6) continue; const r = rng(B.seed);
+    for (let i = 0; i < B.n; i++) {
+      const a = r() * Math.PI * 2, v = 260 + r() * 420, x = B.x + Math.cos(a) * v * d, y = B.y + Math.sin(a) * v * d + 520 * d * d, o = clamp(1.4 - d);
+      const c = ['#FFC94D', '#F58A6B', '#8FD3C1', '#9CB8F2', '#F7A1C4'][Math.floor(r() * 5)];
+      h += B.kind === 'coin' ? `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(9 + r() * 6).toFixed(1)}" fill="#FFD25E" stroke="#E2A93B" stroke-width="3" opacity="${o.toFixed(2)}"/>`
+        : `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="16" height="9" rx="2" fill="${c}" opacity="${o.toFixed(2)}" transform="rotate(${(r() * 360 + d * 400).toFixed(0)},${x.toFixed(1)},${y.toFixed(1)})"/>`;
+    }
+  }
+  $('#fx').innerHTML = h;
+}
+window.render = render;
+window.__ready = async () => { await document.fonts.ready; await Promise.all([...document.images].map(i => i.decode().catch(() => { }))); if (!window.__laid) { layout(); window.__laid = true; } return true; };
+window.__texts = () => [...document.querySelectorAll('#stage *')].filter(e => e.childElementCount === 0 && e.textContent.trim() && e.closest('#preload,#preload2,#wmBig') === null)
+  .map(e => { let o = 1, p = e; while (p && p.id !== 'stage') { const cs = getComputedStyle(p); const v = parseFloat(cs.opacity); o *= isNaN(v) ? 1 : v; if (cs.visibility === 'hidden' || cs.display === 'none') o = 0; p = p.parentElement; } return { text: e.textContent.trim(), o, cls: (e.className && e.className.baseVal === undefined ? e.className : '') + '' }; })
+  .filter(b => b.o > .02);
+window.__covers = () => { // 숫자가 든 글자 칸이 스티커·도장·말풍선·도리 등에 가려지는지
+  const vis = e => { let o = 1, p = e; while (p && p.id !== 'stage') { const cs = getComputedStyle(p); const v = parseFloat(cs.opacity); o *= isNaN(v) ? 1 : v; if (cs.visibility === 'hidden' || cs.display === 'none') return 0; p = p.parentElement; } return o; };
+  const covers = [...document.querySelectorAll('.qsticker,.stamp,#bubble,.kicker,#dori,.refund,.mchip')].filter(c => vis(c) > .3);
+  const out = [];
+  for (const e of document.querySelectorAll('#stage *')) {
+    if (e.childElementCount || !/\d/.test(e.textContent) || e.closest('#preload,#preload2,#wmBig') || vis(e) < .3) continue;
+    const a = e.getBoundingClientRect();
+    for (const c of covers) {
+      if (c.contains(e) || e.contains(c)) continue;
+      const b = c.getBoundingClientRect(); const w = Math.min(a.right, b.right) - Math.max(a.left, b.left), h = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      if (w > 2 && h > 2) out.push({ text: e.textContent.trim().slice(0, 40), by: c.id || c.className });
+    }
+  }
+  return out;
+};
+window.__vals = () => Object.fromEntries([...document.querySelectorAll('.scene')].map((sc, i) => [Object.keys(SC).find(k => SC[k] === sc), [...sc.querySelectorAll('.row')].map(r => [r.dataset.s, ($('.val', r) || {}).textContent || ''])]));
+window.__boxes = () => [...document.querySelectorAll('#stage *')].filter(e => e.childElementCount === 0 && e.textContent.trim() && e.closest('#preload,#preload2,#wmBig') === null && getComputedStyle(e).opacity !== '0')
+  .map(e => { const b = e.getBoundingClientRect(); let o = 1, p = e; while (p && p.id !== 'stage') { const v = parseFloat(getComputedStyle(p).opacity); o *= isNaN(v) ? 1 : v; if (getComputedStyle(p).visibility === 'hidden') o = 0; p = p.parentElement; } return { text: e.textContent.trim().slice(0, 30), x0: b.left, y0: b.top, x1: b.right, y1: b.bottom, o }; })
+  .filter(b => b.o > .05 && b.x1 > 0 && b.x0 < 1080);
+render(0);
+</script>
+</body></html>

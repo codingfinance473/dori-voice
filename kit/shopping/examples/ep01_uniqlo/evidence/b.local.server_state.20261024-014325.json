@@ -1,0 +1,31 @@
+{
+ "v": 1,
+ "item": "b",
+ "side": "local",
+ "kind": "server_state",
+ "code": "E470067",
+ "currency": "JPY",
+ "url": "https://www.uniqlo.com/jp/ja/products/E470067-000/00",
+ "page_title": "유니클로 공식 | 울트라 라이트 다운 재킷 / NANODESIGN (남녀 겸용)",
+ "captured_at": "2026-10-23T16:43:25.449Z",
+ "tz_offset_min": 540,
+ "method": "page-refetch",
+ "source": "__PRELOADED_STATE__",
+ "http_status": 200,
+ "parse_error": null,
+ "n_matches": 1,
+ "distinct_values": [
+  7990
+ ],
+ "price": 7990,
+ "price_basis": "base",
+ "price_currency": "JPY",
+ "promo": null,
+ "dual_price": false,
+ "tax_policy": "INCLUSIVE",
+ "price_flags": [],
+ "heading": "ウルトラライトダウンジャケット/NANODESIGN",
+ "code_in_url": true,
+ "sale_flag": false,
+ "sig": "0b660bc335e79c29"
+}

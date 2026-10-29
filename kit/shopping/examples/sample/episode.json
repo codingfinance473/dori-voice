@@ -1,0 +1,290 @@
+{
+  "mode": "receipt",
+  "sample": true,
+  "series": "도리의 가격 검산",
+  "ep": 0,
+  "title": "오사카 드럭 스토어 영수증 (예시)",
+  "place": "오사카",
+  "store": "드럭 스토어",
+  "trip_date": "2026-09-14",
+  "currency": "JPY",
+  "currency_sym": "¥",
+  "currency_ko": "엔",
+  "fx": {
+    "card_krw": 26480,
+    "local_total": 2924,
+    "date": "2026-09-14"
+  },
+  "receipt": {
+    "path": null,
+    "total_local": 2924,
+    "blur": []
+  },
+  "thresholds": {
+    "local_win": -15,
+    "kr_win": 5
+  },
+  "voice": {
+    "sid": 8,
+    "speed": 1.06,
+    "steps": 20
+  },
+  "items": [
+    {
+      "id": "a",
+      "role": "best",
+      "name": "쿨링 시트 18매",
+      "size": {
+        "q": 18,
+        "unit": "매"
+      },
+      "local": {
+        "price": 598,
+        "tax_free": true,
+        "source": "영수증"
+      },
+      "kr": {
+        "price": 12900,
+        "size": {
+          "q": 18,
+          "unit": "매"
+        },
+        "seller": "쿠팡",
+        "checked": "2026-10-22",
+        "taggable": true
+      },
+      "media": {
+        "type": "photo",
+        "path": "media/a.jpg"
+      },
+      "memo": "발바닥에 붙이면 시원한 느낌"
+    },
+    {
+      "id": "f",
+      "role": "best",
+      "name": "목 온열 패치 8매",
+      "size": {
+        "q": 8,
+        "unit": "매"
+      },
+      "local": {
+        "price": 398,
+        "tax_free": true,
+        "source": "영수증"
+      },
+      "kr": {
+        "price": 6900,
+        "size": {
+          "q": 8,
+          "unit": "매"
+        },
+        "seller": "올리브영",
+        "checked": "2026-10-22",
+        "taggable": true
+      },
+      "media": {
+        "type": "none",
+        "icon": "patch"
+      }
+    },
+    {
+      "id": "d",
+      "role": "best",
+      "name": "녹차 초콜릿 과자",
+      "size": {
+        "q": 12,
+        "unit": "개"
+      },
+      "local": {
+        "price": 648,
+        "tax_free": true,
+        "source": "영수증"
+      },
+      "kr": null,
+      "media": {
+        "type": "video",
+        "path": "media/d.mp4",
+        "start": 0
+      }
+    },
+    {
+      "id": "b",
+      "role": "twist",
+      "name": "핸드크림 50g",
+      "size": {
+        "q": 50,
+        "unit": "g"
+      },
+      "local": {
+        "price": 1280,
+        "tax_free": true,
+        "source": "영수증"
+      },
+      "kr": {
+        "price": 13500,
+        "size": {
+          "q": 75,
+          "unit": "g"
+        },
+        "seller": "올리브영",
+        "checked": "2026-10-22",
+        "taggable": true
+      },
+      "media": {
+        "type": "none",
+        "icon": "tube"
+      },
+      "memo": "향이 좋았음"
+    }
+  ],
+  "lines": [
+    {
+      "id": "L01",
+      "scene": "hook",
+      "say": "{total.receipt_total_say} 결제한 드럭 스토어 영수증이 왔어. 진짜 아낀 건 얼마일까?",
+      "sub": "{total.receipt_total_sub} 영수증 도착! | 진짜 아낀 건 얼마일까?",
+      "expr": "focus",
+      "arms": "hold",
+      "cues": {
+        "receipt": "영수증이",
+        "total": "진짜"
+      }
+    },
+    {
+      "id": "L02",
+      "scene": "hook",
+      "say": "한국 판매가랑 하나씩 검산해 보자!",
+      "sub": "한국 판매가랑 하나씩 검산!",
+      "expr": "happy",
+      "arms": "wave"
+    },
+    {
+      "id": "L03",
+      "scene": "item:a",
+      "say": "첫 번째, 쿨링 시트 열여덟 장. 현지에서 {a.local_say}.",
+      "sub": "① 쿨링 시트 18매 | 현지 {a.local_sub}",
+      "expr": "neutral",
+      "arms": "point",
+      "cues": {
+        "card": "첫",
+        "local": "현지에서"
+      }
+    },
+    {
+      "id": "L04",
+      "scene": "item:a",
+      "say": "원화로 {a.krw_say}, 한국에선 {a.kr_say}!",
+      "sub": "원화 {a.krw_sub} | 한국 {a.kr_sub}",
+      "expr": "focus",
+      "arms": "hold",
+      "cues": {
+        "krw": "원화로",
+        "kr": "한국에선"
+      }
+    },
+    {
+      "id": "L05",
+      "scene": "item:a",
+      "say": "{a.pct_say}나 싸! 볼주머니 행!",
+      "sub": "{a.pct_sub} 싸다! 볼주머니 행!",
+      "cues": {
+        "diff": "^",
+        "stamp": "볼주머니"
+      }
+    },
+    {
+      "id": "L06",
+      "scene": "item:f",
+      "say": "두 번째, 목 온열 패치. 원화로 {f.krw_say}인데 한국에선 {f.kr_say}.",
+      "sub": "② 목 온열 패치 | 원화 {f.krw_sub} vs 한국 {f.kr_sub}",
+      "expr": "neutral",
+      "arms": "point",
+      "cues": {
+        "card": "두",
+        "local": "목",
+        "krw": "원화로",
+        "kr": "한국에선"
+      }
+    },
+    {
+      "id": "L07",
+      "scene": "item:f",
+      "say": "이것도 현지 이득!",
+      "sub": "이것도 현지 이득!",
+      "cues": {
+        "diff": "이것도",
+        "stamp": "현지"
+      }
+    },
+    {
+      "id": "L08",
+      "scene": "item:d",
+      "say": "세 번째, 녹차 초콜릿 과자. 한국 판매처는 못 찾았어.",
+      "sub": "③ 녹차 초콜릿 과자 | 한국 판매처 없음",
+      "expr": "focus",
+      "arms": "think",
+      "cues": {
+        "card": "세",
+        "local": "녹차",
+        "kr": "한국"
+      }
+    },
+    {
+      "id": "L09",
+      "scene": "item:d",
+      "say": "그러니까 이건 현지에서만!",
+      "sub": "이건 현지에서만!",
+      "cues": {
+        "stamp": "현지에서만"
+      }
+    },
+    {
+      "id": "L10",
+      "scene": "item:b",
+      "say": "근데 반전. 핸드크림은 용량을 맞춰 보면",
+      "sub": "근데 반전! | 핸드크림은 용량을 맞춰 보면",
+      "expr": "focus",
+      "arms": "hold",
+      "cues": {
+        "card": "반전",
+        "local": "핸드크림",
+        "krw": "용량을"
+      }
+    },
+    {
+      "id": "L11",
+      "scene": "item:b",
+      "say": "한국이 {b.save_say} 더 싸. 이건 그냥 한국에서 사!",
+      "sub": "한국이 {b.save_sub} 더 싸다 | 그냥 한국에서!",
+      "cues": {
+        "kr": "^",
+        "diff": "더",
+        "stamp": "그냥"
+      }
+    },
+    {
+      "id": "L12",
+      "scene": "summary",
+      "say": "다 합치면 한국보다 {total.saved_say} 아꼈어.",
+      "sub": "합계 {total.saved_sub} 아꼈다!",
+      "expr": "happy",
+      "arms": "up",
+      "cues": {
+        "bars": "다",
+        "result": "아꼈어"
+      }
+    },
+    {
+      "id": "L13",
+      "scene": "outro",
+      "say": "다음엔 어느 도시 영수증을 검산할까? 댓글로 알려 줘!",
+      "sub": "다음 검산 도시는? | 댓글로 알려 줘!",
+      "expr": "happy",
+      "arms": "wave",
+      "cues": {
+        "ask": "다음엔",
+        "source": "댓글로"
+      }
+    }
+  ]
+}

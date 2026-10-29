@@ -1,0 +1,74 @@
+{
+ "_설명": "도리 목소리 프리셋. 기본 C = 확정 목소리(Qwen3-TTS 0.6B Base, 사용자 비공개 저장소 codingfinance473/dori-voice 의 깃허브 액션). C 는 이 컴퓨터에서 합성하지 않는다 — voice.py 가 build/voice_c/voice/lines.json 을 내보내면 키트의 voice_job.py·select_takes.py 로 만들어 고른 뒤 다시 실행한다. E·E1·E3·B 는 예비(Supertonic-3 + 캐릭터 톤, 저장소를 쓸 수 없을 때). mix = Supertonic-3 화자 번호와 비율, fx = 음높이·성도·억양 폭, num_speed = 숫자 줄 속도.",
+ "default": "C",
+ "C": {
+  "name": "도리 목소리 C(확정, 깃허브 액션)",
+  "source": "dori-voice"
+ },
+ "E": {
+  "name": "발랄 귀여운 도리(3판 기본)",
+  "mix": [
+   [
+    2,
+    1.0
+   ]
+  ],
+  "speed": 1.08,
+  "num_speed": 0.92,
+  "steps": 32,
+  "fx": {
+   "f0": 278,
+   "formant": 1.1,
+   "range": 1.15
+  }
+ },
+ "E1": {
+  "name": "살짝 귀엽게(차분한 쪽)",
+  "mix": [
+   [
+    2,
+    1.0
+   ]
+  ],
+  "speed": 1.05,
+  "num_speed": 0.94,
+  "steps": 32,
+  "fx": {
+   "f0": 262,
+   "formant": 1.06,
+   "range": 1.1
+  }
+ },
+ "E3": {
+  "name": "더 높고 앙증맞게",
+  "mix": [
+   [
+    2,
+    1.0
+   ]
+  ],
+  "speed": 1.08,
+  "num_speed": 0.92,
+  "steps": 32,
+  "fx": {
+   "f0": 292,
+   "formant": 1.14,
+   "range": 1.15
+  }
+ },
+ "B": {
+  "name": "2판 목소리(남성 톤, 비교용)",
+  "mix": [
+   [
+    5,
+    0.5
+   ],
+   [
+    8,
+    0.5
+   ]
+  ],
+  "speed": 0.98,
+  "steps": 32
+ }
+}

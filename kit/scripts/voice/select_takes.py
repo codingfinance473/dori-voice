@@ -16,7 +16,7 @@ from scipy.io import wavfile
 from scipy.signal import resample_poly
 sys.path.insert(0, str(Path(__file__).parent))
 from asr import transcribe
-from spell import load, norm, ok, num_form
+from spell import load, norm, ok, num_form, ko
 from voice_job import repo
 
 V = Path("voice")
@@ -57,8 +57,8 @@ for lid, l in L.items():
         sr, x = read(f)
         t1 = transcribe(f)
         wavfile.write("_p.wav", 44100, (proc(x, sr) * 32767).astype(np.int16)); t2 = transcribe("_p.wav")
-        ref = num_form(l["say"], NF)
-        sim = min(difflib.SequenceMatcher(None, ref, norm(t1)).ratio(), difflib.SequenceMatcher(None, ref, norm(t2)).ratio())
+        ref = ko(num_form(l["say"], NF))                       # 숫자는 한글 읽기로 맞춰 비교한다
+        sim = min(difflib.SequenceMatcher(None, ref, ko(norm(t1))).ratio(), difflib.SequenceMatcher(None, ref, ko(norm(t2))).ratio())
         good = ok(t1, l.get("keys", []), ALT) and ok(t2, l.get("keys", []), ALT)
         p = parselmouth.Sound(f).to_pitch(pitch_ceiling=700).selected_array["frequency"]; p = p[p > 0]
         k = "/".join(Path(f).parts[-3:])

@@ -11,8 +11,11 @@ kit/
 │  ├─ new_episode.sh      새 편 폴더 만들기
 │  ├─ voice/              voice_job.py(목소리 작업 올리기·기다리기) · select_takes.py(받아쓰기로 고르기) · tighten.py · make_ending.py · asr.py · spell.py
 │  └─ episode/            build_voice.py(시간표) · mix.py(배경음·효과음) · render.py · check_final.py · shoot_thumb.py
-└─ voice_common/          매 편 같은 소리: 삼·이·일 / 정답은… / 미국! / 이걸로 검산 끝! / 댓글 요청 / 볼주머니에 쏙!
+├─ voice_common/          매 편 같은 소리: 삼·이·일 / 정답은… / 미국! / 이걸로 검산 끝! / 댓글 요청 / 볼주머니에 쏙!
+└─ shopping/              가격 검산(쇼핑) 편 — 옛 receipt-shorts 3판을 합침(가격 증거 capture.js·검산 calc.py·화면 엔진·qa). MANUAL.md 부터
 ```
+
+가격 검산 편은 `shopping/MANUAL.md` 를 따른다. 목소리는 숫자 퀴즈와 같은 도리 목소리 C(voice_job.py · select_takes.py).
 
 ## 한 편 만드는 순서(숫자 퀴즈)
 
