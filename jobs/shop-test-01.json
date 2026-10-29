@@ -1,0 +1,177 @@
+{
+ "id": "shop-test-01",
+ "note": "키트 시험: 가격 검산 예시(영수증) 13줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 502,
+   "takes": 3,
+   "texts": [
+    "이천구백이십사 엔 결제한 드럭 스토어 영수증이 왔어. 진짜 아낀 건 얼마일까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 503,
+   "takes": 3,
+   "texts": [
+    "한국 판매가랑 하나씩 검산해 보자!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 504,
+   "takes": 3,
+   "texts": [
+    "첫 번째, 쿨링 시트 열여덟 장. 현지에서 오백구십팔 엔."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 505,
+   "takes": 3,
+   "texts": [
+    "원화로 오천사백십육 원, 한국에선 만 이천구백 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 506,
+   "takes": 3,
+   "texts": [
+    "오십팔 퍼센트나 싸! 볼주머니 행!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 507,
+   "takes": 3,
+   "texts": [
+    "두 번째, 목 온열 패치. 원화로 삼천육백사 원인데 한국에선 육천구백 원."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 508,
+   "takes": 3,
+   "texts": [
+    "이것도 현지 이득!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 509,
+   "takes": 3,
+   "texts": [
+    "세 번째, 녹차 초콜릿 과자. 한국 판매처는 못 찾았어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 510,
+   "takes": 3,
+   "texts": [
+    "그러니까 이건 현지에서만!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 511,
+   "takes": 3,
+   "texts": [
+    "근데 반전. 핸드크림은 용량을 맞춰 보면"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 512,
+   "takes": 3,
+   "texts": [
+    "한국이 이천오백구십이 원 더 싸. 이건 그냥 한국에서 사!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 513,
+   "takes": 3,
+   "texts": [
+    "다 합치면 한국보다 팔천백팔십팔 원 아꼈어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 514,
+   "takes": 3,
+   "texts": [
+    "다음엔 어느 도시 영수증을 검산할까? 댓글로 알려 줘!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L04",
+  "L05",
+  "L06",
+  "L07",
+  "L08",
+  "L09",
+  "L10",
+  "L11",
+  "L12",
+  "L13"
+ ]
+}
