@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t05",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 619,
+  "takes": 4,
+  "texts": [
+   "힌트 둘. 일 등 나라는 작년보다 사십 퍼센트 넘게 더 사 갔대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 25.0,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.4,
+   "gen_s": 21.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 6.16,
+   "gen_s": 29.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 5.6,
+   "gen_s": 27.6,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 5.04,
+   "gen_s": 23.9,
+   "sr": 24000
+  }
+ ]
+}
