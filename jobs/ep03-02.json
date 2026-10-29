@@ -1,0 +1,34 @@
+{
+ "id": "ep03-02",
+ "note": "EP.03 L02 다시(9월·달러가 흐림)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 176,
+   "takes": 4,
+   "texts": [
+    "올해 구월까지 화장품 수출이 백십일억 달러래. 역대 최대래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 177,
+   "takes": 4,
+   "texts": [
+    "올해 구월까지 화장품 수출이 백십일억 달러! 역대 최대래."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L02",
+  "L02x"
+ ]
+}
