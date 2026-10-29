@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "ne",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 414,
+  "takes": 4,
+  "texts": [
+   "미국 비중은 해마다 커져서, 올해는 삼십 퍼센트를 넘었대!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 20.5,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 5.6,
+   "gen_s": 73.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.48,
+   "gen_s": 63.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.32,
+   "gen_s": 61.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.56,
+   "gen_s": 63.5,
+   "sr": 24000
+  }
+ ]
+}

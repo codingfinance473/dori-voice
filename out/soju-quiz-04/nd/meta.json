@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "nd",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 413,
+  "takes": 4,
+  "texts": [
+   "이 등은 일본, 내가 찍은 중국은 삼 등이래."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 20.2,
+ "cpu": 2,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 3.36,
+   "gen_s": 52.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.52,
+   "gen_s": 55.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.16,
+   "gen_s": 64.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.16,
+   "gen_s": 64.0,
+   "sr": 24000
+  }
+ ]
+}
