@@ -1,0 +1,58 @@
+[
+ {
+  "id": "count3",
+  "file": "count3.wav",
+  "dur": 0.513,
+  "sub": "",
+  "spoken": "삼!"
+ },
+ {
+  "id": "count2",
+  "file": "count2.wav",
+  "dur": 0.415,
+  "sub": "",
+  "spoken": "이!"
+ },
+ {
+  "id": "count1",
+  "file": "count1.wav",
+  "dur": 0.561,
+  "sub": "",
+  "spoken": "일!"
+ },
+ {
+  "id": "answer_intro",
+  "file": "answer_intro.wav",
+  "dur": 0.777,
+  "sub": "정답은…",
+  "spoken": "정답은…"
+ },
+ {
+  "id": "answer_us",
+  "file": "answer_us.wav",
+  "dur": 0.453,
+  "sub": "미국!",
+  "spoken": "미국!"
+ },
+ {
+  "id": "geomsan",
+  "file": "geomsan.wav",
+  "dur": 1.051,
+  "sub": "이걸로 검산 끝!",
+  "spoken": "이걸로 검산 끝!"
+ },
+ {
+  "id": "comment_ask",
+  "file": "comment_ask.wav",
+  "dur": 3.236,
+  "sub": "너는 처음에 뭐 찍었어?<br>댓글로 알려 줘!",
+  "spoken": "너는 처음에 뭐 찍었어? 댓글로 알려 줘!"
+ },
+ {
+  "id": "bolju_ssok",
+  "file": "bolju_ssok.wav",
+  "dur": 1.0,
+  "sub": "볼주머니에 쏙!",
+  "spoken": "볼주머니에 쏙!"
+ }
+]

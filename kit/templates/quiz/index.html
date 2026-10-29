@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!--
+  도리의 정보주머니 · 숫자 퀴즈 화면 템플릿 (EP.02 소주, 2026-10-29 예시)
+  render(t) 하나가 t초의 화면을 그린다(같은 t면 늘 같은 화면). 시각은 timeline.js 의 T(줄 시작·단어 시각)를 쓴다.
+  편마다 바꾸는 곳:
+   - 장면 마크업 s1~s9(제목·카드·막대·차트의 글자와 숫자, 출처 칩 "기관 · 기준 기간")
+   - 보기 카드 oA~oD 와 PICK(도리가 찍는 카드 id) — 동그라미는 카드 위치에서 자동 계산
+   - JS 의 차트 자료(US·JP 배열 등), 도리 연기 표(EX·GZ·HOPS·ARMR·ARML·marks)의 단어 시각 이름
+  지키는 것: 뉴스 매체명은 화면에 넣지 않는다 · 끝 화면에 AI 문구 없음(위 칩) · 아래 420px·오른쪽 160px에 핵심 글자 없음 · 자막 2줄, 숫자에 쉼표 없음
+-->
+<meta charset="utf-8">
+<title>도리의 숫자 퀴즈 소주</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Medium.otf);font-weight:500}
+@font-face{font-family:P;src:url(fonts/Pretendard-SemiBold.otf);font-weight:600}
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--sub:#7E6B5C;--mint:#2E9C83;--mintL:#D5F1E7;--mint2:#80D0BA;--red:#E2483A;--yel:#FFD45C;--line:#EBDDD0;--bottle:#5DBE8A}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;word-break:keep-all}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;visibility:hidden}
+.dot{position:absolute;border-radius:50%}
+#hdr{left:64px;top:146px;display:flex;align-items:center;gap:12px}
+.pill{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:9px 20px;font-size:25px;font-weight:800;color:var(--ink);white-space:nowrap}
+.pill i{display:block;width:16px;height:16px;border-radius:50%}
+#hdr .brand{font-family:Jua;font-weight:400;font-size:29px;padding:8px 22px 8px 12px}
+#hdr .ai{color:#8A7A6D;font-weight:700;font-size:23px;border-style:dashed}
+#prog{left:72px;top:226px;width:840px;height:6px;border-radius:3px;background:#F0E2D6;overflow:hidden}
+#progf{height:100%;width:0;background:var(--mint);border-radius:3px}
+.card{position:absolute;background:#fff;border-radius:40px;box-shadow:0 20px 44px rgba(120,80,40,.12);border:2px solid #F3E6DA}
+.ttl{position:absolute;font-family:Jua;font-weight:400;color:var(--ink);line-height:1.18}
+.unit{position:absolute;font-size:27px;font-weight:600;color:var(--sub)}
+.src{position:absolute;display:flex;align-items:center;gap:8px;font-size:24px;font-weight:700;color:#8A7A6D;background:#FBF3EA;border-radius:999px;padding:6px 16px;white-space:nowrap}
+.src:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--mint)}
+.stk{position:absolute;font-family:Jua;font-size:36px;color:#fff;background:var(--mint);border-radius:16px;padding:6px 22px;box-shadow:0 6px 14px rgba(46,156,131,.25)}
+.fb{display:inline-block;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px #fff,0 0 0 6px rgba(62,47,37,.10),0 5px 12px rgba(100,60,30,.22);line-height:0;flex:none}
+.fb svg{display:block}
+/* 1 */
+#t1{left:80px;top:300px;font-size:86px}
+#t1 span{display:block}
+#t1 em{font-style:normal;color:var(--mint)}
+#bottle{left:660px;top:600px;width:220px;height:460px;transform-origin:50% 95%}
+#c1{left:80px;top:700px;width:530px;padding:26px 30px}
+#c1 .k{font-size:28px;font-weight:700;color:var(--sub)}
+#c1 .v{font-size:70px;font-weight:900;letter-spacing:-2px;margin-top:6px;line-height:1.05;white-space:nowrap}
+#c1 .v small{font-size:38px;font-weight:800;letter-spacing:0}
+#first1{left:380px;top:684px;font-family:Jua;font-size:34px;color:#fff;background:var(--red);border-radius:999px;padding:6px 22px;box-shadow:0 8px 16px rgba(226,72,58,.3)}
+#src1{left:80px;top:910px}
+/* 2 */
+#t2{left:80px;top:292px;font-size:76px}
+#t2s{left:84px;top:390px}
+#ring{left:744px;top:280px;width:140px;height:140px;border-radius:50%;background:#fff;box-shadow:0 10px 24px rgba(120,80,40,.14);display:flex;align-items:center;justify-content:center}
+#ringPie{position:absolute;inset:10px;border-radius:50%}
+#ringN{position:relative;width:98px;height:98px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:66px}
+.opt{position:absolute;left:80px;width:800px;height:120px;display:flex;align-items:center;gap:28px;padding:0 32px}
+.opt .lt{width:60px;height:60px;border-radius:50%;background:var(--mintL);color:var(--mint);font-family:Jua;font-size:36px;display:flex;align-items:center;justify-content:center}
+.opt .nm{font-family:Jua;font-size:58px}
+#pickC{left:40px;top:590px;width:900px;height:200px;overflow:visible}
+#pickL{left:640px;top:646px;font-family:Jua;font-size:40px;color:var(--red);transform-origin:0 50%}
+/* 3 도넛 */
+#c3{left:60px;top:500px;width:860px;height:540px}
+#donut{left:110px;top:540px;width:460px;height:460px}
+#dLab{left:610px;top:600px;width:280px}
+#dLab .a{font-family:Jua;font-size:40px;color:var(--ink);line-height:1.25}
+#dLab .b{margin-top:16px;font-size:78px;font-weight:900;color:var(--mint);letter-spacing:-2px}
+#dLab .c{margin-top:6px;font-size:28px;font-weight:700;color:var(--sub)}
+#bot4{left:612px;top:880px;display:flex;gap:16px}
+#q3{left:300px;top:556px;width:84px;height:84px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:56px;box-shadow:0 0 0 6px #fff}
+/* 4 과일소주 */
+#c4{left:60px;top:500px;width:860px;height:540px;display:flex;flex-direction:column;align-items:center;padding-top:44px}
+#c4 .k{font-family:Jua;font-size:44px;color:var(--ink)}
+#c4 .row{display:flex;align-items:center;gap:36px;margin-top:30px}
+#c4 .qf{width:170px;height:170px;border-radius:50%;background:#FFF0E6;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:110px;color:var(--red);box-shadow:0 0 0 8px #fff,0 8px 20px rgba(100,60,30,.18)}
+#c4 .v{font-size:84px;font-weight:900;letter-spacing:-2px}
+#c4 .v small{font-size:40px;font-weight:800;letter-spacing:0}
+#fruits{margin-top:34px;display:flex;gap:26px}
+/* 5 */
+#r5a{left:80px;top:292px;font-size:70px}
+#r5b{left:80px;top:384px;display:flex;align-items:center;gap:34px;transform-origin:0 50%}
+#r5b .nm{font-family:Jua;font-size:190px;line-height:1}
+#st5{left:650px;top:384px;width:190px;height:190px;border-radius:50%;border:8px solid var(--mint);display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:58px;color:var(--mint);background:rgba(255,255,255,.9);transform-origin:50% 50%}
+#c5{left:60px;top:618px;width:860px;height:440px}
+.br{position:absolute;left:96px;width:800px;height:110px}
+.br .bn{position:absolute;left:0;top:0;display:flex;align-items:center;gap:16px;font-family:Jua;font-size:42px;line-height:60px;white-space:nowrap}
+.br .bar{position:absolute;left:76px;top:70px;height:26px;border-radius:13px;width:0;background:linear-gradient(90deg,#CFEDE3,#9BD9C6)}
+.br .val{position:absolute;top:56px;font-size:40px;font-weight:800;white-space:nowrap;line-height:1}
+.br.win .bar{background:linear-gradient(90deg,#7FD3BC,var(--mint))}
+.br.win .val{color:var(--mint)}
+.tag{display:inline-block;font-family:Jua;font-size:27px;color:#fff;border-radius:999px;padding:3px 14px;line-height:1.3}
+#conf{left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+.cf{position:absolute;border-radius:3px}
+/* 6 일본 비중 */
+#t6{left:80px;top:290px;font-size:74px}
+#t6 em{font-style:normal;color:var(--red)}
+#c6{left:60px;top:450px;width:860px;height:600px}
+#line6{left:60px;top:450px;width:860px;height:600px;overflow:visible}
+.pv{position:absolute;font-size:38px;font-weight:900;white-space:nowrap;text-align:center;width:180px}
+.py{position:absolute;font-size:28px;font-weight:700;color:var(--sub);width:120px;text-align:center}
+#bot10{left:120px;top:880px;display:flex;gap:6px}
+#lab6{left:430px;top:500px;font-family:Jua;font-size:42px;color:var(--red);transform-origin:0 50%}
+/* 6 미국 비중 막대 */
+#t6u{left:80px;top:290px;font-size:74px}
+#t6u em{font-style:normal;color:var(--mint)}
+#c6u{left:60px;top:450px;width:860px;height:590px}
+.ub{position:absolute;width:150px;border-radius:24px 24px 10px 10px;background:linear-gradient(180deg,#CFEDE3,#9BD9C6)}
+.ub.last{background:linear-gradient(180deg,#7FD3BC,var(--mint))}
+.uv{position:absolute;width:220px;text-align:center;font-size:40px;font-weight:900;white-space:nowrap}
+.uy{position:absolute;width:220px;text-align:center;font-size:27px;font-weight:700;color:var(--sub);white-space:nowrap}
+#lab6u{left:560px;top:478px;width:330px;text-align:center;font-family:Jua;font-size:40px;color:var(--mint);transform-origin:50% 50%}
+/* 7 */
+#t7{left:80px;top:290px;font-size:74px}
+#c7{left:60px;top:450px;width:860px;height:590px}
+.cb{position:absolute;width:220px;border-radius:28px 28px 10px 10px}
+.cv{position:absolute;width:340px;text-align:center;font-size:44px;font-weight:900;white-space:nowrap}
+.cn{position:absolute;width:340px;text-align:center;font-family:Jua;font-size:40px}
+#lab7{left:605px;top:478px;width:250px;text-align:center;font-family:Jua;font-size:40px;color:var(--red);transform-origin:0 50%}
+/* 8 */
+#c8{left:60px;top:300px;width:860px;height:660px;display:flex;flex-direction:column;align-items:center;padding-top:56px}
+#c8 .stk{position:static;font-size:40px;padding:8px 30px}
+#c8 .row{display:flex;align-items:center;gap:36px;margin-top:40px}
+#c8 .nm{font-family:Jua;font-size:170px;line-height:1}
+#c8 .sub{margin-top:30px;font-size:36px;font-weight:800;color:var(--ink)}
+#c8 .sub b{color:var(--mint)}
+#c8 .per{margin-top:12px;font-size:27px;font-weight:600;color:var(--sub)}
+#stamp8{left:560px;top:830px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
+/* 9 */
+#e1{left:80px;top:294px;font-size:82px}
+#e2{left:80px;top:500px;display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:12px 30px;font-family:Jua;font-size:44px;color:var(--mint)}
+#e3{left:80px;top:630px;width:820px;padding:26px 34px}
+#e3 .k{display:inline-block;font-family:Jua;font-size:30px;color:#fff;background:var(--mint);border-radius:12px;padding:3px 16px}
+#e3 .v{margin-top:12px;font-family:Jua;font-size:50px}
+#fly{left:0;top:0;width:60px;height:120px}
+#dori{left:0;top:1004px;width:480px;height:498px}
+#bub{left:448px;top:1196px;max-width:472px;background:#fff;border-radius:34px;padding:24px 32px;font-family:Jua;font-size:40px;line-height:1.34;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;transform-origin:0 50%}
+#bub:before{content:"";position:absolute;left:-18px;top:50%;margin-top:-15px;border-width:15px 22px 15px 0;border-style:solid;border-color:transparent #fff transparent transparent}
+#pre{position:absolute;left:-5000px;top:0;font-family:Jua}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="dot" id="b1"></div><div class="dot" id="b2"></div><div class="dot" id="b3"></div><div class="dot" id="b4"></div>
+  <div class="abs" id="hdr">
+    <div class="pill brand"><span id="hdrDori"></span>도리의 정보주머니</div>
+    <div class="pill"><i style="background:var(--mint)"></i>숫자 퀴즈</div>
+    <div class="pill ai">AI 목소리</div>
+  </div>
+  <div class="abs" id="prog"><div id="progf"></div></div>
+
+  <!-- 1 훅 -->
+  <div class="scene" id="s1">
+    <svg class="abs" id="mk1" width="300" height="40" style="left:300px;top:560px;overflow:visible"><path d="M6 24 C70 16 150 28 290 18" stroke="#BFE7DA" stroke-width="28" stroke-linecap="round" fill="none"/></svg>
+    <div class="ttl" id="t1"><span>한국 소주,</span><span>해외에서 제일 많이</span><span>사 가는 <em>나라는?</em></span></div>
+    <div class="abs" id="bottle"></div>
+    <div class="card" id="c1"><div class="k">2025년 소주 수출 · 과일소주 포함</div><div class="v">1억 9694만<small> 달러</small></div></div>
+    <div class="src" id="src1">관세청 · 2025년</div>
+  </div>
+
+  <!-- 2 보기 -->
+  <div class="scene" id="s2">
+    <div class="ttl" id="t2">어디일까?</div>
+    <div class="unit" id="t2s">한국 소주를 제일 많이 사 가는 나라</div>
+    <div class="abs" id="ring"><div id="ringPie"></div><div id="ringN">3</div></div>
+    <div class="card opt" id="oA" style="top:450px"><div class="lt">A</div><span class="fb" data-f="jp" data-s="78"></span><div class="nm">일본</div></div>
+    <div class="card opt" id="oB" style="top:590px"><div class="lt">B</div><span class="fb" data-f="cn" data-s="78"></span><div class="nm">중국</div></div>
+    <div class="card opt" id="oC" style="top:730px"><div class="lt">C</div><span class="fb" data-f="us" data-s="78"></span><div class="nm">미국</div></div>
+    <div class="card opt" id="oD" style="top:870px"><div class="lt">D</div><span class="fb" data-f="vn" data-s="78"></span><div class="nm">베트남</div></div>
+    <svg class="abs" id="pickC"><path id="pickP" d="M60 100 C70 30 380 12 640 18 C820 24 880 58 870 108 C858 168 600 188 380 182 C160 176 46 150 58 94 C62 74 92 58 120 50" fill="none" stroke="#E2483A" stroke-width="7" stroke-linecap="round"/></svg>
+    <div class="abs" id="pickL">도리 픽!</div>
+  </div>
+
+  <!-- 3 힌트 1 -->
+  <div class="scene" id="s3">
+    <div class="stk" id="k3" style="left:80px;top:290px;transform:rotate(-4deg)">힌트 1</div>
+    <div class="ttl" id="tt3" style="left:80px;top:366px;font-size:62px">1등 혼자 30% 넘게</div>
+    <div class="unit" id="u3" style="left:84px;top:448px">관세청 · 2026년 1~7월 · 소주 수출액 비중</div>
+    <div class="card" id="c3"></div>
+    <svg class="abs" id="donut" viewBox="-230 -230 460 460"><circle r="170" fill="none" stroke="#EFE6DC" stroke-width="80"/><circle id="dSl" r="170" fill="none" stroke="#2E9C83" stroke-width="80" transform="rotate(-90)"/><text id="dC1" y="-6" text-anchor="middle" font-family="Jua" font-size="60" fill="#3E2F25">1~7월</text><text id="dC2" y="44" text-anchor="middle" font-family="P" font-weight="700" font-size="28" fill="#7E6B5C">2026년</text></svg>
+    <div class="abs" id="q3">?</div>
+    <div class="abs" id="dLab"><div class="a">1등 나라 혼자서</div><div class="b">30.2%</div><div class="c">수출액 기준</div></div>
+  </div>
+
+  <!-- 4 힌트 2 -->
+  <div class="scene" id="s4">
+    <div class="stk" id="k4" style="left:80px;top:290px;transform:rotate(-4deg)">힌트 2</div>
+    <div class="ttl" id="tt4" style="left:80px;top:366px;font-size:62px">과일소주 1등 나라</div>
+    <div class="unit" id="u4" style="left:84px;top:448px">관세청 · 2025년 · 과일소주 수출액</div>
+    <div class="card" id="c4"><div class="k">작년 과일소주를 제일 많이 사 간 나라</div>
+      <div class="row"><div class="qf">?</div><div class="v">2,872<small>만 달러</small></div></div>
+      <div id="fruits"></div></div>
+  </div>
+
+  <!-- 5 정답 -->
+  <div class="scene" id="s5">
+    <div class="ttl" id="r5a">정답은<span id="dots5"></span></div>
+    <div class="abs" id="r5b"><span class="fb" data-f="us" data-s="170"></span><span class="nm">미국</span></div>
+    <div class="abs" id="st5">정답!</div>
+    <div class="card" id="c5"></div>
+    <div class="unit" id="u5" style="left:100px;top:644px;font-size:25px">관세청 · 2026년 1~7월 · 소주 수출액 비중</div>
+    <div class="br win" id="b5a" style="top:694px"><div class="bn"><span class="fb" data-f="us" data-s="54"></span>미국</div><div class="bar"></div><div class="val">30.2%</div></div>
+    <div class="br" id="b5b" style="top:808px"><div class="bn"><span class="fb" data-f="jp" data-s="54"></span>일본</div><div class="bar"></div><div class="val">19.1%</div></div>
+    <div class="br" id="b5c" style="top:922px"><div class="bn"><span class="fb" data-f="cn" data-s="54"></span>중국<span class="tag" id="pk5" style="background:var(--red)">도리 픽</span><span class="tag" id="ak5" style="background:#8A7A6D">3등</span></div><div class="bar"></div><div class="val">14.4%</div></div>
+  </div>
+
+  <!-- 6 반전 1: 미국 비중 해마다 커짐 -->
+  <div class="scene" id="s6">
+    <div class="ttl" id="t6u">미국 비중, <em>해마다 쑥</em></div>
+    <div class="unit" id="u6u" style="left:84px;top:386px">관세청 · 2023년~2026년 7월 · 소주 수출액 중 미국 비중</div>
+    <div class="card" id="c6u"></div>
+    <div id="ubars"></div>
+    <div class="abs" id="lab6u">올해 30% 넘었대!</div>
+  </div>
+
+  <!-- 7 반전 2: 2010년 일본 비중 -->
+  <div class="scene" id="s7">
+    <div class="ttl" id="t6">근데 <em>2010년</em>엔?</div>
+    <div class="unit" id="u6" style="left:84px;top:386px">관세청 · 2010년~2026년 7월 · 소주 수출액 중 일본 비중</div>
+    <div class="card" id="c6"></div>
+    <svg class="abs" id="line6" viewBox="0 0 860 600"><path id="lp6" fill="none" stroke="#E2483A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><g id="pts6"></g></svg>
+    <div id="pl6"></div>
+    <div class="abs" id="lab6"><span class="fb" data-f="jp" data-s="50"></span> 일본</div>
+    <div class="abs" id="bot10"></div>
+  </div>
+
+  <!-- 8 결론 -->
+  <div class="scene" id="s8">
+    <div class="card" id="c8"><div class="stk">정답</div>
+      <div class="row"><span class="fb" data-f="us" data-s="150"></span><span class="nm">미국</span></div>
+      <div class="sub">소주 수출 1위 · <b>비중 30.2%</b></div>
+      <div class="per">관세청 · 2026년 1~7월</div></div>
+    <div class="abs" id="stamp8">검산 끝!</div>
+  </div>
+
+  <!-- 9 마무리 -->
+  <div class="scene" id="s9">
+    <div class="ttl" id="e1">너는 처음에<br>뭐 찍었어?</div>
+    <div class="abs" id="e2"><svg width="46" height="42" viewBox="0 0 46 42"><path d="M6 4 H40 Q44 4 44 8 V26 Q44 30 40 30 H22 L12 39 V30 H6 Q2 30 2 26 V8 Q2 4 6 4 Z" fill="#2E9C83"/><circle cx="14" cy="17" r="3" fill="#fff"/><circle cx="23" cy="17" r="3" fill="#fff"/><circle cx="32" cy="17" r="3" fill="#fff"/></svg>댓글로 알려 줘!</div>
+    <div class="card" id="e3"><span class="k">다음 숫자 퀴즈</span><div class="v">한국 화장품 수출 1위, 아직도 중국일까?</div></div>
+  </div>
+
+  <div id="conf" class="abs"></div>
+  <div class="abs" id="fly"></div>
+  <div class="abs" id="dori"></div>
+  <div class="abs" id="bub"><span id="bubT"></span></div>
+  <div id="pre"></div>
+</div>
+
+<script src="timeline.js"></script>
+<script src="dori.js"></script>
+<script>
+const T=TL.T, FPS=30, DUR=T.END;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,s,d)=>clamp((t-s)/d);
+const eOut=x=>1-Math.pow(1-x,3);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eBack=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);};
+const spring=x=>x<=0?0:x>=1?1:1-Math.exp(-6*x)*Math.cos(9*x);
+const lerp=(a,b,k)=>a+(b-a)*k;
+const $=id=>document.getElementById(id);
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+function star(cx,cy,r){let d='';for(let i=0;i<10;i++){const rr=i%2?r*.382:r;const a=(-90+i*36)*Math.PI/180;d+=(i?'L':'M')+(cx+rr*Math.cos(a)).toFixed(2)+' '+(cy+rr*Math.sin(a)).toFixed(2);}return d+'Z';}
+function flag(f,s){let b='';
+  if(f==='us'){for(let i=0;i<13;i++)b+=`<rect y="${(i*20/13).toFixed(3)}" width="30" height="${(20/13+.03).toFixed(3)}" fill="${i%2?'#fff':'#C8283C'}"/>`;b+=`<rect width="13" height="10.8" fill="#2E3A7A"/>`;for(let r=0;r<4;r++)for(let c=0;c<5;c++)b+=`<circle cx="${1.5+c*2.5}" cy="${1.4+r*2.6}" r=".55" fill="#fff"/>`;}
+  else if(f==='jp')b=`<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/>`;
+  else if(f==='cn'){b=`<rect width="30" height="20" fill="#E3242B"/><path d="${star(8,7,3.2)}" fill="#FFD84A"/>`+[[13,3.5],[15,6],[15,9],[13,11.5]].map(([x,y])=>`<path d="${star(x,y,1.1)}" fill="#FFD84A"/>`).join('');}
+  else if(f==='vn')b=`<rect width="30" height="20" fill="#DA251D"/><path d="${star(15,10.4,5.6)}" fill="#FFCD00"/>`;
+  return `<svg width="${s}" height="${s}" viewBox="5 0 20 20" preserveAspectRatio="xMidYMid slice">${b}</svg>`;}
+document.querySelectorAll('.fb').forEach(e=>{const s=+e.dataset.s;e.style.width=s+'px';e.style.height=s+'px';e.innerHTML=flag(e.dataset.f,s);});
+
+// 소품: 상표 없는 초록 병
+const BOT=(w,fill='#5DBE8A',alpha=1)=>`<svg viewBox="0 0 100 240" width="${w}" height="${w*2.4}"><defs><linearGradient id="bg${fill.slice(1)}" x1="0" x2="1"><stop offset="0" stop-color="${fill}"/><stop offset=".45" stop-color="#9FE0BC"/><stop offset="1" stop-color="${fill}"/></linearGradient></defs>
+ <g opacity="${alpha}"><rect x="36" y="4" width="28" height="16" rx="4" fill="#3E7D5C" stroke="#4A3A33" stroke-width="4"/>
+ <path d="M38 20 H62 V58 Q62 72 76 86 Q90 100 90 120 V222 Q90 236 76 236 H24 Q10 236 10 222 V120 Q10 100 24 86 Q38 72 38 58 Z" fill="url(#bg${fill.slice(1)})" stroke="#4A3A33" stroke-width="5" stroke-linejoin="round"/>
+ <rect x="18" y="130" width="64" height="62" rx="10" fill="#FFFDF8" stroke="#4A3A33" stroke-width="3.5"/>
+ <path d="M30 150 H70 M30 164 H62 M30 178 H66" stroke="#CDBFB2" stroke-width="5" stroke-linecap="round"/>
+ <path d="M22 110 Q20 160 24 210" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".45"/></g></svg>`;
+$('bottle').innerHTML=BOT(220);
+$('fly').innerHTML=BOT(50);
+$('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
+// 힌트 2: 과일 아이콘(복숭아·포도·딸기·자두 느낌의 동그라미)
+$('fruits').innerHTML=[['#FFB38A','#F28C6B'],['#B48BE0','#8A5CC2'],['#FF7A8A','#E24A5E'],['#FFD45C','#F2B33D']].map(([a,b])=>`<svg width="74" height="74" viewBox="0 0 74 74"><circle cx="37" cy="40" r="30" fill="${a}" stroke="#4A3A33" stroke-width="4"/><path d="M37 12 Q40 4 48 4" stroke="#4A7A3A" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="27" cy="31" rx="7" ry="4" fill="#fff" opacity=".6"/></svg>`).join('');
+// 반전 1: 일본 비중 선
+const JP=[['2010',82.7],['2015',68.6],['2020',34.7],['2024',19.2],["'26.1~7",19.1]];
+const LX=[120,265,410,555,700], LY=v=>520-v*4.6;
+const lpD=JP.map(([y,v],i)=>(i?'L':'M')+LX[i]+' '+LY(v)).join(' ');
+$('lp6').setAttribute('d',lpD);
+$('pts6').innerHTML=JP.map(([y,v],i)=>`<circle class="pt" cx="${LX[i]}" cy="${LY(v)}" r="16" fill="#fff" stroke="#E2483A" stroke-width="8"/>`).join('');
+$('pl6').innerHTML=JP.map(([y,v],i)=>`<div class="pv" style="left:${60+LX[i]-90}px;top:${450+LY(v)-66}px;${i===0?'color:var(--red);font-size:52px;top:'+(450+LY(v)-84)+'px':''}">${v}%</div><div class="py" style="left:${60+LX[i]-60}px;top:${450+540}px">${y}</div>`).join('');
+$('bot10').innerHTML=Array.from({length:10},(_,i)=>`<div class="b10" style="opacity:0">${BOT(36,i<8?'#E2483A':'#CFC7BE')}</div>`).join('');
+const lpLen=$('lp6').getTotalLength();
+// 반전 1: 미국 비중 막대(0부터, 과장 없이)
+const US=[['2023년',23.5],['2024년',24.3],['2025년',27.0],['2026년 1~7월',30.2]], UX=[150,340,530,720], UB=990, UH=v=>380*v/30.2;
+$('ubars').innerHTML=US.map(([y,v],i)=>`<div class="ub${i===3?' last':''}" id="ub${i}" style="left:${UX[i]}px"></div><div class="uv" id="uv${i}" style="left:${UX[i]-35}px;${i===3?'color:var(--mint);font-size:48px':''}">${v.toFixed(1)}%</div><div class="uy" id="uy${i}" style="left:${UX[i]-35}px;top:${UB+14}px">${y}</div>`).join('');
+// 색종이
+const CONF=[], cr=rng(9), COLS=['#2E9C83','#80D0BA','#FFD45C','#E2483A','#FF9EB0','#5B8CFF'];
+for(let i=0;i<60;i++){const d=document.createElement('div');d.className='cf';const w=10+cr()*12,h=w*(cr()<.5?.5:1);d.style.width=w+'px';d.style.height=h+'px';d.style.background=COLS[i%COLS.length];if(cr()<.35)d.style.borderRadius='50%';$('conf').appendChild(d);
+  const a=(-90+(cr()-.5)*130)*Math.PI/180, sp=900+cr()*900;CONF.push({d,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,rs:(cr()-.5)*900,x0:520+(cr()-.5)*80,y0:520});}
+// 도리 픽 동그라미: 고른 카드의 실제 위치·크기에서 손그림 고리를 계산한다(좌표를 손으로 박지 않는다)
+const PICK='oB';
+(function(){const c=$(PICK),x0=c.offsetLeft,y0=c.offsetTop,w=c.offsetWidth,h=c.offsetHeight,px=22,py=11,m=24;
+  const L=x0-px,T0=y0-py,W=w+2*px,H=h+2*py, l=m,t=m,r=m+W,b=m+H, X=f=>(l+f*W).toFixed(1), Y=f=>(t+f*H).toFixed(1);
+  const sv=$('pickC'); sv.style.left=(L-m)+'px'; sv.style.top=(T0-m)+'px'; sv.style.width=(W+2*m)+'px'; sv.style.height=(H+2*m)+'px';
+  sv.setAttribute('viewBox',`0 0 ${W+2*m} ${H+2*m}`);
+  $('pickP').setAttribute('d',`M ${X(.16)} ${Y(.02)} C ${X(.4)} ${Y(-.02)}, ${X(.66)} ${Y(-.01)}, ${X(.86)} ${Y(.03)} C ${r+2} ${Y(.08)}, ${r+3} ${Y(.3)}, ${r} ${Y(.52)} C ${r-3} ${Y(.88)}, ${X(.8)} ${b}, ${X(.5)} ${b} C ${X(.2)} ${b+1}, ${l-3} ${Y(.88)}, ${l} ${Y(.5)} C ${l+1} ${Y(.16)}, ${X(.06)} ${Y(.03)}, ${X(.3)} ${Y(-.05)}`);
+  const lb=$('pickL'); lb.style.left=(x0+w-205)+'px'; lb.style.top=(y0+h/2-27)+'px';})();
+const pkLen=$('pickP').getTotalLength();
+$('pre').textContent=TL.lines.map(l=>l.text.replace(/<br>/g,' ')).join(' ')+document.body.innerText;
+
+function sv(id,a,b){$(id).style.visibility=(gT>=a&&gT<b)?'visible':'hidden';}
+function fx(el,t,inS,inD,outS,outD,dy=40,dx=0,rot=0){if(typeof el==='string')el=$(el);const a=eOut(P(t,inS,inD)),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=a*(1-b);el.style.transform=`translate(${(1-a)*dx}px,${(1-a)*dy-b*dy*.7}px) rotate(${rot}deg)`;return a*(1-b);}
+function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);const k=P(t,s,.5),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=clamp(k*4)*(1-b);el.style.transform=`rotate(${rot}deg) scale(${k<=0?from:from+(1-from)*eBack(k)})`;}
+let gT=0;
+
+// ---------- 도리 연기 ----------
+Dori.mount($('dori'));
+const D={};TL.lines.forEach(l=>D[l.id]=l.d);
+const A=(id,f)=>T[id]+f*D[id];
+const K=['happy','squint','surprise','sad','think','pouch'];
+const EX=[[0,{happy:0}],[T.best,{happy:1}],[A('L02',.96),{happy:0}],
+ [T.C3-.3,{think:1}],[T.L05,{think:0,squint:1}],[A('L05',.31),{squint:0,happy:1}],[A('L05',.71),{happy:0}],
+ [T.w30,{surprise:.5}],[A('L06',.97),{surprise:0}],[T.L07-.04,{think:.8}],[T.wfruit,{think:0,happy:1}],[A('L07',.95),{happy:0}],
+ [T.L09,{think:1}],[T.drum,{think:0,squint:1}],[T.L10,{squint:0,surprise:1}],[T.L11,{surprise:.25}],[A('L11',.66),{surprise:0}],
+ [T.san,{sad:1}],[T.L13-.17,{sad:0}],[T.L13+.06,{think:.3}],[T.wUS,{think:0,happy:1}],[A('L13',.97),{happy:0}],
+ [T.w827,{surprise:1}],[T.L12b+.3,{surprise:.3}],[A('L12b',.9),{surprise:0}],
+ [T.L14b,{squint:1}],[T.L15-.47,{squint:0,happy:1}],
+ [T.L15+.03,{happy:0}],[T.L16+.04,{happy:1,pouch:1}]];
+const EXS=[];{let cur={happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0};for(const [t,o] of EX){cur={...cur,...o};EXS.push([t,{...cur}]);}}
+function expr(t){let res={...EXS[0][1]};for(let i=0;i<EXS.length;i++){const [tt,o]=EXS[i];if(t<tt)break;const k=eIO(P(t,tt,tt>=T.L16?.45:.28));const from=i?EXS[i-1][1]:o;res={};K.forEach(n=>res[n]=lerp(from[n],o[n],k));}return res;}
+const GZ=[[0,0,0],[T.L03-.16,.7,-.6],[A('L03',.98),0,0],[T.C3-.31,.4,-1],[T.L05-.13,0,0],[T.L06+.08,.8,-.6],[T.L06+1.48,0,0],[T.L07+.16,.8,-.6],[T.L07+1.56,0,0],[T.L09+.05,.3,-1],[T.drum,0,0],[T.L10+.08,.7,-.7],[T.L10+1.18,0,0],[T.L11b+.19,.7,-.4],[T.L11b+1.19,0,0],[T.L13+.26,.7,-.6],[T.L13+1.46,0,0],[T.L12+.23,.7,-.6],[T.L12+1.63,0,0],[T.L12b+.1,.7,-.3],[T.L12b+1.2,0,0],[T.L14+.08,.6,-.8],[T.L14+1.28,0,0]];
+function gaze(t){let g=[0,0];for(let i=0;i<GZ.length;i++){if(t<GZ[i][0])break;const k=eIO(P(t,GZ[i][0],.22));const f=i?GZ[i-1]:GZ[i];g=[lerp(f[1],GZ[i][1],k),lerp(f[2],GZ[i][2],k)];}return [g[0]+Math.sin(t*2.1)*.05,g[1]+Math.cos(t*1.7)*.04];}
+const BL=[];{const r=rng(23);let t=1.4;while(t<DUR){BL.push(t);if(r()<.2)BL.push(t+.32);t+=2.0+r()*2.6;}}
+function blink(t){let v=0;for(const b of BL){const d=t-b;if(d>=0&&d<.2)v=Math.max(v,d<.07?d/.07:d<.11?1:1-(d-.11)/.09);}return v;}
+const EF=[];{const r=rng(7);let t=2.8;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=3.2+r()*4;}}
+function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
+const HOPS=[[T.best,26],[T.L05,22],[T.L10,84],[T.wUS,30],[T.w827,60],[T.L14b,70],[T.L16+.04,30]];
+function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
+  if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
+  return [h,sq];}
+const ARMR=[[0,0],[A('L01',.2),.35],[A('L01',.55),0],[T.best,.85],[A('L02',.88),0],[T.L03,.45],[A('L03',.9),0],[T.L05,.62],[A('L05',.59),0],[T.L06+.08,.4],[T.L06+1.68,0],[T.L10,.6],[T.L10+1.18,0],[T.wUS,.8],[T.wUS+1.1,0],[T.L14+.08,.4],[T.L14+1.68,0],[T.L14b,.95],[T.L14b+1.17,0],[T.L15+.13,.5],[T.L15+1.43,0],[A('L16',.4),.9]];
+const ARML=[[0,0],[T.best,.85],[A('L02',.88),0],[T.L10,.6],[T.L10+1.18,0],[T.w827,.55],[T.w827+.9,0],[T.L14b,.95],[T.L14b+1.17,0],[T.L16+.04,.55],[T.L16+.89,0]];
+function arm(Kf,t){let v=0;for(let i=0;i<Kf.length;i++){if(t<Kf[i][0])break;const k=eIO(P(t,Kf[i][0],.24));v=lerp(i?Kf[i-1][1]:0,Kf[i][1],k);}return v;}
+function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
+  for(const [a,b] of [[T.L10,T.L10+1.38],[T.w827,T.w827+1.03]]){const v=on(a,b);if(v>o){o=v;m='!';}}
+  for(const [a,b] of [[T.C3-.2,T.L05-.23],[T.L09+.05,T.drum],[T.L07+.36,T.wfruit-.1]]){const v=on(a,b);if(v>o){o=v;m='?';}}
+  return [m,o];}
+function renderDori(t){
+  const fr=Math.min(TL.env.length-1,Math.max(0,Math.round(t*FPS)));
+  const env=Math.max(TL.env[fr],(TL.env[fr-1]||0)*.55);
+  const e=expr(t),[gx,gy]=gaze(t),[h,sq]=hop(t);
+  const talk=clamp(env*1.3-.05);const [mk,mo]=marks(t);
+  const sweat=clamp(P(t,T.san,.3))*(1-P(t,T.L13-.27,.3));
+  const spark=Math.max(clamp(P(t,T.best,.2))*(1-P(t,T.best+1.4,.3)),clamp(P(t,T.wUS,.2))*(1-P(t,T.wUS+1.2,.3)),clamp(P(t,T.L14b,.2))*(1-P(t,T.L14b+1.27,.3)),clamp(P(t,T.L16+.04,.2)));
+  const wv=A('L16',.4); let armR=arm(ARMR,t); if(t>wv) armR+=Math.sin((t-wv)*10)*.1*clamp(P(t,wv,.3));
+  const tilt=1.8*Math.sin(t*.8)+.9*Math.sin(t*2.1+.5)-e.think*7+e.sad*-3+e.surprise*Math.sin(t*22)*1.2*(1-P(t,T.L10,1));
+  Dori.draw({t,happy:e.happy,squint:e.squint,surprise:e.surprise,sad:e.sad,open:talk,blink:blink(t),gx:gx+e.think*.5,gy:gy-e.think*.7,
+    pouch:e.pouch,armL:arm(ARML,t),armR,earL:-flick(t,'L')*14-e.sad*14+e.surprise*6,earR:-flick(t,'R')*14-e.sad*14+e.surprise*6,
+    hop:h,squash:sq,breath:Math.sin(t*2*Math.PI*.3),tilt,sweat,sweatY:(t%1.2)*10,mark:mk,markO:mo,markY:Math.sin(t*6)*4,spark});
+  const ent=P(t,0,.7),x=lerp(-380,0,eOut(ent)),jy=ent<1?Math.abs(Math.sin(ent*Math.PI*2))*55*(1-ent):0;
+  $('dori').style.transform=`translate(${x}px,${-jy}px)`;
+  let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
+  const bb=$('bub');
+  if(ln){if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
+    bb.style.opacity=clamp(a*4)*(1-o);bb.style.transform=`translate(${x}px,-50%) scale(${(a<=0?.7:.7+.3*eBack(a))*(1-.08*o)})`;}
+  else bb.style.opacity=0;
+}
+
+function render(t){
+  gT=t;
+  [['b1',-300,-260,980,'#D5F1E7'],['b2',640,460,820,'#FFEDB8'],['b3',-200,1240,860,'#FFE3D6'],['b4',760,1300,420,'#D5F1E7']].forEach(([id,x,y,s,c],i)=>{const el=$(id);
+    el.style.width=s+'px';el.style.height=s+'px';el.style.left=(x+Math.sin(t*.16+i*2)*46)+'px';el.style.top=(y+Math.cos(t*.12+i)*36)+'px';el.style.background=`radial-gradient(circle, ${c} 0%, ${c}00 68%)`;});
+  $('progf').style.width=(clamp(t/DUR)*100)+'%';
+  fx('hdr',t,0,.5,null,0,14); fx('prog',t,0,.5,null,0,0);
+
+  // 1
+  sv('s1',0,T.s2+.4); const o1=T.s2-.1;
+  document.querySelectorAll('#t1 span').forEach((el,i)=>fx(el,t,[.2,.85,1.55][i],.45,o1,.4,46));
+  fx('mk1',t,2.3,.5,o1,.4,0,-20); const mp=$('mk1').querySelector('path'); mp.style.strokeDasharray='300'; mp.style.strokeDashoffset=300*(1-eOut(P(t,2.3,.5)));
+  const gk=P(t,.5,.6), gb=eIO(P(t,o1,.4)); $('bottle').style.opacity=clamp(gk*3)*(1-gb);
+  $('bottle').style.transform=`translateY(${-gb*30}px) scale(${gk<=0?.6:.6+.4*eBack(gk)}) rotate(${Math.sin(t*1.3)*2.5}deg)`;
+  fx('c1',t,T.L02+.1,.45,o1,.4,40); fx('src1',t,T.L02+.4,.4,o1,.4,20);
+  { const v1=document.querySelector('#c1 .v'); const k=P(t,T.best,.5); v1.style.transform=`scale(${k<=0||k>=1?1:1+.08*Math.sin(k*Math.PI)})`; v1.style.transformOrigin='0 50%'; }
+
+  // 2
+  sv('s2',T.s2,T.s3+.3); const o2=T.s3-.1;
+  fx('t2',t,T.s2+.05,.45,o2,.35,40); fx('t2s',t,T.s2+.2,.45,o2,.35,30);
+  [['oA',T.cJP,-1.2],['oB',T.cCN,.9],['oC',T.cUS,-.6],['oD',T.cVN,.7]].forEach(([id,s,r])=>{const el=$(id);const k=P(t,s-.05,.5),b=eIO(P(t,o2,.35));
+    el.style.opacity=clamp(k*3)*(1-b);el.style.transform=`translateY(${(1-eOut(k))*-30-b*30}px) rotate(${r}deg) scale(${k<=0?.85:.85+.15*eBack(k)})`;});
+  pop('ring',t,T.C3-.3,T.L05+.6,.3,0,.5);
+  const cd=t<T.C2?3:t<T.C1?2:1; $('ringN').textContent=cd;
+  const pie=clamp((t-T.C3)/(T.C1+.66-T.C3)); $('ringPie').style.background=`conic-gradient(var(--mint) ${pie*360}deg, #E9F5F0 0deg)`;
+  const tk=[T.C3,T.C2,T.C1].reduce((m,s)=>Math.max(m,t>=s&&t<s+.5?1-(t-s)*2:0),0); $('ringN').style.transform=`scale(${1+.16*tk})`;
+  const pk=eOut(P(t,T.pick,.65)), pb=eIO(P(t,o2,.35));
+  $('pickC').style.opacity=(pk>0?1:0)*(1-pb); $('pickP').style.strokeDasharray=pkLen; $('pickP').style.strokeDashoffset=pkLen*(1-pk);
+  pop('pickL',t,T.pick+.4,o2,.35,-8);
+
+  // 3 힌트 1
+  sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1;
+  fx('k3',t,T.s3+.05,.4,o3,.35,30,0,-4); fx('tt3',t,T.s3+.15,.45,o3,.35,30); fx('u3',t,T.s3+.25,.45,o3,.35,20); fx('c3',t,T.s3+.2,.5,o3,.35,40);
+  const C=2*Math.PI*170, dk=eIO(P(t,T.L06+.5,1.0)); const sl=$('dSl'); sl.setAttribute('stroke-dasharray',`${C*.302*dk} ${C}`);
+  fx('donut',t,T.s3+.3,.5,o3,.35,30); pop('q3',t,T.L06+1.4,o3,.35,10,.4);
+  fx('dLab',t,T.w30-.2,.5,o3,.35,0,40);
+
+  // 4 힌트 2
+  sv('s4',T.s4,T.s5+.3); const o4=T.s5-.1;
+  fx('k4',t,T.s4+.05,.4,o4,.35,30,0,-4); fx('tt4',t,T.s4+.15,.45,o4,.35,30); fx('u4',t,T.s4+.25,.45,o4,.35,20); fx('c4',t,T.s4+.2,.5,o4,.35,40);
+  const qf=document.querySelector('#c4 .qf'); qf.style.transform=`scale(${t<T.wfruit?.8:.8+.2*eBack(P(t,T.wfruit,.5))}) rotate(${Math.sin(t*3)*4}deg)`;
+  document.querySelectorAll('#fruits svg').forEach((el,i)=>{const k=P(t,T.wfruit+.1+i*.1,.4);el.style.opacity=clamp(k*3);el.style.transform=`translateY(${(1-eOut(k))*24+Math.sin(t*3+i)*3}px)`;});
+
+  // 5 정답
+  sv('s5',T.s5,T.s6+.3); const o5=T.s6-.1;
+  fx('r5a',t,T.s5+.05,.4,o5,.35,30);
+  const dn=t<T.L10?Math.floor((t-T.s5)*3)%4:3; $('dots5').textContent='.'.repeat(Math.max(0,dn));
+  const s5=P(t,T.L10,.45), r5=$('r5b'); r5.style.opacity=clamp(s5*5)*(1-eIO(P(t,o5,.35)));
+  r5.style.transform=`scale(${s5<=0?1.5:1.5-.5*eOut(s5)}) rotate(${(1-eOut(s5))*-4}deg)`;
+  pop('st5',t,T.L10+.3,o5,.35,-12,1.8);
+  fx('c5',t,T.L11-.2,.5,o5,.35,40); fx('u5',t,T.L11-.1,.4,o5,.35,20);
+  [['b5a',30.2,T.L11],['b5b',19.1,T.jp2],['b5c',14.4,T.cn2]].forEach(([id,v,s])=>{const el=$(id);fx(el,t,s,.4,o5,.35,0,-40);
+    const g=spring(P(t,s+.1,.9)), w=340*v/30.2*clamp(g,0,1.08);
+    el.querySelector('.bar').style.width=Math.max(0,w)+'px'; el.querySelector('.val').style.left=(76+w+20)+'px'; el.querySelector('.val').style.opacity=clamp((P(t,s+.1,.9)-.35)*2);});
+  pop('pk5',t,T.cn2,T.san-.1,.25,0,.5); $('pk5').style.display=t<T.san+.15?'':'none';
+  pop('ak5',t,T.san,o5,.35,0,.5); $('ak5').style.display=t>=T.san-.1?'':'none';
+  const cdT=t-T.L10;
+  CONF.forEach(c=>{if(cdT<0||cdT>2.2){c.d.style.opacity=0;return;}const x=c.x0+c.vx*cdT*.55,y=c.y0+c.vy*cdT*.55+1100*cdT*cdT;c.d.style.opacity=1-clamp((cdT-1.6)/.6);c.d.style.transform=`translate(${x}px,${y}px) rotate(${c.rs*cdT}deg)`;});
+
+  // 6 반전 1: 미국 비중 막대
+  sv('s6',T.s6,T.s7+.3); const o6=T.s7-.1;
+  fx('t6u',t,T.s6+.05,.45,o6,.35,40); fx('u6u',t,T.s6+.2,.4,o6,.35,20); fx('c6u',t,T.s6+.2,.5,o6,.35,40);
+  US.forEach(([y,v],i)=>{const s=T.L13+.3+i*.28, g=spring(P(t,s,.9)), out=eIO(P(t,o6,.35)), h=UH(v)*clamp(g,0,1.06);
+    $('ub'+i).style.height=Math.max(0,h)+'px'; $('ub'+i).style.top=(UB-h)+'px'; $('ub'+i).style.opacity=(t>=s?1:0)*(1-out);
+    $('uv'+i).style.top=(UB-h-58)+'px'; $('uv'+i).style.opacity=clamp(P(t,s+.35,.35))*(1-out); fx('uy'+i,t,T.s6+.4,.4,o6,.35,20);});
+  pop('lab6u',t,T.wUS,o6,.35,-3);
+
+  // 7 반전 2: 2010년 일본
+  sv('s7',T.s7,T.s8+.3); const o7=T.s8-.1;
+  fx('t6',t,T.s7+.05,.45,o7,.35,40); fx('u6',t,T.s7+.2,.4,o7,.35,20); fx('c6',t,T.s7+.2,.5,o7,.35,40);
+  const lk=eIO(P(t,T.w2010+.1,1.2)); $('lp6').style.strokeDasharray=lpLen; $('lp6').style.strokeDashoffset=lpLen*(1-lk);
+  $('line6').style.opacity=(t>=T.w2010?1:0)*(1-eIO(P(t,o7,.35)));
+  document.querySelectorAll('#pts6 .pt').forEach((el,i)=>{const k=P(t,T.w2010+.1+i*.26,.3);el.setAttribute('r',16*(k<=0?0:eBack(k)));});
+  document.querySelectorAll('#pl6 .pv, #pl6 .py').forEach((el,j)=>{const i=Math.floor(j/2);const isV=el.classList.contains('pv');const s=isV?(i===0?T.w827:T.w2010+.2+i*.26):T.s7+.4;
+    const k=P(t,s,.4);el.style.opacity=clamp(k*3)*(1-eIO(P(t,o7,.35)));el.style.transform=`scale(${k<=0?.6:.6+.4*eBack(k)})`;});
+  pop('lab6',t,T.w2010+.2,o7,.35,-3);
+  document.querySelectorAll('.b10').forEach((el,i)=>{const k=P(t,T.L12b+.2+i*.12,.3);el.style.opacity=clamp(k*3)*(1-eIO(P(t,o7,.35)));el.style.transform=`translateY(${(1-eOut(k))*30}px)`;});
+
+  // 8
+  sv('s8',T.s8,T.s9+.3); const o8=T.s9-.1;
+  fx('c8',t,T.s8+.05,.5,o8,.35,50);
+  const sk=P(t,T.stamp-.12,.3), sb=eIO(P(t,o8,.35)); $('stamp8').style.opacity=clamp(sk*5)*(1-sb);
+  $('stamp8').style.transform=`rotate(-10deg) scale(${sk<=0?2.2:2.2-1.2*eOut(sk)})`;
+
+  // 9
+  sv('s9',T.s9,99);
+  fx('e1',t,T.s9+.05,.5,null,0,50); pop('e2',t,T.cmt,null,0,-2); fx('e3',t,T.L16-.6,.5,null,0,40);
+  const fk=P(t,T.L16-.45,.55), fl=$('fly');
+  if(fk>0&&fk<1){const x=lerp(480,230,eIO(fk)),y=lerp(700,1230,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L16-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.6})`;}
+  else fl.style.opacity=0;
+
+  renderDori(t);
+}
+window.render=render;
+document.fonts.ready.then(()=>{render(0);setTimeout(()=>{document.fonts.ready.then(()=>{render(0);window.__ready=true;});},300);});
+</script>
+</body>
+</html>

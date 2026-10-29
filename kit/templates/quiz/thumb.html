@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>도리 썸네일 소주</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--mint:#2E9C83;--mintL:#D5F1E7;--red:#E2483A;--yel:#FFD45C}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);font-family:P,sans-serif;color:var(--ink);word-break:keep-all}
+.frame{position:relative;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.J{font-family:Jua;font-weight:400}
+.blob{position:absolute;border-radius:50%}
+.chip{display:inline-flex;align-items:center;gap:12px;background:#fff;border:3px solid #EBDDD0;border-radius:999px;font-weight:800;white-space:nowrap}
+.chip i{display:block;border-radius:50%;background:var(--mint)}
+.fb{display:inline-block;border-radius:50%;overflow:hidden;box-shadow:0 0 0 8px #fff,0 0 0 10px rgba(62,47,37,.10),0 10px 24px rgba(100,60,30,.22);line-height:0}
+.fb svg{display:block}
+.q{position:absolute;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--red);color:#fff;font-family:Jua;box-shadow:0 0 0 7px #fff,0 8px 18px rgba(226,72,58,.35)}
+.title{isolation:isolate;font-family:Jua;line-height:1.08;letter-spacing:-2px;color:var(--ink);text-shadow:0 4px 0 #fff}
+.title em{font-style:normal;color:var(--mint)}
+.hl{position:relative;display:inline-block}
+.hl:before{content:"";position:absolute;left:-10px;right:-10px;bottom:6%;height:34%;background:var(--yel);border-radius:14px;z-index:-1;transform:rotate(-1.5deg)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="dori.js"></script>
+<script>
+const qs=new URLSearchParams(location.search), G=qs.get('guide')==='1', S='tall';
+const W=S==='tall'?1080:1280, H=S==='tall'?1920:720;
+function star(cx,cy,r){let d='';for(let i=0;i<10;i++){const rr=i%2?r*.382:r;const a=(-90+i*36)*Math.PI/180;d+=(i?'L':'M')+(cx+rr*Math.cos(a)).toFixed(2)+' '+(cy+rr*Math.sin(a)).toFixed(2);}return d+'Z';}
+function flag(f,s){let b='';
+  if(f==='us'){for(let i=0;i<13;i++)b+=`<rect y="${(i*20/13).toFixed(3)}" width="30" height="${(20/13+.03).toFixed(3)}" fill="${i%2?'#fff':'#C8283C'}"/>`;b+=`<rect width="13" height="10.8" fill="#2E3A7A"/>`;for(let r=0;r<4;r++)for(let c=0;c<5;c++)b+=`<circle cx="${1.5+c*2.5}" cy="${1.4+r*2.6}" r=".55" fill="#fff"/>`;}
+  else if(f==='jp')b=`<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/>`;
+  else if(f==='cn'){b=`<rect width="30" height="20" fill="#E3242B"/><path d="${star(8,7,3.2)}" fill="#FFD84A"/>`+[[13,3.5],[15,6],[15,9],[13,11.5]].map(([x,y])=>`<path d="${star(x,y,1.1)}" fill="#FFD84A"/>`).join('');}
+  else if(f==='vn')b=`<rect width="30" height="20" fill="#DA251D"/><path d="${star(15,10.4,5.6)}" fill="#FFCD00"/>`;
+  return `<span class="fb" style="width:${s}px;height:${s}px"><svg width="${s}" height="${s}" viewBox="5 0 20 20" preserveAspectRatio="xMidYMid slice">${b}</svg></span>`;}
+const BOT=(w)=>`<svg viewBox="0 0 100 240" width="${w}" height="${w*2.4}"><defs><linearGradient id="bgx" x1="0" x2="1"><stop offset="0" stop-color="#5DBE8A"/><stop offset=".45" stop-color="#9FE0BC"/><stop offset="1" stop-color="#5DBE8A"/></linearGradient></defs>
+ <rect x="36" y="4" width="28" height="16" rx="4" fill="#3E7D5C" stroke="#4A3A33" stroke-width="4"/>
+ <path d="M38 20 H62 V58 Q62 72 76 86 Q90 100 90 120 V222 Q90 236 76 236 H24 Q10 236 10 222 V120 Q10 100 24 86 Q38 72 38 58 Z" fill="url(#bgx)" stroke="#4A3A33" stroke-width="5" stroke-linejoin="round"/>
+ <rect x="18" y="130" width="64" height="62" rx="10" fill="#FFFDF8" stroke="#4A3A33" stroke-width="3.5"/>
+ <path d="M30 150 H70 M30 164 H62 M30 178 H66" stroke="#CDBFB2" stroke-width="5" stroke-linecap="round"/>
+ <path d="M22 110 Q20 160 24 210" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".45"/></svg>`;
+const base={t:1.2,blink:0,happy:0,squint:0,surprise:0,sad:0,open:0,gx:0,gy:0,pouch:0,armL:0,armR:0,earL:0,earR:0,hop:0,squash:0,breath:0,tilt:0};
+const root=document.getElementById('root');
+root.innerHTML=`<div class="frame" id="f" style="width:${W}px;height:${H}px"></div>`;
+const f=document.getElementById('f');
+const add=(html)=>{f.insertAdjacentHTML('beforeend',html);return f.lastElementChild;};
+function blobs(list){list.forEach(([x,y,s,c])=>add(`<div class="blob" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:radial-gradient(circle,${c} 0%,${c}00 68%)"></div>`));}
+function dori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*560/540}px"></div>`);Dori.mount(d);Dori.draw({...base,...st});return d;}
+
+
+// ---- 안 잘리는 썸네일 1장 (1080×1920) ----
+// 핵심 띠(가로 3:2로 보여도 남는 곳) y 600~1320 · x 90~960 : 제목 + 국기
+// 보조 영역(쇼츠 선반·검색 UI가 덮지 않는 곳) y 380~1540 : 칩·도리·소품
+blobs([[-320,-260,1100,'#D5F1E7'],[560,-200,900,'#FFEDB8'],[-260,1280,1000,'#FFE3D6'],[620,1340,800,'#D5F1E7']]);
+// ===== 편마다 바꾸는 곳 =====
+// 핵심 띠 y 600~1320 · x 90~960: 제목(2줄, 줄당 8자 안팎) + 핵심 그림 하나 / 보조 y 380~1540: 칩·도리·소품 / 그 밖은 배경만
+// 답(정답 국기·판정 도장)을 보여 주지 않는다. "?"는 따로 떨어진 원으로.
+const CFG={
+  chip:'숫자 퀴즈',                                                   // 시리즈: 숫자 퀴즈 · 가격 검산 · 생활 정보
+  title:'한국 <span class="hl">소주</span>,<br><em>1등 손님</em>은?',   // hl = 노란 형광펜, em = 민트
+  titleSize:156,
+  flags:['jp','cn','us','vn'],                                        // 보기 국기(flag()에 있는 나라: jp cn us vn) — 보기가 국기가 아니면 [] 로 두고 key 그림을 쓴다
+  key:null,                                                           // 국기 대신 넣을 핵심 그림 HTML(예: 큰 숫자 하나, 상품 그림)
+  prop:()=>BOT(120),                                                  // 오른쪽 아래 소품(이 편은 상표 없는 초록 병)
+  dori:{tilt:-6,gx:.6,gy:-.6,armR:.55,earL:-10,surprise:.15},
+};
+add(`<div class="abs chip" style="left:110px;top:440px;font-size:36px;padding:12px 30px"><i style="width:20px;height:20px"></i>${CFG.chip}</div>`);
+add(`<div class="abs title" style="left:104px;top:618px;font-size:${CFG.titleSize}px">${CFG.title}</div>`);
+if(CFG.flags.length){const n=CFG.flags.length, sz=n>4?120:150, gap=n>4?18:22, x0=120;
+  CFG.flags.forEach((c,i)=>add(`<div class="abs" style="left:${x0+i*(sz+gap)}px;top:1010px">${flag(c,sz)}</div>`));
+  add(`<div class="q" style="left:${x0+n*(sz+gap)+10}px;top:1020px;width:130px;height:130px;font-size:96px;transform:rotate(10deg)">?</div>`);}
+else if(CFG.key){add(`<div class="abs" style="left:110px;top:1000px;width:850px">${CFG.key}</div>`);}
+dori(70,1168,380,CFG.dori);
+if(CFG.prop) add(`<div class="abs" style="left:720px;top:1214px;transform:rotate(-10deg)">${CFG.prop()}</div>`);
+if(G){
+  add(`<div class="abs" style="left:0;top:0;width:1080px;height:380px;background:rgba(226,72,58,.18)"></div><div class="abs" style="left:0;top:1540px;width:1080px;height:380px;background:rgba(226,72,58,.18)"></div><div class="abs" style="left:960px;top:0;width:120px;height:1920px;background:rgba(226,72,58,.12)"></div><div class="abs" style="left:0;top:600px;width:1080px;height:720px;border-top:4px dashed #2E9C83;border-bottom:4px dashed #2E9C83"></div><div class="abs" style="left:0;top:285px;width:1080px;height:1350px;border-top:4px dotted #5B8CFF;border-bottom:4px dotted #5B8CFF"></div>`);
+}
+document.fonts.ready.then(()=>{setTimeout(()=>{window.__ready=true;},300);});
+</script>
+</body>
+</html>
