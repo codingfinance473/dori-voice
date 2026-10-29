@@ -1,0 +1,47 @@
+{
+ "id": "extra-01",
+ "note": "끝 구호 볼주머니에 쏙 새 테이크 + EP.01 예고",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 998,
+   "takes": 5,
+   "texts": [
+    "볼주머니에 쏙!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 999,
+   "takes": 5,
+   "texts": [
+    "볼 주머니에, 쏙!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 1000,
+   "takes": 5,
+   "texts": [
+    "다음엔 소주 퀴즈로 올게."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "BJ1",
+  "BJ2",
+  "E01L16b"
+ ]
+}
