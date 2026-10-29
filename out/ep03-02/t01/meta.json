@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t01",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 177,
+  "takes": 4,
+  "texts": [
+   "올해 구월까지 화장품 수출이 백십일억 달러! 역대 최대래."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.48,
+   "gen_s": 48.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 5.92,
+   "gen_s": 59.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 5.92,
+   "gen_s": 59.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.72,
+   "gen_s": 50.6,
+   "sr": 24000
+  }
+ ]
+}
