@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>도리 썸네일 소주</title>
+<title>도리 썸네일</title>
 <link rel="stylesheet" href="jua/index.css">
 <style>
 @font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
@@ -45,6 +45,22 @@ const BOT=(w)=>`<svg viewBox="0 0 100 240" width="${w}" height="${w*2.4}"><defs>
  <rect x="18" y="130" width="64" height="62" rx="10" fill="#FFFDF8" stroke="#4A3A33" stroke-width="3.5"/>
  <path d="M30 150 H70 M30 164 H62 M30 178 H66" stroke="#CDBFB2" stroke-width="5" stroke-linecap="round"/>
  <path d="M22 110 Q20 160 24 210" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".45"/></svg>`;
+// 소품 그림(상표 없음) — CFG.prop 에 ()=>GIM(260) 처럼 쓴다
+const GIM=(w)=>`<svg viewBox="0 0 220 200" width="${w}" height="${w*200/220}">
+ <g transform="rotate(-8 110 100)"><rect x="18" y="40" width="150" height="120" rx="12" fill="#2C3A2C" stroke="#4A3A33" stroke-width="5"/>
+ <rect x="34" y="28" width="150" height="120" rx="12" fill="#344634" stroke="#4A3A33" stroke-width="5"/>
+ <path d="M52 56 L80 70 M100 50 L130 66 M60 100 L96 112 M120 96 L160 112 M70 130 L110 138" stroke="#4F664C" stroke-width="5" stroke-linecap="round"/></g>
+ <path d="M130 196 Q96 196 98 168 Q100 132 146 104 Q192 132 194 168 Q196 196 162 196 Z" fill="#FFFDF8" stroke="#4A3A33" stroke-width="5" stroke-linejoin="round"/>
+ <path d="M122 160 H170 V196 H122 Z" fill="#344634" stroke="#4A3A33" stroke-width="4"/></svg>`;
+const COS=(w)=>`<svg viewBox="0 0 240 240" width="${w}" height="${w}">
+ <rect x="104" y="14" width="22" height="30" rx="5" fill="#E9F6F1" stroke="#4A3A33" stroke-width="4"/><path d="M126 22 H150 V32 H126" fill="#E9F6F1" stroke="#4A3A33" stroke-width="4" stroke-linejoin="round"/>
+ <rect x="94" y="42" width="42" height="18" rx="5" fill="#2E9C83" stroke="#4A3A33" stroke-width="4"/>
+ <rect x="74" y="58" width="82" height="170" rx="24" fill="#BFE7DA" stroke="#4A3A33" stroke-width="5"/>
+ <rect x="88" y="110" width="54" height="64" rx="10" fill="#FFFDF8" stroke="#4A3A33" stroke-width="3.5"/><path d="M98 128 H132 M98 142 H124 M98 156 H128" stroke="#CDBFB2" stroke-width="5" stroke-linecap="round"/>
+ <path d="M84 80 Q82 140 86 200" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".55"/>
+ <g transform="rotate(16 186 160)"><rect x="160" y="96" width="52" height="118" rx="10" fill="#FFC9C2" stroke="#4A3A33" stroke-width="5"/><rect x="170" y="210" width="32" height="22" rx="5" fill="#E2483A" stroke="#4A3A33" stroke-width="4"/>
+ <path d="M160 108 H212" stroke="#4A3A33" stroke-width="4"/><path d="M172 140 H200 M172 154 H194" stroke="#fff" stroke-width="5" stroke-linecap="round"/></g>
+ <g transform="rotate(-14 40 190)"><rect x="12" y="160" width="62" height="58" rx="14" fill="#FFE8A8" stroke="#4A3A33" stroke-width="5"/><rect x="8" y="146" width="70" height="22" rx="8" fill="#FFD45C" stroke="#4A3A33" stroke-width="4"/></g></svg>`;
 const base={t:1.2,blink:0,happy:0,squint:0,surprise:0,sad:0,open:0,gx:0,gy:0,pouch:0,armL:0,armR:0,earL:0,earR:0,hop:0,squash:0,breath:0,tilt:0};
 const root=document.getElementById('root');
 root.innerHTML=`<div class="frame" id="f" style="width:${W}px;height:${H}px"></div>`;
