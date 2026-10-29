@@ -1,0 +1,177 @@
+{
+ "id": "ep03-01",
+ "note": "EP.03 화장품 13줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 614,
+   "takes": 4,
+   "texts": [
+    "한국 화장품을 해외에서 제일 많이 사 가는 나라는 어디게?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 615,
+   "takes": 4,
+   "texts": [
+    "올해 구월까지 화장품 수출이 백십일억 달러래. 역대 최대래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 616,
+   "takes": 4,
+   "texts": [
+    "중국, 미국, 일본. 셋 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 617,
+   "takes": 4,
+   "texts": [
+    "나는 중국! 예전엔 절반 넘게 중국으로 갔잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 618,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 중국 비중은 이천 이십일 년부터 해마다 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 619,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 일 등 나라는 작년보다 사십 퍼센트 넘게 더 사 갔대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 620,
+   "takes": 4,
+   "texts": [
+    "미국이 이십일 점 일 퍼센트로 일 등이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 621,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 중국은 이 등, 일본은 삼 등이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 622,
+   "takes": 4,
+   "texts": [
+    "근데 미국은 작년에 벌써 중국을 앞질렀대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 623,
+   "takes": 4,
+   "texts": [
+    "올해는 차이가 칠억 달러 넘게 벌어졌어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 624,
+   "takes": 4,
+   "texts": [
+    "그리고 올해는 구월까지만 벌써 작년 일 년 치에 거의 다 왔대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 625,
+   "takes": 4,
+   "texts": [
+    "정리하면, 올해 구월까지 일 등은 미국!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 626,
+   "takes": 4,
+   "texts": [
+    "다음엔 바나나 퀴즈로 올게."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L11",
+  "L11b",
+  "L12",
+  "L12b",
+  "L13",
+  "L14",
+  "L16b"
+ ]
+}
