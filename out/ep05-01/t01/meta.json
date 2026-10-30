@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t01",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 919,
+  "takes": 4,
+  "texts": [
+   "작년엔 천구백육십이 년 조사를 시작한 뒤로 제일 적었대!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.24,
+   "gen_s": 47.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.76,
+   "gen_s": 43.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.56,
+   "gen_s": 50.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.68,
+   "gen_s": 43.8,
+   "sr": 24000
+  }
+ ]
+}

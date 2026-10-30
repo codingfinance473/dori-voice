@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t14",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 932,
+  "takes": 4,
+  "texts": [
+   "너는 하루에 밥 몇 공기 먹어? 댓글로 알려 줘!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.8,
+   "gen_s": 44.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 9.12,
+   "gen_s": 73.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.08,
+   "gen_s": 40.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.88,
+   "gen_s": 44.9,
+   "sr": 24000
+  }
+ ]
+}
