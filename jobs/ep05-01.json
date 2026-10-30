@@ -1,0 +1,203 @@
+{
+ "id": "ep05-01",
+ "note": "EP.05 쌀 15줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 918,
+   "takes": 4,
+   "texts": [
+    "한국 사람은 하루에 쌀을 얼마나 먹을까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 919,
+   "takes": 4,
+   "texts": [
+    "작년엔 천구백육십이 년 조사를 시작한 뒤로 제일 적었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 920,
+   "takes": 4,
+   "texts": [
+    "백오십 그램, 삼백 그램, 오백 그램. 셋 중에 뭘까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 921,
+   "takes": 4,
+   "texts": [
+    "고정 댓글에 번호로 먼저 찍고 봐!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 922,
+   "takes": 4,
+   "texts": [
+    "나는 삼백 그램! 하루 세 끼 다 밥 먹잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 923,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 삼십 년 전보다 거의 반으로 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 924,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 일 년에 먹는 쌀이 이십 킬로 포대 세 개가 안 된대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 925,
+   "takes": 4,
+   "texts": [
+    "백사십칠 점 칠 그램!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 926,
+   "takes": 4,
+   "texts": [
+    "처음으로 하루 백오십 그램 아래로 내려갔대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 927,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 삼백 그램은 삼십 년 전 얘기였어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 928,
+   "takes": 4,
+   "texts": [
+    "근데 식품 만드는 데 쓴 쌀은 오히려 늘었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 929,
+   "takes": 4,
+   "texts": [
+    "일 년에 구십삼만 톤, 육 점 칠 퍼센트 늘었어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 930,
+   "takes": 4,
+   "texts": [
+    "떡은 삼십이 퍼센트, 과자는 삼십구 퍼센트나 늘었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 931,
+   "takes": 4,
+   "texts": [
+    "정리하면, 하루 쌀은 백사십칠 점 칠 그램!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 932,
+   "takes": 4,
+   "texts": [
+    "너는 하루에 밥 몇 공기 먹어? 댓글로 알려 줘!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L03b",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L12b",
+  "L13",
+  "L14",
+  "L15"
+ ]
+}
