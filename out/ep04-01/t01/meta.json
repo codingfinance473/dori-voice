@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t01",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 588,
+  "takes": 4,
+  "texts": [
+   "올해 팔월까지 들어온 수입 소고기가 삼십사만 톤이 넘었대!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.48,
+   "gen_s": 21.6,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.64,
+   "gen_s": 21.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.48,
+   "gen_s": 20.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.8,
+   "gen_s": 22.1,
+   "sr": 24000
+  }
+ ]
+}

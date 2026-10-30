@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t04",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 591,
+  "takes": 4,
+  "texts": [
+   "힌트 하나. 일 등 나라는 혼자서 절반 넘게 차지했대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.5,
+ "cpu": 4,
+ "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.24,
+   "gen_s": 27.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.32,
+   "gen_s": 28.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 3.76,
+   "gen_s": 25.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.24,
+   "gen_s": 27.4,
+   "sr": 24000
+  }
+ ]
+}

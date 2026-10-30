@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t12",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 599,
+  "takes": 4,
+  "texts": [
+   "정리하면, 올해 팔월까지 일 등은 호주!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.1,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 3.2,
+   "gen_s": 18.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.12,
+   "gen_s": 17.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 9.52,
+   "gen_s": 43.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.68,
+   "gen_s": 20.9,
+   "sr": 24000
+  }
+ ]
+}

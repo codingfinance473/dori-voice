@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t05",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 592,
+  "takes": 4,
+  "texts": [
+   "힌트 둘. 이 나라는 우리랑 계절이 반대래."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.1,
+ "cpu": 4,
+ "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.16,
+   "gen_s": 22.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.36,
+   "gen_s": 18.6,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 3.84,
+   "gen_s": 20.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.32,
+   "gen_s": 22.0,
+   "sr": 24000
+  }
+ ]
+}

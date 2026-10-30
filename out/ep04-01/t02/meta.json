@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t02",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 589,
+  "takes": 4,
+  "texts": [
+   "미국, 호주, 뉴질랜드. 셋 중에 하나야!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.9,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.24,
+   "gen_s": 39.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.64,
+   "gen_s": 42.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.48,
+   "gen_s": 41.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.48,
+   "gen_s": 41.1,
+   "sr": 24000
+  }
+ ]
+}
