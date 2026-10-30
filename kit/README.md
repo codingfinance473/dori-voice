@@ -27,7 +27,7 @@ cd ~/ep03
 python3 voice/voice_job.py make ep03-01 L01 L02 L03 … --note "EP.03 화장품"
 python3 voice/voice_job.py wait ep03-01          # 백그라운드로, 8~15분
 python3 voice/select_takes.py                     # 확인할 줄은 말을 바꿔 다시 만든다
-python3 voice/make_ending.py L16 L16b
+# 끝인사 L16 은 "reuse": "bolju_ssok"(다음 편 예고 없음)
 python3 build_voice.py                            # order · WORD 고치기
 python3 render.py stills 3 12 20 …                # index.html 고치며 정지 화면 확인
 python3 mix.py && python3 check_final.py mix.wav
