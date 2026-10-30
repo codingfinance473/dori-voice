@@ -1,0 +1,177 @@
+{
+ "id": "ep04-01",
+ "note": "EP.04 소고기 13줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 587,
+   "takes": 4,
+   "texts": [
+    "한국이 소고기를 제일 많이 사 오는 나라는 어디게?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 588,
+   "takes": 4,
+   "texts": [
+    "올해 팔월까지 들어온 수입 소고기가 삼십사만 톤이 넘었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 589,
+   "takes": 4,
+   "texts": [
+    "미국, 호주, 뉴질랜드. 셋 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 590,
+   "takes": 4,
+   "texts": [
+    "나는 미국! 마트에서 미국산 엄청 많이 봤거든."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 591,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 일 등 나라는 혼자서 절반 넘게 차지했대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 592,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 이 나라는 우리랑 계절이 반대래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 593,
+   "takes": 4,
+   "texts": [
+    "호주!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 594,
+   "takes": 4,
+   "texts": [
+    "호주가 오십사 점 오 퍼센트로 일 등이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 595,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 미국은 사십 점 삼 퍼센트, 이 등이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 596,
+   "takes": 4,
+   "texts": [
+    "근데 작년엔 미국이 일 등이었대. 구 년 연속!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 597,
+   "takes": 4,
+   "texts": [
+    "올해 자리가 딱 바뀐 거야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 598,
+   "takes": 4,
+   "texts": [
+    "그리고 호주랑 미국을 합치면 구십오 퍼센트 가까이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 599,
+   "takes": 4,
+   "texts": [
+    "정리하면, 올해 팔월까지 일 등은 호주!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L12b",
+  "L13",
+  "L14"
+ ]
+}
