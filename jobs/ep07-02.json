@@ -1,0 +1,86 @@
+{
+ "id": "ep07-02",
+ "note": "EP.07 억 달러 줄 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 275,
+   "takes": 4,
+   "texts": [
+    "칠 억, 십사 억, 이십일 억 달러 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 276,
+   "takes": 4,
+   "texts": [
+    "나는 제일 큰 거! 요즘 매운 라면이 엄청 잘 팔리잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 277,
+   "takes": 4,
+   "texts": [
+    "십사 억 달러!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 278,
+   "takes": 4,
+   "texts": [
+    "구월까지 십사 억 달러를 넘었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 279,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 건 너무 많았네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 280,
+   "takes": 4,
+   "texts": [
+    "정리하면, 올해 구월까지 라면 수출은 십사 억 달러!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L03",
+  "L05",
+  "L10",
+  "L11",
+  "L11b",
+  "L14"
+ ]
+}
