@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t00",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 179,
+  "takes": 4,
+  "texts": [
+   "출국하는 공항이야!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 2.08,
+   "gen_s": 12.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 1.28,
+   "gen_s": 9.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 1.52,
+   "gen_s": 10.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 1.52,
+   "gen_s": 10.5,
+   "sr": 24000
+  }
+ ]
+}
