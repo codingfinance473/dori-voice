@@ -1,0 +1,216 @@
+{
+ "id": "life02-01",
+ "note": "생활 검산 EP.02 연금저축·IRP",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 834,
+   "takes": 4,
+   "texts": [
+    "연봉 오천만 원, 연금저축이랑 아이알피에 구백만 원 넣으면 얼마 돌려받을까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 835,
+   "takes": 4,
+   "texts": [
+    "올해 넣은 돈은 올해 연말정산에서 세액공제래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 836,
+   "takes": 4,
+   "texts": [
+    "구십만 원, 백사십팔만 오천 원, 삼백만 원. 셋 중에 뭘까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 837,
+   "takes": 4,
+   "texts": [
+    "나는 구십만 원! 한 십 퍼센트쯤 아냐?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 838,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 총급여 오천오백만 원을 기준으로 비율이 두 가지래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 839,
+   "takes": 4,
+   "texts": [
+    "백사십팔만 오천 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 840,
+   "takes": 4,
+   "texts": [
+    "구백만 원의 십육 점 오 퍼센트래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 841,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 구십만 원은 한참 모자랐어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 842,
+   "takes": 4,
+   "texts": [
+    "연금저축은 육백만 원까지, 나머지 삼백만 원은 아이알피로 채워야 한대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 843,
+   "takes": 4,
+   "texts": [
+    "총급여가 오천오백만 원을 넘으면, 공제율은 십삼 점 이 퍼센트래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 844,
+   "takes": 4,
+   "texts": [
+    "그럼 돌려받는 돈은 백십팔만 팔천 원이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 845,
+   "takes": 4,
+   "texts": [
+    "근데 반전! 오십오 세 전에 깨면, 십육 점 오 퍼센트를 다시 낸대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 846,
+   "takes": 4,
+   "texts": [
+    "공제받은 원금이랑 수익에 붙는대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 847,
+   "takes": 4,
+   "texts": [
+    "십삼 점 이 퍼센트로 받은 사람은, 받은 것보다 더 내게 돼."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 848,
+   "takes": 4,
+   "texts": [
+    "정리하면, 구백만 원 넣으면 최대 백사십팔만 오천 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t15",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 849,
+   "takes": 4,
+   "texts": [
+    "너는 연금저축 있어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L13",
+  "L13b",
+  "L14",
+  "L14e",
+  "L14f",
+  "L15a",
+  "L15"
+ ]
+}
