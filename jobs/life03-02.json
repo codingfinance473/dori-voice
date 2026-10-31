@@ -1,0 +1,34 @@
+{
+ "id": "life03-02",
+ "note": "생활 검산 EP.03 L10·L14f 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 961,
+   "takes": 4,
+   "texts": [
+    "출국하는 공항이야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 962,
+   "takes": 4,
+   "texts": [
+    "그리고 과자를 일본에서 먹어 버리면, 면세가 안 된대!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L10",
+  "L14f"
+ ]
+}
