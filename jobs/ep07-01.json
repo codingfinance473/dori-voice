@@ -1,0 +1,190 @@
+{
+ "id": "ep07-01",
+ "note": "EP.07 라면 14줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 529,
+   "takes": 4,
+   "texts": [
+    "올해 일월부터 구월까지, 우리나라 라면 수출액은 얼마게?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 530,
+   "takes": 4,
+   "texts": [
+    "올해 상반기에만 구억 달러 넘게 팔았대! 역대 최대래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 531,
+   "takes": 4,
+   "texts": [
+    "칠억, 십사억, 이십일억 달러. 셋 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 532,
+   "takes": 4,
+   "texts": [
+    "나는 이십일억! 요즘 매운 라면이 엄청 잘 팔리잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 533,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 작년 같은 기간보다 이십오 퍼센트 넘게 늘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 534,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 작년엔 일 년 내내 팔아서 십오억 달러였대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 535,
+   "takes": 4,
+   "texts": [
+    "십사억 달러!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 536,
+   "takes": 4,
+   "texts": [
+    "구월까지 십사억 달러를 넘었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 537,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 이십일억은 너무 많았네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 538,
+   "takes": 4,
+   "texts": [
+    "작년 일 년 치까지 일억 달러 정도 남았대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 539,
+   "takes": 4,
+   "texts": [
+    "작년 시월엔 한 달에 일억 삼천만 달러를 팔았거든."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 540,
+   "takes": 4,
+   "texts": [
+    "작년엔 중국이 일 등, 미국이 이 등이었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 541,
+   "takes": 4,
+   "texts": [
+    "정리하면, 올해 구월까지 라면 수출 십사억 달러!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 542,
+   "takes": 4,
+   "texts": [
+    "너는 국물 라면이 좋아, 볶음 라면이 좋아?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L12b",
+  "L13",
+  "L14",
+  "L15"
+ ]
+}
