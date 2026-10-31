@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t03",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 278,
+  "takes": 4,
+  "texts": [
+   "구월까지 십사 억 달러를 넘었대!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.5,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 2.48,
+   "gen_s": 33.6,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.24,
+   "gen_s": 49.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 2.4,
+   "gen_s": 39.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.36,
+   "gen_s": 50.6,
+   "sr": 24000
+  }
+ ]
+}
