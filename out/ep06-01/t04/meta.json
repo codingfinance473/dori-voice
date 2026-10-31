@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t04",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 460,
+  "takes": 4,
+  "texts": [
+   "힌트 하나. 이 나라는 작년 같은 달보다 팔십 퍼센트 넘게 더 보냈대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.0,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 5.52,
+   "gen_s": 24.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 6.48,
+   "gen_s": 28.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 6.88,
+   "gen_s": 29.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 6.4,
+   "gen_s": 28.5,
+   "sr": 24000
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t07",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 463,
+  "takes": 4,
+  "texts": [
+   "구월엔 스페인이 삼십일 점 일 퍼센트로 일 등이래!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.6,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.08,
+   "gen_s": 39.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.44,
+   "gen_s": 36.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.8,
+   "gen_s": 45.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.0,
+   "gen_s": 40.3,
+   "sr": 24000
+  }
+ ]
+}
