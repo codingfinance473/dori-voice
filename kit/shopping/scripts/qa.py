@@ -123,7 +123,7 @@ def main(epdir):
     loc = sorted({s_["name"] for s_ in facts["sources"] if s_["kind"] == "현지 가격"})
     krs = sorted({s_["name"] for s_ in facts["sources"] if s_["kind"] == "한국 가격"})
     up = [f"# 업로드 꾸러미 — {facts['title']}", "",
-          f"## 제목 (1개{', 맨 앞 [광고] 유지' if ad else ''} — 답·판정은 쓰지 않는다)", keep.get("title") or pre, "",
+          f"## 제목 (1개{', 맨 앞 [광고] 유지' if ad else ''} — 답·판정은 쓰지 않는다, 끝에 해시태그 2~3개)", keep.get("title") or pre, "",
           "## 설명"]
     if ad:
         up += ["광고 · 이 영상의 상품 태그로 구매하면 채널이 판매 수수료를 받습니다.", ""]
