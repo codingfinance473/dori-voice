@@ -1,0 +1,216 @@
+{
+ "id": "life01-01",
+ "note": "생활 검산 EP.01 연말정산 카드 공제",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 688,
+   "takes": 4,
+   "texts": [
+    "연봉 사천만 원이면, 카드를 얼마부터 써야 공제가 시작될까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 689,
+   "takes": 4,
+   "texts": [
+    "홈택스에 연말정산 미리보기가 열렸대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 690,
+   "takes": 4,
+   "texts": [
+    "오백만 원, 천만 원, 이천만 원. 셋 중에 뭘까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 691,
+   "takes": 4,
+   "texts": [
+    "나는 오백만 원! 그 정도면 충분하지 않아?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 692,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 기준은 연봉의 몇 분의 일이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 693,
+   "takes": 4,
+   "texts": [
+    "천만 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 694,
+   "takes": 4,
+   "texts": [
+    "총급여의 이십오 퍼센트, 사분의 일부터 공제래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 695,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 오백만 원은 딱 절반이었어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 696,
+   "takes": 4,
+   "texts": [
+    "연봉이 천만 원 오르면, 기준선은 이백오십만 원씩 올라가."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 697,
+   "takes": 4,
+   "texts": [
+    "기준선을 넘으면, 신용카드는 십오 퍼센트 공제래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 698,
+   "takes": 4,
+   "texts": [
+    "체크카드랑 현금영수증은 삼십 퍼센트, 두 배야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 699,
+   "takes": 4,
+   "texts": [
+    "근데 반전! 기준선은 신용카드로 쓴 돈부터 먼저 채운대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 700,
+   "takes": 4,
+   "texts": [
+    "그래서 기준선 전에는 뭘로 써도 공제는 똑같대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 701,
+   "takes": 4,
+   "texts": [
+    "차이는 기준선을 넘은 뒤부터야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 702,
+   "takes": 4,
+   "texts": [
+    "정리하면, 카드 공제는 총급여의 이십오 퍼센트부터!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t15",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 703,
+   "takes": 4,
+   "texts": [
+    "너는 신용카드파야, 체크카드파야?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L13",
+  "L13b",
+  "L14",
+  "L14c",
+  "L14d",
+  "L15a",
+  "L15"
+ ]
+}
