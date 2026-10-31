@@ -29,6 +29,7 @@ body{background:var(--cream);font-family:P,sans-serif;color:var(--ink);word-brea
 <body>
 <div id="root"></div>
 <script src="dori.js"></script>
+<script src="money.js"></script>
 <script>
 const qs=new URLSearchParams(location.search), G=qs.get('guide')==='1', S='tall';
 const W=S==='tall'?1080:1280, H=S==='tall'?1920:720;
@@ -84,12 +85,12 @@ blobs([[-320,-260,1100,'#D5F1E7'],[560,-200,900,'#FFEDB8'],[-260,1280,1000,'#FFE
 const CARD=(w,c1,c2,rot=0)=>`<svg viewBox="0 0 160 104" width="${w}" height="${w*.65}" style="transform:rotate(${rot}deg)"><defs><linearGradient id="tc${c1.slice(1)}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect x="3" y="3" width="154" height="98" rx="14" fill="url(#tc${c1.slice(1)})" stroke="#4A3A33" stroke-width="4"/><rect x="3" y="24" width="154" height="16" fill="#3E2F25" opacity=".55"/><rect x="18" y="52" width="30" height="22" rx="5" fill="#FFD45C" stroke="#4A3A33" stroke-width="3"/><path d="M60 80 H96 M104 80 H128" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".85"/></svg>`;
 const OPT=v=>`<div style="display:inline-flex;align-items:center;height:118px;padding:0 30px;margin-right:18px;background:#fff;border-radius:30px;border:3px solid #EBDDD0;box-shadow:0 12px 26px rgba(120,80,40,.14);font-family:Jua;font-size:62px;color:#3E2F25;white-space:nowrap">${v}</div>`;
 const CFG={
-  chip:'생활 검산 · 연말정산',
-  title:'카드 공제,<br><span class="hl">얼마부터</span>?',
-  titleSize:150,
+  chip:'생활 검산 · 연금저축·IRP',
+  title:'900만 원 넣으면<br><span class="hl">얼마</span> 돌려받지?',
+  titleSize:124,
   flags:[],
-  key:`<div style="display:flex;align-items:center">${OPT('500만')}${OPT('1000만')}${OPT('2000만')}</div>`,
-  prop:()=>`<div style="position:relative;width:230px;height:190px">${CARD(200,'#A9B6D6','#6E7FA8',-12)}<div style="position:absolute;left:30px;top:44px">${CARD(200,'#FFB27A','#E8833A',8)}</div></div>`,
+  key:`<div style="display:flex;align-items:center">${OPT('90만')}${OPT('148.5만')}${OPT('300만')}</div>`,
+  prop:()=>JAR(200,'#E8833A',''),
   dori:{tilt:-6,gx:.6,gy:-.6,armR:.55,earL:-10,surprise:.15},
 };
 add(`<div class="abs chip" style="left:110px;top:440px;font-size:36px;padding:12px 30px"><i style="width:20px;height:20px"></i>${CFG.chip}</div>`);
