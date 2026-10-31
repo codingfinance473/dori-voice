@@ -1,0 +1,34 @@
+{
+ "id": "life02-02",
+ "note": "생활 검산 EP.02 L02·L13 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 324,
+   "takes": 4,
+   "texts": [
+    "올해 넣은 돈은, 올해 연말정산 때 돌려받는대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 325,
+   "takes": 4,
+   "texts": [
+    "연봉이 오천 오백만 원을 넘으면, 공제율은 십삼 점 이 퍼센트래."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L02",
+  "L13"
+ ]
+}
