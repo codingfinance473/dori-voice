@@ -1,0 +1,21 @@
+{
+ "id": "ep06-02",
+ "note": "EP.06 L11b 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 954,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 미국은 이 등이래."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L11b"
+ ]
+}
