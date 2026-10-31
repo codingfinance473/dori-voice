@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t00",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 834,
+  "takes": 4,
+  "texts": [
+   "연봉 오천만 원, 연금저축이랑 아이알피에 구백만 원 넣으면 얼마 돌려받을까?"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.6,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 5.68,
+   "gen_s": 49.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 5.84,
+   "gen_s": 49.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 5.84,
+   "gen_s": 49.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 6.16,
+   "gen_s": 53.4,
+   "sr": 24000
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t10",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 844,
+  "takes": 4,
+  "texts": [
+   "그럼 돌려받는 돈은 백십팔만 팔천 원이야."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.24,
+   "gen_s": 20.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.44,
+   "gen_s": 17.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.0,
+   "gen_s": 19.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 2.96,
+   "gen_s": 15.5,
+   "sr": 24000
+  }
+ ]
+}
