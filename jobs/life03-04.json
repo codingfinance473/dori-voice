@@ -1,0 +1,21 @@
+{
+ "id": "life03-04",
+ "note": "생활 검산 EP.03 L03 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 680,
+   "takes": 4,
+   "texts": [
+    "이제 면세는 어디서 받을까? 계산대, 출국하는 공항, 한국 와서!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L03"
+ ]
+}
