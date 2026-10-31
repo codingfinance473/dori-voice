@@ -1,0 +1,21 @@
+{
+ "id": "life02-03",
+ "note": "생활 검산 EP.02 L03 다시(작업 실패분)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 470,
+   "takes": 4,
+   "texts": [
+    "구십만 원, 백사십팔만 오천 원, 삼백만 원. 셋 중에 뭘까?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L03"
+ ]
+}
