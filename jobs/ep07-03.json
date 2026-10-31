@@ -1,0 +1,21 @@
+{
+ "id": "ep07-03",
+ "note": "EP.07 L06 빠진 줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 109,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 작년 같은 기간보다 이십오 퍼센트 넘게 늘었대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L06"
+ ]
+}
