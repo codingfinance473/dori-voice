@@ -1,0 +1,216 @@
+{
+ "id": "life03-01",
+ "note": "생활 검산 EP.03 일본 면세 리펀드",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 215,
+   "takes": 4,
+   "texts": [
+    "오늘부터 일본 면세가 바뀌었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 216,
+   "takes": 4,
+   "texts": [
+    "칠십 년 넘게 써 온 방식이 바뀐 거래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 217,
+   "takes": 4,
+   "texts": [
+    "이제 면세는 어디서 받을까? 계산대, 출국 공항, 한국 와서!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 218,
+   "takes": 4,
+   "texts": [
+    "나는 계산대! 지금까지 그랬잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 219,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 이제 가게에서는 세금까지 다 내고 산대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 220,
+   "takes": 4,
+   "texts": [
+    "출국 공항!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 221,
+   "takes": 4,
+   "texts": [
+    "출국할 때 여권으로 확인받고, 그다음에 돌려받는대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 222,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 계산대는 이제 옛날 얘기야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 223,
+   "takes": 4,
+   "texts": [
+    "화장품 오천 엔어치를 사면, 세금 오백 엔을 먼저 내는 거야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 224,
+   "takes": 4,
+   "texts": [
+    "최소 금액은 그대로래. 같은 가게, 하루, 세전 오천 엔 이상."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 225,
+   "takes": 4,
+   "texts": [
+    "대신 소모품 오십만 엔 상한은 없어졌대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 226,
+   "takes": 4,
+   "texts": [
+    "근데 반전! 짐 부치기 전에 확인을 받아야 한대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 227,
+   "takes": 4,
+   "texts": [
+    "부친 가방 속 물건은 확인을 못 받는대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 228,
+   "takes": 4,
+   "texts": [
+    "일본에서 먹어 버린 과자도, 면세가 안 된대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 229,
+   "takes": 4,
+   "texts": [
+    "정리하면, 이제 일본 면세는 출국 공항에서!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t15",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 230,
+   "takes": 4,
+   "texts": [
+    "너는 일본 가면 뭐 사 와?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L13",
+  "L13b",
+  "L14",
+  "L14e",
+  "L14f",
+  "L15a",
+  "L15"
+ ]
+}
