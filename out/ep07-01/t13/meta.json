@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t13",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 542,
+  "takes": 4,
+  "texts": [
+   "너는 국물 라면이 좋아, 볶음 라면이 좋아?"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.2,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 3.52,
+   "gen_s": 35.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 2.88,
+   "gen_s": 31.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 2.96,
+   "gen_s": 32.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.12,
+   "gen_s": 33.5,
+   "sr": 24000
+  }
+ ]
+}
