@@ -1,0 +1,34 @@
+{
+ "id": "ep05-03",
+ "note": "EP.05 권유 말투 2줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 790,
+   "takes": 4,
+   "texts": [
+    "너도 하나 찍어 봐!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 791,
+   "takes": 4,
+   "texts": [
+    "너는 하루에 밥 몇 공기 먹어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L03b",
+  "L15"
+ ]
+}
