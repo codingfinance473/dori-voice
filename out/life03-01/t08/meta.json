@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t08",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 223,
+  "takes": 4,
+  "texts": [
+   "화장품 오천 엔어치를 사면, 세금 오백 엔을 먼저 내는 거야."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.7,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.96,
+   "gen_s": 47.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.72,
+   "gen_s": 45.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.56,
+   "gen_s": 43.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.8,
+   "gen_s": 44.6,
+   "sr": 24000
+  }
+ ]
+}
