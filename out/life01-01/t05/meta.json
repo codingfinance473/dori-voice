@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t05",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 693,
+  "takes": 4,
+  "texts": [
+   "천만 원!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.0,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 1.12,
+   "gen_s": 20.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 1.36,
+   "gen_s": 22.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 0.96,
+   "gen_s": 19.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 1.2,
+   "gen_s": 20.6,
+   "sr": 24000
+  }
+ ]
+}

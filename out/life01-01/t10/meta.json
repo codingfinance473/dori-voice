@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t10",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 698,
+  "takes": 4,
+  "texts": [
+   "체크카드랑 현금영수증은 삼십 퍼센트, 두 배야!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.6,
+ "cpu": 4,
+ "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 3.84,
+   "gen_s": 26.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.52,
+   "gen_s": 25.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.24,
+   "gen_s": 28.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.68,
+   "gen_s": 26.0,
+   "sr": 24000
+  }
+ ]
+}
