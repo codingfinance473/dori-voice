@@ -1,0 +1,34 @@
+{
+ "id": "life01-02",
+ "note": "생활 검산 EP.01 반전 줄 고침",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 878,
+   "takes": 4,
+   "texts": [
+    "그래서 기준선만큼은 뭘로 써도 공제가 없대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 879,
+   "takes": 4,
+   "texts": [
+    "차이는 기준선을 넘은 만큼에서 생긴대!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L14e",
+  "L14f"
+ ]
+}
