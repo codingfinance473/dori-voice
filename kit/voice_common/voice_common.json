@@ -56,10 +56,10 @@
   "spoken": "볼주머니에 쏙!"
  },
  {
-  "id": "pin_ask",
-  "file": "pin_ask.wav",
-  "dur": 2.04,
-  "sub": "고정 댓글에<br>번호로 먼저 찍고 봐!",
-  "spoken": "고정 댓글에 번호로 먼저 찍고 봐!"
+  "id": "pick_ask",
+  "file": "pick_ask.wav",
+  "dur": 1.293,
+  "sub": "너도 하나 찍어 봐!",
+  "spoken": "너도 하나 찍어 봐!"
  }
 ]

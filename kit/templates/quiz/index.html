@@ -239,8 +239,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 
   <!-- 9 마무리 -->
   <div class="scene" id="s9">
-    <div class="ttl" id="e1">너는 처음에<br>뭐 찍었어?</div>
-    <div class="abs" id="e2"><svg width="46" height="42" viewBox="0 0 46 42"><path d="M6 4 H40 Q44 4 44 8 V26 Q44 30 40 30 H22 L12 39 V30 H6 Q2 30 2 26 V8 Q2 4 6 4 Z" fill="#2E9C83"/><circle cx="14" cy="17" r="3" fill="#fff"/><circle cx="23" cy="17" r="3" fill="#fff"/><circle cx="32" cy="17" r="3" fill="#fff"/></svg>댓글로 알려 줘!</div>
+    <div class="ttl" id="e1">[주제에 맞는<br>경험 질문]</div>
   </div>
 
   <div id="conf" class="abs"></div>
@@ -456,7 +455,7 @@ function render(t){
 
   // 9
   sv('s9',T.s9,99);
-  fx('e1',t,T.s9+.05,.5,null,0,50); pop('e2',t,T.cmt,null,0,-2);
+  fx('e1',t,T.s9+.05,.5,null,0,50);
   const fk=P(t,T.L16-.45,.55), fl=$('fly');
   if(fk>0&&fk<1){const x=lerp(480,230,eIO(fk)),y=lerp(700,1230,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L16-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.6})`;}
   else fl.style.opacity=0;
