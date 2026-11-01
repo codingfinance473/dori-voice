@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t13",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 196,
+  "takes": 4,
+  "texts": [
+   "너 휴대폰 저장 공간은 몇 기가야?"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.6,
+ "cpu": 4,
+ "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 3.12,
+   "gen_s": 19.6,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 2.4,
+   "gen_s": 16.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 2.24,
+   "gen_s": 15.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 2.4,
+   "gen_s": 15.9,
+   "sr": 24000
+  }
+ ]
+}
