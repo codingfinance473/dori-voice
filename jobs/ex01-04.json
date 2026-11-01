@@ -1,0 +1,21 @@
+{
+ "id": "ex01-04",
+ "note": "설명 EP L10 다시2",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 295,
+   "takes": 4,
+   "texts": [
+    "그래도 반도체 값은 시월에도 또 올랐대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L10"
+ ]
+}
