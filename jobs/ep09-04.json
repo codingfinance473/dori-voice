@@ -1,0 +1,151 @@
+{
+ "id": "ep09-04",
+ "note": "EP.09 내년 예산안 퀴즈로 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 937,
+   "takes": 4,
+   "texts": [
+    "내년 우리나라 예산은 얼마나 될까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 938,
+   "takes": 4,
+   "texts": [
+    "칠백, 팔백, 천 조 원 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 939,
+   "takes": 4,
+   "texts": [
+    "나는 칠백 조 원! 올해랑 비슷하겠지."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 940,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 올해보다 십이 점 팔 퍼센트 늘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 941,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 천 조 원을 넘는 건 이천삼십 년쯤이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 942,
+   "takes": 4,
+   "texts": [
+    "팔백 조 원이 넘어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 943,
+   "takes": 4,
+   "texts": [
+    "역대 가장 큰 예산이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 944,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 건 너무 적었네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 945,
+   "takes": 4,
+   "texts": [
+    "전에는 이천구 년의 십 점 육 퍼센트가 제일 컸대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 946,
+   "takes": 4,
+   "texts": [
+    "하루로 나누면, 이 조 원이 넘는대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 947,
+   "takes": 4,
+   "texts": [
+    "정리하면, 내년 예산안은 팔백 조 원이 넘어!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12b",
+  "L13",
+  "L14"
+ ]
+}
