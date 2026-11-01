@@ -1,0 +1,21 @@
+{
+ "id": "ep09-03",
+ "note": "EP.09 L01 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 830,
+   "takes": 4,
+   "texts": [
+    "우리나라 예산은 일 년에 얼마나 될까?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01"
+ ]
+}
