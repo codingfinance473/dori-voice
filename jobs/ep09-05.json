@@ -1,0 +1,47 @@
+{
+ "id": "ep09-05",
+ "note": "EP.09 L05·L07·L12b 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 639,
+   "takes": 4,
+   "texts": [
+    "나는 칠백 조 원! 지금이랑 비슷하겠지."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 640,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 천 조 원은 아직 몇 년 더 걸린대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 641,
+   "takes": 4,
+   "texts": [
+    "전에는 이천구 년이 제일 컸대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L05",
+  "L07",
+  "L12b"
+ ]
+}
