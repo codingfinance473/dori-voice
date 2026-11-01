@@ -1,0 +1,99 @@
+{
+ "id": "ep09-02",
+ "note": "EP.09 조 원 줄 다시 + L06",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 432,
+   "takes": 4,
+   "texts": [
+    "칠십 조 원, 칠백 조 원, 칠천 조 원 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 433,
+   "takes": 4,
+   "texts": [
+    "나는 칠십 조 원! 그것도 상상이 안 되잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 434,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 작년 예산보다 팔 점 일 퍼센트 늘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 435,
+   "takes": 4,
+   "texts": [
+    "칠백 조 원이 넘어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 436,
+   "takes": 4,
+   "texts": [
+    "하루로 나누면, 이 조 원쯤이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 437,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 건 열 배나 작았네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 438,
+   "takes": 4,
+   "texts": [
+    "내년 예산안은 이보다 십이 퍼센트 넘게 더 크대!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L03",
+  "L05",
+  "L06",
+  "L10",
+  "L11",
+  "L11b",
+  "L12"
+ ]
+}
