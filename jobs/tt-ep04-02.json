@@ -1,0 +1,34 @@
+{
+ "id": "tt-ep04-02",
+ "note": "틱톡판 EP.04 L12b 대안",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 177,
+   "takes": 4,
+   "texts": [
+    "올해는 일 등이 바뀐 거야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 178,
+   "takes": 4,
+   "texts": [
+    "올해 순위가 뒤집혔대!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L12y",
+  "L12z"
+ ]
+}
