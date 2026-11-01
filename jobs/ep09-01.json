@@ -1,0 +1,190 @@
+{
+ "id": "ep09-01",
+ "note": "EP.09 나라 예산 14줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 438,
+   "takes": 4,
+   "texts": [
+    "우리나라 일 년 예산은 얼마나 될까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 439,
+   "takes": 4,
+   "texts": [
+    "지금 국회가 내년 예산을 심사하고 있대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 440,
+   "takes": 4,
+   "texts": [
+    "칠십조, 칠백조, 칠천조 원. 셋 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 441,
+   "takes": 4,
+   "texts": [
+    "나는 칠십조! 그것도 상상이 안 되잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 442,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 작년 예산보다 팔 점 일 퍼센트 늘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 443,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 한 달로 나누면 육십조 원이 넘는대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 444,
+   "takes": 4,
+   "texts": [
+    "칠백조가 넘어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 445,
+   "takes": 4,
+   "texts": [
+    "하루에 이조 원씩 쓰는 셈이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 446,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 칠십조는 열 배나 작았네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 447,
+   "takes": 4,
+   "texts": [
+    "내년 예산안은 팔백이십조 원이 넘는대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 448,
+   "takes": 4,
+   "texts": [
+    "늘어나는 비율이 역대 가장 크대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 449,
+   "takes": 4,
+   "texts": [
+    "일 초로 나누면, 이천삼백만 원쯤이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 450,
+   "takes": 4,
+   "texts": [
+    "정리하면, 올해 나라 예산은 칠백조 원이 넘어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 451,
+   "takes": 4,
+   "texts": [
+    "너는 하루에 얼마 정도 써?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L12b",
+  "L13",
+  "L14",
+  "L15"
+ ]
+}
