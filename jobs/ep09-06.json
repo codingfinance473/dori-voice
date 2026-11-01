@@ -1,0 +1,21 @@
+{
+ "id": "ep09-06",
+ "note": "EP.09 L12b 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 465,
+   "takes": 4,
+   "texts": [
+    "전에는 이천구 년이 제일 컸대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L12b"
+ ]
+}
