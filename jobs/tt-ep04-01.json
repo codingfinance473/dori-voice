@@ -1,0 +1,34 @@
+{
+ "id": "tt-ep04-01",
+ "note": "틱톡판 EP.04 소고기",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 727,
+   "takes": 4,
+   "texts": [
+    "무게로 치면, 호주산이 오만 톤 가까이 더 들어왔대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 728,
+   "takes": 4,
+   "texts": [
+    "너는 호주산파야, 미국산파야?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L13c",
+  "L15"
+ ]
+}
