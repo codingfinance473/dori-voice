@@ -1,0 +1,190 @@
+{
+ "id": "ep08-01",
+ "note": "EP.08 반도체 14줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 183,
+   "takes": 4,
+   "texts": [
+    "시월 우리나라 수출에서, 반도체는 얼마나 될까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 184,
+   "takes": 4,
+   "texts": [
+    "시월 수출이 역대 두 번째로 많았대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 185,
+   "takes": 4,
+   "texts": [
+    "이십오, 삼십오, 오십 퍼센트 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 186,
+   "takes": 4,
+   "texts": [
+    "나는 이십오 퍼센트! 작년엔 사분의 일 정도였잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 187,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 반도체 수출이 작년 시월의 세 배 반이 넘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 188,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 구월엔 한 달 기록을 새로 썼대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 189,
+   "takes": 4,
+   "texts": [
+    "거의 절반이야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 190,
+   "takes": 4,
+   "texts": [
+    "시월 수출 둘 중 하나가 반도체였대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 191,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 사분의 일은 작년 얘기였네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 192,
+   "takes": 4,
+   "texts": [
+    "올해 시월까지 반도체만 합쳐도, 작년 일 년 치의 두 배가 넘는대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 193,
+   "takes": 4,
+   "texts": [
+    "메모리 값이 쭉 오른 덕분이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 194,
+   "takes": 4,
+   "texts": [
+    "그래서 올해 전체 수출은, 이번 달에 처음으로 일조 달러를 넘을 것 같대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 195,
+   "takes": 4,
+   "texts": [
+    "정리하면, 요즘 수출 둘 중 하나는 반도체!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 196,
+   "takes": 4,
+   "texts": [
+    "너 휴대폰 저장 공간은 몇 기가야?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L12b",
+  "L13",
+  "L14",
+  "L15"
+ ]
+}
