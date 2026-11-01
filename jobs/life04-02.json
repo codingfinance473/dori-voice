@@ -1,0 +1,60 @@
+{
+ "id": "life04-02",
+ "note": "생활 검산 EP.04 숫자 줄 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 952,
+   "takes": 4,
+   "texts": [
+    "딱 이천 오십 이 원이야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 953,
+   "takes": 4,
+   "texts": [
+    "최대는 하루, 육만 팔천 백 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 954,
+   "takes": 4,
+   "texts": [
+    "최소는 하루, 육만 육천 사십 팔 원이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 955,
+   "takes": 4,
+   "texts": [
+    "정리하면, 올해 하루 최대 최소 차이는 이천 오십 이 원!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L10",
+  "L11",
+  "L11c",
+  "L15a"
+ ]
+}
