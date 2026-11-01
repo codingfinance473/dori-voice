@@ -1,0 +1,34 @@
+{
+ "id": "tt-ep03-02",
+ "note": "틱톡판 EP.03 L13c 다시(십사)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 168,
+   "takes": 4,
+   "texts": [
+    "중국 비중은 이천 이십일 년 오십삼 퍼센트에서, 올해는 십사 점 이 퍼센트까지 내려왔대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 169,
+   "takes": 4,
+   "texts": [
+    "중국 비중은 이천 이십일 년 오십삼 퍼센트였는데, 올해는 십사 퍼센트래."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L13c",
+  "L13x"
+ ]
+}
