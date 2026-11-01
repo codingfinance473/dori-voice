@@ -1,0 +1,216 @@
+{
+ "id": "life04-01",
+ "note": "생활 검산 EP.04 실업급여 상한·하한",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 746,
+   "takes": 4,
+   "texts": [
+    "실업급여, 하루 최대랑 최소 차이가 얼마일까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 747,
+   "takes": 4,
+   "texts": [
+    "올해 실업급여 최대액이 육 년 만에 올랐대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 748,
+   "takes": 4,
+   "texts": [
+    "이천 원, 이만 원, 사만 원. 셋 중에 뭘까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 749,
+   "takes": 4,
+   "texts": [
+    "나는 사만 원! 최대랑 최소면 꽤 차이 나잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 750,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 최소액은 최저임금을 따라 정해진대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 751,
+   "takes": 4,
+   "texts": [
+    "딱 이천오십이 원이야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 752,
+   "takes": 4,
+   "texts": [
+    "최대는 하루 육만 팔천백 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 753,
+   "takes": 4,
+   "texts": [
+    "최소는 하루 육만 육천사십팔 원이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 754,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 사만 원은 스무 배 가까이 컸어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 755,
+   "takes": 4,
+   "texts": [
+    "실업급여는 원래 받던 하루 평균임금의 육십 퍼센트래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 756,
+   "takes": 4,
+   "texts": [
+    "그래서 월급이 높아도, 한 달에 이백사만 원쯤이 최대야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 757,
+   "takes": 4,
+   "texts": [
+    "근데 반전! 최소액은 최저임금의 팔십 퍼센트래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 758,
+   "takes": 4,
+   "texts": [
+    "그래서 내년 최소액은 육만 팔천사백팔십 원, 올해 최대보다 커져."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 759,
+   "takes": 4,
+   "texts": [
+    "그래서 정부가 바꾸는 방안을 논의 중이래. 아직 확정은 아니야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 760,
+   "takes": 4,
+   "texts": [
+    "정리하면, 올해 실업급여 하루 최대 최소 차이는 이천오십이 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t15",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 761,
+   "takes": 4,
+   "texts": [
+    "너는 실업급여가 얼마일 줄 알았어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L10",
+  "L11",
+  "L11c",
+  "L11b",
+  "L12",
+  "L13",
+  "L14",
+  "L14e",
+  "L14f",
+  "L15a",
+  "L15"
+ ]
+}
