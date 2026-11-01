@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t01",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 169,
+  "takes": 4,
+  "texts": [
+   "중국 비중은 이천 이십일 년 오십삼 퍼센트였는데, 올해는 십사 퍼센트래."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.1,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 6.16,
+   "gen_s": 53.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 6.32,
+   "gen_s": 54.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 5.44,
+   "gen_s": 49.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 6.16,
+   "gen_s": 54.0,
+   "sr": 24000
+  }
+ ]
+}
