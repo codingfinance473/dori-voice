@@ -1,0 +1,177 @@
+{
+ "id": "ex01-01",
+ "note": "설명 EP 반도체 꺾였나 13줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 844,
+   "takes": 4,
+   "texts": [
+    "반도체 수출, 이제 꺾인 걸까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 845,
+   "takes": 4,
+   "texts": [
+    "시월엔 구월보다 수출이 줄었거든."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 846,
+   "takes": 4,
+   "texts": [
+    "올해 달마다 반도체 수출을 보면,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 847,
+   "takes": 4,
+   "texts": [
+    "삼월, 유월, 구월에 확 늘고, 다음 달엔 조금 줄었어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 848,
+   "takes": 4,
+   "texts": [
+    "그리고 줄어든 다음 달엔, 매번 다시 최고를 넘었어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 849,
+   "takes": 4,
+   "texts": [
+    "작년보다 늘어난 정도도 아직 그대로야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 850,
+   "takes": 4,
+   "texts": [
+    "구월도 시월도, 작년의 세 배 반쯤이거든."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 851,
+   "takes": 4,
+   "texts": [
+    "다만 하루 평균으로 보면, 구월보다 팔 퍼센트쯤 줄었어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 852,
+   "takes": 4,
+   "texts": [
+    "시월은 일하는 날이 더 많았는데도 말이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 853,
+   "takes": 4,
+   "texts": [
+    "메모리 값은 시월에도 또 올랐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 854,
+   "takes": 4,
+   "texts": [
+    "정리하면, 아직 꺾였다고 보긴 일러!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 855,
+   "takes": 4,
+   "texts": [
+    "십일월 숫자가 진짜 시험대야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 856,
+   "takes": 4,
+   "texts": [
+    "너는 다음 달에 늘 것 같아, 줄 것 같아?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L04",
+  "L05",
+  "L06",
+  "L07",
+  "L08",
+  "L09",
+  "L10",
+  "L11",
+  "L12",
+  "L15"
+ ]
+}
