@@ -1,0 +1,21 @@
+{
+ "id": "ep08-02",
+ "note": "EP.08 L12b 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 961,
+   "takes": 4,
+   "texts": [
+    "메모리 반도체 값이 많이 올랐거든."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L12b"
+ ]
+}
