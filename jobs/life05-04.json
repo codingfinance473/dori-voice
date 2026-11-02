@@ -1,0 +1,47 @@
+{
+ "id": "life05-04",
+ "note": "생활 검산 EP.05 질문 풀어 쓰기",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 596,
+   "takes": 4,
+   "texts": [
+    "한국이 올해 처음으로, 일 년 동안 해외에 판 물건값이 일 조 달러를 넘는대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 597,
+   "takes": 4,
+   "texts": [
+    "이렇게 일 년에 일 조 달러어치 넘게 판 나라는, 세계에 몇 개 없대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 598,
+   "takes": 4,
+   "texts": [
+    "한국은 세계에서 몇 번째 나라일까? 두 번째, 네 번째, 열 번째!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L03",
+  "L03a"
+ ]
+}
