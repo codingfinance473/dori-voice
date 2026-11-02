@@ -2,12 +2,12 @@
 <html lang="ko">
 <head>
 <!--
-  도리의 정보주머니 · 생활 검산 EP.02 연금저축·IRP 세액공제 (2026-10-31)
+  도리의 정보주머니 · 생활 검산 EP.05 수출 1조 달러 (2026-11-02)
   render(t) 하나가 t초의 화면을 그린다. 시각은 timeline.js 의 T(줄 시작·단어 시각).
   장면: s1 훅 · s2 보기 · s3 힌트 · s4 정답 · s5 규칙(+250만) · s6 신용 vs 체크 · s7 반전(차감 순서) · s8 결론 · s9 끝
 -->
 <meta charset="utf-8">
-<title>도리의 생활 검산 연금저축</title>
+<title>도리의 생활 검산 수출 1조</title>
 <link rel="stylesheet" href="jua/index.css">
 <style>
 @font-face{font-family:P;src:url(fonts/Pretendard-Medium.otf);font-weight:500}
@@ -56,36 +56,55 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 .opt{position:absolute;left:80px;width:800px;height:120px;display:flex;align-items:center;gap:28px;padding:0 32px}
 .opt .lt{width:60px;height:60px;border-radius:50%;background:var(--orgL);color:var(--org);font-family:Jua;font-size:36px;display:flex;align-items:center;justify-content:center;flex:none}
 .opt .nm{font-family:Jua;font-size:60px}
-.opt .cn{display:flex;align-items:center;width:200px;flex:none}
+.opt .cn{display:flex;align-items:center;width:80px;flex:none}
 #pickC{left:40px;top:590px;width:900px;height:200px;overflow:visible}
 #pickL{left:640px;top:646px;font-family:Jua;font-size:40px;color:var(--red);transform-origin:0 50%}
 /* 3 힌트 */
 #c3{left:60px;top:500px;width:860px;height:540px}
 #lab3{left:120px;top:548px;font-family:Jua;font-size:44px}
 #bar3{left:120px;top:640px;width:740px;height:90px;border-radius:45px;background:linear-gradient(90deg,#FFE7D3,#FFD2AE);overflow:visible}
-#bar3{background:linear-gradient(90deg,#FFD2AE 0 50%,#D6DDEE 50% 100%)}
+#bar3{background:linear-gradient(90deg,#E3E8F4 0 50%,#FFC79C 50% 100%)}
 #tag3{left:410px;top:752px;width:160px;text-align:center;font-family:Jua;font-size:36px;color:var(--red)}
 #qa3,#qb3{top:654px;width:300px;text-align:center;font-family:Jua;font-size:56px}
-#qa3{left:140px;color:var(--org)}#qb3{left:540px;color:var(--cr)}
+#qa3{left:180px;color:var(--cr)}#qb3{left:560px;color:#fff}
 #scan3{left:300px;top:620px;width:6px;height:136px;border-radius:3px;background:var(--red)}
 #q3{left:262px;top:752px;width:84px;height:84px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:56px;box-shadow:0 0 0 6px #fff}
 #f3{left:60px;top:850px;width:860px;text-align:center;font-family:Jua;font-size:78px}
-#f3{font-size:64px}
+#f3{font-size:64px;top:800px !important}
 #f3 i{font-style:normal;display:inline-block;width:96px;height:96px;border-radius:24px;background:var(--orgL);color:var(--org);text-align:center;line-height:96px;vertical-align:middle}
 #n3{left:60px;top:968px;width:860px;text-align:center;font-size:26px;font-weight:700;color:var(--sub)}
 /* 4 정답 */
 #r5a{left:80px;top:292px;font-size:70px}
 #r5b{left:80px;top:390px;font-family:Jua;font-size:128px;line-height:1;transform-origin:0 50%;white-space:nowrap}
 #r5b small{font-size:72px}
+.rk{left:110px;width:760px;height:84px;display:flex;align-items:center;gap:22px}
+.rk b{width:56px;height:56px;border-radius:50%;background:#F4EBE2;font-family:Jua;font-weight:400;font-size:34px;line-height:56px;text-align:center}
+.rk i{font-style:normal;font-family:Jua;font-size:46px}
+.rk.me b{background:var(--org);color:#fff}.rk.me i{color:var(--org)}
+#rk1{top:670px}#rk2{top:760px}#rk3{top:850px}#rk4{top:940px}
+#hrow{left:120px;top:570px;width:740px;display:flex;align-items:center;justify-content:center;gap:40px}
+.ar3{font-family:Jua;font-size:90px;color:var(--org)}
+.q3x{width:130px;height:130px;border-radius:50%;background:#FFF0E6;font-family:Jua;font-size:90px;line-height:130px;text-align:center;color:var(--red);box-shadow:0 0 0 8px #fff,0 8px 20px rgba(100,60,30,.18)}
+.fb{display:inline-block;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px #fff,0 0 0 6px rgba(62,47,37,.10),0 5px 12px rgba(100,60,30,.22);line-height:0;flex:none}
+.fb svg{display:block}
+#pie8{left:120px;top:600px;width:0;height:0}
+.hb{left:110px;width:760px;height:90px}
+.hb .l{position:absolute;left:0;top:18px;font-family:Jua;font-size:40px}
+.hb .bar{position:absolute;left:100px;top:24px;width:420px;height:40px;border-radius:20px;background:#F4EBE2;overflow:hidden}
+.hb .bar i{position:absolute;left:0;top:0;height:100%;width:0;border-radius:20px}
+#hbA .bar i{background:linear-gradient(90deg,#FFB27A,var(--org))}#hbB .bar i{background:linear-gradient(90deg,#B7C3E0,var(--cr))}
+.hb .v{position:absolute;left:540px;top:14px;font-size:44px;font-weight:900;white-space:nowrap}
+#hbA{top:680px}#hbB{top:770px}
+#gap5{left:110px;top:862px;width:760px;text-align:center;font-family:Jua;font-size:44px;color:var(--red)}
 #st5{left:740px;top:300px;width:170px;height:170px;border-radius:50%;border:8px solid var(--org);display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:54px;color:var(--org);background:rgba(255,255,255,.92);transform-origin:50% 50%}
-#c5{left:60px;top:600px;width:860px;height:440px}
+#c5{height:460px !important;left:60px;top:600px;width:860px;height:440px}
 #u5{left:100px;top:630px;font-size:25px}
 #bar5{left:120px;top:770px;width:740px;height:84px;border-radius:24px;background:#F4EBE2;overflow:hidden}
 #fill5{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,#FFB27A,var(--org))}
 .tk5{position:absolute;top:770px;width:3px;height:84px;background:#fff}
 .tl5{position:absolute;top:870px;width:140px;margin-left:-70px;text-align:center;font-size:25px;font-weight:700;color:var(--sub)}
 #q5{left:120px;top:690px;width:420px;text-align:left;font-family:Jua;font-size:44px;color:var(--org)}
-#pk5{left:120px;top:948px;font-family:Jua;font-size:34px;color:#fff;background:var(--red);border-radius:999px;padding:4px 18px;white-space:nowrap}
+#pk5{left:520px;top:690px;font-family:Jua;font-size:34px;color:#fff;background:var(--red);border-radius:999px;padding:4px 18px;white-space:nowrap}
 #pkm5{left:178px;top:914px;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:24px solid var(--red)}
 #all5{left:600px;top:690px;width:220px;text-align:right;font-size:28px;font-weight:800;color:var(--sub)}
 #conf{left:0;top:0;width:1080px;height:1920px;pointer-events:none}
@@ -99,7 +118,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #c6b{left:60px;top:760px;width:860px;height:260px}
 .ar{position:absolute;top:800px;width:330px;text-align:center}
 .ar .a{font-size:30px;font-weight:700;color:var(--sub)}
-.ar .b{margin-top:8px;font-size:72px;font-weight:900;letter-spacing:-2px;white-space:nowrap}
+.ar .b{margin-top:8px;font-size:58px;font-weight:900;letter-spacing:-2px;white-space:nowrap}
 #arw{left:446px;top:850px;width:90px;height:60px}
 #n6{left:60px;top:1030px;width:860px;text-align:center;font-size:24px;font-weight:700;color:var(--sub)}
 /* 6 신용 vs 체크 */
@@ -107,10 +126,10 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #u7{left:84px;top:380px}
 .pc{position:absolute;top:440px;width:400px;height:420px;display:flex;flex-direction:column;align-items:center;padding-top:34px}
 .pc .nm{font-family:Jua;font-size:44px;margin-top:40px;text-align:center;line-height:1.15;height:106px;display:flex;align-items:center}
-.pc .rt{margin-top:40px !important;font-size:116px;font-weight:900;letter-spacing:-4px;line-height:1;margin-top:10px}
-#pcA .rt{color:var(--org)}
-#pcB .rt{color:var(--cr)}
-#x2{left:560px;top:416px;font-size:36px;font-family:Jua;font-size:46px;color:#fff;background:var(--red);border-radius:999px;padding:6px 22px;box-shadow:0 8px 16px rgba(226,72,58,.3);transform-origin:50% 50%}
+.pc .rt{margin-top:24px !important;font-size:84px;line-height:1.05;text-align:center;font-weight:900;letter-spacing:-4px;line-height:1;margin-top:10px}
+#pcA .rt{color:var(--cr)}
+#pcB .rt{color:var(--org)}
+#x2{left:560px;top:416px;font-size:34px;font-family:Jua;font-size:46px;color:#fff;background:var(--red);border-radius:999px;padding:6px 22px;box-shadow:0 8px 16px rgba(226,72,58,.3);transform-origin:50% 50%}
 #c7{left:60px;top:890px;width:860px;height:150px;display:flex;align-items:center;justify-content:space-around;padding:0 30px}
 #c7 .k{font-size:28px;font-weight:700;color:var(--sub);line-height:1.3;width:250px}
 #c7 .v{font-size:50px;font-weight:900;white-space:nowrap;letter-spacing:-1px}
@@ -127,7 +146,8 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #zb8{left:500px;top:660px;width:380px;padding:26px 20px;border-radius:30px;background:#EEF1F8;text-align:center}
 #za8 .a,#zb8 .a{font-size:27px;font-weight:700;color:var(--sub)}
 #za8 .b,#zb8 .b{margin-top:10px;font-family:Jua;font-size:46px;white-space:nowrap}
-#zb8 .b{color:var(--red)}
+#za8 .b{color:var(--red)}
+#zb8 .b{color:var(--cr)}
 #za8 .c,#zb8 .c{margin-top:10px;font-size:25px;font-weight:700;color:var(--sub);white-space:nowrap}
 #ord8{left:100px;top:960px;width:780px;text-align:center;font-size:24px;font-weight:700;color:var(--sub)}
 /* 8 결론 */
@@ -164,21 +184,21 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 
   <!-- 1 훅 -->
   <div class="scene" id="s1">
-    <div class="ttl" id="t1"><span>900만 원 넣으면</span><span>얼마</span><span><em>돌려받을까?</em></span></div>
+    <div class="ttl" id="t1" style="font-size:72px"><span>1년 동안</span><span>해외에 판 물건값</span><span><em>1조 달러</em> 눈앞!</span></div>
     <div class="abs" id="prop1"></div>
-    <div class="card" id="c1"><div class="k">연봉 5천만 원 · 연금저축 + IRP</div><div class="v">올해 세액공제</div></div>
-    <div class="abs" id="new1">13월의 월급</div>
-    <div class="src" id="src1">국세청 · 2026년 납입분 · 연금계좌 세액공제</div>
+    <div class="card" id="c1"><div class="k">올해 1~10월 수출(해외에 판 물건값)</div><div class="v">9300억 달러</div></div>
+    <div class="abs" id="new1">처음 9천억 돌파</div>
+    <div class="src" id="src1">산업통상부 · 2026년 1~10월</div>
   </div>
 
   <!-- 2 보기 -->
   <div class="scene" id="s2">
-    <div class="ttl" id="t2">얼마일까?</div>
-    <div class="unit" id="t2s">연봉 5천만 원 · 900만 원 넣었을 때 돌려받는 돈</div>
+    <div class="ttl" id="t2" style="font-size:64px">한국은 몇 번째 나라?</div>
+    <div class="unit" id="t2s">1년에 1조 달러어치 넘게 수출한 나라 중</div>
     <div class="abs" id="ring"><div id="ringPie"></div><div id="ringN">3</div></div>
-    <div class="card opt" id="oA" style="top:470px"><div class="lt">A</div><span class="cn" data-n="1"></span><div class="nm">90만 원</div></div>
-    <div class="card opt" id="oB" style="top:620px"><div class="lt">B</div><span class="cn" data-n="2"></span><div class="nm">148만 5천 원</div></div>
-    <div class="card opt" id="oC" style="top:770px"><div class="lt">C</div><span class="cn" data-n="3"></span><div class="nm">300만 원</div></div>
+    <div class="card opt" id="oA" style="top:470px"><div class="lt">A</div><span class="cn" data-r="2"></span><div class="nm">2번째</div></div>
+    <div class="card opt" id="oB" style="top:620px"><div class="lt">B</div><span class="cn" data-r="4"></span><div class="nm">4번째</div></div>
+    <div class="card opt" id="oC" style="top:770px"><div class="lt">C</div><span class="cn" data-r="10"></span><div class="nm">10번째</div></div>
     <svg class="abs" id="pickC"><path id="pickP" d="M0 0" fill="none" stroke="#E2483A" stroke-width="7" stroke-linecap="round"/></svg>
     <div class="abs" id="pickL">도리 픽!</div>
   </div>
@@ -186,78 +206,73 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
   <!-- 3 힌트 -->
   <div class="scene" id="s3">
     <div class="stk" id="k3" style="left:80px;top:290px;transform:rotate(-4deg)">힌트</div>
-    <div class="ttl" id="tt3" style="left:80px;top:366px;font-size:62px">비율은 두 가지</div>
-    <div class="unit" id="u3" style="left:84px;top:448px">국세청 · 연금계좌 세액공제율</div>
+    <div class="ttl" id="tt3" style="left:80px;top:366px;font-size:62px">아시아에서는?</div>
+    <div class="unit" id="u3" style="left:84px;top:448px">연간 상품 수출 1조 달러</div>
     <div class="card" id="c3"></div>
-    <div class="abs" id="lab3">총급여</div>
-    <div class="abs" id="bar3"></div>
-    <div class="abs" id="scan3"></div>
-    <div class="abs" id="tag3">5500만</div>
-    <div class="abs" id="qa3">?%</div><div class="abs" id="qb3">?%</div>
-    <div class="abs" id="f3">돌려받는 돈 = 900만 × <i>?</i></div>
+    <div class="abs" id="hrow"><span class="fb" data-f="cn" data-s="130"></span><span class="ar3">→</span><span class="q3x">?</span></div>
+    <div class="abs" id="f3">중국 다음은 누구?</div>
   </div>
 
   <!-- 4 정답 -->
   <div class="scene" id="s4">
     <div class="ttl" id="r5a">정답은<span id="dots5"></span></div>
-    <div class="abs" id="r5b">148만<small> 5천 원</small></div>
+    <div class="abs" id="r5b">4번째!</div>
     <div class="abs" id="st5">정답!</div>
     <div class="card" id="c5"></div>
-    <div class="unit" id="u5">국세청 · 총급여 5500만 원 이하 · 지방소득세 포함</div>
-    <div class="abs" id="q5">900만 × 16.5%</div>
-    <div class="abs" id="all5">넣은 돈 900만</div>
-    <div class="abs" id="bar5"><div id="fill5"></div><div id="pkf5"></div></div>
-    <div class="tk5" style="left:367px"></div><div class="tk5" style="left:613px"></div>
-    <div class="tl5" style="left:120px">0</div><div class="tl5" style="left:367px">300만</div><div class="tl5" style="left:613px">600만</div><div class="tl5" style="left:860px">900만</div>
-    <div class="abs" id="pkm5"></div>
-    <div class="abs" id="pk5">도리 픽 90만 = 10%</div>
+    <div class="unit" id="u5">1년에 1조 달러어치 넘게 수출한 나라</div>
+    <div class="abs rk" id="rk1"><b>✓</b><span class="fb" data-f="us" data-s="70"></span><i>미국</i></div>
+    <div class="abs rk" id="rk2"><b>✓</b><span class="fb" data-f="cn" data-s="70"></span><i>중국</i></div>
+    <div class="abs rk" id="rk3"><b>✓</b><span class="fb" data-f="de" data-s="70"></span><i>독일</i></div>
+    <div class="abs rk me" id="rk4"><b>4</b><span class="fb" data-f="kr" data-s="70"></span><i>한국 · 11월 돌파 전망</i></div>
+    <div class="abs" id="pk5">일본은 아직 1조 달러 전</div>
   </div>
 
-  <!-- 5 한도 -->
+  <!-- 5 31년 -->
   <div class="scene" id="s5">
-    <div class="ttl" id="t6">공제 한도는 <em>900만</em></div>
-    <div class="card" id="c6"><div class="k">한 해 세액공제 받는 납입액</div><div class="f">연금저축 <em>600만</em> + IRP <em>300만</em></div></div>
+    <div class="ttl" id="t6">31년 만에 <em>10배</em></div>
+    <div class="card" id="c6"><div class="k">한국 연간 수출</div><div class="f">1000억 → <em>1조</em> 달러</div></div>
     <div class="card" id="c6b"></div>
-    <div class="ar" id="arA" style="left:100px"><div class="a">연금저축만이면</div><div class="b">600만까지</div></div>
+    <div class="ar" id="arA" style="left:100px"><div class="a">1995년 처음</div><div class="b">1000억</div></div>
     <svg class="abs" id="arw" viewBox="0 0 90 60"><path d="M6 30 H70 M50 10 L74 30 L50 50" fill="none" stroke="#E8833A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <div class="ar" id="arB" style="left:560px"><div class="a">IRP 합치면</div><div class="b" style="color:var(--org)">900만까지</div></div>
+    <div class="ar" id="arB" style="left:560px"><div class="a">2026년 눈앞</div><div class="b" style="color:var(--org)">1조 달러</div></div>
   </div>
 
-  <!-- 6 공제율 비교 -->
+  <!-- 6 반전: 반도체 비중 -->
   <div class="scene" id="s6">
-    <div class="ttl" id="t7">연봉 따라 다르대</div>
-    <div class="src" id="u7">국세청 · 2026년 납입분 · 지방소득세 포함</div>
-    <div class="card pc" id="pcA" style="left:60px"><div class="nm">총급여<br>5500만 원 이하</div><div class="rt">16.5%</div></div>
-    <div class="card pc" id="pcB" style="left:520px"><div class="nm">총급여<br>5500만 원 초과</div><div class="rt">13.2%</div></div>
-    <div class="abs" id="x2">29만 7천 원 차이</div>
-    <div class="card" id="c7"><div class="k">900만 원<br>넣으면…</div><div class="v" style="color:var(--org)">148만 5천</div><div class="v" style="color:var(--cr)">118만 8천</div></div>
+    <div class="ttl" id="t7"><em>반전!</em> 절반이 반도체</div>
+    <div class="src" id="u7">산업통상부 · 전체 수출 중 반도체 비중</div>
+    <div class="card pc" id="pcA" style="left:60px"><div class="nm">2020년</div><div class="rt">19.4%</div></div>
+    <div class="card pc" id="pcB" style="left:520px"><div class="nm">2026년 10월</div><div class="rt">49%</div></div>
+    <div class="abs" id="x2">2.5배</div>
+    <div class="card" id="c7"><div class="k">10월<br>반도체 수출</div><div class="v" style="color:var(--org)">564억 달러</div><div class="v" style="color:var(--cr);font-size:40px">+259%</div></div>
   </div>
 
-  <!-- 7 반전 -->
+  <!-- 7 쏠림 -->
   <div class="scene" id="s7">
-    <div class="stk" id="k8">반전!</div>
-    <div class="ttl" id="t8">55세 전에 깨면?</div>
+    <div class="stk" id="k8">그래서</div>
+    <div class="ttl" id="t8">반도체 하나에</div>
     <div class="card" id="c8"></div>
-    <div class="abs" id="tx8"><b>16.5%</b> 다시 냄</div>
-    <div class="abs" id="ob8">공제받은 원금 + 운용수익</div>
-    <div class="abs" id="za8"><div class="a">16.5%로 받은 사람</div><div class="b">받은 만큼 반납</div><div class="c">148만 5천 → 148만 5천</div></div>
-    <div class="abs" id="zb8"><div class="a">13.2%로 받은 사람</div><div class="b">29만 7천 원 더</div><div class="c">118만 8천 → 148만 5천</div></div>
-    <div class="abs" id="ord8">소득세법 · 연금 외 수령 시 기타소득세 · 원금 900만 원 기준</div>
+    <div class="abs" id="pie8"></div>
+    <div class="abs" id="tx8">10월 수출 <b>1152억 달러</b></div>
+    <div class="abs" id="ob8">반도체 564억 · 나머지 588억</div>
+    <div class="abs" id="za8"><div class="a">반도체</div><div class="b">49%</div><div class="c">메모리 값 오름 덕</div></div>
+    <div class="abs" id="zb8"><div class="a">나머지 전부</div><div class="b">51%</div><div class="c">자동차·석유제품 등</div></div>
+    <div class="abs" id="ord8">산업통상부 · 2026년 10월 수출입 동향</div>
   </div>
 
   <!-- 8 결론 -->
   <div class="scene" id="s8">
     <div class="card" id="c9"><div class="stk">정답</div>
-      <div class="q">연봉 5천만 원 · 900만 원 넣으면</div>
-      <div class="nm">148만<small> 5천 원</small></div>
-      <div class="sub">900만 원 × <b>16.5%</b></div>
-      <div class="per">국세청 · 2026년 납입분<br>낼 세금(결정세액) 안에서 돌려받음</div></div>
+      <div class="q">1년에 1조 달러어치 수출한 나라, 한국은</div>
+      <div class="nm">4번째</div>
+      <div class="sub">미국·중국·독일 다음 · <b>11월 돌파 전망</b></div>
+      <div class="per">산업통상부 · 2026년 1~10월 9300억 달러<br>1조 달러까지 약 700억 달러</div></div>
     <div class="abs" id="stamp9">검산 끝!</div>
   </div>
 
   <!-- 9 끝 -->
   <div class="scene" id="s9">
-    <div class="ttl" id="e1">너는 <em>연금저축</em><br>있어?</div>
+    <div class="ttl" id="e1">너는 <em>한국 수출품</em><br>하면 뭐가 떠올라?</div>
     <div class="abs" id="e2"><div id="eA"></div><div id="eB"></div></div>
   </div>
 
@@ -291,10 +306,20 @@ const CARD=(w,c1='#8FA0C8',c2='#6E7FA8',rot=0)=>`<svg viewBox="0 0 160 104" widt
  <path d="M60 80 H96 M104 80 H128" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".85"/></svg>`;
 const RECEIPT=w=>`<svg viewBox="0 0 120 170" width="${w}" height="${w*1.42}"><path d="M10 6 H110 V158 L98 166 L86 158 L74 166 L62 158 L50 166 L38 158 L26 166 L14 158 L10 160 Z" fill="#FFFDF8" stroke="#4A3A33" stroke-width="4" stroke-linejoin="round"/>
  <path d="M26 30 H94 M26 50 H80 M26 70 H88 M26 90 H72" stroke="#CDBFB2" stroke-width="6" stroke-linecap="round"/><path d="M26 120 H94" stroke="#E8833A" stroke-width="8" stroke-linecap="round"/></svg>`;
-$('prop1').innerHTML=`<div style="position:absolute;left:40px;top:40px">${JAR(190,'#E8833A','연금저축')}</div>`;
-document.querySelectorAll('.cn').forEach(e=>{e.innerHTML=MONEY(+e.dataset.n,62);});
-$('eA').innerHTML=JAR(250,'#E8833A','연금저축');
-$('eB').innerHTML=JAR(250,'#6E7FA8','IRP');
+function star(cx,cy,r){let d='';for(let i=0;i<10;i++){const rr=i%2?r*.382:r;const a=(-90+i*36)*Math.PI/180;d+=(i?'L':'M')+(cx+rr*Math.cos(a)).toFixed(2)+' '+(cy+rr*Math.sin(a)).toFixed(2);}return d+'Z';}
+function flag(f,s){let b='';
+  if(f==='us'){for(let i=0;i<13;i++)b+=`<rect y="${(i*20/13).toFixed(3)}" width="30" height="${(20/13+.03).toFixed(3)}" fill="${i%2?'#fff':'#C8283C'}"/>`;b+=`<rect width="13" height="10.8" fill="#2E3A7A"/>`;for(let r=0;r<4;r++)for(let c=0;c<5;c++)b+=`<circle cx="${1.5+c*2.5}" cy="${1.4+r*2.6}" r=".55" fill="#fff"/>`;}
+  else if(f==='cn'){b=`<rect width="30" height="20" fill="#E3242B"/><path d="${star(8,7,3.2)}" fill="#FFD84A"/>`+[[13,3.5],[15,6],[15,9],[13,11.5]].map(([x,y])=>`<path d="${star(x,y,1.1)}" fill="#FFD84A"/>`).join('');}
+  else if(f==='de')b=`<rect width="30" height="7" fill="#1A1A1A"/><rect y="6.6" width="30" height="7" fill="#DD0000"/><rect y="13.3" width="30" height="6.7" fill="#FFCE00"/>`;
+  else if(f==='kr'){b=`<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="5" fill="#0047A0"/><path d="M10 10 A5 5 0 0 1 20 10 A2.5 2.5 0 0 1 15 10 A2.5 2.5 0 0 0 10 10 Z" fill="#CD2E3A"/>`+[[7.2,5.2,-33.7],[22.8,14.8,-33.7],[22.8,5.2,33.7],[7.2,14.8,33.7]].map(([x,y,r])=>`<g transform="translate(${x} ${y}) rotate(${r})"><rect x="-2" y="-1.6" width="4" height=".7" fill="#000"/><rect x="-2" y="-.35" width="4" height=".7" fill="#000"/><rect x="-2" y=".9" width="4" height=".7" fill="#000"/></g>`).join('');}
+  return `<svg width="${s}" height="${s}" viewBox="5 0 20 20" preserveAspectRatio="xMidYMid slice">${b}</svg>`;}
+document.querySelectorAll('.fb').forEach(e=>{const s=+e.dataset.s;e.style.width=s+'px';e.style.height=s+'px';e.innerHTML=flag(e.dataset.f,s);});
+const SHIP=w=>`<svg viewBox="0 0 240 170" width="${w}" height="${w*170/240}"><path d="M10 110 H230 L205 158 H38 Z" fill="#6E7FA8" stroke="#4A3A33" stroke-width="5" stroke-linejoin="round"/><path d="M14 122 H226" stroke="#fff" stroke-width="4" opacity=".5"/>${[[30,'#E8833A'],[78,'#2E9C83'],[126,'#FFD45C'],[174,'#E2483A']].map(([x,c])=>`<rect x="${x}" y="74" width="44" height="34" rx="3" fill="${c}" stroke="#4A3A33" stroke-width="3.5"/><path d="M${x+11} 78 V104 M${x+22} 78 V104 M${x+33} 78 V104" stroke="#4A3A33" stroke-width="1.6" opacity=".35"/>`).join('')}${[[54,'#80D0BA'],[102,'#FFB27A'],[150,'#A9B6D6']].map(([x,c])=>`<rect x="${x}" y="40" width="44" height="34" rx="3" fill="${c}" stroke="#4A3A33" stroke-width="3.5"/>`).join('')}<rect x="196" y="40" width="22" height="68" rx="3" fill="#fff" stroke="#4A3A33" stroke-width="3.5"/><path d="M0 160 Q30 150 60 160 T120 160 T180 160 T240 160" fill="none" stroke="#80D0BA" stroke-width="5"/></svg>`;
+const CHIP=w=>`<svg viewBox="0 0 120 120" width="${w}" height="${w}"><rect x="26" y="26" width="68" height="68" rx="10" fill="#3E4A6B" stroke="#4A3A33" stroke-width="4"/><rect x="40" y="40" width="40" height="40" rx="5" fill="#80D0BA" stroke="#4A3A33" stroke-width="3"/>${[34,48,62,76].map(p=>`<path d="M${p+6} 26 V12 M${p+6} 94 V108 M26 ${p+6} H12 M94 ${p+6} H108" stroke="#4A3A33" stroke-width="4" stroke-linecap="round"/>`).join('')}</svg>`;
+$('prop1').innerHTML=`<div style="position:absolute;left:-30px;top:80px">${SHIP(280)}</div>`;
+document.querySelectorAll('.cn').forEach(e=>{e.innerHTML=`<span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#FFF0E6;border:3px solid #F3DCC6;font-family:Jua;font-size:30px;line-height:58px;text-align:center;color:#E8833A">${e.dataset.r}</span>`;});
+$('eA').innerHTML=SHIP(300);
+$('eB').innerHTML=CHIP(200);
 $('fly').innerHTML=BILL(110,-10);
 $('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
 // 색종이
@@ -302,7 +327,7 @@ const CONF=[], cr=rng(9), COLS=['#E8833A','#FFC79C','#FFD45C','#E2483A','#2E9C83
 for(let i=0;i<60;i++){const d=document.createElement('div');d.className='cf';const w=10+cr()*12,h=w*(cr()<.5?.5:1);d.style.width=w+'px';d.style.height=h+'px';d.style.background=COLS[i%COLS.length];if(cr()<.35)d.style.borderRadius='50%';$('conf').appendChild(d);
   const a=(-90+(cr()-.5)*130)*Math.PI/180, sp=900+cr()*900;CONF.push({d,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,rs:(cr()-.5)*900,x0:420+(cr()-.5)*80,y0:460});}
 // 도리 픽 동그라미: 고른 카드의 실제 위치·크기에서 계산
-const PICK='oA';
+const PICK='oC';
 (function(){const c=$(PICK),x0=c.offsetLeft,y0=c.offsetTop,w=c.offsetWidth,h=c.offsetHeight,px=22,py=11,m=24;
   const L=x0-px,T0=y0-py,W=w+2*px,H=h+2*py, l=m,t=m,r=m+W,b=m+H, X=f=>(l+f*W).toFixed(1), Y=f=>(t+f*H).toFixed(1);
   const sv=$('pickC'); sv.style.left=(L-m)+'px'; sv.style.top=(T0-m)+'px'; sv.style.width=(W+2*m)+'px'; sv.style.height=(H+2*m)+'px';
@@ -401,9 +426,7 @@ function render(t){
   // 3 힌트
   sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1;
   fx('k3',t,T.s3+.05,.4,o3,.35,30,0,-4); fx('tt3',t,T.s3+.15,.45,o3,.35,30); fx('u3',t,T.s3+.25,.45,o3,.35,20); fx('c3',t,T.s3+.2,.5,o3,.35,40);
-  fx('lab3',t,T.s3+.3,.4,o3,.35,20); fx('bar3',t,T.s3+.35,.45,o3,.35,0,-40);
-  $('scan3').style.left='487px'; fx('scan3',t,T.w4-.1,.4,o3,.35,0); fx('tag3',t,T.w4,.4,o3,.35,20);
-  pop('qa3',t,T.w4+.35,o3,.35,-4,.5); pop('qb3',t,T.w4+.55,o3,.35,4,.5);
+  fx('hrow',t,T.w4-.2,.5,o3,.35,30); {const q=document.querySelector('.q3x'); q.style.transform=`rotate(${Math.sin(t*3)*8}deg)`;}
   fx('f3',t,A('L06',.8),.45,o3,.35,30);
 
   // 4 정답
@@ -413,12 +436,9 @@ function render(t){
   const s5=P(t,T.L10,.45), r5=$('r5b'); r5.style.opacity=clamp(s5*5)*(1-eIO(P(t,o4,.35)));
   r5.style.transform=`scale(${s5<=0?1.4:1.4-.4*eOut(s5)}) rotate(${(1-eOut(s5))*-4}deg)`;
   pop('st5',t,T.L10+.3,o4,.35,-12,1.8);
-  fx('c5',t,T.L11-.2,.5,o4,.35,40); fx('u5',t,T.L11-.1,.4,o4,.35,20); fx('all5',t,T.L11,.4,o4,.35,20);
-  const b5=fx('bar5',t,T.L11,.4,o4,.35,0,-40);
-  document.querySelectorAll('.tk5,.tl5').forEach(el=>{el.style.opacity=b5;});
-  const fg=spring(P(t,T.w25,.9)); $('fill5').style.width=(122*clamp(fg,0,1.06))+'px';
-  pop('q5',t,T.w25+.3,o4,.35,0,.5);
-  fx('pkm5',t,T.half-.15,.35,o4,.35,20); pop('pk5',t,T.half-.1,o4,.35,-3,.5);
+  fx('c5',t,T.L11-.2,.5,o4,.35,40); fx('u5',t,T.L11-.1,.4,o4,.35,20);
+  ['rk1','rk2','rk3'].forEach((id,i)=>fx(id,t,T.L11+i*.45,.4,o4,.35,0,-40)); pop('rk4',t,T.L11c-.2,o4,.35,0,.7);
+  pop('pk5',t,A('L11c',.4),o4,.35,-3,.5);
   const cdT=t-T.L10;
   CONF.forEach(c=>{if(cdT<0||cdT>2.2){c.d.style.opacity=0;return;}const x=c.x0+c.vx*cdT*.55,y=c.y0+c.vy*cdT*.55+1100*cdT*cdT;c.d.style.opacity=1-clamp((cdT-1.6)/.6);c.d.style.transform=`translate(${x}px,${y}px) rotate(${c.rs*cdT}deg)`;});
 
@@ -430,16 +450,16 @@ function render(t){
   // 6 신용 vs 체크
   sv('s6',T.s6,T.s7+.3); const o6=T.s7-.1;
   fx('t7',t,T.s6+.05,.45,o6,.35,40); fx('u7',t,T.s6+.2,.4,o6,.35,20);
-  fx('pcA',t,T.s6+.3,.5,o6,.35,0,-60); fx('pcB',t,T.w15-.3,.5,o6,.35,0,60);
+  fx('pcA',t,T.w30-.4,.5,o6,.35,0,-60); fx('pcB',t,T.w30,.5,o6,.35,0,60);
   {const k=P(t,T.w15,.5); document.querySelector('#pcA .rt').style.transform=`scale(${k<=0?.9:.9+.1*eBack(k)})`;}
   {const k=P(t,T.w30,.5); document.querySelector('#pcB .rt').style.transform=`scale(${k<=0?.9:.9+.1*eBack(k)})`;}
-  fx('c7',t,T.L13b,.5,o6,.35,40); pop('x2',t,T.w2x,o6,.35,-3,1.4);
+  fx('c7',t,T.s6+.4,.5,o6,.35,40); pop('x2',t,T.w2x+.3,o6,.35,-3,1.4);
 
   // 7 반전
   sv('s7',T.s7,T.s8+.3); const o7=T.s8-.1;
   pop('k8',t,T.s7+.05,o7,.35,-4,1.5); fx('t8',t,T.s7+.2,.45,o7,.35,30); fx('c8',t,T.s7+.2,.5,o7,.35,40);
-  pop('tx8',t,T.wfirst,o7,.35,0,.6); fx('ob8',t,T.wzero-.1,.4,o7,.35,20);
-  fx('za8',t,T.L14f,.45,o7,.35,30); fx('zb8',t,T.wdiff-.2,.45,o7,.35,30); fx('ord8',t,T.wzero+.3,.4,o7,.35,20);
+  pop('tx8',t,T.s7+.4,o7,.35,0,.6); fx('ob8',t,T.s7+.8,.4,o7,.35,20);
+  fx('za8',t,T.s7+1.1,.45,o7,.35,30); fx('zb8',t,T.s7+1.5,.45,o7,.35,30); fx('ord8',t,T.s7+1.8,.4,o7,.35,20);
 
   // 8 결론
   sv('s8',T.s8,T.s9+.3); const o8=T.s9-.1;
