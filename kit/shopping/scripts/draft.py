@@ -13,6 +13,8 @@ from pathlib import Path
 
 ORD = ["첫 번째", "두 번째", "세 번째", "네 번째", "다섯 번째"]
 CIRC = "①②③④⑤"
+# 끝 구독·좋아요 한 줄 — 인덱스 = 편 번호 % 3 (1→①, 2→②, 0→③좋아요만). 틱톡판은 [0]
+CTA_CHECK = {1: "검산 도움 됐으면 구독, 좋아요 부탁해~!", 2: "사기 전에 또 검산하고 싶으면 구독!", 0: "돈 아꼈으면 좋아요 하나 꾹!"}
 
 
 def syl(t):
@@ -79,8 +81,10 @@ def main(epdir):
             add("summary", f"다 사면 한국보다 {{total.saved_say}} 덜 써!", "합계 | {total.saved_sub} 덜 쓴다!", expr="happy", arms="up", cues={"bars": "^", "result": "덜"})
         else:
             add("summary", "다 합치면 오히려 한국이 {total.saved_say} 싸.", "합계 | 한국이 {total.saved_sub} 싸다", expr="sad", cues={"bars": "^", "result": "오히려"})
-    ask = (ep.get("outro") or {}).get("ask") or pick(["다음엔 뭘 검산할까?", "다음엔 어디를 검산할까?", "다음 검산 주제는 뭐가 좋을까?"])
-    add("outro", f"{ask} 댓글로 알려 줘!", f"{ask} | 댓글로 알려 줘!", expr="happy", arms="wave", cues={"ask": "^", "source": "댓글로"})
+    # 끝(공통 지침 9절): 경험 질문 한 줄 → 구독·좋아요 한 줄(편 번호로 돌려 씀) → 볼주머니에 쏙! — 댓글 요청·다음 편 예고 없음
+    ask = (ep.get("outro") or {}).get("ask") or pick([f"너는 {place} 가면 뭐 사 와?", f"너는 {place}에서 뭐 사 봤어?", "너라면 뭐부터 담을 거야?"])
+    cta = CTA_CHECK[int(ep.get("ep", 1)) % 3]
+    add("outro", f"{ask} {cta} 볼주머니에 쏙!", f"{ask} | {cta}", expr="happy", arms="wave", cues={"ask": "^", "source": cta.split()[0]})
     # 길이 어림: 숫자 자리는 평균 7음절로 본다
     total = sum(syl(re.sub(r"\{[^}]+\}", "가" * 7, l["say"])) for l in L)
     est = total / 5.0 + 0.42 * len(L) + 0.9 * len({l["scene"] for l in L}) + 3.5
