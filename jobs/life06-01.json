@@ -1,0 +1,255 @@
+{
+ "id": "life06-01",
+ "note": "LIFE06 술병 경고그림",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 609,
+   "takes": 4,
+   "texts": [
+    "십일월 구 일부터, 소주병 같은 술병이 달라진대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 610,
+   "takes": 4,
+   "texts": [
+    "술병에 꼭 넣어야 하는 경고가, 하나 새로 생겼거든."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 611,
+   "takes": 4,
+   "texts": [
+    "새로 들어가는 경고는 뭘까? 간 사진, 음주운전, 칼로리!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 612,
+   "takes": 4,
+   "texts": [
+    "나는 간 사진! 담뱃갑처럼 무서운 사진 붙는 거 아니야?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 613,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 건강 경고는 원래부터 있었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 614,
+   "takes": 4,
+   "texts": [
+    "음주운전 경고야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 615,
+   "takes": 4,
+   "texts": [
+    "빨간 동그라미에 대각선, 금지 표시 그림이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 616,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 간 경고는, 원래부터 문구로 있었어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 617,
+   "takes": 4,
+   "texts": [
+    "이제 술병엔 경고 세 가지가 꼭 들어가."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 618,
+   "takes": 4,
+   "texts": [
+    "건강, 음주운전, 그리고 임신 중 음주 경고래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 619,
+   "takes": 4,
+   "texts": [
+    "경고 글씨도 더 커진대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 620,
+   "takes": 4,
+   "texts": [
+    "소주병은 십 포인트, 일 리터 넘는 큰 병은 십육 포인트 이상!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 621,
+   "takes": 4,
+   "texts": [
+    "근데 반전! 그림은 꼭 넣어야 하는 건 아니래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 622,
+   "takes": 4,
+   "texts": [
+    "문구랑 그림 중에, 골라서 넣으면 된대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 623,
+   "takes": 4,
+   "texts": [
+    "그리고 구 일 전에 나온 술은, 내년 오월 팔 일까지 팔 수 있대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t15",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 624,
+   "takes": 4,
+   "texts": [
+    "그래서 한동안은, 옛 라벨이랑 새 라벨이 섞여 있을 거래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t16",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 625,
+   "takes": 4,
+   "texts": [
+    "정리하면, 십일월 구 일부터 술병엔 음주운전 경고가 꼭!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t17",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 626,
+   "takes": 4,
+   "texts": [
+    "너는 술병 경고 문구, 읽어 본 적 있어?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t18",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 627,
+   "takes": 4,
+   "texts": [
+    "몰랐던 거면 좋아요 하나 꾹!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L12b",
+  "L13",
+  "L13b",
+  "L14",
+  "L14e",
+  "L14f",
+  "L14g",
+  "L15a",
+  "L15",
+  "L15b"
+ ]
+}
