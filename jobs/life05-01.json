@@ -1,0 +1,216 @@
+{
+ "id": "life05-01",
+ "note": "생활 검산 EP.05 수출 1조 달러",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 675,
+   "takes": 4,
+   "texts": [
+    "한국 수출이 올해 처음으로 일 조 달러를 넘는대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 676,
+   "takes": 4,
+   "texts": [
+    "시월까지만 벌써 구천 삼백억 달러래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 677,
+   "takes": 4,
+   "texts": [
+    "일 년에 일 조 달러 넘게 판 나라, 한국은 몇 번째일까? 두 번째, 네 번째, 열 번째!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 678,
+   "takes": 4,
+   "texts": [
+    "나는 열 번째! 다른 나라들도 다 했겠지?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 679,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 아시아에서는 중국 다음이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 680,
+   "takes": 4,
+   "texts": [
+    "세계에서 네 번째래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 681,
+   "takes": 4,
+   "texts": [
+    "미국, 중국, 독일 다음이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 682,
+   "takes": 4,
+   "texts": [
+    "일본도 아직 못 넘은 기록이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 683,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 열 번째는 한참 아니었어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 684,
+   "takes": 4,
+   "texts": [
+    "천 구백 구십 오 년에 처음 천억 달러를 넘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 685,
+   "takes": 4,
+   "texts": [
+    "삼십 일 년 만에 열 배가 된 거야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 686,
+   "takes": 4,
+   "texts": [
+    "근데 반전! 수출의 절반이 반도체래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 687,
+   "takes": 4,
+   "texts": [
+    "시월엔 사십 구 퍼센트, 이천 이십 년엔 이십 퍼센트도 안 됐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 688,
+   "takes": 4,
+   "texts": [
+    "반도체 하나에 많이 기대고 있다는 뜻이기도 해."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 689,
+   "takes": 4,
+   "texts": [
+    "정리하면, 한국은 세계 네 번째 일 조 달러 수출국이 될 거래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t15",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 690,
+   "takes": 4,
+   "texts": [
+    "너는 한국 수출품 하면 뭐가 떠올라?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L10",
+  "L11",
+  "L11c",
+  "L11b",
+  "L12",
+  "L13",
+  "L14",
+  "L14e",
+  "L14f",
+  "L15a",
+  "L15"
+ ]
+}
