@@ -1,0 +1,21 @@
+{
+ "id": "ex02-03",
+ "note": "EX.02 L12 응원으로 바꿈",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 418,
+   "takes": 4,
+   "texts": [
+    "올해 수험생들, 모두 힘내!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L12"
+ ]
+}
