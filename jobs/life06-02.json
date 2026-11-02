@@ -1,0 +1,86 @@
+{
+ "id": "life06-02",
+ "note": "LIFE06 경고 말 바꿔 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 491,
+   "takes": 4,
+   "texts": [
+    "술병에 꼭 넣어야 하는 경고 표시가, 하나 새로 생겼거든."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 492,
+   "takes": 4,
+   "texts": [
+    "음주운전 하지 말라는 경고야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 493,
+   "takes": 4,
+   "texts": [
+    "이제 술병에는, 꼭 들어가는 경고가 세 가지야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 494,
+   "takes": 4,
+   "texts": [
+    "소주병 크기는, 십 포인트 이상!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 495,
+   "takes": 4,
+   "texts": [
+    "일 리터 넘는 큰 병은, 십육 포인트 이상이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 496,
+   "takes": 4,
+   "texts": [
+    "정리하면, 십일월 구 일부터 술병엔 음주운전 경고 표시가 생겨!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L02",
+  "L10",
+  "L12",
+  "L13b",
+  "L13c",
+  "L15a"
+ ]
+}
