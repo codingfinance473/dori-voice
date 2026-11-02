@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t00",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 749,
+  "takes": 4,
+  "texts": [
+   "이제 술병에는, 꼭 들어가야 하는 게 세 가지야."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.0,
+ "cpu": 4,
+ "cpu_model": "Intel(R) Xeon(R) 6973P-C",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 3.6,
+   "gen_s": 19.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.64,
+   "gen_s": 24.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 3.68,
+   "gen_s": 20.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.84,
+   "gen_s": 19.9,
+   "sr": 24000
+  }
+ ]
+}
