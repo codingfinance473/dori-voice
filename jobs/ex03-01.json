@@ -1,0 +1,164 @@
+{
+ "id": "ex03-01",
+ "note": "EX.03 수능 지원자 줄어드나",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 955,
+   "takes": 4,
+   "texts": [
+    "수능 보는 사람, 계속 줄어들고 있을까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 956,
+   "takes": 4,
+   "texts": [
+    "올해 수능 지원자는 오십오만 이천 명이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 957,
+   "takes": 4,
+   "texts": [
+    "이천 학년도엔 팔십구만 명이 넘었는데,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 958,
+   "takes": 4,
+   "texts": [
+    "이천 이십일 학년도엔 처음으로 오십만 명 아래로 내려갔어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 959,
+   "takes": 4,
+   "texts": [
+    "근데 그 뒤로는 다시 조금씩 늘었어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 960,
+   "takes": 4,
+   "texts": [
+    "작년엔 칠 년 만에 가장 많았고."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 961,
+   "takes": 4,
+   "texts": [
+    "작년 고삼은 황금돼지띠, 아기가 많이 태어난 해였거든."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 962,
+   "takes": 4,
+   "texts": [
+    "올해 고삼은 그보다 이만 칠천 명 적게 태어났어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 963,
+   "takes": 4,
+   "texts": [
+    "그런데 지금 초등학교 일 학년은, 삼십만 명 남짓 태어났어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 964,
+   "takes": 4,
+   "texts": [
+    "정리하면, 요 몇 년은 다시 늘었지만, 뒤에 오는 아이들은 훨씬 적어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 965,
+   "takes": 4,
+   "texts": [
+    "올해 수능 보는 모두, 응원할게!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 966,
+   "takes": 4,
+   "texts": [
+    "몰랐던 거면 좋아요 하나 꾹!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L04",
+  "L05",
+  "L06",
+  "L07",
+  "L08",
+  "L09",
+  "L10",
+  "L12",
+  "L13"
+ ]
+}
