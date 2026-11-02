@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t07",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 962,
+  "takes": 4,
+  "texts": [
+   "올해 고삼은 그보다 이만 칠천 명 적게 태어났어."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.5,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.32,
+   "gen_s": 44.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.52,
+   "gen_s": 39.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 3.12,
+   "gen_s": 35.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 4.32,
+   "gen_s": 43.9,
+   "sr": 24000
+  }
+ ]
+}
