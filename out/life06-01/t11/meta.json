@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t11",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 620,
+  "takes": 4,
+  "texts": [
+   "소주병은 십 포인트, 일 리터 넘는 큰 병은 십육 포인트 이상!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.2,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 5.2,
+   "gen_s": 49.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 6.72,
+   "gen_s": 57.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 4.32,
+   "gen_s": 41.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 6.16,
+   "gen_s": 54.7,
+   "sr": 24000
+  }
+ ]
+}
