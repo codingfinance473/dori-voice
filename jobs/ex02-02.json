@@ -1,0 +1,21 @@
+{
+ "id": "ex02-02",
+ "note": "EX.02 L04 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 516,
+   "takes": 4,
+   "texts": [
+    "십팔만 명쯤에서 맴돌다가, 올해 확 늘었어!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L04"
+ ]
+}
