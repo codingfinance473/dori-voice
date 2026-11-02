@@ -1,0 +1,21 @@
+{
+ "id": "life06-03",
+ "note": "LIFE06 L12 말 바꿔 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 749,
+   "takes": 4,
+   "texts": [
+    "이제 술병에는, 꼭 들어가야 하는 게 세 가지야."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L12"
+ ]
+}
