@@ -1,0 +1,242 @@
+{
+ "id": "life07-01",
+ "note": "LIFE07 고향사랑기부",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 116,
+   "takes": 4,
+   "texts": [
+    "고향사랑기부, 올해부터 돌려받는 돈이 더 커졌대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 117,
+   "takes": 4,
+   "texts": [
+    "십만 원 넘게 낸 부분은, 공제율이 십오 퍼센트에서 사십 퍼센트로 올랐거든."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 118,
+   "takes": 4,
+   "texts": [
+    "돌려받는 세금이랑 답례품을 합치면, 얼마까지 내도 손해가 아닐까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 119,
+   "takes": 4,
+   "texts": [
+    "십만 원, 이십만 원, 오십만 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 120,
+   "takes": 4,
+   "texts": [
+    "나는 오십만 원! 공제율이 올랐으니까, 많이 낼수록 이득 아냐?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 121,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 이십만 원 넘는 부분은, 십육 점 오 퍼센트만 돌려받는대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 122,
+   "takes": 4,
+   "texts": [
+    "이십만 원까지래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 123,
+   "takes": 4,
+   "texts": [
+    "이십만 원을 내면, 세금은 십사만 사천 원을 돌려받고,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 124,
+   "takes": 4,
+   "texts": [
+    "답례품은 최대 육만 원어치야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 125,
+   "takes": 4,
+   "texts": [
+    "합치면 이십만 사천 원! 낸 돈보다 조금 많아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 126,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 오십만 원은, 십오만 원 넘게 손해였어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 127,
+   "takes": 4,
+   "texts": [
+    "십만 원까지는, 낸 돈을 세금으로 다 돌려받는대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 128,
+   "takes": 4,
+   "texts": [
+    "그래서 십만 원만 내도, 답례품 삼만 원어치가 남는 셈이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 129,
+   "takes": 4,
+   "texts": [
+    "근데 반전! 낼 세금이 없으면, 돌려받을 것도 없대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 130,
+   "takes": 4,
+   "texts": [
+    "그리고 올해 연말정산엔, 올해 마지막 날까지 낸 기부만 들어가."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t15",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 131,
+   "takes": 4,
+   "texts": [
+    "정리하면, 돈으로만 따지면 이십만 원까지는 손해가 없대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t16",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 132,
+   "takes": 4,
+   "texts": [
+    "너는 고향사랑기부 답례품, 받아 본 적 있어?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t17",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 133,
+   "takes": 4,
+   "texts": [
+    "정보가 마음에 들었으면 구독, 좋아요 부탁해~!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L03a",
+  "L05",
+  "L06",
+  "L10",
+  "L11",
+  "L11c",
+  "L11d",
+  "L11b",
+  "L12",
+  "L12b",
+  "L14",
+  "L14f",
+  "L15a",
+  "L15",
+  "L15b"
+ ]
+}
