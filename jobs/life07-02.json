@@ -1,0 +1,47 @@
+{
+ "id": "life07-02",
+ "note": "LIFE07 답례품 앞말 붙여 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 234,
+   "takes": 4,
+   "texts": [
+    "돌려받는 세금에, 선물로 받는 답례품까지 합치면, 얼마까지 내도 손해가 아닐까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 235,
+   "takes": 4,
+   "texts": [
+    "거기에 선물로 받는 답례품이, 최대 육만 원어치야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 236,
+   "takes": 4,
+   "texts": [
+    "너는 고향사랑기부 하고, 선물로 답례품 받아 본 적 있어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L03",
+  "L11c",
+  "L15"
+ ]
+}
