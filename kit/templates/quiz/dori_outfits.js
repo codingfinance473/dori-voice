@@ -21,9 +21,8 @@ function G(id,d,fill,extra='',sw=4.6,round=true){return `<clipPath id="dG${id}">
  <path class="oo" d="${d}" fill="none" stroke="${OL}" stroke-width="${sw}" stroke-linejoin="round" stroke-linecap="round"/>`;}
 // 털에 떨어지는 그림자(옷 가장자리 아래)
 const SH=(d,dy=7,o=.16)=>`<path d="${d}" transform="translate(0 ${dy})" fill="#2A1A10" opacity="${o}" filter="url(#dSoft)"/>`;
-// 손에 든 소품(오른팔): 앞발(팔 좌표 0,58 근처)이 소품 아래 바깥쪽 모서리를 쥐고, 소품은 앞발의 위·바깥쪽(얼굴 반대편)에 선다.
-// 팔을 들고 흔들어도 소품은 늘 똑바로 선다(.hold 를 매 프레임 팔 각도만큼 되돌림 — anim). 그래서 팔을 번쩍 들어도 소품이 얼굴 안쪽으로 눕지 않는다.
-const HOLD=(inner,dx=-4,dy=56,h=54)=>`<g transform="translate(${dx},${dy})"><g class="hold"><g transform="translate(18,${(-h*.82).toFixed(1)}) scale(.82)">${inner}</g></g></g><ellipse cx="${dx+1}" cy="${dy-1}" rx="13" ry="11" fill="#FFFDFB" stroke="${OL}" stroke-width="4.5"/>`;
+// 손에 드는 소품은 쓰지 않는다(2026-11-04 사용자 의견: 쥔 모습이 어색함, 머리에 꽂는 것도 어색함). 주제 표시는 입거나 거는 것(모자·옷·목걸이·주머니)으로 한다.
+// (hands 자리와 handR/handL 은 남겨 두지만 옷장에서는 비워 둔다.)
 // 목선: 옷 윗단은 일직선으로 몸을 가르지 않고, 하얀 주둥이(턱) 아래를 따라 둥글게 돈다(2026-11-04 — 직선이 몸을 긋는 것처럼 보였음).
 //   NY(x) = 그 x 에서 목선 높이(몸 옆 y 262 → 가운데 y 316). NK(x0,x1,dy) = x0→x1 목선을 따라가는 "L x,y …" 조각.
 const NY=x=>262+54*Math.sqrt(Math.max(0,1-((x-200)/148)**2));
@@ -53,7 +52,7 @@ const OUTFIT={
     ${G('kn','M191,332 L209,332 L206,348 L194,348 Z','#268A73','',4.2,false)}</g>`,
   glove:`<rect x="-27" y="-30" width="54" height="56" fill="#3E5A8C"/><rect x="-27" y="22" width="54" height="9" fill="#FFFFFF"/><path d="M-27,22 H27" stroke="${OL}" stroke-width="3"/><path d="M-27,31 H27" stroke="${OL}" stroke-width="3"/>`},
 
- // 2) 세금·연말정산·연금 — 초록 차양 바이저 + 동그란 안경 + 낙타색 니트 조끼 + 나비넥타이 + 귀에 꽂은 연필
+ // 2) 세금·연말정산·연금 — 초록 차양 바이저 + 동그란 안경 + 낙타색 니트 조끼 + 나비넥타이
  tax:{bag:false,
   body:`${G('vl',PL(178,352),'#C99A6B','<path d="M44,322 l24,24 -24,24 -24,-24z M92,346 l24,24 -24,24 -24,-24z M140,322 l24,24 -24,24 -24,-24z" fill="none" stroke="#E2BE93" stroke-width="3.5"/><path d="M10,390 H220" stroke="#B5845A" stroke-width="22"/><path d="M30,382 v18 M44,382 v18 M58,382 v18 M72,382 v18 M86,382 v18 M100,382 v18 M114,382 v18 M128,382 v18 M142,382 v18 M156,382 v18 M170,382 v18 M184,382 v18 M198,382 v18" stroke="#A3744C" stroke-width="2.5"/>')}
    ${G('vr',PR(222,352),'#C99A6B','<path d="M356,322 l-24,24 24,24 24,-24z M308,346 l-24,24 24,24 24,-24z M260,322 l-24,24 24,24 24,-24z" fill="none" stroke="#E2BE93" stroke-width="3.5"/><path d="M180,390 H390" stroke="#B5845A" stroke-width="22"/><path d="M202,382 v18 M216,382 v18 M230,382 v18 M244,382 v18 M258,382 v18 M272,382 v18 M286,382 v18 M300,382 v18 M314,382 v18 M328,382 v18 M342,382 v18 M356,382 v18 M370,382 v18" stroke="#A3744C" stroke-width="2.5"/>')}${CHIN()}`,
@@ -67,9 +66,7 @@ const OUTFIT={
   face:`<g fill="#fff" fill-opacity=".14" stroke="#5A4636" stroke-width="4.5"><circle cx="148" cy="214" r="31"/><circle cx="252" cy="214" r="31"/></g>
    <path d="M179,212 Q200,200 221,212" fill="none" stroke="#5A4636" stroke-width="4.5" stroke-linecap="round"/>
    <path d="M117,208 L84,198 M283,208 L316,198" stroke="#5A4636" stroke-width="4.5" stroke-linecap="round"/>
-   <path d="M128,196 Q136,188 146,186 M232,196 Q240,188 250,186" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".75" fill="none"/>`,
-  handR:HOLD(`<rect x="-21" y="-2" width="42" height="56" rx="8" fill="#5C6B7A" stroke="${OL}" stroke-width="4"/><rect x="-14" y="6" width="28" height="12" rx="3" fill="#CFE8D6" stroke="${OL}" stroke-width="2.5"/><path d="M-8,12 h10" stroke="#5C8A6A" stroke-width="2.5" stroke-linecap="round"/>
-   <g fill="#E9EEF2"><circle cx="-10" cy="28" r="4"/><circle cx="0" cy="28" r="4"/><circle cx="10" cy="28" r="4"/><circle cx="-10" cy="39" r="4"/><circle cx="0" cy="39" r="4"/><circle cx="10" cy="39" r="4" fill="#FFB36B"/></g><path d="M-17,2 Q-17,-1 -12,-1" stroke="#8B99A6" stroke-width="3" fill="none"/>`)},
+   <path d="M128,196 Q136,188 146,186 M232,196 Q240,188 250,186" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".75" fill="none"/>`,},
 
  // 3) 수출·산업·무역 — 노란 안전모 + 주황 형광 조끼(반사띠)
  export:{bag:false,
@@ -112,7 +109,7 @@ const OUTFIT={
     <circle r="11" fill="#D9434F" stroke="${OL}" stroke-width="4.6"/><path d="M-5,-4 Q0,-8 5,-4" stroke="#FF8F98" stroke-width="3" fill="none" stroke-linecap="round"/></g>`,
   glove:`<rect x="-27" y="8" width="54" height="60" fill="#E8505B"/><path d="M-10,40 Q-6,58 -12,64 M8,38 Q14,56 10,64" stroke="#FF8F98" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/><rect x="-27" y="6" width="54" height="13" fill="#F7A1A9"/><path d="M-27,6 H27 M-27,19 H27" stroke="${OL}" stroke-width="3"/>`},
 
- // 6) 과학·기술·우주·AI — 흰 실험 가운(민트 티셔츠, 가슴 주머니 펜) + 이마에 올린 보안경 + 손에 플라스크(거품이 오르내림)
+ // 6) 과학·기술·우주·AI — 흰 실험 가운(민트 티셔츠, 가슴 주머니 펜) + 이마에 올린 보안경
  science:{bag:false,
   body:`${G('tee',FULL,'#7CC9B5',`<path d="M70,${NY(70)+6}${NK(70,330,8)}" stroke="#5FB39D" stroke-width="8" fill="none"/>`)}
    ${G('lcl',PL(172,396),'#F4F7F9','<path d="M70,320 Q96,380 88,440" stroke="#DCE3E8" stroke-width="6" fill="none"/>',4.6)}
@@ -126,13 +123,9 @@ const OUTFIT={
    ${G('gl','M120,120 h60 a14,14 0 0 1 14,14 v8 a14,14 0 0 1 -14,14 h-60 a14,14 0 0 1 -14,-14 v-8 a14,14 0 0 1 14,-14 z','#9BD7E4','<path d="M118,126 L150,152 M136,122 L170,154" stroke="#fff" stroke-width="5" opacity=".7"/>',5,false)}
    ${G('gr','M220,120 h60 a14,14 0 0 1 14,14 v8 a14,14 0 0 1 -14,14 h-60 a14,14 0 0 1 -14,-14 v-8 a14,14 0 0 1 14,-14 z','#9BD7E4','<path d="M218,126 L250,152 M236,122 L270,154" stroke="#fff" stroke-width="5" opacity=".7"/>',5,false)}
    <path d="M194,136 Q200,130 206,136" stroke="${OL}" stroke-width="6" fill="none" stroke-linecap="round"/>`,
-  glove:`<rect x="-27" y="-30" width="54" height="58" fill="#F4F7F9"/><path d="M-27,22 H27" stroke="#DCE3E8" stroke-width="6"/><path d="M-27,27 H27" stroke="${OL}" stroke-width="3"/>`,
-  handR:HOLD(`<path d="M-7,0 h14 v16 l15,30 a8,8 0 0 1 -7,11 h-30 a8,8 0 0 1 -7,-11 l15,-30 z" fill="#E9F6FA" stroke="${OL}" stroke-width="4" stroke-linejoin="round"/>
-   <path d="M-17,40 Q0,34 17,40 L22,48 a8,8 0 0 1 -7,9 h-30 a8,8 0 0 1 -7,-9 z" fill="#7FD06B"/><path d="M-9,-2 h18" stroke="${OL}" stroke-width="5" stroke-linecap="round"/>
-   <g data-bob="2.2"><circle cx="-4" cy="44" r="3" fill="#C8F0BE"/><circle cx="6" cy="36" r="2.4" fill="#C8F0BE"/><circle cx="0" cy="26" r="2" fill="#C8F0BE" opacity=".8"/></g>
-   <path d="M-4,4 v14" stroke="#fff" stroke-width="3" opacity=".8" stroke-linecap="round"/>`,-2,58)},
+  glove:`<rect x="-27" y="-30" width="54" height="58" fill="#F4F7F9"/><path d="M-27,22 H27" stroke="#DCE3E8" stroke-width="6"/><path d="M-27,27 H27" stroke="${OL}" stroke-width="3"/>`,},
 
- // 7) 상식·역사·지리·숫자 퀴즈 일반 — 학사모(술이 흔들림) + 와인색 카디건(흰 셔츠 깃) + 손에 책
+ // 7) 상식·교육·수능·입시 — 학사모(술이 흔들림) + 와인색 카디건(흰 셔츠 깃)
  trivia:{bag:false,
   body:`${G('cdl',PL(178,352),'#A44A5C','<path d="M40,268 V440 M60,268 V440 M80,268 V440 M100,268 V440 M120,268 V440 M140,268 V440 M160,268 V440 M180,268 V440" stroke="#953F51" stroke-width="3"/><path d="M10,396 H220" stroke="#8C3A4B" stroke-width="20"/>')}
    ${G('cdr',PR(222,352),'#A44A5C','<path d="M220,268 V440 M240,268 V440 M260,268 V440 M280,268 V440 M300,268 V440 M320,268 V440 M340,268 V440 M360,268 V440" stroke="#953F51" stroke-width="3"/><path d="M180,396 H390" stroke="#8C3A4B" stroke-width="20"/>')}
@@ -145,26 +138,26 @@ const OUTFIT={
    <g data-sw="4,2.3,300,94,0"><path d="M200,88 Q260,90 300,94 L304,150" fill="none" stroke="#F2B544" stroke-width="5" stroke-linecap="round"/>
     <path d="M296,146 h16 l4,24 h-24 z" fill="#F2B544" stroke="${OL}" stroke-width="3.5" stroke-linejoin="round"/><path d="M299,154 v14 M304,154 v14 M309,154 v14" stroke="#D99A2B" stroke-width="2"/></g>
    <circle cx="200" cy="88" r="7" fill="#F2B544" stroke="${OL}" stroke-width="3.5"/>`,
-  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#A44A5C"/><rect x="-27" y="16" width="54" height="11" fill="#8C3A4B"/><path d="M-20,16 v11 M-12,16 v11 M-4,16 v11 M4,16 v11 M12,16 v11 M20,16 v11" stroke="#7A3242" stroke-width="2.2"/><path d="M-27,27 H27" stroke="${OL}" stroke-width="3"/>`,
-  handR:HOLD(`<rect x="-20" y="0" width="40" height="52" rx="4" fill="#2E9C83" stroke="${OL}" stroke-width="4"/><rect x="-20" y="0" width="8" height="52" rx="3" fill="#24806B" stroke="${OL}" stroke-width="3"/>
-   <path d="M20,4 v44" stroke="#FFF6E6" stroke-width="5"/><rect x="-6" y="14" width="20" height="12" rx="3" fill="#FFE9A8" stroke="${OL}" stroke-width="2.5"/>`,-4,58)},
+  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#A44A5C"/><rect x="-27" y="16" width="54" height="11" fill="#8C3A4B"/><path d="M-20,16 v11 M-12,16 v11 M-4,16 v11 M4,16 v11 M12,16 v11 M20,16 v11" stroke="#7A3242" stroke-width="2.2"/><path d="M-27,27 H27" stroke="${OL}" stroke-width="3"/>`,},
 
- // 8) 팩트체크·"진짜일까?"·오해 바로잡기 — 사냥모자(체크) + 트렌치코트(벨트) + 손에 돋보기
+ // 8) 팩트체크·"진짜일까?"·오해 바로잡기 — 사냥모자(체크) + 트렌치코트(벨트) + 목에 건 돋보기(흔들림)
  detective:{bag:false,
   body:`${G('tcL',PL(176,352),'#D8B67E','<path d="M10,372 H220" stroke="#B99257" stroke-width="18"/><path d="M80,320 Q100,370 92,440" stroke="#C7A266" stroke-width="5" fill="none"/>')}
    ${G('tcR',PR(224,352),'#D8B67E','<path d="M180,372 H390" stroke="#B99257" stroke-width="18"/><path d="M320,320 Q300,370 308,440" stroke="#C7A266" stroke-width="5" fill="none"/>')}
    ${G('tlL',`M176,${NY(176)} L200,352 L172,346 L126,${NY(126)+6} Z`,'#C9A46A','',4.2,false)}${G('tlR',`M224,${NY(224)} L200,352 L228,346 L274,${NY(274)+6} Z`,'#C9A46A','',4.2,false)}
    <rect x="186" y="362" width="28" height="20" rx="4" fill="none" stroke="#7A5A2A" stroke-width="4.5"/><path d="M200,372 h14" stroke="#7A5A2A" stroke-width="4"/>
    <g fill="#8C6A38" stroke="${OL}" stroke-width="2.2"><circle cx="172" cy="356" r="4.5"/><circle cx="228" cy="356" r="4.5"/><circle cx="172" cy="398" r="4.5"/><circle cx="228" cy="398" r="4.5"/></g>${CHIN()}`,
+  top:`<g data-sw="2.2,2.1,212,322,0.4"><path d="M188,${NY(188)+4} Q206,340 238,350 M212,${NY(212)+4} Q222,336 238,350" fill="none" stroke="${OL}" stroke-width="6" stroke-linecap="round"/><path d="M188,${NY(188)+4} Q206,340 238,350 M212,${NY(212)+4} Q222,336 238,350" fill="none" stroke="#7A5A2A" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M238,350 L244,362" stroke="${OL}" stroke-width="11" stroke-linecap="round"/><path d="M238,350 L244,362" stroke="#8C5A32" stroke-width="5.5" stroke-linecap="round"/>
+    ${SH('M252,384 m-18,0 a18,18 0 1,0 36,0 a18,18 0 1,0 -36,0',4,.18)}
+    <circle cx="252" cy="380" r="18" fill="#CFEFFF" fill-opacity=".7" stroke="${OL}" stroke-width="8"/><circle cx="252" cy="380" r="18" fill="none" stroke="#5A6470" stroke-width="3.5"/>
+    <path d="M243,373 Q247,367 255,367" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/></g>`,
   head:`<defs><pattern id="dChk" width="22" height="22" patternUnits="userSpaceOnUse"><rect width="22" height="22" fill="#9C7A4F"/><path d="M0,5 H22 M0,16 H22" stroke="#86653E" stroke-width="3"/><path d="M5,0 V22 M16,0 V22" stroke="#B08C5E" stroke-width="2.5"/></pattern></defs>
    ${SH('M110,148 Q200,128 290,148 Q280,176 200,178 Q120,176 110,148 Z',6,.2)}
    ${G('dcr','M74,152 C78,96 132,64 200,64 C268,64 322,96 326,152 Q200,134 74,152 Z','#9C7A4F','<rect x="-70" y="-70" width="540" height="560" fill="url(#dChk)"/><path d="M200,64 V150 M140,74 Q128,110 122,150 M260,74 Q272,110 278,150" stroke="#6E5230" stroke-width="3" fill="none"/><rect x="-70" y="-70" width="540" height="560" fill="url(#dDome)"/>',5,false)}
    ${G('dbr','M108,146 Q200,126 292,146 Q282,176 200,178 Q118,176 108,146 Z','#8A6A42','<rect x="-70" y="-70" width="540" height="560" fill="url(#dChk)" opacity=".6"/><path d="M118,152 Q200,136 282,152" stroke="#B08C5E" stroke-width="4" fill="none"/>',4.8,false)}
    <circle cx="200" cy="64" r="8" fill="#7A5A2A" stroke="${OL}" stroke-width="3.5"/>`,
-  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#D8B67E"/><rect x="-27" y="14" width="54" height="9" fill="#B99257"/><path d="M-27,26 H27" stroke="${OL}" stroke-width="3"/>`,
-  handR:`<g transform="translate(-4,56)"><g class="hold"><g transform="rotate(58) scale(.85)"><path d="M0,4 L0,-30" stroke="${OL}" stroke-width="13" stroke-linecap="round"/><path d="M0,4 L0,-30" stroke="#8C5A32" stroke-width="7" stroke-linecap="round"/>
-   <circle cx="0" cy="-56" r="24" fill="#CFEFFF" fill-opacity=".55" stroke="${OL}" stroke-width="9"/><circle cx="0" cy="-56" r="24" fill="none" stroke="#5A6470" stroke-width="4"/>
-   <path d="M-12,-66 Q-6,-74 4,-74" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"/></g></g></g><ellipse cx="-3" cy="55" rx="13" ry="11" fill="#FFFDFB" stroke="${OL}" stroke-width="4.5"/>`},
+  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#D8B67E"/><rect x="-27" y="14" width="54" height="9" fill="#B99257"/><path d="M-27,26 H27" stroke="${OL}" stroke-width="3"/>`,},
 
  // 9) 해외여행·환율·면세·관광 — 밀짚모자(선글라스를 모자에) + 하늘색 꽃무늬 셔츠
  travel:{bag:false,
@@ -183,7 +176,7 @@ const OUTFIT={
     <path d="M-4,0 Q0,-4 4,0" stroke="${OL}" stroke-width="3.5" fill="none"/><path d="M-40,0 l10,10 M16,0 l10,10" stroke="#8FA3B8" stroke-width="3" stroke-linecap="round"/></g>`,
   glove:`<rect x="-27" y="-30" width="54" height="40" fill="#6EC3E8"/><rect x="-27" y="-30" width="54" height="40" fill="url(#dHib)"/><path d="M-27,10 H27" stroke="${OL}" stroke-width="3"/>`},
 
- // 10) 월급·연봉·고용·직장인·최저임금 — 하늘색 셔츠(소매 걷음) + 사원증 목걸이(흔들림) + 손에 커피
+ // 10) 월급·연봉·고용·직장인·최저임금 — 하늘색 셔츠(소매 걷음) + 사원증 목걸이(흔들림)
  office:{bag:false,
   body:`${G('sh',FULL,'#CFE3F7','<path d="M200,330 V440" stroke="#B7D0EA" stroke-width="10"/><path d="M60,320 Q80,380 74,440 M340,320 Q320,380 326,440" stroke="#BFD6EE" stroke-width="5" fill="none"/>')}
    <path d="M200,332 V440" stroke="${OL}" stroke-width="3"/><g fill="#fff" stroke="${OL}" stroke-width="2"><circle cx="206" cy="352" r="3.5"/><circle cx="206" cy="376" r="3.5"/><circle cx="206" cy="400" r="3.5"/></g>
@@ -192,31 +185,15 @@ const OUTFIT={
    <g data-sw="1.8,2.0,200,318,0.6"><path d="M166,${NY(166)+4} Q174,346 194,360 M234,${NY(234)+4} Q226,346 206,360" fill="none" stroke="${OL}" stroke-width="8" stroke-linecap="round"/><path d="M166,${NY(166)+4} Q174,346 194,360 M234,${NY(234)+4} Q226,346 206,360" fill="none" stroke="#2E9C83" stroke-width="4" stroke-linecap="round"/>
     ${SH('M180,362 h40 v44 h-40 z',4,.16)}${G('badge','M182,360 h36 a6,6 0 0 1 6,6 v36 a6,6 0 0 1 -6,6 h-36 a6,6 0 0 1 -6,-6 v-36 a6,6 0 0 1 6,-6 z','#FFFFFF','<rect x="186" y="368" width="16" height="17" rx="3" fill="#80D0BA"/><path d="M188,392 h24 M188,399 h16" stroke="#BFC7CE" stroke-width="3.5" stroke-linecap="round"/><path d="M176,360 h48 v6 h-48 z" fill="#2E9C83"/>',3.8,false)}
     <rect x="194" y="354" width="12" height="10" rx="2" fill="#9AA6B2" stroke="${OL}" stroke-width="2.5"/></g>`,
-  glove:`<rect x="-27" y="-30" width="54" height="50" fill="#CFE3F7"/><rect x="-27" y="10" width="54" height="13" rx="3" fill="#E3EFFB"/><path d="M-27,10 H27 M-27,23 H27" stroke="${OL}" stroke-width="3"/><path d="M-18,14 v6 M0,14 v6 M18,14 v6" stroke="#B7D0EA" stroke-width="2.5"/>`,
-  handR:HOLD(`<path d="M-17,4 L17,4 L13,52 a5,5 0 0 1 -5,4 h-16 a5,5 0 0 1 -5,-4 z" fill="#FFFFFF" stroke="${OL}" stroke-width="4" stroke-linejoin="round"/>
-   <path d="M-15,20 L15,20 L13,38 L-13,38 Z" fill="#B98552" stroke="${OL}" stroke-width="3"/><rect x="-20" y="-2" width="40" height="9" rx="4" fill="#4A3A33"/>
-   <g data-sw="6,2.6,0,-4,0" opacity=".55"><path d="M-6,-8 q-6,-8 0,-16 q6,-8 0,-16 M6,-10 q-6,-8 0,-14" stroke="#B8B0A8" stroke-width="3.5" fill="none" stroke-linecap="round"/></g>`,-4,58)},
+  glove:`<rect x="-27" y="-30" width="54" height="50" fill="#CFE3F7"/><rect x="-27" y="10" width="54" height="13" rx="3" fill="#E3EFFB"/><path d="M-27,10 H27 M-27,23 H27" stroke="${OL}" stroke-width="3"/><path d="M-18,14 v6 M0,14 v6 M18,14 v6" stroke="#B7D0EA" stroke-width="2.5"/>`,},
 
- // 11) 수능·교육·입시·학자금 — 빨간 머리띠(매듭이 흔들림) + 연보라 후드티(모자 끈이 흔들림)
- study:{bag:false,
-  body:`${G('hd',FULL,'#A99BDB','<path d="M60,320 Q80,380 74,440 M340,320 Q320,380 326,440" stroke="#9A8BCF" stroke-width="5" fill="none"/>')}
-   ${SH('M118,360 L282,360 L300,416 L100,416 Z',4,.14)}${G('kp','M118,358 L282,358 L298,418 L102,418 Z','#9A8BCF','<path d="M138,364 Q132,390 120,416 M262,364 Q268,390 280,416" stroke="#8A7BC0" stroke-width="5" fill="none"/>',4.2,false)}
-   <path d="M10,404 H390" stroke="#8E80C6" stroke-width="14"/>`,
-  top:`<g mask="url(#dBodyM)">${SH(`M50,256${NK(50,350,-2)} L352,${NY(350)+24}${NK(350,50,24)} Z`,6,.2)}${G('hood',`M46,252${NK(48,352,-6)} L354,${NY(352)+20}${NK(352,48,20)} Z`,'#9284C9',`<path d="M60,${NY(60)+6}${NK(60,340,6)}" stroke="#B3A7E3" stroke-width="4" fill="none"/>`,4.8)}</g>
-   <g data-sw="2.5,2.2,186,334,0"><path d="M186,334 L182,378" stroke="#F4F1FB" stroke-width="5" stroke-linecap="round"/><rect x="177" y="376" width="10" height="12" rx="3" fill="#6A5CA8" stroke="${OL}" stroke-width="2.5"/></g>
-   <g data-sw="-2.5,2.4,214,334,1"><path d="M214,334 L218,376" stroke="#F4F1FB" stroke-width="5" stroke-linecap="round"/><rect x="213" y="374" width="10" height="12" rx="3" fill="#6A5CA8" stroke="${OL}" stroke-width="2.5"/></g>${CHIN()}`,
-  head:`${SH('M60,150 Q200,122 340,150 L340,166 Q200,140 60,166 Z',6,.2)}
-   ${G('hb','M58,146 Q200,118 342,146 L342,166 Q200,138 58,166 Z','#E2483A','<path d="M62,150 Q200,124 338,150" stroke="#FF7A6E" stroke-width="4" fill="none"/>',4.8,false)}
-   <g transform="translate(336,152)"><g data-sw="5,2.9,0,0,0">${G('sk1','M0,0 L34,-18 Q42,0 28,10 Z','#E2483A','',4.4,false)}</g><g data-sw="-6,2.5,0,0,1.1">${G('sk2','M0,0 L30,26 Q16,36 4,24 Z','#C93A2E','',4.4,false)}</g>
-    <circle r="10" fill="#C93A2E" stroke="${OL}" stroke-width="4.4"/></g>`,
-  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#A99BDB"/><rect x="-27" y="14" width="54" height="12" fill="#8E80C6"/><path d="M-20,14 v12 M-12,14 v12 M-4,14 v12 M4,14 v12 M12,14 v12 M20,14 v12" stroke="#7E70B6" stroke-width="2.2"/><path d="M-27,26 H27" stroke="${OL}" stroke-width="3"/>`}
 };
 
 // 주제 → 옷 추천(편을 만들 때 고르는 기준). 맞는 게 없으면 ''(기본: 민트 크로스백)
 const TOPIC={news:'금리·환율·경제 지표·경제 해설',tax:'연말정산·세금·연금·건강보험료·지원금 신청',export:'수출입·반도체·조선·자동차·산업 통계',
   winter:'난방비·전기·가스요금·겨울 물가·한파',kimjang:'김장·장바구니 물가·농수산물·먹거리 수출',
-  science:'과학·기술·우주·날씨·AI 원리',trivia:'상식·역사·지리·숫자 퀴즈 일반',detective:'팩트체크·"진짜일까?"·오해 바로잡기·반전 숫자',
-  travel:'해외여행·환율·면세·항공·관광',office:'월급·연봉·고용·직장인·최저임금',study:'수능·교육·입시·학자금'};
+  science:'과학·기술·우주·날씨·AI 원리',trivia:'상식·역사·지리·숫자 퀴즈 일반·교육·수능·입시·학자금',detective:'팩트체크·"진짜일까?"·오해 바로잡기·반전 숫자',
+  travel:'해외여행·환율·면세·항공·관광',office:'월급·연봉·고용·직장인·최저임금'};
 let UID=0;
 function apply(sl,name){
   const o=OUTFIT[name]; if(!o) return false;
