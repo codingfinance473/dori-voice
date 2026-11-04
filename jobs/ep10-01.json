@@ -1,0 +1,60 @@
+{
+ "id": "ep10-01",
+ "note": "EP.10 컴퓨터 물가 (1/3)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 544,
+   "takes": 4,
+   "texts": [
+    "요즘 컴퓨터 값, 일 년 전보다 얼마나 올랐을까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 545,
+   "takes": 4,
+   "texts": [
+    "지난달 전체 물가는 이 점 팔 퍼센트 올랐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 546,
+   "takes": 4,
+   "texts": [
+    "삼 퍼센트, 십삼 퍼센트, 이십육 퍼센트 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 547,
+   "takes": 4,
+   "texts": [
+    "나는 삼 퍼센트! 물가랑 비슷하겠지."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05"
+ ]
+}
