@@ -92,16 +92,32 @@ const OUTFIT={
     <rect x="194.5" y="330" width="11" height="11" rx="3.5" fill="#4A5B84" stroke="${OL}" stroke-width="3"/></g>`,
   glove:`<rect x="-27" y="-30" width="54" height="56" fill="#FFFDF8"/><rect x="-27" y="16" width="54" height="10" fill="#EEE8DE"/><path d="M-27,16 H27 M-27,26 H27" stroke="${OL}" stroke-width="2.8"/>`},
 
- // 3) 수출·산업·무역 — 노란 안전모 + 주황 안전 조끼(반사띠) + 데님 작업 셔츠
+ // 3) 수출·무역·항구·조선 — 선장 정복(2026-11-04 사용자 선택 A): 흰 선장 모자(남색 띠·금색 닻 배지·검은 챙) + 남색 더블 재킷(금단추) + 흰 셔츠·남색 넥타이
  export:{bag:false,
-  head:`${TILT(-4,`${SH('M92,128 Q200,112 308,128 Q311,140 296,144 Q200,128 104,144 Q89,140 92,128 Z',6,.2)}
-   ${G('hh','M108,128 C110,74 150,50 200,50 C250,50 290,74 292,128 Z','#F4D47A','<path d="M200,50 V128" stroke="#FAE6A8" stroke-width="18"/><path d="M186,52 V128 M214,52 V128" stroke="#E6C060" stroke-width="3"/><path d="M134,92 Q144,68 170,60" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none" opacity=".7"/>',OW,false)}
-   ${G('hb','M90,128 Q200,110 310,128 Q313,140 298,145 Q200,128 102,145 Q87,140 90,128 Z','#E9C25C','<path d="M104,134 Q200,118 296,134" stroke="#F4D47A" stroke-width="4" fill="none"/>',OW,false)}`)}`,
-  body:`${G('wsh',FULL,'#8DA8CC','<path d="M200,330 V440" stroke="#7D97BC" stroke-width="3"/><circle cx="206" cy="350" r="3" fill="#E9EEF2"/><circle cx="206" cy="374" r="3" fill="#E9EEF2"/><circle cx="206" cy="398" r="3" fill="#E9EEF2"/>')}
-   ${G('svl',`M10,230 L52,262${NK(52,180)} L186,440 L10,440 Z`,'#F0A35E','<path d="M10,352 H200 M10,388 H200" stroke="#E9EEF2" stroke-width="14"/><path d="M10,347 H200 M10,383 H200" stroke="#fff" stroke-width="3" opacity=".85"/><path d="M110,300 V440" stroke="#E08E48" stroke-width="2.6" stroke-dasharray="7 7"/>',OW)}
-   ${G('svr',`M390,230 L348,262${NK(348,220)} L214,440 L390,440 Z`,'#F0A35E','<path d="M200,352 H390 M200,388 H390" stroke="#E9EEF2" stroke-width="14"/><path d="M200,347 H390 M200,383 H390" stroke="#fff" stroke-width="3" opacity=".85"/><path d="M290,300 V440" stroke="#E08E48" stroke-width="2.6" stroke-dasharray="7 7"/>',OW)}
-   <rect x="242" y="316" width="30" height="22" rx="5" fill="#FFFDF8" stroke="${OL}" stroke-width="3"/><path d="M248,323 h18 M248,330 h12" stroke="#C9D0D6" stroke-width="2.6" stroke-linecap="round"/>${CHIN()}`,
-  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#8DA8CC"/><rect x="-27" y="16" width="54" height="10" fill="#7D97BC"/><path d="M-27,26 H27" stroke="${OL}" stroke-width="2.8"/>`},
+  head:`${TILT(-4,`${SH('M122,126 Q200,114 278,126 Q272,148 200,150 Q128,148 122,126 Z',5,.22)}
+   ${G('ccr','M112,128 C112,98 140,82 200,80 C260,82 288,98 288,128 Z','#F7F8FA','<rect x="-70" y="-70" width="540" height="560" fill="url(#dDome)"/>',OW,false)}
+   ${G('cct','M96,98 Q200,60 304,98 Q306,110 292,114 Q200,90 108,114 Q94,110 96,98 Z','#FFFFFF','<path d="M110,100 Q200,72 290,100" stroke="#E8ECF1" stroke-width="5" fill="none"/>',OW,false)}
+   ${G('ccb','M112,112 Q200,98 288,112 L288,128 Q200,114 112,128 Z','#3E4D74','<path d="M112,118 Q200,104 288,118" stroke="#E7BE5E" stroke-width="3" fill="none"/>',OW,false)}
+   ${G('ccv','M124,126 Q200,114 276,126 Q270,148 200,150 Q130,148 124,126 Z','#2F3A58','<path d="M140,132 Q200,122 260,132" stroke="#56658E" stroke-width="4" fill="none"/>',OW,false)}
+   <g transform="translate(200,106)"><circle r="13" fill="#E7BE5E" stroke="${OL}" stroke-width="3"/><path d="M0,-7 V7 M-6,2 Q0,9 6,2 M-4,-4 H4" stroke="#3E4D74" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cy="-8" r="2" fill="none" stroke="#3E4D74" stroke-width="2"/></g>`)}`,
+  body:`${G('cjl',PL(172,364),'#3E4D74',VEDGE_L(172,364,'#4F5F8A',30),OW)}${G('cjr',PR(228,364),'#3E4D74',VEDGE_R(228,364,'#4F5F8A',30),OW)}
+   <g fill="#E7BE5E" stroke="${OL}" stroke-width="2.4"><circle cx="176" cy="376" r="5"/><circle cx="224" cy="376" r="5"/><circle cx="176" cy="404" r="5"/><circle cx="224" cy="404" r="5"/></g>${CHIN()}`,
+  top:`${RCOL('#FFFFFF')}<g data-sw="1.2,2.2,200,326,0">${G('ct','M194,333 L206,333 L210,360 Q200,370 190,360 Z','#2F3A58','',3.2,false)}<rect x="193" y="320" width="14" height="14" rx="4.5" fill="#2F3A58" stroke="${OL}" stroke-width="3.2"/></g>`,
+  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#3E4D74"/><path d="M-27,12 H27 M-27,19 H27" stroke="#E7BE5E" stroke-width="3.4"/><rect x="-27" y="22" width="54" height="8" fill="#FFFDF8"/><path d="M-27,22 H27 M-27,30 H27" stroke="${OL}" stroke-width="2.6"/>`},
+
+ // 3-2) 반도체·자동차·제조업·산업 생산 — 공장 작업복(2026-11-04 사용자 선택 C): 청록 작업 모자(톱니 마크) + 슬레이트 점프수트(지퍼·이름표·주머니)
+ factory:{bag:false,
+  head:`${TILT(-4,`${SH('M118,124 Q200,110 282,124 Q276,150 200,154 Q124,150 118,124 Z',5,.22)}
+   ${G('wc','M116,126 C118,84 156,64 200,64 C244,64 282,84 284,126 Z','#5FA79A','<path d="M200,66 V124 M160,74 Q146,98 144,124 M240,74 Q254,98 256,124" stroke="#4E9286" stroke-width="3" fill="none"/><rect x="-70" y="-70" width="540" height="560" fill="url(#dDome)"/>',OW,false)}
+   ${G('wb','M118,124 Q200,110 282,124 Q276,150 200,154 Q124,150 118,124 Z','#4E9286','<path d="M134,130 Q200,118 266,130" stroke="#6FB7AA" stroke-width="4" fill="none"/>',OW,false)}
+   <circle cx="200" cy="64" r="6" fill="#4E9286" stroke="${OL}" stroke-width="3"/>
+   <g transform="translate(200,98)"><circle r="12" fill="#FFFDF8" stroke="${OL}" stroke-width="2.6"/><path d="M0,-8 V-5 M0,5 V8 M-8,0 H-5 M5,0 H8 M-5.6,-5.6 l2,2 M3.6,3.6 l2,2 M5.6,-5.6 l-2,2 M-3.6,3.6 l-2,2" stroke="#4E9286" stroke-width="2.4" stroke-linecap="round"/><circle r="3.2" fill="none" stroke="#4E9286" stroke-width="2.2"/></g>`)}`,
+  body:`${G('js',FULL,'#7F93AE','<path d="M10,392 H390" stroke="#6F83A0" stroke-width="12"/><path d="M64,322 Q86,380 80,440 M336,322 Q314,380 320,440" stroke="#8FA2BB" stroke-width="4" fill="none"/>')}
+   <path d="M200,322 V440" stroke="${OL}" stroke-width="3"/><path d="M200,322 V440" stroke="#C9D2DE" stroke-width="1.6" stroke-dasharray="3 3"/><rect x="196" y="322" width="8" height="12" rx="2" fill="#C9D2DE" stroke="${OL}" stroke-width="2"/>
+   ${G('np','M84,336 h50 v24 a5,5 0 0 1 -5,5 h-40 a5,5 0 0 1 -5,-5 z','#FFFDF8','<rect x="84" y="336" width="50" height="7" fill="#5FA79A"/><path d="M92,352 h28" stroke="#C9D0D6" stroke-width="3" stroke-linecap="round"/>',3,false)}
+   ${G('jp','M240,342 h40 v28 a6,6 0 0 1 -6,6 h-28 a6,6 0 0 1 -6,-6 z','#7389A6','<path d="M240,350 h40" stroke="#6F83A0" stroke-width="3"/>',3,false)}${CHIN()}`,
+  top:`${RCOL('#8FA2BB')}`,
+  glove:`<rect x="-27" y="-30" width="54" height="44" fill="#7F93AE"/><rect x="-27" y="10" width="54" height="13" rx="4" fill="#8FA2BB"/><path d="M-27,10 H27 M-27,23 H27" stroke="${OL}" stroke-width="2.6"/>`},
 
  // 4) 겨울 생활비 — 방울 털모자(귀는 밖으로) + 크림 니트 스웨터 + 로즈 목도리 + 벙어리장갑
  winter:{bag:false,
@@ -172,25 +188,23 @@ const OUTFIT={
   top:`${RCOL('#FFFFFF')}`,
   glove:`<rect x="-27" y="-30" width="54" height="56" fill="#4A5880"/><rect x="-27" y="15" width="54" height="11" fill="#E7BE5E"/><path d="M-27,15 H27 M-27,26 H27" stroke="${OL}" stroke-width="2.8"/>`},
 
- // 8) 팩트체크·"진짜일까?" — 사냥모자 + 낙타색 코트(어깨 망토·벨트) + 돋보기 목걸이
+ // 8) 팩트체크·"진짜일까?" — 셜록 트위드(2026-11-04 사용자 선택 A): 체크 사냥모자(위에 리본) + 체크 망토·코트 + 흰 깃·갈색 리본타이 + 큰 돋보기 목걸이
  detective:{bag:false,
-  head:`${TILT(5,`${SH('M138,126 Q200,114 262,126 Q256,148 200,150 Q144,148 138,126 Z',5,.2)}
-   ${G('dc','M112,128 C114,76 152,52 200,52 C248,52 286,76 288,128 Q200,114 112,128 Z','#C9A77C','<path d="M200,52 V126 M160,62 Q146,94 144,124 M240,62 Q254,94 256,124" stroke="#B4925F" stroke-width="3" fill="none"/><path d="M112,86 H288 M112,106 H288" stroke="#D8BC94" stroke-width="3"/><rect x="-70" y="-70" width="540" height="560" fill="url(#dDome)"/>',OW,false)}
-   ${G('db','M138,124 Q200,112 262,124 Q256,146 200,148 Q144,146 138,124 Z','#B9966A','<path d="M150,130 Q200,120 250,130" stroke="#C9A77C" stroke-width="3.5" fill="none"/>',OW,false)}
-   <circle cx="200" cy="52" r="6.5" fill="#9C7A4F" stroke="${OL}" stroke-width="3.2"/>`)}`,
-  body:`${G('tcl',PL(176,356),'#D2B183','<path d="M10,392 H200" stroke="#B99257" stroke-width="16"/><path d="M76,330 Q98,384 92,440" stroke="#C7A473" stroke-width="5" fill="none"/>',OW)}
-   ${G('tcr',PR(224,356),'#D2B183','<path d="M200,392 H390" stroke="#B99257" stroke-width="16"/><path d="M324,330 Q302,384 308,440" stroke="#C7A473" stroke-width="5" fill="none"/>',OW)}
-   <rect x="186" y="382" width="28" height="20" rx="5" fill="none" stroke="#7A5A2A" stroke-width="4.2"/><path d="M200,392 h14" stroke="#7A5A2A" stroke-width="3.6"/>
-   ${SH(`M10,262 L52,262${NK(52,182)} L186,${(NY(186)+18).toFixed(1)} Q120,356 24,348 L10,348 Z`,5,.16)}${SH(`M390,262 L348,262${NK(348,218)} L214,${(NY(214)+18).toFixed(1)} Q280,356 376,348 L390,348 Z`,5,.16)}
-   ${G('cpl',`M10,230 L52,262${NK(52,182)} L186,${(NY(186)+18).toFixed(1)} Q120,352 24,344 L10,344 Z`,'#BE9A69','<path d="M24,338 Q120,346 186,330" stroke="#A9864F" stroke-width="7" fill="none"/>',OW)}
-   ${G('cpr',`M390,230 L348,262${NK(348,218)} L214,${(NY(214)+18).toFixed(1)} Q280,352 376,344 L390,344 Z`,'#BE9A69','<path d="M376,338 Q280,346 214,330" stroke="#A9864F" stroke-width="7" fill="none"/>',OW)}
-   <g fill="#8C6A38" stroke="${OL}" stroke-width="2.2"><circle cx="188" cy="368" r="4"/><circle cx="212" cy="368" r="4"/><circle cx="188" cy="414" r="4"/><circle cx="212" cy="414" r="4"/></g>${CHIN()}`,
-  top:`<g data-sw="2,2.1,200,322,0.4"><path d="M184,${(NY(184)+3).toFixed(1)} Q192,344 200,354 Q208,344 216,${(NY(216)+3).toFixed(1)}" fill="none" stroke="#7A5A2A" stroke-width="2.6"/>
-    ${SH('M200,372 m-16,0 a16,16 0 1,0 32,0 a16,16 0 1,0 -32,0',3,.16)}
-    <circle cx="200" cy="370" r="16" fill="#DDF3FA" fill-opacity=".85" stroke="${OL}" stroke-width="7.5"/><circle cx="200" cy="370" r="16" fill="none" stroke="#9C7A4F" stroke-width="3"/>
-    <path d="M200,354 v-1" stroke="${OL}" stroke-width="5" stroke-linecap="round"/><path d="M200,387 L200,404" stroke="${OL}" stroke-width="9" stroke-linecap="round"/><path d="M200,387 L200,404" stroke="#8C5A32" stroke-width="4.5" stroke-linecap="round"/>
-    <path d="M191,363 Q195,358 203,358" stroke="#fff" stroke-width="3.4" stroke-linecap="round" fill="none"/></g>`,
-  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#D2B183"/><rect x="-27" y="14" width="54" height="9" fill="#B99257"/><path d="M-27,26 H27" stroke="${OL}" stroke-width="2.8"/>`},
+  head:`<defs><pattern id="dTw" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#B48E62"/><path d="M0,5 H20 M0,15 H20" stroke="#9C7750" stroke-width="2.4"/><path d="M5,0 V20 M15,0 V20" stroke="#C7A47A" stroke-width="2.2"/><path d="M0,10 H20" stroke="#8C6A45" stroke-width="1" opacity=".6"/></pattern></defs>
+   ${TILT(5,`${SH('M138,126 Q200,114 262,126 Q256,148 200,150 Q144,148 138,126 Z',5,.22)}
+   ${G('dac','M112,128 C114,76 152,52 200,52 C248,52 286,76 288,128 Q200,114 112,128 Z','#B48E62','<rect x="-70" y="-70" width="540" height="560" fill="url(#dTw)"/><path d="M200,52 V126 M160,62 Q146,94 144,124 M240,62 Q254,94 256,124" stroke="#7E5E3A" stroke-width="2.6" fill="none"/><rect x="-70" y="-70" width="540" height="560" fill="url(#dDome)"/>',OW,false)}
+   ${G('dab','M138,124 Q200,112 262,124 Q256,146 200,148 Q144,146 138,124 Z','#9C7750','<rect x="-70" y="-70" width="540" height="560" fill="url(#dTw)" opacity=".7"/>',OW,false)}
+   <path d="M200,54 q-14,-12 -22,-4 q2,10 22,4 q14,-12 22,-4 q-2,10 -22,4" fill="#8C6A45" stroke="${OL}" stroke-width="3" stroke-linejoin="round"/><circle cx="200" cy="53" r="4" fill="#7E5E3A" stroke="${OL}" stroke-width="2.6"/>`)}`,
+  body:`<defs><pattern id="dTw2" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#A8845A"/><path d="M0,5 H20 M0,15 H20" stroke="#937149" stroke-width="2.4"/><path d="M5,0 V20 M15,0 V20" stroke="#BA9870" stroke-width="2.2"/></pattern></defs>
+   ${G('dacl',PL(178,360),'#A8845A','<rect x="-70" y="-70" width="540" height="560" fill="url(#dTw2)"/>',OW)}${G('dacr',PR(222,360),'#A8845A','<rect x="-70" y="-70" width="540" height="560" fill="url(#dTw2)"/>',OW)}
+   ${SH(`M10,262 L52,262${NK(52,180)} L184,${(NY(184)+20).toFixed(1)} Q120,362 22,352 L10,352 Z`,5,.18)}${SH(`M390,262 L348,262${NK(348,220)} L216,${(NY(216)+20).toFixed(1)} Q280,362 378,352 L390,352 Z`,5,.18)}
+   ${G('dcpl',`M10,230 L52,262${NK(52,180)} L184,${(NY(184)+20).toFixed(1)} Q120,358 22,348 L10,348 Z`,'#B48E62','<rect x="-70" y="-70" width="540" height="560" fill="url(#dTw)"/>',OW)}
+   ${G('dcpr',`M390,230 L348,262${NK(348,220)} L216,${(NY(216)+20).toFixed(1)} Q280,358 378,348 L390,348 Z`,'#B48E62','<rect x="-70" y="-70" width="540" height="560" fill="url(#dTw)"/>',OW)}${CHIN()}`,
+  top:`${RCOL('#FFFFFF')}<g data-sw="1.2,2,200,334,1"><path d="M200,334 Q186,323 179,329 Q177,336 179,342 Q186,347 200,337 Z M200,334 Q214,323 221,329 Q223,336 221,342 Q214,347 200,337 Z" fill="#7E5E3A" stroke="${OL}" stroke-width="3" stroke-linejoin="round"/></g>
+   <g data-sw="2,2.1,200,322,0.4"><path d="M226,${(NY(226)+20).toFixed(1)} Q240,360 246,366" fill="none" stroke="#5C4630" stroke-width="2.6"/>
+    ${SH('M252,386 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0',3,.18)}<circle cx="250" cy="384" r="20" fill="#DDF3FA" fill-opacity=".85" stroke="${OL}" stroke-width="8"/><circle cx="250" cy="384" r="20" fill="none" stroke="#C99A3E" stroke-width="3.4"/>
+    <path d="M239,376 Q244,369 253,369" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></g>`,
+  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#A8845A"/><rect x="-27" y="-30" width="54" height="56" fill="url(#dTw2)"/><rect x="-27" y="20" width="54" height="7" fill="#FFFDF8"/><path d="M-27,20 H27 M-27,27 H27" stroke="${OL}" stroke-width="2.6"/>`},
 
  // 9) 해외여행·환율·면세 — 밀짚모자(민트 리본·선글라스) + 하늘색 꽃무늬 셔츠(열린 깃)
  travel:{bag:false,
@@ -222,14 +236,14 @@ const OUTFIT={
 
 
 // 주제 → 옷 추천(편을 만들 때 고르는 기준). 맞는 게 없으면 ''(기본: 민트 크로스백)
-const TOPIC={news:'금리·환율·경제 지표·경제 해설',tax:'연말정산·세금·연금·건강보험료·지원금 신청',export:'수출입·반도체·조선·자동차·산업 통계',
+const TOPIC={news:'금리·환율·경제 지표·경제 해설',tax:'연말정산·세금·연금·건강보험료·지원금 신청',export:'수출입·무역·항구·조선·해운',factory:'반도체·자동차·제조업·산업 생산 통계',
   winter:'난방비·전기·가스요금·겨울 물가·한파',kimjang:'김장·장바구니 물가·농수산물·먹거리 수출',
   science:'과학·기술·우주·날씨·AI 원리',trivia:'상식·역사·지리·숫자 퀴즈 일반·교육·수능·입시·학자금',detective:'팩트체크·"진짜일까?"·오해 바로잡기·반전 숫자',
   travel:'해외여행·환율·면세·항공·관광',office:'월급·연봉·고용·직장인·최저임금'};
 let UID=0;
 function apply(sl,name){
   const o=OUTFIT[name]; if(!o) return false;
-  const sfx='_'+(++UID), fix=s=>(s||'').replace(/\b(dBodyM|dHeadC|dRound|dDome|dSoft|dDot|dChk|dHib|dLeaf|dFlo|dG[A-Za-z0-9]+)\b/g,m=>m+sfx);
+  const sfx='_'+(++UID), fix=s=>(s||'').replace(/\b(dBodyM|dHeadC|dRound|dDome|dSoft|dDot|dChk|dHib|dLeaf|dFlo|dStr|dTw|dTw2|dTw3|dTw4|dG[A-Za-z0-9]+)\b/g,m=>m+sfx);
   sl.body.innerHTML=fix(DEFS+`<g class="oBody" mask="url(#dBodyM)">${o.body||''}</g>`);
   sl.top.innerHTML=fix(`<g class="oTop">${o.top||''}</g>`);
   sl.head.innerHTML=fix(`<g class="oFace">${o.face||''}</g><g class="oHead">${o.head||''}</g>`);

@@ -353,7 +353,7 @@ function layout() {
   }
 }
 layout();
-// 도리 옷: episode.json 의 "outfit"(news·tax·export·winter·kimjang 또는 비움 — 비우면 민트 크로스백)
+// 도리 옷: episode.json 의 "outfit"(news·tax·export·factory·winter·kimjang·science·trivia·detective·travel·office 또는 비움 — 비우면 민트 크로스백)
 const dori = Dori.mount($('#dori'), E.outfit || '');
 // 글꼴 조각을 미리 불러오도록 모든 문구를 숨은 칸에 넣는다
 $('#preload').textContent = T.lines.map(l => l.sub.map(s => s.text).join(' ')).join(' ') + $('#stage').innerText;
