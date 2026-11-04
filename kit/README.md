@@ -30,6 +30,7 @@ python3 voice/select_takes.py                     # 확인할 줄은 말을 바�
 # 끝: L15 경험 질문 → L15b "reuse": "cta_quiz_N"(EP 번호 %3: 1→1, 2→2, 0→3) → L16 "reuse": "bolju_ssok"(다음 편 예고 없음)
 python3 build_voice.py                            # order · WORD 고치기
 python3 render.py stills 3 12 20 …                # index.html 고치며 정지 화면 확인
+python3 render.py eyes                            # 도리 눈 점검(겹침·반투명·튐 0 이면 통과) + stills/eyes_sheet.png
 python3 mix.py && python3 check_final.py mix.wav
 python3 render.py video EP03.mp4 mix.wav          # 백그라운드로, 약 7분
 python3 check_final.py EP03.mp4

@@ -82,5 +82,47 @@
   "dur": 3.633,
   "sub": "정보가 마음에 들었으면<br>구독 · 좋아요 부탁해!",
   "spoken": "정보가 마음에 들었으면 구독, 좋아요 부탁해~!"
+ },
+ {
+  "id": "cta_quiz_1",
+  "file": "cta_quiz_1.wav",
+  "dur": 2.592,
+  "sub": "퀴즈 재밌었으면<br>구독 · 좋아요 부탁해!",
+  "spoken": "퀴즈 재밌었으면 구독, 좋아요 부탁해~!"
+ },
+ {
+  "id": "cta_quiz_2",
+  "file": "cta_quiz_2.wav",
+  "dur": 2.448,
+  "sub": "맞혔으면 좋아요<br>틀렸으면 구독!",
+  "spoken": "맞혔으면 좋아요, 틀렸으면 구독!"
+ },
+ {
+  "id": "cta_quiz_3",
+  "file": "cta_quiz_3.wav",
+  "dur": 1.94,
+  "sub": "이거 몰랐으면<br>좋아요 하나 꾹!",
+  "spoken": "이거 몰랐으면 좋아요 하나 꾹!"
+ },
+ {
+  "id": "cta_check_1",
+  "file": "cta_check_1.wav",
+  "dur": 2.98,
+  "sub": "검산 도움 됐으면<br>구독 · 좋아요 부탁해!",
+  "spoken": "검산 도움 됐으면 구독, 좋아요 부탁해~!"
+ },
+ {
+  "id": "cta_check_2",
+  "file": "cta_check_2.wav",
+  "dur": 2.445,
+  "sub": "사기 전에 또 검산하고<br>싶으면 구독!",
+  "spoken": "사기 전에 또 검산하고 싶으면 구독!"
+ },
+ {
+  "id": "cta_check_3",
+  "file": "cta_check_3.wav",
+  "dur": 1.895,
+  "sub": "돈 아꼈으면<br>좋아요 하나 꾹!",
+  "spoken": "돈 아꼈으면 좋아요 하나 꾹!"
  }
 ]

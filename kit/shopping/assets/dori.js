@@ -103,19 +103,21 @@
   }
 
   const f = (x, n = 2) => (+x).toFixed(n);
+  // 눈: 반투명으로 겹치지 않게 한 번에 한 모양만(2026-11-04). 뜬 눈 → 세로로 눌려 감은 선 → 웃는 눈 ∩ 순서로 바뀐다.
   function setEye(g, p) {
     const k = p.eye ?? 1, arc = Math.min(1, Math.max(0, p.arc || 0)), b = Math.min(1, Math.max(0, p.blink || 0));
-    const lid = Math.min(1, Math.max(0, p.lid || 0)), open = 1 - arc;
-    const sy = Math.max(0.08, 1 - b * 0.92);
+    const lid = Math.min(1, Math.max(0, p.lid || 0));
+    const v = (arc < 0.5 ? 1 - 2 * arc : 0) * (1 - b), a = arc > 0.5 ? 2 * arc - 1 : 0;
+    const showOpen = v >= 0.16, showArc = !showOpen && a >= 0.16;
     const lx = (p.lookX || 0) * 2.6, ly = (p.lookY || 0) * 2;
-    g.querySelector('.eos').setAttribute('transform', `translate(${f(lx)},${f(ly)}) scale(${f(k, 3)},${f(k * sy, 3)})`);
+    g.querySelector('.eos').setAttribute('transform', `translate(${f(lx)},${f(ly)}) scale(${f(k, 3)},${f(k * Math.max(0.16, v), 3)})`);
     const top = -19 * k + lid * 21 * k;                       // 집중: 위 눈꺼풀이 내려와 눈 위쪽이 잘린다
     g.querySelector('.ecr').setAttribute('y', f(top));
-    g.querySelector('.eo').setAttribute('opacity', f(open * (b > 0.75 ? Math.max(0, 1 - (b - 0.75) * 4) : 1)));
+    g.querySelector('.eo').setAttribute('opacity', showOpen ? 1 : 0);
     const ll = g.querySelector('.lidl');
-    ll.setAttribute('transform', `translate(${f(lx)},${f(top + ly)})`); ll.setAttribute('opacity', f(open * Math.min(1, lid * 4) * (1 - b)));
-    g.querySelector('.arc').setAttribute('opacity', f(arc));
-    g.querySelector('.shut').setAttribute('opacity', f(open * (b > 0.6 ? Math.min(1, (b - 0.6) * 3) : 0)));
+    ll.setAttribute('transform', `translate(${f(lx)},${f(top + ly)})`); ll.setAttribute('opacity', f(showOpen ? Math.min(1, lid * 4) : 0));
+    const ac = g.querySelector('.arc'); ac.setAttribute('opacity', showArc ? 1 : 0); ac.setAttribute('transform', `scale(1,${f(showArc ? a : 1, 3)})`);
+    g.querySelector('.shut').setAttribute('opacity', !showOpen && !showArc ? 1 : 0);
   }
 
   function pose(d, p) {

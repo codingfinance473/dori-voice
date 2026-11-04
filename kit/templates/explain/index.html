@@ -359,12 +359,14 @@ const EX=[[0,{think:.6}],[A('L01',.9),{think:0}],[T.wdrop,{sad:.7}],[A('L02',.98
  [T.wmem,{happy:1}],[A('L10',.97),{happy:0}],
  [T.L11,{think:.4}],[T.wearly,{think:0,squint:1}],[A('L11',.97),{squint:0}],[T.wnov,{surprise:.5}],[A('L12',.97),{surprise:0}],
  [T.L14b,{squint:1}],[T.L15-.47,{squint:0,happy:1}],[T.L15+.03,{happy:0}],[T.L16+.04,{happy:1,pouch:1}]];
-const EXS=[];{let cur={happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0};for(const [t,o] of EX){cur={...cur,...o};EXS.push([t,{...cur}]);}}
-function expr(t){let res={...EXS[0][1]};for(let i=0;i<EXS.length;i++){const [tt,o]=EXS[i];if(t<tt)break;const k=eIO(P(t,tt,tt>=T.L16?.45:.28));const from=i?EXS[i-1][1]:o;res={};K.forEach(n=>res[n]=lerp(from[n],o[n],k));}return res;}
+// 표정·시선·팔은 Dori.track — 전환 중에 다음 키가 와도 지금 값에서 이어 가 튀지 않는다(2026-11-04)
+const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L16?.45:.28);
 const GZ=[[0,0,0],[T.L03,.7,-.6],[A('L05',.98),0,0],[T.L06+.1,.7,-.6],[A('L07',.98),0,0],[T.L08+.1,.7,-.5],[A('L09',.98),0,0],[T.L10+.1,.7,-.6],[A('L10',.98),0,0],[T.L11+.08,.5,-.8],[A('L12',.98),0,0]];
-function gaze(t){let g=[0,0];for(let i=0;i<GZ.length;i++){if(t<GZ[i][0])break;const k=eIO(P(t,GZ[i][0],.22));const f=i?GZ[i-1]:GZ[i];g=[lerp(f[1],GZ[i][1],k),lerp(f[2],GZ[i][2],k)];}return [g[0]+Math.sin(t*2.1)*.05,g[1]+Math.cos(t*1.7)*.04];}
-const BL=[];{const r=rng(23);let t=1.4;while(t<DUR){BL.push(t);if(r()<.2)BL.push(t+.32);t+=2.0+r()*2.6;}}
-function blink(t){let v=0;for(const b of BL){const d=t-b;if(d>=0&&d<.2)v=Math.max(v,d<.07?d/.07:d<.11?1:1-(d-.11)/.09);}return v;}
+const gzT=Dori.track(GZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.22);
+function gaze(t){const g=gzT(t),m=Dori.micro(t);return [g.x+m[0],g.y+m[1]];}
+// 깜빡임은 표정이 바뀌는 순간(EX 키 ±0.35초)을 피한다
+const BL=Dori.blinks(DUR,EX.map(k=>k[0]),23);
+const blink=t=>Dori.blinkAt(BL,t);
 const EF=[];{const r=rng(7);let t=2.8;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=3.2+r()*4;}}
 function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
 const HOPS=[[T.wrec,40],[T.wsame,24],[T.wmem,34],[T.L14b,70],[T.L16+.04,30]];
@@ -373,7 +375,8 @@ function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
   return [h,sq];}
 const ARMR=[[0,0],[A('L01',.2),.35],[A('L01',.6),0],[T.L03+.1,.6],[A('L05',.9),0],[T.L06+.1,.4],[A('L07',.9),0],[T.L08+.1,.5],[A('L09',.9),0],[T.wmem,.8],[T.wmem+1.0,0],[T.L11+.1,.4],[A('L12',.9),0],[T.L14b,.95],[T.L14b+1.17,0],[T.L15+.13,.5],[T.L15+1.43,0],[A('L16',.4),.9]];
 const ARML=[[0,0],[T.wrec,.7],[T.wrec+.9,0],[T.wmem,.55],[T.wmem+.9,0],[T.L14b,.95],[T.L14b+1.17,0],[T.L16+.04,.55],[T.L16+.89,0]];
-function arm(Kf,t){let v=0;for(let i=0;i<Kf.length;i++){if(t<Kf[i][0])break;const k=eIO(P(t,Kf[i][0],.24));v=lerp(i?Kf[i-1][1]:0,Kf[i][1],k);}return v;}
+const ARMC=new Map();
+function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.24);ARMC.set(Kf,f);}return f(t).v;}
 function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
   for(const [a,b] of [[T.wrec,T.wrec+1.1],[T.wnov,T.wnov+1.1]]){const v=on(a,b);if(v>o){o=v;m='!';}}
   for(const [a,b] of [[.2,A('L01',.95)],[T.wday-.1,T.w8]]){const v=on(a,b);if(v>o){o=v;m='?';}}

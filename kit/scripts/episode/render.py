@@ -3,6 +3,8 @@
 사용:
   python3 render.py stills 1.2 3.8 ...        # 지정 시각 PNG 를 stills/ 에 저장
   python3 render.py video out.mp4 mix.wav     # 전체(두 구간 병렬 렌더 후 이어 붙임). 길이는 timeline.js 의 T.END
+  python3 render.py eyes                      # 도리 눈 점검: 모든 프레임에서 눈 모양이 하나만·반투명 없이 보이는지, 표정 값이 튀지 않는지
+                                              #   + 표정이 바뀌는 순간 앞뒤 프레임을 stills/eyes_sheet.png 로 모아 눈으로 확인
 """
 import json, subprocess, sys, time
 from concurrent.futures import ProcessPoolExecutor
@@ -77,8 +79,60 @@ def video(dst, music):
     print("done", dst, f"{time.time() - t0:.0f}s")
 
 
+EYE_JS = """(t)=>{render(t);const r=[];document.querySelectorAll('#dori [id^=dEye]').forEach(g=>{
+  const vis=[...g.querySelectorAll('.open,.shut,.happy,.sq')].map(e=>+(e.getAttribute('opacity')??1));
+  r.push(vis);});const e=typeof expr==='function'?expr(t):{};return {eyes:r,e};}"""
+
+
+def eyes():
+    """프레임마다 (1) 한 눈에 보이는 모양이 하나뿐이고 0/1 로만 보이는지 (2) 표정 값이 한 프레임에 0.35 넘게 튀지 않는지 본다."""
+    n = int(FPS * DUR); bad, jumps, prev = [], [], None
+    with sync_playwright() as p:
+        b, pg = open_page(p)
+        for i in range(n):
+            t = i / FPS; r = pg.evaluate(EYE_JS, t)
+            for vis in r["eyes"]:
+                on = [v for v in vis if v > 0.001]
+                if len(on) != 1 or any(0.001 < v < 0.999 for v in vis): bad.append(round(t, 2)); break
+            if prev:
+                d = max((abs(r["e"].get(k, 0) - prev.get(k, 0)) for k in ("happy", "squint", "surprise", "sad")), default=0)
+                if d > 0.35: jumps.append((round(t, 2), round(d, 2)))
+            prev = r["e"]
+        # 표정이 바뀌는 시각 앞뒤를 모아 본다
+        keys = sorted({round(k, 2) for k in pg.evaluate("typeof EX!=='undefined'?EX.map(k=>k[0]).filter(x=>isFinite(x)):[]") if 0 < k < DUR})
+        box = pg.evaluate("(()=>{const r=document.getElementById('dori').getBoundingClientRect();return [r.x,r.y,r.width,r.height]})()")
+        out = HERE / "stills" / "eyes"; out.mkdir(parents=True, exist_ok=True)
+        shots = []
+        for k in keys[:24]:
+            row = []
+            for j in range(-2, 8):
+                t = max(0, k + j / FPS); pg.evaluate(f"render({t})")
+                x, y, w, h = box; f = out / f"k{k:06.2f}_{j+2:02d}.png"
+                pg.screenshot(path=str(f), clip={"x": x + w * .15, "y": y + h * .28, "width": w * .7, "height": h * .3}); row.append((t, f))
+            shots.append(row)
+        b.close()
+    try:
+        from PIL import Image, ImageDraw
+        if shots:
+            w0, h0 = Image.open(shots[0][0][1]).size; S = Image.new("RGB", (w0 * 10, (h0 + 16) * len(shots)), "white"); d = ImageDraw.Draw(S)
+            for ri, row in enumerate(shots):
+                for ci, (t, f) in enumerate(row):
+                    S.paste(Image.open(f), (ci * w0, ri * (h0 + 16) + 16)); d.text((ci * w0 + 3, ri * (h0 + 16) + 2), f"{t:.2f}s", fill="black")
+            S.save(HERE / "stills" / "eyes_sheet.png")
+    except ImportError:
+        pass
+    print(f"눈 점검: {n}프레임 — 겹침·반투명 {len(bad)}프레임, 표정 튐 {len(jumps)}곳")
+    if bad: print("  겹침·반투명 시각:", bad[:20])
+    if jumps: print("  튐(시각, 크기):", jumps[:20])
+    print("  표정 전환 모음: stills/eyes_sheet.png (행마다 전환 직전 2프레임 ~ 직후 7프레임)")
+    print("통과" if not bad and not jumps else "확인 — 위 시각의 EX·BL 을 고친다")
+    return 0 if not bad and not jumps else 1
+
+
 if __name__ == "__main__":
     if sys.argv[1] == "stills":
         stills(sys.argv[2:])
+    elif sys.argv[1] == "eyes":
+        sys.exit(eyes())
     else:
         video(sys.argv[2], sys.argv[3])

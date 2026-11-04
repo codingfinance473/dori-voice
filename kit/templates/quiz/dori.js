@@ -63,16 +63,22 @@ const svg=`<svg viewBox="-70 -70 540 560" width="100%" height="100%" overflow="v
 let q;
 function mount(el){el.innerHTML=svg;q=s=>el.querySelector(s);}
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+// 눈: 반투명으로 겹치지 않게 한 번에 한 모양만 보인다(2026-11-04).
+//  뜬 눈 → (세로로 눌리며) 감은 선 → 웃는 눈 ∩ / 찡그린 눈 >< 순서로 바뀐다. 웃는 눈 ↔ >< 은 납작한 선을 지나 바뀐다.
 function eyeDraw(g,st){
-  const happy=cl(st.happy), sq=cl(st.squint), shut=cl(st.blink);
-  const openVis=1-Math.max(happy,sq);
-  const sy=Math.max(.06,1-shut)*(1+st.surprise*.14), sx=1+st.surprise*.12;
-  const o=g.querySelector('.open');
-  o.setAttribute('opacity',openVis*(shut>.85?0:1));
+  const hp=cl(st.happy), sq=cl(st.squint), shut=cl(st.blink);
+  const c=Math.max(hp,sq);                         // 감은 모양 쪽으로 간 정도
+  const v=(c<.5?1-2*c:0)*(1-shut);                 // 뜬 눈 세로 비율
+  const sep=c>0?Math.abs(hp-sq)/c:1;               // ∩ 와 >< 가 섞이면 0 → 납작하게 지나간다
+  const a=(c>.5?2*c-1:0)*cl(sep*2);                // 감은 모양 크기
+  const o=g.querySelector('.open'), sh=g.querySelector('.shut'), hy=g.querySelector('.happy'), sk=g.querySelector('.sq');
+  const showOpen=v>=.16, showArc=!showOpen&&a>=.16;
+  o.setAttribute('opacity',showOpen?1:0);
+  const sy=Math.max(.16,v)*(1+st.surprise*.14), sx=1+st.surprise*.12;
   o.setAttribute('transform',`translate(${st.gx*4} ${st.gy*3}) scale(${sx} ${sy})`);
-  g.querySelector('.shut').setAttribute('opacity',openVis*(shut>.85?1:0));
-  g.querySelector('.happy').setAttribute('opacity',happy*(1-sq));
-  g.querySelector('.sq').setAttribute('opacity',sq);
+  sh.setAttribute('opacity',!showOpen&&!showArc?1:0);
+  hy.setAttribute('opacity',showArc&&hp>=sq?1:0); hy.setAttribute('transform',`scale(1 ${showArc?a:1})`);
+  sk.setAttribute('opacity',showArc&&sq>hp?1:0); sk.setAttribute('transform',`scale(${showArc?.55+.45*a:1} ${showArc?a:1})`);
 }
 function draw(st){
   const pouch=cl(st.pouch);
@@ -121,5 +127,28 @@ function draw(st){
   q('#dSpark').setAttribute('opacity',st.spark||0);
 }
 function lerp(a,b,k){return a+(b-a)*k;}
-window.Dori={mount,draw};
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+// 연기 표 → 시간 함수. keys=[[t,{이름:값}]…] (시간 순서가 섞여 있어도 정렬), 값은 앞 키에서 이어받는다.
+// 전환이 끝나기 전에 다음 키가 와도 "그 순간의 실제 값"에서 출발해 튀지 않는다(예전 방식은 목표값에서 다시 출발해 눈·팔이 한 프레임 튀었다).
+function track(keys,init,dur){
+  const D=typeof dur==='function'?dur:()=>dur, ks=keys.map((k,i)=>[k[0],k[1],i]).sort((a,b)=>a[0]-b[0]||a[2]-b[2]);
+  const seg=[]; let tgt={...init};
+  const at=(sg,t)=>{const k=eIO(Math.min(1,Math.max(0,(t-sg.t)/sg.d)));const r={};for(const n in sg.b)r[n]=lerp(sg.a[n],sg.b[n],k);return r;};
+  for(const [t,o] of ks){tgt={...tgt,...o};const a=seg.length?at(seg[seg.length-1],t):{...init};for(const n in tgt)if(!(n in a))a[n]=tgt[n];seg.push({t,a,b:{...tgt},d:Math.max(.001,D(t))});}
+  return t=>{let sg=null;for(const x of seg){if(t<x.t)break;sg=x;}return sg?at(sg,t):{...init};};
+}
+// 깜빡임 시각: 2.0~4.6초 간격(가끔 두 번), 표정이 바뀌는 순간(busy ±0.35초)과 겹치면 그 뒤로 미루거나 뺀다.
+function blinks(dur,busy,seed=23){
+  const r=rng(seed),out=[],near=t=>busy.some(b=>Math.abs(t-b)<.35);let t=1.4;
+  while(t<dur){let b=t;if(near(b)){const nb=Math.max(...busy.filter(x=>Math.abs(b-x)<.35))+.4;b=near(nb)?null:nb;}
+    if(b!=null&&b<dur){out.push(b);if(r()<.2&&!near(b+.32))out.push(b+.32);}t=(b??t)+2.0+r()*2.6;}
+  return out;
+}
+// 깜빡임 값 0~1: 감기 0.07초 · 감고 0.04초 · 뜨기 0.10초
+function blinkAt(BL,t){let v=0;for(const b of BL){const d=t-b;if(d>=0&&d<.21)v=Math.max(v,d<.07?d/.07:d<.11?1:1-(d-.11)/.10);}return v;}
+// 시선 미세 움직임: 계속 둥둥 떠다니지 않고 0.9~1.8초마다 아주 조금 옮겨 머문다(사람 눈의 미세 도약처럼).
+const MS=[];{const r=rng(5);let t=0;while(t<600){MS.push([t,(r()-.5)*.14,(r()-.5)*.1]);t+=.9+r()*.9;}}
+function micro(t){let i=0;while(i+1<MS.length&&MS[i+1][0]<=t)i++;const p=i?MS[i-1]:MS[0],c=MS[i],k=eIO(Math.min(1,(t-c[0])/.06));return [lerp(p[1],c[1],k),lerp(p[2],c[2],k)];}
+window.Dori={mount,draw,track,blinks,blinkAt,micro};
 })();

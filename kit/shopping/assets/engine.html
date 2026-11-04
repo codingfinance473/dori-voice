@@ -361,9 +361,13 @@ for (const [id, m] of Object.entries(D.media.items)) if (m.type === 'video') vid
 
 // ---- 시간 계산 ----
 function stepT(sid, step) { return (T.steps[sid] || {})[step]; }
+// 깜빡임: 표정이 바뀌는 순간(ET ±0.35초)에는 깜빡이지 않고 그 뒤로 미룬다(2026-11-04)
 function blinkAt(t) {
   const r = rng(11); let x = 1.2;
-  while (x < t + 1) { const d = .14; if (t >= x && t < x + d) return Math.sin(Math.PI * (t - x) / d); if (r() < .18 && t >= x + .26 && t < x + .26 + d) return Math.sin(Math.PI * (t - x - .26) / d); x += 2 + r() * 3; }
+  const near = y => ET.find(e => Math.abs(y - e) < .35);
+  while (x < t + 1) { const d = .16; let s = x; const n = near(s); if (n != null) s = near(n + .4) == null ? n + .4 : null;
+    if (s != null) { if (t >= s && t < s + d) return Math.sin(Math.PI * (t - s) / d); if (r() < .18 && near(s + .28) == null && t >= s + .28 && t < s + .28 + d) return Math.sin(Math.PI * (t - s - .28) / d); }
+    x = (s ?? x) + 2 + r() * 3; }
   return 0;
 }
 const EXSET = Dori.EXPR, ARMS = Dori.ARMS;
@@ -380,6 +384,8 @@ function reactions() {
   return out.sort((a, b) => a.t0 - b.t0);
 }
 const RX = reactions();
+// 표정이 바뀌는 시각(깜빡임이 피할 때)
+const ET = [...T.lines.map(l => l.t0 - 0.1), ...RX.flatMap(r => [r.t0, r.t1])];
 const DEF_EXPR = { hook: ['focus', 'hold'], item: ['neutral', 'point'], note: ['focus', 'think'], summary: ['happy', 'rest'], outro: ['happy', 'wave'] };
 function baseState(t) {
   const seq = T.lines.map(l => { const k = l.scene.split(':')[0]; return { t: l.t0 - 0.1, expr: l.expr || DEF_EXPR[k][0], arms: l.arms || DEF_EXPR[k][1] }; });

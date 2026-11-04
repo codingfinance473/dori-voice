@@ -143,3 +143,7 @@
 - [유튜브 파트너 프로그램 자격](https://support.google.com/youtube/answer/72851) · [확장 파트너 프로그램](https://support.google.com/youtube/answer/13429240) · [2027년 파트너 프로그램 변경(2026-08-10)](https://blog.youtube/news-and-events/youtube-partner-program-updates-2027-new-opportunities-earn/) · [채널 수익 창출 정책](https://support.google.com/youtube/answer/1311392) · [변경·합성 콘텐츠 표시](https://support.google.com/youtube/answer/14328491)
 - [비자 한·일 여행 결제 데이터(2026-08-21)](https://www.visakorea.com/about-visa/newsroom/press-releases/nr-kr-260821.html) · [한경: 오니츠카타이거(2026-10-27)](https://www.hankyung.com/article/202610277224i) · [한경: 일본 안경(2026-09-21)](https://www.hankyung.com/article/202609218165g) · [SBS Biz: 아식스 가격 인상(2026-07-13)](https://biz.sbs.co.kr/amp/article/20000322112) · [머니투데이: 신주쿠 플래그십(2026-07-14)](https://www.mt.co.kr/living/2026/07/14/2026071423165467670) · [뉴데일리: 엔화·방일 수요(2026-08-31)](https://biz.newdaily.co.kr/site/data/html/2026/08/31/2026083100120.html) · [위키트리: 돈키호테(2026-09-26)](https://www.wikitree.co.kr/articles/1161854)
 - 썸네일 표시: [vidIQ — Shorts 썸네일(2026-06-05)](https://stg.vidiq.com/blog/post/youtube-shorts-custom-thumbnails/) · [Relevant Audience — 쇼츠 썸네일 3:2 표시(2026-07-31)](https://www.relevantaudience.com/social-media-marketing/youtube-shorts-custom-thumbnails-no-ab-testing/)
+
+## 도리 눈 (2026-11-04)
+
+- `assets/dori.js` 의 눈도 숫자 퀴즈와 같은 방식으로 고쳤다: 뜬 눈과 웃는 눈 ∩ 를 반투명으로 겹치지 않고, 뜬 눈이 눌려 감은 선이 된 뒤 ∩ 로 펴진다. 깜빡임은 표정이 바뀌는 순간(대사 시작·반응 시작/끝 ±0.35초)을 피한다(`engine.html` 의 `ET`). 자세한 이유는 `number_quiz.md` 5절 '눈이 자연스럽게'.
