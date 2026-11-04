@@ -125,12 +125,29 @@ const OUTFIT={
    <path d="M194,136 Q200,130 206,136" stroke="${OL}" stroke-width="6" fill="none" stroke-linecap="round"/>`,
   glove:`<rect x="-27" y="-30" width="54" height="58" fill="#F4F7F9"/><path d="M-27,22 H27" stroke="#DCE3E8" stroke-width="6"/><path d="M-27,27 H27" stroke="${OL}" stroke-width="3"/>`,},
 
- // 7) 상식·교육·수능·입시 — 학사모(술이 흔들림) + 와인색 카디건(흰 셔츠 깃)
+ // 7) 상식·교육·수능·입시 — 학사모(술이 흔들림) + 파스텔 하늘색 교복(둥근 흰 깃·코랄 리본) + 노란 책가방 멜빵 + 연필 꽂힌 주머니 + A+ 별 배지
+ //    (2026-11-04 사용자 의견: 카디건이 구식 → 귀엽고 한눈에 '공부'가 보이게)
  trivia:{bag:false,
-  body:`${G('cdl',PL(178,352),'#A44A5C','<path d="M40,268 V440 M60,268 V440 M80,268 V440 M100,268 V440 M120,268 V440 M140,268 V440 M160,268 V440 M180,268 V440" stroke="#953F51" stroke-width="3"/><path d="M10,396 H220" stroke="#8C3A4B" stroke-width="20"/>')}
-   ${G('cdr',PR(222,352),'#A44A5C','<path d="M220,268 V440 M240,268 V440 M260,268 V440 M280,268 V440 M300,268 V440 M320,268 V440 M340,268 V440 M360,268 V440" stroke="#953F51" stroke-width="3"/><path d="M180,396 H390" stroke="#8C3A4B" stroke-width="20"/>')}
-   <circle cx="200" cy="366" r="5.5" fill="#F3E3C8" stroke="${OL}" stroke-width="2.5"/><circle cx="200" cy="388" r="5.5" fill="#F3E3C8" stroke="${OL}" stroke-width="2.5"/>${CHIN()}`,
-  top:`${COLLAR('#FFFFFF',178,336)}`,
+  body:`${G('uni',FULL,'#BFE0FA',`<path d="M70,${NY(70)+8}${NK(70,330,10)}" stroke="#A6CFF0" stroke-width="7" fill="none"/><path d="M58,330 Q78,388 72,440 M342,330 Q322,388 328,440" stroke="#A9D1F1" stroke-width="5" fill="none"/>`)}
+   ${SH('M80,300 Q96,370 90,440 L120,440 Q124,370 108,296 Z',5,.18)}${SH('M320,300 Q304,370 310,440 L280,440 Q276,370 292,296 Z',5,.18)}
+   ${G('stL','M78,296 Q94,368 88,440 L118,440 Q124,368 106,292 Z','#FFC94A','<path d="M92,300 Q106,368 102,440" stroke="#E8A92A" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/>',4,false)}
+   ${G('stR','M322,296 Q306,368 312,440 L282,440 Q276,368 294,292 Z','#FFC94A','<path d="M308,300 Q294,368 298,440" stroke="#E8A92A" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/>',4,false)}
+   <rect x="86" y="384" width="34" height="16" rx="4" fill="#F2F4F6" stroke="${OL}" stroke-width="3"/><rect x="280" y="384" width="34" height="16" rx="4" fill="#F2F4F6" stroke="${OL}" stroke-width="3"/>
+   <g transform="rotate(-8 142 384)"><path d="M135,388 V352 L141,340 L147,352 V388 Z" fill="#FF8A8A" stroke="${OL}" stroke-width="3" stroke-linejoin="round"/><path d="M138,346 L141,340 L144,346 Z" fill="#4A3A33"/></g>
+   <g transform="rotate(10 160 384)"><path d="M153,388 V356 L159,344 L165,356 V388 Z" fill="#7FD3BC" stroke="${OL}" stroke-width="3" stroke-linejoin="round"/><path d="M156,350 L159,344 L162,350 Z" fill="#4A3A33"/></g>
+   ${SH('M124,376 h54 v34 h-54 z',3,.14)}${G('pkt','M124,374 h54 v28 a8,8 0 0 1 -8,8 h-38 a8,8 0 0 1 -8,-8 z','#D5EBFC','<path d="M124,380 H178" stroke="#A6CFF0" stroke-width="3"/>',3.8,false)}
+   <g data-bob="0.6">${SH('M258,340 l8,16 18,2 -13,12 4,18 -17,-9 -17,9 4,-18 -13,-12 18,-2 z',3,.16)}
+    <path d="M258,338 l8,16 18,2 -13,12 4,18 -17,-9 -17,9 4,-18 -13,-12 18,-2 z" fill="#FFD45C" stroke="${OL}" stroke-width="3.5" stroke-linejoin="round"/>
+    <text x="258" y="375" text-anchor="middle" font-family="Jua,sans-serif" font-size="17" fill="#E2483A">A+</text></g>${CHIN()}`,
+  top:`${SH(`M114,${NY(114)}${NK(114,196,0)} L196,${NY(196)+26} Q150,${NY(150)+30} 108,${NY(108)+14} Z`,4,.16)}${SH(`M286,${NY(286)}${NK(286,204,0)} L204,${NY(204)+26} Q250,${NY(250)+30} 292,${NY(292)+14} Z`,4,.16)}
+   ${G('clL',`M112,${NY(112)-1}${NK(112,197,-1)} L197,${NY(197)+24} Q150,${NY(150)+28} 106,${NY(106)+12} Z`,'#FFFFFF','',4,false)}
+   ${G('clR',`M288,${NY(288)-1}${NK(288,203,-1)} L203,${NY(203)+24} Q250,${NY(250)+28} 294,${NY(294)+12} Z`,'#FFFFFF','',4,false)}
+   <g data-sw="2.2,2.1,200,334,0.4">${SH('M200,334 L170,318 L166,350 Z M200,334 L230,318 L234,350 Z',4,.14)}
+    ${G('rbL','M200,334 C186,320 170,314 166,322 C162,332 168,348 200,338 Z','#FF8A7A','<path d="M172,326 Q182,330 192,334" stroke="#F06A5A" stroke-width="3" fill="none"/>',3.8,false)}
+    ${G('rbR','M200,334 C214,320 230,314 234,322 C238,332 232,348 200,338 Z','#FF8A7A','<path d="M228,326 Q218,330 208,334" stroke="#F06A5A" stroke-width="3" fill="none"/>',3.8,false)}
+    ${G('rbT','M194,340 L186,366 L194,362 L198,370 L200,342 Z M206,340 L214,366 L206,362 L202,370 L200,342 Z','#F06A5A','',3.4,false)}
+    ${G('rbK','M192,328 h16 a4,4 0 0 1 4,4 v6 a4,4 0 0 1 -4,4 h-16 a4,4 0 0 1 -4,-4 v-6 a4,4 0 0 1 4,-4 z','#E85A4A','',3.4,false)}</g>`,
+  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#BFE0FA"/><rect x="-27" y="-30" width="10" height="56" fill="#A6CFF0" opacity=".7"/><rect x="-27" y="15" width="54" height="12" fill="#FFFFFF"/><path d="M-27,15 H27 M-27,27 H27" stroke="${OL}" stroke-width="3"/>`,
   head:`${SH('M88,146 Q200,128 312,146 L312,154 Q200,136 88,154 Z',6,.22)}
    ${G('cap','M88,148 C92,110 140,94 200,94 C260,94 308,110 312,148 Q200,128 88,148 Z','#2D3550','<rect x="-70" y="-70" width="540" height="560" fill="url(#dDome)"/>',5,false)}
    <path d="M70,88 L70,96 L200,128 L330,96 L330,88" fill="#222941" stroke="${OL}" stroke-width="5" stroke-linejoin="round"/>
@@ -138,7 +155,7 @@ const OUTFIT={
    <g data-sw="4,2.3,300,94,0"><path d="M200,88 Q260,90 300,94 L304,150" fill="none" stroke="#F2B544" stroke-width="5" stroke-linecap="round"/>
     <path d="M296,146 h16 l4,24 h-24 z" fill="#F2B544" stroke="${OL}" stroke-width="3.5" stroke-linejoin="round"/><path d="M299,154 v14 M304,154 v14 M309,154 v14" stroke="#D99A2B" stroke-width="2"/></g>
    <circle cx="200" cy="88" r="7" fill="#F2B544" stroke="${OL}" stroke-width="3.5"/>`,
-  glove:`<rect x="-27" y="-30" width="54" height="56" fill="#A44A5C"/><rect x="-27" y="16" width="54" height="11" fill="#8C3A4B"/><path d="M-20,16 v11 M-12,16 v11 M-4,16 v11 M4,16 v11 M12,16 v11 M20,16 v11" stroke="#7A3242" stroke-width="2.2"/><path d="M-27,27 H27" stroke="${OL}" stroke-width="3"/>`,},
+},
 
  // 8) 팩트체크·"진짜일까?"·오해 바로잡기 — 사냥모자(체크) + 트렌치코트(벨트) + 목에 건 돋보기(흔들림)
  detective:{bag:false,
