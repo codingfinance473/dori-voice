@@ -1,0 +1,21 @@
+{
+ "id": "ex03-02",
+ "note": "EX.03 L02 원서 낸 사람으로",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 137,
+   "takes": 4,
+   "texts": [
+    "올해 수능 원서를 낸 사람은 오십오만 이천 명이래."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L02"
+ ]
+}
