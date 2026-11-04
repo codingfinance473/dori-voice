@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t00",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 134,
+  "takes": 4,
+  "texts": [
+   "힌트 하나. 컴퓨터 속 메모리 값이, 일 년 새 네 배 가까이 됐대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 5.2,
+   "gen_s": 47.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 5.36,
+   "gen_s": 48.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 6.08,
+   "gen_s": 53.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 5.28,
+   "gen_s": 47.6,
+   "sr": 24000
+  }
+ ]
+}
