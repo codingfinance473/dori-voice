@@ -1,0 +1,73 @@
+{
+ "id": "ep10-02",
+ "note": "EP.10 컴퓨터 물가 (2/3)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 134,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 컴퓨터 속 메모리 값이, 일 년 새 네 배 가까이 됐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 135,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 휴대전화 값도, 이십오 년 만에 가장 많이 올랐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 136,
+   "takes": 4,
+   "texts": [
+    "이십육 점 이 퍼센트!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 137,
+   "takes": 4,
+   "texts": [
+    "전체 물가보다 아홉 배 넘게 올랐대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 138,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 삼 퍼센트는, 전체 물가 얘기였네."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b"
+ ]
+}
