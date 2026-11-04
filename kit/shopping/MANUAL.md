@@ -58,6 +58,8 @@ python3 $SK/scripts/calc.py ~/shorts/ep02/episode.json     # 증거 검사 → f
 python3 $SK/scripts/draft.py ~/shorts/ep02                 # 대사 초안(선택). 이 편에 맞게 고친다
 ```
 
+도리 옷: `episode.json` 의 `"outfit"`(news·tax·export·winter·kimjang 또는 비움) — 주제에 맞게(`kit/docs/number_quiz.md` '도리 옷').
+
 구성(50초 안팎, 58초 넘으면 voice.py 가 알려 준다): 훅(`hook`) → 검산 3~4개(`item:<id>`, 첫 품목만 자세히) → 반전 1개(`role: "twist"` 또는 `notes`) → 합계(`summary`) → 마무리(`outro`: 경험 질문 한 줄 → 구독·좋아요 한 줄 `cta_check_N` → "볼주머니에 쏙!", 공통 지침 9절 — 댓글 요청·다음 편 예고 없음).
 
 대본 규칙:

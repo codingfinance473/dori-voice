@@ -288,6 +288,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 </div>
 
 <script src="timeline.js"></script>
+<script src="dori_outfits.js"></script>
 <script src="dori.js"></script>
 <script src="money.js"></script>
 <script>
@@ -348,7 +349,9 @@ function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);co
 let gT=0;
 
 // ---------- 도리 연기 ----------
-Dori.mount($('dori'));
+// 도리 옷: 주제에 맞는 옷 하나(news 경제 뉴스·tax 세금·연금·export 수출·산업·winter 겨울 생활비·kimjang 장보기·먹거리) 또는 ''(기본, 민트 크로스백)
+const OUTFIT='';
+Dori.mount($('dori'),{outfit:OUTFIT});
 const D={};TL.lines.forEach(l=>D[l.id]=l.d);
 const A=(id,f)=>T[id]+f*D[id];
 const K=['happy','squint','surprise','sad','think','pouch'];
@@ -376,7 +379,7 @@ function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
 const ARMR=[[0,0],[A('L01',.2),.35],[A('L01',.6),0],[T.L03+.1,.6],[A('L05',.9),0],[T.L06+.1,.4],[A('L07',.9),0],[T.L08+.1,.5],[A('L09',.9),0],[T.wmem,.8],[T.wmem+1.0,0],[T.L11+.1,.4],[A('L12',.9),0],[T.L14b,.95],[T.L14b+1.17,0],[T.L15+.13,.5],[T.L15+1.43,0],[A('L16',.4),.9]];
 const ARML=[[0,0],[T.wrec,.7],[T.wrec+.9,0],[T.wmem,.55],[T.wmem+.9,0],[T.L14b,.95],[T.L14b+1.17,0],[T.L16+.04,.55],[T.L16+.89,0]];
 const ARMC=new Map();
-function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.24);ARMC.set(Kf,f);}return f(t).v;}
+function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
 function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
   for(const [a,b] of [[T.wrec,T.wrec+1.1],[T.wnov,T.wnov+1.1]]){const v=on(a,b);if(v>o){o=v;m='!';}}
   for(const [a,b] of [[.2,A('L01',.95)],[T.wday-.1,T.w8]]){const v=on(a,b);if(v>o){o=v;m='?';}}

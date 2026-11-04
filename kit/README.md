@@ -23,6 +23,7 @@ kit/
 bash kit/scripts/setup.sh
 bash kit/scripts/new_episode.sh ~/ep03
 cd ~/ep03
+# index.html 의 OUTFIT·thumb.html 의 CFG.outfit = 주제에 맞는 도리 옷(news·tax·export·winter·kimjang 또는 '') — docs/number_quiz.md '도리 옷'
 # voice/lines.json 에 대사 · 자막 · 핵심어(keys) 쓰기 (공용 소리는 "reuse": "count3" 처럼)
 python3 voice/voice_job.py make ep03-01 L01 L02 L03 … --note "EP.03 화장품"
 python3 voice/voice_job.py wait ep03-01          # 백그라운드로, 8~15분
@@ -30,7 +31,7 @@ python3 voice/select_takes.py                     # 확인할 줄은 말을 바�
 # 끝: L15 경험 질문 → L15b "reuse": "cta_quiz_N"(EP 번호 %3: 1→1, 2→2, 0→3) → L16 "reuse": "bolju_ssok"(다음 편 예고 없음)
 python3 build_voice.py                            # order · WORD 고치기
 python3 render.py stills 3 12 20 …                # index.html 고치며 정지 화면 확인
-python3 render.py eyes                            # 도리 눈 점검(겹침·반투명·튐 0 이면 통과) + stills/eyes_sheet.png
+python3 render.py qa                              # ★ 렌더 전 자동 점검(눈·옷·움직임·글자) — 통과해야 video. stills/qa_sheet·qa_flags·eyes_sheet 를 직접 본다
 python3 mix.py && python3 check_final.py mix.wav
 python3 render.py video EP03.mp4 mix.wav          # 백그라운드로, 약 7분
 python3 check_final.py EP03.mp4

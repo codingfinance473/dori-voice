@@ -46,14 +46,15 @@ const svg=`<svg viewBox="-70 -70 540 560" width="100%" height="100%" overflow="v
   <g id="dMouthOpen" opacity="0"><path id="dMouthO" fill="#E5657A" stroke="${INK}" stroke-width="4.2" stroke-linejoin="round"/>
     <g clip-path="url(#dMouthC)"><ellipse id="dTongue" cx="200" rx="8.5" ry="5.2" fill="#F99DAB"/></g></g>
   <path id="dMouthC2" fill="none" stroke="${INK}" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="dOutBody"></g><g id="dOutTop"></g><g id="dOutHead"></g>
  </g>
- <path d="M84,304 Q190,318 290,346" stroke="${INK}" stroke-width="13" stroke-linecap="round" fill="none"/>
+ <g id="dBag"><path d="M84,304 Q190,318 290,346" stroke="${INK}" stroke-width="13" stroke-linecap="round" fill="none"/>
  <path d="M84,304 Q190,318 290,346" stroke="#5DB6A0" stroke-width="7.5" stroke-linecap="round" fill="none"/>
  <rect x="266" y="334" width="70" height="52" rx="13" fill="#80D0BA" stroke="${INK}" stroke-width="5"/>
  <path d="M266,348 Q266,334 279,334 L323,334 Q336,334 336,348 L336,355 Q301,368 266,355 Z" fill="#63BCA5" stroke="${INK}" stroke-width="4.5" stroke-linejoin="round"/>
- <circle cx="301" cy="361" r="5" fill="#FFF4D4" stroke="${INK}" stroke-width="2.5"/>
- <g id="dArmR"><path d="${ARM}" fill="#AEA6A1"/><g clip-path="url(#dArmC)"><rect x="-27" y="31" width="54" height="35" fill="#FFFDFB"/></g><path d="${ARM}" fill="none" stroke="${INK}" stroke-width="6.5" stroke-linejoin="round"/></g>
- <g id="dArmL"><path d="${ARM}" fill="#AEA6A1"/><g clip-path="url(#dArmC)"><rect x="-27" y="31" width="54" height="35" fill="#FFFDFB"/></g><path d="${ARM}" fill="none" stroke="${INK}" stroke-width="6.5" stroke-linejoin="round"/></g>
+ <circle cx="301" cy="361" r="5" fill="#FFF4D4" stroke="${INK}" stroke-width="2.5"/></g>
+ <g id="dArmR"><path d="${ARM}" fill="#AEA6A1"/><g clip-path="url(#dArmC)"><rect x="-27" y="31" width="54" height="35" fill="#FFFDFB"/><g class="glove"></g></g><path d="${ARM}" fill="none" stroke="${INK}" stroke-width="6.5" stroke-linejoin="round"/></g>
+ <g id="dArmL"><path d="${ARM}" fill="#AEA6A1"/><g clip-path="url(#dArmC)"><rect x="-27" y="31" width="54" height="35" fill="#FFFDFB"/><g class="glove"></g></g><path d="${ARM}" fill="none" stroke="${INK}" stroke-width="6.5" stroke-linejoin="round"/></g>
  <ellipse cx="158" cy="404" rx="28" ry="13.5" fill="#F8C4C7" stroke="${INK}" stroke-width="5"/>
  <ellipse cx="242" cy="404" rx="28" ry="13.5" fill="#F8C4C7" stroke="${INK}" stroke-width="5"/>
  <path id="dSweat" d="M352,120 Q366,144 352,157 Q338,144 352,120 Z" fill="#9AD8FF" stroke="#5FA9D8" stroke-width="2.5" opacity="0"/>
@@ -61,7 +62,10 @@ const svg=`<svg viewBox="-70 -70 540 560" width="100%" height="100%" overflow="v
 </g>
 </svg>`;
 let q;
-function mount(el){el.innerHTML=svg;q=s=>el.querySelector(s);}
+// 옷: Dori.mount(el,{outfit:'news'}) — 옷장은 dori_outfits.js(DoriOutfit). 옷을 입으면 크로스백은 숨긴다.
+function mount(el,opt={}){el.innerHTML=svg;q=s=>el.querySelector(s);
+  if(opt.outfit){if(!window.DoriOutfit) throw new Error('dori_outfits.js 를 dori.js 앞에 불러오세요');
+    if(!DoriOutfit.apply({body:q('#dOutBody'),top:q('#dOutTop'),head:q('#dOutHead'),gloves:[...el.querySelectorAll('.glove')],bag:q('#dBag')},opt.outfit)) throw new Error('없는 옷: '+opt.outfit+' (있는 옷: '+DoriOutfit.list().join(', ')+')');}}
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 // 눈: 반투명으로 겹치지 않게 한 번에 한 모양만 보인다(2026-11-04).
 //  뜬 눈 → (세로로 눌리며) 감은 선 → 웃는 눈 ∩ / 찡그린 눈 >< 순서로 바뀐다. 웃는 눈 ↔ >< 은 납작한 선을 지나 바뀐다.
@@ -95,6 +99,8 @@ function draw(st){
   const cw=q('#dCheekW'); cw.setAttribute('rx',124+52*pouch); cw.setAttribute('ry',52+10*pouch); cw.setAttribute('cy',260+2*pouch);
   q('#dBlL').setAttribute('cx',134-36*pouch); q('#dBlR').setAttribute('cx',266+36*pouch);
   q('#dBlL').setAttribute('rx',24+12*pouch); q('#dBlR').setAttribute('rx',24+12*pouch);
+  if(window.DoriOutfit) DoriOutfit.anim(q('#dRoot'),{t:st.t,hop:st.hop,squash:st.squash,ckL:[cxL,262,r],ckR:[cxR,262,r]});
+  window.__dst=st;   // 렌더 전 점검(render.py qa)이 프레임 사이 움직임이 튀는지 본다
   q('#dWhL').setAttribute('transform',`translate(${-36*pouch} 0)`); q('#dWhR').setAttribute('transform',`translate(${36*pouch} 0)`);
   // 눈
   eyeDraw(q('#dEyeL'),st); eyeDraw(q('#dEyeR'),{...st});
@@ -150,5 +156,5 @@ function blinkAt(BL,t){let v=0;for(const b of BL){const d=t-b;if(d>=0&&d<.21)v=M
 // 시선 미세 움직임: 계속 둥둥 떠다니지 않고 0.9~1.8초마다 아주 조금 옮겨 머문다(사람 눈의 미세 도약처럼).
 const MS=[];{const r=rng(5);let t=0;while(t<600){MS.push([t,(r()-.5)*.14,(r()-.5)*.1]);t+=.9+r()*.9;}}
 function micro(t){let i=0;while(i+1<MS.length&&MS[i+1][0]<=t)i++;const p=i?MS[i-1]:MS[0],c=MS[i],k=eIO(Math.min(1,(t-c[0])/.06));return [lerp(p[1],c[1],k),lerp(p[2],c[2],k)];}
-window.Dori={mount,draw,track,blinks,blinkAt,micro};
+window.Dori={check:()=>window.DoriOutfit?DoriOutfit.check(q('#dRoot')):[],mount,draw,track,blinks,blinkAt,micro};
 })();

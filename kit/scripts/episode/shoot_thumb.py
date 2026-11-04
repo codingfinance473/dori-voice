@@ -13,6 +13,8 @@ with sync_playwright() as p:
     for g, out in (("0", H / name), ("1", H / "_thumb_guide.png")):
         pg = b.new_page(viewport={"width": 1080, "height": 1920})
         pg.goto((H / "thumb.html").as_uri() + f"?guide={g}"); pg.wait_for_function("window.__ready===true")
+        bad = pg.evaluate("Dori.check?Dori.check():[]")   # 옷이 눈·코·입을 가리거나 장갑·가방이 어긋나면 알린다
+        if bad: print("확인 — 썸네일 도리 옷:", "; ".join(bad))
         pg.screenshot(path=str(out), type="jpeg" if out.suffix == ".jpg" else "png", **({"quality": 92} if out.suffix == ".jpg" else {}))
         pg.close()
     b.close()

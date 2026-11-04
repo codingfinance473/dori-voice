@@ -62,6 +62,7 @@ def prep(ep_dir):
     web = ep_dir / "build" / "web"; web.mkdir(parents=True, exist_ok=True)
     for f in ("engine.html", "dori.js"):
         shutil.copy(SKILL / "assets" / f, web / f)
+    shutil.copy(SKILL.parent / "templates" / "quiz" / "dori_outfits.js", web / "dori_outfits.js")   # 도리 옷장(숫자 퀴즈 키트와 같은 정본)
     fdir = web / "fonts"
     if not fdir.exists():
         src = SKILL / "assets" / "fonts" if (SKILL / "assets" / "fonts" / "Pretendard-Bold.woff2").exists() else CACHE / "fonts"

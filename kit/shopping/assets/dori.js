@@ -27,7 +27,7 @@
   }
   function arm(u, s) {
     return `<g class="arm${s}"><clipPath id="${u}-ac${s}"><path d="${ARM}"/></clipPath><path d="${ARM}" fill="${C.fur}"/>
-      <g clip-path="url(#${u}-ac${s})"><rect x="-27" y="31" width="54" height="36" fill="${C.white}"/></g>
+      <g clip-path="url(#${u}-ac${s})"><rect x="-27" y="31" width="54" height="36" fill="${C.white}"/><g class="glove"></g></g>
       <path d="${ARM}" fill="none" stroke="${C.out}" stroke-width="${SW}" stroke-linejoin="round"/></g>`;
   }
   function paw(x, y, rot) {
@@ -71,12 +71,13 @@
       <g class="mOpen" opacity="0"><path class="mo" d="" fill="${C.mouth}" stroke="${C.out}" stroke-width="4.2" stroke-linejoin="round"/>
         <ellipse class="tg" cx="200" cy="270" rx="8" ry="5" fill="${C.tongue}"/></g>
     </g>
+    <g class="oBody"></g><g class="oTop"></g><g class="oHead"></g>
     ${arm(u, 'R')}
-    <path d="M84,304 Q190,318 290,346" stroke="${C.out}" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <g class="bag"><path d="M84,304 Q190,318 290,346" stroke="${C.out}" stroke-width="13" stroke-linecap="round" fill="none"/>
     <path d="M84,304 Q190,318 290,346" stroke="${C.strap}" stroke-width="7.5" stroke-linecap="round" fill="none"/>
     <rect x="266" y="334" width="70" height="52" rx="13" fill="${C.bag}" stroke="${C.out}" stroke-width="5"/>
     <path d="M266,348 Q266,334 279,334 L323,334 Q336,334 336,348 L336,355 Q301,368 266,355 Z" fill="${C.bagD}" stroke="${C.out}" stroke-width="4.5" stroke-linejoin="round"/>
-    <circle cx="301" cy="361" r="5" fill="${C.btn}" stroke="${C.out}" stroke-width="2.5"/>
+    <circle cx="301" cy="361" r="5" fill="${C.btn}" stroke="${C.out}" stroke-width="2.5"/></g>
     ${arm(u, 'L')}
     <g class="prop" opacity="0"><g transform="rotate(-6,200,320)">
       <path d="M150,262 L250,262 L250,372 ${zz} Z" fill="#fff" stroke="${C.out}" stroke-width="5" stroke-linejoin="round"/>
@@ -92,11 +93,17 @@
 </svg>`;
   }
 
-  function mount(el) {
+  // 옷: Dori.mount(el, 'kimjang') — 옷장은 숫자 퀴즈 키트와 같은 dori_outfits.js(render.py 가 templates/quiz 에서 복사). 옷을 입으면 크로스백은 숨긴다.
+  function mount(el, outfit) {
     const u = 'd' + (++uid);
     el.innerHTML = svg(u);
     const q = s => el.querySelector(s);
     const d = { u, el, svg: q('svg') };
+    if (outfit) {
+      if (!window.DoriOutfit) throw new Error('dori_outfits.js 를 dori.js 앞에 불러오세요');
+      if (!DoriOutfit.apply({ body: q('.oBody'), top: q('.oTop'), head: q('.oHead'), gloves: [...el.querySelectorAll('.glove')], bag: q('.bag') }, outfit))
+        throw new Error('없는 옷: ' + outfit + ' (있는 옷: ' + DoriOutfit.list().join(', ') + ')');
+    }
     ['shadow', 'jump', 'squash', 'sway', 'breath', 'earL', 'earR', 'face', 'blL', 'blR', 'wL', 'wR', 'browL', 'browR', 'mc', 'mOpen', 'mo', 'tg',
       'mz', 'ckLc', 'ckRc', 'ckLo', 'ckRo', 'ckLf', 'ckRf', 'armL', 'armR', 'prop', 'sweat', 'excl', 'eyeL', 'eyeR'].forEach(k => d[k] = q('.' + k));
     return d;
@@ -136,6 +143,8 @@
     // 볼주머니: 양 볼이 부풀고 흰 주둥이·홍조·수염이 바깥으로
     const c = Math.min(1, Math.max(0, p.cheek || 0)), r = f(58 * c, 1);
     for (const k of ['ckLc', 'ckRc', 'ckLo', 'ckRo', 'ckLf', 'ckRf']) d[k].setAttribute('r', r);
+    if (window.DoriOutfit) DoriOutfit.anim(d.svg, { t: p.t, hop: p.jump, squash: p.squash, ckL: [84, 262, 58 * c], ckR: [316, 262, 58 * c] });
+    window.__dst = p;
     d.mz.setAttribute('rx', f(124 + 52 * c, 1)); d.mz.setAttribute('ry', f(52 + 10 * c, 1)); d.mz.setAttribute('cy', f(260 + 2 * c, 1));
     const bl = p.blush ?? 0.85;
     d.blL.setAttribute('opacity', f(bl)); d.blR.setAttribute('opacity', f(bl));
@@ -195,5 +204,6 @@
     stuff:    { eye: 1.00, arc: 1, lid: 0.00, brow: 0.0, browOp: 0.0, cheek: 1, blush: 1.00, smile: 0.3, mo: 0.00, ear: 0, sweat: 0, excl: 0 }
   };
   function mix(a, b, k) { const o = {}; for (const key in a) o[key] = a[key] + ((b[key] ?? a[key]) - a[key]) * k; return o; }
-  window.Dori = { mount, pose, EXPR, ARMS, mix };
+  const check = d => window.DoriOutfit ? DoriOutfit.check(d.svg) : [];
+  window.Dori = { mount, pose, check, EXPR, ARMS, mix };
 })();

@@ -29,6 +29,7 @@ body{background:var(--cream);font-family:P,sans-serif;color:var(--ink);word-brea
 <body>
 <div id="root"></div>
 <script src="money.js"></script>
+<script src="dori_outfits.js"></script>
 <script src="dori.js"></script>
 <script>
 const qs=new URLSearchParams(location.search), G=qs.get('guide')==='1', S='tall';
@@ -72,7 +73,7 @@ root.innerHTML=`<div class="frame" id="f" style="width:${W}px;height:${H}px"></d
 const f=document.getElementById('f');
 const add=(html)=>{f.insertAdjacentHTML('beforeend',html);return f.lastElementChild;};
 function blobs(list){list.forEach(([x,y,s,c])=>add(`<div class="blob" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:radial-gradient(circle,${c} 0%,${c}00 68%)"></div>`));}
-function dori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*560/540}px"></div>`);Dori.mount(d);Dori.draw({...base,...st});return d;}
+function dori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*560/540}px"></div>`);Dori.mount(d,{outfit:CFG.outfit||''});Dori.draw({...base,...st});return d;}
 
 
 // ---- 안 잘리는 썸네일 1장 (1080×1920) ----
@@ -91,6 +92,7 @@ const MEAT=(w)=>`<svg viewBox="0 0 240 200" width="${w}" height="${w*200/240}">
  <circle cx="58" cy="52" r="6" fill="#8A94A3"/>
 </svg>`;
 const CFG={
+  outfit:'',                                                          // 도리 옷 — index.html 의 OUTFIT 과 같게(news·tax·export·winter·kimjang 또는 '')
   chip:'숫자 검산',
   title:'<span class="hl">반도체</span> 수출,<br><em>꺾였을까?</em>',
   titleSize:126,

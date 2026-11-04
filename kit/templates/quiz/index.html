@@ -8,6 +8,8 @@
    - 장면 마크업 s1~s9(제목·카드·막대·차트의 글자와 숫자, 출처 칩 "기관 · 기준 기간")
    - 보기 카드 oA~oD 와 PICK(도리가 찍는 카드 id) — 동그라미는 카드 위치에서 자동 계산
    - JS 의 차트 자료(US·JP 배열 등), 도리 연기 표(EX·GZ·HOPS·ARMR·ARML·marks)의 단어 시각 이름
+   - OUTFIT(도리 옷 — 주제에 맞게, 없으면 '') · thumb.html 의 CFG.outfit 도 같은 값
+   - 렌더 전에 python3 render.py qa (눈·옷·움직임·글자 자동 점검 + 훑어보기 시트) 를 통과시킨다
   지키는 것: 뉴스 매체명은 화면에 넣지 않는다 · 끝 화면에 AI 문구 없음(위 칩) · 아래 420px·오른쪽 160px에 핵심 글자 없음 · 자막 2줄, 숫자에 쉼표 없음
 -->
 <meta charset="utf-8">
@@ -250,6 +252,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 </div>
 
 <script src="timeline.js"></script>
+<script src="dori_outfits.js"></script>
 <script src="dori.js"></script>
 <script>
 const T=TL.T, FPS=30, DUR=T.END;
@@ -320,7 +323,9 @@ function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);co
 let gT=0;
 
 // ---------- 도리 연기 ----------
-Dori.mount($('dori'));
+// 도리 옷: 주제에 맞는 옷 하나(news 경제 뉴스·tax 세금·연금·export 수출·산업·winter 겨울 생활비·kimjang 장보기·먹거리) 또는 ''(기본, 민트 크로스백)
+const OUTFIT='';
+Dori.mount($('dori'),{outfit:OUTFIT});
 const D={};TL.lines.forEach(l=>D[l.id]=l.d);
 const A=(id,f)=>T[id]+f*D[id];
 const K=['happy','squint','surprise','sad','think','pouch'];
@@ -349,7 +354,7 @@ function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
 const ARMR=[[0,0],[A('L01',.2),.35],[A('L01',.55),0],[T.best,.85],[A('L02',.88),0],[T.L03,.45],[A('L03',.9),0],[T.L05,.62],[A('L05',.59),0],[T.L06+.08,.4],[T.L06+1.68,0],[T.L10,.6],[T.L10+1.18,0],[T.wUS,.8],[T.wUS+1.1,0],[T.L14+.08,.4],[T.L14+1.68,0],[T.L14b,.95],[T.L14b+1.17,0],[T.L15+.13,.5],[T.L15+1.43,0],[A('L16',.4),.9]];
 const ARML=[[0,0],[T.best,.85],[A('L02',.88),0],[T.L10,.6],[T.L10+1.18,0],[T.w827,.55],[T.w827+.9,0],[T.L14b,.95],[T.L14b+1.17,0],[T.L16+.04,.55],[T.L16+.89,0]];
 const ARMC=new Map();
-function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.24);ARMC.set(Kf,f);}return f(t).v;}
+function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
 function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
   for(const [a,b] of [[T.L10,T.L10+1.38],[T.w827,T.w827+1.03]]){const v=on(a,b);if(v>o){o=v;m='!';}}
   for(const [a,b] of [[T.C3-.2,T.L05-.23],[T.L09+.05,T.drum],[T.L07+.36,T.wfruit-.1]]){const v=on(a,b);if(v>o){o=v;m='?';}}

@@ -125,6 +125,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
 #preload2{top:-3000px;font-family:Pre;font-weight:800}
 </style>
 <script src="data.js"></script>
+<script src="dori_outfits.js"></script>
 <script src="dori.js"></script>
 </head><body>
 <div id="stage">
@@ -352,7 +353,8 @@ function layout() {
   }
 }
 layout();
-const dori = Dori.mount($('#dori'));
+// 도리 옷: episode.json 의 "outfit"(news·tax·export·winter·kimjang 또는 비움 — 비우면 민트 크로스백)
+const dori = Dori.mount($('#dori'), E.outfit || '');
 // 글꼴 조각을 미리 불러오도록 모든 문구를 숨은 칸에 넣는다
 $('#preload').textContent = T.lines.map(l => l.sub.map(s => s.text).join(' ')).join(' ') + $('#stage').innerText;
 $('#preload2').textContent = $('#stage').innerText + '0123456789₩¥$€£,.-+%';
@@ -513,6 +515,7 @@ function drawDori(t, fr) {
   p.jump = j; p.squash = sq;
   if (bs.cur.arms === 'wave') p.armR += Math.sin(t * 9) * 16;
   p.earTw = (Math.sin(t * 13) > .97 ? 8 : 0);
+  p.t = t;
   Dori.pose(dori, p);
 }
 function drawBubble(t) {
