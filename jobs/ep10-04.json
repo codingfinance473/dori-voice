@@ -1,0 +1,47 @@
+{
+ "id": "ep10-04",
+ "note": "EP.10 L06 작년보다 · L14 반도체 · L15 지금 쓰는 컴퓨터",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 923,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 컴퓨터 속 메모리 값이, 작년보다 네 배 가까이 됐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 924,
+   "takes": 4,
+   "texts": [
+    "정리하면, 반도체 값이 뛰니까, 컴퓨터 값도 따라 뛰었대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 925,
+   "takes": 4,
+   "texts": [
+    "너는 지금 쓰는 컴퓨터, 몇 년 됐어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L06",
+  "L14",
+  "L15"
+ ]
+}
