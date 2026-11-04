@@ -329,7 +329,8 @@ Dori.mount($('dori'),{outfit:OUTFIT});
 const D={};TL.lines.forEach(l=>D[l.id]=l.d);
 const A=(id,f)=>T[id]+f*D[id];
 const K=['happy','squint','surprise','sad','think','pouch'];
-const EX=[[0,{happy:0}],[T.best,{happy:1}],[A('L02',.96),{happy:0}],
+const EX=[[0,{happy:0}],[T.best,{surprise:.55}],[A('L02',.96),{surprise:0}],   // 첫 장면은 눈 뜨고(웃는 눈 ∩ 로 시작하지 않음)
+
  [T.C3-.3,{think:1}],[T.L05,{think:0,squint:1}],[A('L05',.31),{squint:0,happy:1}],[A('L05',.71),{happy:0}],
  [T.w30,{surprise:.5}],[A('L06',.97),{surprise:0}],[T.L07-.04,{think:.8}],[T.wfruit,{think:0,happy:1}],[A('L07',.95),{happy:0}],
  [T.L09,{think:1}],[T.drum,{think:0,squint:1}],[T.L10,{squint:0,surprise:1}],[T.L11,{surprise:.25}],[A('L11',.66),{surprise:0}],
