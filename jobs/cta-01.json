@@ -1,0 +1,86 @@
+{
+ "id": "cta-01",
+ "note": "공용 소리 구독·좋아요(퀴즈·검산)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 548,
+   "takes": 4,
+   "texts": [
+    "퀴즈 재밌었으면 구독, 좋아요 부탁해~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 549,
+   "takes": 4,
+   "texts": [
+    "맞혔으면 좋아요, 틀렸으면 구독!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 550,
+   "takes": 4,
+   "texts": [
+    "이거 몰랐으면 좋아요 하나 꾹!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 551,
+   "takes": 4,
+   "texts": [
+    "검산 도움 됐으면 구독, 좋아요 부탁해~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 552,
+   "takes": 4,
+   "texts": [
+    "사기 전에 또 검산하고 싶으면 구독!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 553,
+   "takes": 4,
+   "texts": [
+    "돈 아꼈으면 좋아요 하나 꾹!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "cta_quiz_1",
+  "cta_quiz_2",
+  "cta_quiz_3",
+  "cta_check_1",
+  "cta_check_2",
+  "cta_check_3"
+ ]
+}
