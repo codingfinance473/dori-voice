@@ -3,7 +3,7 @@
 사용:
   python3 render.py stills 1.2 3.8 ...        # 지정 시각 PNG 를 stills/ 에 저장
   python3 render.py video out.mp4 mix.wav     # 전체(두 구간 병렬 렌더 후 이어 붙임). 길이는 timeline.js 의 T.END
-  python3 render.py qa                        # ★ 렌더 전 자동 점검(필수): 눈·옷·움직임·글자(안전 영역·겹침·잘림·도리와 겹침) + 훑어보기 시트
+  python3 render.py qa                        # ★ 렌더 전 자동 점검(필수): 눈·옷·손 소품·움직임·글자(안전 영역·겹침·잘림·도리와 겹침) + 훑어보기 시트
                                               #   통과 못 하면 video 를 돌리지 않는다. stills/qa_sheet.png · qa_flags.png · eyes_sheet.png 를 Claude 가 직접 열어 본다
   python3 render.py eyes                      # 도리 눈 점검: 모든 프레임에서 눈 모양이 하나만·반투명 없이 보이는지, 표정 값이 튀지 않는지
                                               #   + 표정이 바뀌는 순간 앞뒤 프레임을 stills/eyes_sheet.png 로 모아 눈으로 확인
@@ -134,7 +134,12 @@ def eyes():
 # ---------------- 렌더 전 자동 점검 ----------------
 FRAME_JS = """(t)=>{render(t);const r={eyes:[]};document.querySelectorAll('#dori [id^=dEye]').forEach(g=>{
   r.eyes.push([...g.querySelectorAll('.open,.shut,.happy,.sq')].map(e=>+(e.getAttribute('opacity')??1)));});
-  r.e=typeof expr==='function'?expr(t):{};const d=window.__dst||{};r.d={armL:d.armL||0,armR:d.armR||0,tilt:d.tilt||0,hop:d.hop||0};return r;}"""
+  r.e=typeof expr==='function'?expr(t):{};const d=window.__dst||{};r.d={armL:d.armL||0,armR:d.armR||0,tilt:d.tilt||0,hop:d.hop||0};
+  // 손 소품이 눈을 가리는지(눈 상자와 겹친 넓이 비율)
+  r.prop=0;const eb=[...document.querySelectorAll('#dori [id^=dEye]')].map(e=>e.getBoundingClientRect());
+  document.querySelectorAll('#dori .hand .hold').forEach(h=>{const b=h.getBoundingClientRect();if(!b.width)return;for(const e of eb){
+    const ov=Math.max(0,Math.min(b.right,e.right)-Math.max(b.left,e.left))*Math.max(0,Math.min(b.bottom,e.bottom)-Math.max(b.top,e.top));r.prop=Math.max(r.prop,ov/(e.width*e.height));}});
+  return r;}"""
 LAYOUT_JS = """()=>{
   const W=1080,H=1920,vis=e=>{for(let n=e;n&&n!==document.documentElement;n=n.parentElement){const cs=getComputedStyle(n);
     if(cs.display==='none'||cs.visibility==='hidden'||+cs.opacity<.5)return false;}return true;};
@@ -185,6 +190,7 @@ def qa():
             # 2) 눈: 한 눈에 모양 하나, 반투명 없음
             for vis in r["eyes"]:
                 if len([v for v in vis if v > .001]) != 1 or any(.001 < v < .999 for v in vis): add("눈 겹침·반투명", t, "눈 모양이 둘 이상 보이거나 반투명"); break
+            if r.get("prop", 0) > .25: add("소품이 눈을 가림", t, f"손 소품이 눈의 {r['prop']*100:.0f}%를 덮음 — 그 시각 팔(ARMR)을 덜 들거나 소품 없는 옷으로")
             # 3) 움직임: 표정·팔·기울기·점프가 한 프레임에 튀지 않게
             if prev:
                 de = max((abs(r["e"].get(k, 0) - prev["e"].get(k, 0)) for k in ("happy", "squint", "surprise", "sad")), default=0)

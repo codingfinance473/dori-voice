@@ -28,7 +28,7 @@
   function arm(u, s) {
     return `<g class="arm${s}"><clipPath id="${u}-ac${s}"><path d="${ARM}"/></clipPath><path d="${ARM}" fill="${C.fur}"/>
       <g clip-path="url(#${u}-ac${s})"><rect x="-27" y="31" width="54" height="36" fill="${C.white}"/><g class="glove"></g></g>
-      <path d="${ARM}" fill="none" stroke="${C.out}" stroke-width="${SW}" stroke-linejoin="round"/></g>`;
+      <path d="${ARM}" fill="none" stroke="${C.out}" stroke-width="${SW}" stroke-linejoin="round"/><g class="hand"></g></g>`;
   }
   function paw(x, y, rot) {
     return `<g transform="translate(${x},${y}) rotate(${rot}) scale(.88)">
@@ -101,7 +101,7 @@
     const d = { u, el, svg: q('svg') };
     if (outfit) {
       if (!window.DoriOutfit) throw new Error('dori_outfits.js 를 dori.js 앞에 불러오세요');
-      if (!DoriOutfit.apply({ body: q('.oBody'), top: q('.oTop'), head: q('.oHead'), gloves: [...el.querySelectorAll('.glove')], bag: q('.bag') }, outfit))
+      if (!DoriOutfit.apply({ body: q('.oBody'), top: q('.oTop'), head: q('.oHead'), gloves: [...el.querySelectorAll('.glove')], hands: { R: q('.armR .hand'), L: q('.armL .hand') }, bag: q('.bag') }, outfit))
         throw new Error('없는 옷: ' + outfit + ' (있는 옷: ' + DoriOutfit.list().join(', ') + ')');
     }
     ['shadow', 'jump', 'squash', 'sway', 'breath', 'earL', 'earR', 'face', 'blL', 'blR', 'wL', 'wR', 'browL', 'browR', 'mc', 'mOpen', 'mo', 'tg',
@@ -143,7 +143,7 @@
     // 볼주머니: 양 볼이 부풀고 흰 주둥이·홍조·수염이 바깥으로
     const c = Math.min(1, Math.max(0, p.cheek || 0)), r = f(58 * c, 1);
     for (const k of ['ckLc', 'ckRc', 'ckLo', 'ckRo', 'ckLf', 'ckRf']) d[k].setAttribute('r', r);
-    if (window.DoriOutfit) DoriOutfit.anim(d.svg, { t: p.t, hop: p.jump, squash: p.squash, ckL: [84, 262, 58 * c], ckR: [316, 262, 58 * c] });
+    if (window.DoriOutfit) DoriOutfit.anim(d.svg, { t: p.t, hop: p.jump, squash: p.squash, ckL: [84, 262, 58 * c], ckR: [316, 262, 58 * c], armRdeg: p.armR ?? 32, armLdeg: p.armL ?? -32 });
     window.__dst = p;
     d.mz.setAttribute('rx', f(124 + 52 * c, 1)); d.mz.setAttribute('ry', f(52 + 10 * c, 1)); d.mz.setAttribute('cy', f(260 + 2 * c, 1));
     const bl = p.blush ?? 0.85;

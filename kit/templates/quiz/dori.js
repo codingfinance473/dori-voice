@@ -53,8 +53,8 @@ const svg=`<svg viewBox="-70 -70 540 560" width="100%" height="100%" overflow="v
  <rect x="266" y="334" width="70" height="52" rx="13" fill="#80D0BA" stroke="${INK}" stroke-width="5"/>
  <path d="M266,348 Q266,334 279,334 L323,334 Q336,334 336,348 L336,355 Q301,368 266,355 Z" fill="#63BCA5" stroke="${INK}" stroke-width="4.5" stroke-linejoin="round"/>
  <circle cx="301" cy="361" r="5" fill="#FFF4D4" stroke="${INK}" stroke-width="2.5"/></g>
- <g id="dArmR"><path d="${ARM}" fill="#AEA6A1"/><g clip-path="url(#dArmC)"><rect x="-27" y="31" width="54" height="35" fill="#FFFDFB"/><g class="glove"></g></g><path d="${ARM}" fill="none" stroke="${INK}" stroke-width="6.5" stroke-linejoin="round"/></g>
- <g id="dArmL"><path d="${ARM}" fill="#AEA6A1"/><g clip-path="url(#dArmC)"><rect x="-27" y="31" width="54" height="35" fill="#FFFDFB"/><g class="glove"></g></g><path d="${ARM}" fill="none" stroke="${INK}" stroke-width="6.5" stroke-linejoin="round"/></g>
+ <g id="dArmR"><path d="${ARM}" fill="#AEA6A1"/><g clip-path="url(#dArmC)"><rect x="-27" y="31" width="54" height="35" fill="#FFFDFB"/><g class="glove"></g></g><path d="${ARM}" fill="none" stroke="${INK}" stroke-width="6.5" stroke-linejoin="round"/><g class="hand"></g></g>
+ <g id="dArmL"><path d="${ARM}" fill="#AEA6A1"/><g clip-path="url(#dArmC)"><rect x="-27" y="31" width="54" height="35" fill="#FFFDFB"/><g class="glove"></g></g><path d="${ARM}" fill="none" stroke="${INK}" stroke-width="6.5" stroke-linejoin="round"/><g class="hand"></g></g>
  <ellipse cx="158" cy="404" rx="28" ry="13.5" fill="#F8C4C7" stroke="${INK}" stroke-width="5"/>
  <ellipse cx="242" cy="404" rx="28" ry="13.5" fill="#F8C4C7" stroke="${INK}" stroke-width="5"/>
  <path id="dSweat" d="M352,120 Q366,144 352,157 Q338,144 352,120 Z" fill="#9AD8FF" stroke="#5FA9D8" stroke-width="2.5" opacity="0"/>
@@ -65,7 +65,7 @@ let q;
 // 옷: Dori.mount(el,{outfit:'news'}) — 옷장은 dori_outfits.js(DoriOutfit). 옷을 입으면 크로스백은 숨긴다.
 function mount(el,opt={}){el.innerHTML=svg;q=s=>el.querySelector(s);
   if(opt.outfit){if(!window.DoriOutfit) throw new Error('dori_outfits.js 를 dori.js 앞에 불러오세요');
-    if(!DoriOutfit.apply({body:q('#dOutBody'),top:q('#dOutTop'),head:q('#dOutHead'),gloves:[...el.querySelectorAll('.glove')],bag:q('#dBag')},opt.outfit)) throw new Error('없는 옷: '+opt.outfit+' (있는 옷: '+DoriOutfit.list().join(', ')+')');}}
+    if(!DoriOutfit.apply({body:q('#dOutBody'),top:q('#dOutTop'),head:q('#dOutHead'),gloves:[...el.querySelectorAll('.glove')],hands:{R:q('#dArmR .hand'),L:q('#dArmL .hand')},bag:q('#dBag')},opt.outfit)) throw new Error('없는 옷: '+opt.outfit+' (있는 옷: '+DoriOutfit.list().join(', ')+')');}}
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 // 눈: 반투명으로 겹치지 않게 한 번에 한 모양만 보인다(2026-11-04).
 //  뜬 눈 → (세로로 눌리며) 감은 선 → 웃는 눈 ∩ / 찡그린 눈 >< 순서로 바뀐다. 웃는 눈 ↔ >< 은 납작한 선을 지나 바뀐다.
@@ -99,7 +99,7 @@ function draw(st){
   const cw=q('#dCheekW'); cw.setAttribute('rx',124+52*pouch); cw.setAttribute('ry',52+10*pouch); cw.setAttribute('cy',260+2*pouch);
   q('#dBlL').setAttribute('cx',134-36*pouch); q('#dBlR').setAttribute('cx',266+36*pouch);
   q('#dBlL').setAttribute('rx',24+12*pouch); q('#dBlR').setAttribute('rx',24+12*pouch);
-  if(window.DoriOutfit) DoriOutfit.anim(q('#dRoot'),{t:st.t,hop:st.hop,squash:st.squash,ckL:[cxL,262,r],ckR:[cxR,262,r]});
+  if(window.DoriOutfit) DoriOutfit.anim(q('#dRoot'),{t:st.t,hop:st.hop,squash:st.squash,ckL:[cxL,262,r],ckR:[cxR,262,r],armRdeg:32+126*cl(st.armR,-.2,1.1),armLdeg:-(32+126*cl(st.armL,-.2,1.1))});
   window.__dst=st;   // 렌더 전 점검(render.py qa)이 프레임 사이 움직임이 튀는지 본다
   q('#dWhL').setAttribute('transform',`translate(${-36*pouch} 0)`); q('#dWhR').setAttribute('transform',`translate(${36*pouch} 0)`);
   // 눈
