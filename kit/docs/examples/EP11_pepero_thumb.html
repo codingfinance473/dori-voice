@@ -87,7 +87,7 @@ function stickG(cx,by,ang,coat,s=1,nuts=false){const L=380*s,W=24*s;
   return `<g transform="translate(${cx},${by}) rotate(${ang})"><rect x="${-W/2}" y="${-L}" width="${W}" height="${L}" rx="${W/2}" fill="#E8B46F" stroke="#4A3A33" stroke-width="${4*s}"/><rect x="${-W/2-3*s}" y="${-L-2*s}" width="${W+6*s}" height="${L*.74}" rx="${W/2+3*s}" fill="${coat}" stroke="#4A3A33" stroke-width="${4*s}"/><path d="M${-W/2+5*s} ${-L+18*s} V${-L*.34}" stroke="#fff" stroke-width="${4.5*s}" stroke-linecap="round" opacity=".38"/>${nuts?[.12,.26,.4,.54].map((f,i)=>`<ellipse cx="${(i%2?4:-4)*s}" cy="${-L+L*f+12*s}" rx="${5*s}" ry="${3.6*s}" fill="#EBC995" stroke="#4A3A33" stroke-width="${1.6*s}"/>`).join(''):''}${[.08,.15,.21].map((f,i)=>`<circle cx="${(i%2?4:-4)*s}" cy="${-L*f}" r="${2.2*s}" fill="#C98E4C"/>`).join('')}</g>`;}
 const STK=(w)=>`<svg viewBox="0 0 220 460" width="${w}" height="${w*460/220}">${[[-15,'#5B3A29',0],[-7,'#F4EDE2',0],[0,'#7A4A30',1],[7,'#F7A6B8',0],[15,'#5B3A29',0]].map(([a,c,n])=>stickG(110,446,a,c,1,n)).join('')}<path d="M84 332 C60 300 46 330 58 344 C66 354 80 346 92 340 Z M136 332 C160 300 174 330 162 344 C154 354 140 346 128 340 Z" fill="#2E9C83" stroke="#4A3A33" stroke-width="4" stroke-linejoin="round"/><rect x="74" y="322" width="72" height="28" rx="12" fill="#3FB596" stroke="#4A3A33" stroke-width="4"/><circle cx="110" cy="336" r="11" fill="#2E9C83" stroke="#4A3A33" stroke-width="4"/></svg>`;
 const CFG={
-  outfit:'export',                                                    // index.html 의 OUTFIT 과 같게
+  outfit:'gift',                                                    // index.html 의 OUTFIT 과 같게
   chip:'숫자 퀴즈 · 빼빼로데이',
   title:'<span class="hl">빼빼로</span> 수출,<br><em>몇 배</em> 됐을까?',
   titleSize:132,

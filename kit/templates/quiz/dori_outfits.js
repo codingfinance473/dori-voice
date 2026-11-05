@@ -105,6 +105,17 @@ const OUTFIT={
   top:`${RCOL('#FFFFFF')}<g data-sw="1.2,2.2,200,326,0">${G('ct','M194,333 L206,333 L210,360 Q200,370 190,360 Z','#2F3A58','',3.2,false)}<rect x="193" y="320" width="14" height="14" rx="4.5" fill="#2F3A58" stroke="${OL}" stroke-width="3.2"/></g>`,
   glove:`<rect x="-27" y="-30" width="54" height="56" fill="#3E4D74"/><path d="M-27,12 H27 M-27,19 H27" stroke="#E7BE5E" stroke-width="3.4"/><rect x="-27" y="22" width="54" height="8" fill="#FFFDF8"/><path d="M-27,22 H27 M-27,30 H27" stroke="${OL}" stroke-width="2.6"/>`},
 
+ // 3-3) 선물·기념일 — 빼빼로데이 선물(2026-11-05 사용자 선택 B, 리본은 "작다"는 의견에 1.4배 + 머리 리본띠): 머리 위 더스티 로즈 리본 + 크림 니트 스웨터에 선물 포장끈(리본 매듭)
+ gift:{bag:false,
+  head:`${FIT(`<path d="M24,160 Q200,88 376,160" stroke="${OL}" stroke-width="26" fill="none"/><path d="M24,160 Q200,88 376,160" stroke="#D9677B" stroke-width="17" fill="none"/><path d="M24,154 Q200,82 376,154" stroke="#E98A9B" stroke-width="3" fill="none" opacity=".8"/>`)}
+   <g data-sw="1.0,2.0,200,100,0">${TILT(-5,`<g transform="translate(200,100) scale(1.42) translate(-200,-100)">${SH('M150,104 Q200,92 250,104 Q246,120 200,124 Q154,120 150,104 Z',5,.18)}
+   ${G('gbl','M198,98 C176,56 122,52 118,86 C116,114 160,118 196,106 Z','#D9677B','<path d="M184,92 C162,72 136,72 134,88" stroke="#E98A9B" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M190,100 C170,92 150,96 140,104" stroke="#C95A6E" stroke-width="3" fill="none" stroke-linecap="round"/>',3.4,false)}
+   ${G('gbr','M202,98 C224,56 278,52 282,86 C284,114 240,118 204,106 Z','#D9677B','<path d="M216,92 C238,72 264,72 266,88" stroke="#E98A9B" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M210,100 C230,92 250,96 260,104" stroke="#C95A6E" stroke-width="3" fill="none" stroke-linecap="round"/>',3.4,false)}
+   ${G('gbt1','M192,108 L172,140 Q181,146 188,138 L198,112 Z','#C95A6E','',3,false)}${G('gbt2','M208,108 L228,140 Q219,146 212,138 L202,112 Z','#C95A6E','',3,false)}
+   <rect x="187" y="91" width="26" height="23" rx="8.5" fill="#C95A6E" stroke="${OL}" stroke-width="3"/></g>`)}</g>`,
+  body:`${G('gsw',FULL,'#F2E4D3','<path d="M10,420 H390" stroke="#E4D1BB" stroke-width="18"/><path d="M24,412 v16 M44,412 v16 M64,412 v16 M84,412 v16 M104,412 v16 M124,412 v16 M144,412 v16 M164,412 v16 M184,412 v16 M204,412 v16 M224,412 v16 M244,412 v16 M264,412 v16 M284,412 v16 M304,412 v16 M324,412 v16 M344,412 v16 M364,412 v16" stroke="#D9C2A6" stroke-width="3"/><path d="M10,372 H390" stroke="#D9677B" stroke-width="20"/><path d="M200,322 V440" stroke="#D9677B" stroke-width="20"/><path d="M10,366 H390 M200,322 V440" stroke="#E98A9B" stroke-width="3" opacity=".7"/>')}${CHIN()}`,
+  top:`<g data-sw="1.3,2.2,200,372,0">${G('gkl','M198,372 C178,350 152,352 154,370 C156,388 180,384 198,376 Z','#D9677B','',3.4,false)}${G('gkr','M202,372 C222,350 248,352 246,370 C244,388 220,384 202,376 Z','#D9677B','',3.4,false)}<rect x="189" y="362" width="22" height="20" rx="7" fill="#C95A6E" stroke="${OL}" stroke-width="3.2"/></g>`,
+  glove:`<rect x="-27" y="-30" width="54" height="61" fill="#F2E4D3"/><rect x="-27" y="22" width="54" height="9" fill="#D9677B"/><path d="M-27,31 H27" stroke="${OL}" stroke-width="2.8"/>`},
  // 3-2) 반도체·자동차·제조업·산업 생산 — 공장 작업복(2026-11-04 사용자 선택 C): 청록 작업 모자(톱니 마크) + 슬레이트 점프수트(지퍼·이름표·주머니)
  factory:{bag:false,
   head:`${TILT(-4,`${SH('M118,124 Q200,110 282,124 Q276,150 200,154 Q124,150 118,124 Z',5,.22)}
@@ -236,7 +247,7 @@ const OUTFIT={
 
 
 // 주제 → 옷 추천(편을 만들 때 고르는 기준). 맞는 게 없으면 ''(기본: 민트 크로스백)
-const TOPIC={news:'금리·환율·경제 지표·경제 해설',tax:'연말정산·세금·연금·건강보험료·지원금 신청',export:'수출입·무역·항구·조선·해운',factory:'반도체·자동차·제조업·산업 생산 통계',
+const TOPIC={gift:'빼빼로데이·발렌타인·선물·기념일·과자 선물',news:'금리·환율·경제 지표·경제 해설',tax:'연말정산·세금·연금·건강보험료·지원금 신청',export:'수출입·무역·항구·조선·해운',factory:'반도체·자동차·제조업·산업 생산 통계',
   winter:'난방비·전기·가스요금·겨울 물가·한파',kimjang:'김장·장바구니 물가·농수산물·먹거리 수출',
   science:'과학·기술·우주·날씨·AI 원리',trivia:'상식·역사·지리·숫자 퀴즈 일반·교육·수능·입시·학자금',detective:'팩트체크·"진짜일까?"·오해 바로잡기·반전 숫자',
   travel:'해외여행·환율·면세·항공·관광',office:'월급·연봉·고용·직장인·최저임금'};

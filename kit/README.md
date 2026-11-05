@@ -23,7 +23,7 @@ kit/
 bash kit/scripts/setup.sh
 bash kit/scripts/new_episode.sh ~/ep03
 cd ~/ep03
-# index.html 의 OUTFIT·thumb.html 의 CFG.outfit = 주제에 맞는 도리 옷(news·tax·export·factory·winter·kimjang·science·trivia·detective·travel·office 또는 '') — docs/number_quiz.md '도리 옷'
+# index.html 의 OUTFIT·thumb.html 의 CFG.outfit = 주제에 맞는 도리 옷(news·tax·export·gift·factory·winter·kimjang·science·trivia·detective·travel·office 또는 '') — docs/number_quiz.md '도리 옷'
 # voice/lines.json 에 대사 · 자막 · 핵심어(keys) 쓰기 (공용 소리는 "reuse": "count3" 처럼)
 python3 voice/voice_job.py make ep03-01 L01 L02 L03 … --note "EP.03 화장품"
 python3 voice/voice_job.py wait ep03-01          # 백그라운드로, 8~15분
