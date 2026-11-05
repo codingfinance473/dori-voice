@@ -1,0 +1,60 @@
+{
+ "id": "ex04-01",
+ "note": "EX.04 국민연금 수령액 (1/3)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 822,
+   "takes": 4,
+   "texts": [
+    "국민연금, 실제로 한 달에 얼마 받을까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 823,
+   "takes": 4,
+   "texts": [
+    "올해 국민연금을 받은 사람은, 팔백만 명이 넘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 824,
+   "takes": 4,
+   "texts": [
+    "십일 년 만에 두 배가 됐어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 825,
+   "takes": 4,
+   "texts": [
+    "근데 열 명 중 일곱 명 가까이는, 한 달에 육십만 원도 안 된대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L04"
+ ]
+}
