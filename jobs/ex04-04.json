@@ -1,0 +1,21 @@
+{
+ "id": "ex04-04",
+ "note": "EX.04 L09 수령나이(나이→라인으로 들려 말 바꿈)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 609,
+   "takes": 4,
+   "texts": [
+    "육십구 년생부터는, 예순다섯 살부터 받는대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L09"
+ ]
+}
