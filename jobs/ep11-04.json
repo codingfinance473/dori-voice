@@ -1,0 +1,60 @@
+{
+ "id": "ep11-04",
+ "note": "EP.11 빼빼로 L01·L13b·L14·L15 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 386,
+   "takes": 4,
+   "texts": [
+    "있잖아, 빼빼로를 해외에 판 돈, 작년엔 이천 이십 년의 몇 배였게?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 387,
+   "takes": 4,
+   "texts": [
+    "일 년 매출의 절반쯤이, 빼빼로데이 철에 몰린대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 388,
+   "takes": 4,
+   "texts": [
+    "정리하면, 빼빼로 해외 매출은 오 년 만에 세 배!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 389,
+   "takes": 4,
+   "texts": [
+    "너는 빼빼로, 무슨 맛이 제일 좋아?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L13b",
+  "L14",
+  "L15"
+ ]
+}
