@@ -377,7 +377,7 @@ let gT=0;
 
 // ---------- 도리 연기 ----------
 // 도리 옷: 주제에 맞는 옷 하나(news 경제 뉴스·tax 세금·연금·export 수출·무역·factory 반도체·제조업·winter 겨울 생활비·kimjang 장보기·먹거리·science 과학·trivia 상식·교육·detective 팩트체크·travel 여행·환율·office 직장·월급) 또는 ''(기본, 민트 크로스백) — 표는 docs/number_quiz.md '도리 옷'
-const OUTFIT='gift';   // 선물·기념일 — 빼빼로데이(2026-11-05 사용자: 선장 옷은 주제와 안 맞음 → B 선물 선택)
+const OUTFIT='pastry';   // 과자·초콜릿 — 빼빼로(2026-11-05 사용자: 선장 옷은 주제와 안 맞음 → 초콜릿 파티시에 선택)
 Dori.mount($('dori'),{outfit:OUTFIT});
 const D={};TL.lines.forEach(l=>D[l.id]=l.d);
 const A=(id,f)=>T[id]+f*D[id];

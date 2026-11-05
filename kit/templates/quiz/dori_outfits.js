@@ -116,6 +116,16 @@ const OUTFIT={
   body:`${G('gsw',FULL,'#F2E4D3','<path d="M10,420 H390" stroke="#E4D1BB" stroke-width="18"/><path d="M24,412 v16 M44,412 v16 M64,412 v16 M84,412 v16 M104,412 v16 M124,412 v16 M144,412 v16 M164,412 v16 M184,412 v16 M204,412 v16 M224,412 v16 M244,412 v16 M264,412 v16 M284,412 v16 M304,412 v16 M324,412 v16 M344,412 v16 M364,412 v16" stroke="#D9C2A6" stroke-width="3"/><path d="M10,372 H390" stroke="#D9677B" stroke-width="20"/><path d="M200,322 V440" stroke="#D9677B" stroke-width="20"/><path d="M10,366 H390 M200,322 V440" stroke="#E98A9B" stroke-width="3" opacity=".7"/>')}${CHIN()}`,
   top:`<g data-sw="1.3,2.2,200,372,0">${G('gkl','M198,372 C178,350 152,352 154,370 C156,388 180,384 198,376 Z','#D9677B','',3.4,false)}${G('gkr','M202,372 C222,350 248,352 246,370 C244,388 220,384 202,376 Z','#D9677B','',3.4,false)}<rect x="189" y="362" width="22" height="20" rx="7" fill="#C95A6E" stroke="${OL}" stroke-width="3.2"/></g>`,
   glove:`<rect x="-27" y="-30" width="54" height="61" fill="#F2E4D3"/><rect x="-27" y="22" width="54" height="9" fill="#D9677B"/><path d="M-27,31 H27" stroke="${OL}" stroke-width="2.8"/>`},
+ // 3-4) 과자·디저트·먹거리 브랜드 — 초콜릿 파티시에(2026-11-05 사용자 선택, EP.11 빼빼로): 흰 제과사 모자(뭉게 꼭대기 + 주름 띠) + 흰 조리복(초콜릿 단추 2줄) + 초콜릿색 허리 앞치마 + 민트 목수건
+ pastry:{bag:false,
+  head:`${TILT(-4,`<g transform="translate(200,158) scale(1.15) translate(-200,-158)">${SH('M118,150 Q200,136 282,150 L280,160 Q200,150 120,160 Z',6,.22)}
+   ${G('pkt','M120,134 C92,120 92,76 130,72 C128,40 170,28 200,48 C230,28 272,40 270,72 C308,76 308,120 280,134 Z','#FFFFFF','<path d="M150,76 Q160,104 156,132 M200,52 Q206,96 200,132 M250,76 Q240,104 244,132" stroke="#E9ECEF" stroke-width="5" fill="none" stroke-linecap="round"/><rect x="-70" y="-70" width="540" height="560" fill="url(#dDome)"/>',OW,false)}
+   ${G('pkb','M116,128 Q200,114 284,128 L282,158 Q200,146 118,158 Z','#FBFBF8','<path d="M140,124 V156 M170,120 V150 M200,118 V148 M230,120 V150 M260,124 V156" stroke="#E6E2DA" stroke-width="4"/>',OW,false)}</g>`)}`,
+  body:`${G('pjs',FULL,'#FBFBF8','<path d="M232,322 C246,350 250,392 246,440" stroke="#E6E2DA" stroke-width="5" fill="none"/>')}
+   <g fill="#6B4532" stroke="${OL}" stroke-width="2.4"><circle cx="216" cy="334" r="6"/><circle cx="262" cy="334" r="6"/><circle cx="218" cy="356" r="6"/><circle cx="266" cy="356" r="6"/></g>
+   ${G('pap','M52,366 Q200,386 348,366 L356,440 L44,440 Z','#7A4A30','<path d="M52,374 Q200,394 348,374" stroke="#93603F" stroke-width="7" fill="none"/><path d="M232,390 h46 v24 a6,6 0 0 1 -6,6 h-34 a6,6 0 0 1 -6,-6 z" fill="#6B4129" stroke="#5E3A26" stroke-width="3.2"/>',OW,false)}${CHIN()}`,
+  top:`<g data-sw="1.2,2.2,200,326,0">${G('pnk1','M200,330 L176,346 Q186,358 198,346 Z','#3FA88F','',3,false)}${G('pnk2','M200,330 L224,346 Q214,358 202,346 Z','#3FA88F','',3,false)}<path d="M168,${NY(168)+2} Q200,336 232,${NY(232)+2}" stroke="#2E9C83" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="200" cy="332" r="8" fill="#2E9C83" stroke="${OL}" stroke-width="3"/></g>`,
+  glove:`<rect x="-27" y="-30" width="54" height="61" fill="#FBFBF8"/><rect x="-27" y="22" width="54" height="9" fill="#7A4A30"/><path d="M-27,31 H27" stroke="${OL}" stroke-width="2.8"/>`},
  // 3-2) 반도체·자동차·제조업·산업 생산 — 공장 작업복(2026-11-04 사용자 선택 C): 청록 작업 모자(톱니 마크) + 슬레이트 점프수트(지퍼·이름표·주머니)
  factory:{bag:false,
   head:`${TILT(-4,`${SH('M118,124 Q200,110 282,124 Q276,150 200,154 Q124,150 118,124 Z',5,.22)}
@@ -247,7 +257,7 @@ const OUTFIT={
 
 
 // 주제 → 옷 추천(편을 만들 때 고르는 기준). 맞는 게 없으면 ''(기본: 민트 크로스백)
-const TOPIC={gift:'빼빼로데이·발렌타인·선물·기념일·과자 선물',news:'금리·환율·경제 지표·경제 해설',tax:'연말정산·세금·연금·건강보험료·지원금 신청',export:'수출입·무역·항구·조선·해운',factory:'반도체·자동차·제조업·산업 생산 통계',
+const TOPIC={pastry:'과자·디저트·빵·초콜릿·제과·먹거리 브랜드 수출',gift:'빼빼로데이·발렌타인·선물·기념일·과자 선물',news:'금리·환율·경제 지표·경제 해설',tax:'연말정산·세금·연금·건강보험료·지원금 신청',export:'수출입·무역·항구·조선·해운',factory:'반도체·자동차·제조업·산업 생산 통계',
   winter:'난방비·전기·가스요금·겨울 물가·한파',kimjang:'김장·장바구니 물가·농수산물·먹거리 수출',
   science:'과학·기술·우주·날씨·AI 원리',trivia:'상식·역사·지리·숫자 퀴즈 일반·교육·수능·입시·학자금',detective:'팩트체크·"진짜일까?"·오해 바로잡기·반전 숫자',
   travel:'해외여행·환율·면세·항공·관광',office:'월급·연봉·고용·직장인·최저임금'};
