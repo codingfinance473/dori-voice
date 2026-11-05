@@ -1,10 +1,12 @@
 """배경음(밝은 우쿨렐레·마림바, 사장조, 직접 합성) + 효과음 + 목소리 → mix.wav
 목소리가 나오는 동안 배경음을 자동으로 낮춘다(덕킹). 시각은 timeline.js 의 T(줄 시작·단어 시각)·E(줄 끝)를 쓴다.
-편마다 고치는 곳: '효과음' 절(장면별 소리 위치), thin·lv(받아쓰기가 약한 줄의 배경음 더 낮추기), extra 목록.
+편마다 고치는 곳: '효과음' 절(장면별 소리 위치), thin·quiet(받아쓰기가 약한 줄의 편곡 비우기), NUM_LINES·WEAK.
 규칙: 효과음은 단어 위에 겹치지 않게 줄 끝이나 단어 직전에 작게. 배경음은 훅 두 줄 뒤에 들어온다.
+배경음은 잔잔하게 '들리게'(2026-11-05): 말하는 동안 목소리보다 약 14dB, 쉼에서 약 9dB 작게 — 배율은 자동으로 맞춘다.
 점검: NOBED=1(배경음 끔)·NOSFX=1(효과음 끔)로 섞어 check_final.py 를 돌려 무엇이 덮는지 가른다.
-아래 값은 EP.02 소주(2026-10-29) 예시다."""
-import json, re
+덜 들리는 줄은 배경음을 통째로 낮추기보다 thin·quiet 로 편곡을 먼저 비운다. BED_UNDER=16 처럼 목표를 바꿀 수 있다.
+아래 효과음·줄 값은 EP.02 소주(2026-10-29) 예시다."""
+import json, os, re
 import numpy as np
 from scipy.io import wavfile
 from scipy.signal import butter, sosfilt
@@ -122,26 +124,25 @@ sr, v = wavfile.read("voice.wav"); v = v.astype(np.float32) / 32768
 v = v[:N] if len(v) >= N else np.pad(v, (0, N - len(v)))
 v = hp(v, 90)
 env = np.convolve(np.abs(v), np.ones(int(.05 * SR)) / int(.05 * SR), mode="same")
-att, rel = np.exp(-1 / (.03 * SR)), np.exp(-1 / (.35 * SR)); sm = np.zeros_like(env); g = 0.0
+att, rel = np.exp(-1 / (.03 * SR)), np.exp(-1 / (.25 * SR)); sm = np.zeros_like(env); g = 0.0
 for i in range(0, N, 64):
     e = env[i]; g = att * g + (1 - att) * e if e > g else rel * g + (1 - rel) * e; sm[i:i + 64] = g
-duck = 1 - .62 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)
-# 배경음 위에서 덜 들린 줄은 그 줄 동안 배경음을 6dB 더 낮춘다
+duck = 1 - .45 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)   # 말하는 동안 약 5dB만 낮춘다(2026-11-05: 예전 .62 + 줄별 lv 로 배경음이 거의 안 들렸다)
+# 숫자·짧은 정답 줄만 그 줄 동안 배경음을 조금 더 낮춘다 — 기본 0.7(-3dB), 완성 믹스 받아쓰기에서 실제로 덜 들린 줄만 0.5(-6dB)까지.
+# 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
+NUM_LINES = ("L02", "L03", "L07", "L09", "L10", "L11", "L11b", "L12", "L12b", "L13", "L14b", "L16")   # 이 편의 숫자·정답 줄(편마다 고친다)
+WEAK = {}                                                       # 예: {"L03": .5} — 완성 믹스에서 덜 들린 줄만
 extra = np.ones(N)
 for l in TLL:
-    if l["id"] in ("L02", "L03", "L07", "L09", "L10", "L11", "L11b", "L12", "L12b", "L13", "L14b", "L16"):
+    if l["id"] in NUM_LINES:
         a, b2 = int((l["t"] - .15) * SR), int((l["t"] + l["d"] + .1) * SR)
-        lv = {"L03": .22, "L16": .3, "L07": .35, "L13": .28, "L12b": .3}.get(l["id"], .5)   # 받아쓰기가 배경음에 가장 약했던 줄은 더 낮춘다
+        lv = max(.5, WEAK.get(l["id"], .7))
         ramp = int(.12 * SR); w = np.ones(b2 - a) * lv; w[:ramp] = np.linspace(1, lv, ramp); w[-ramp:] = np.linspace(lv, 1, ramp)
         extra[a:b2] = np.minimum(extra[a:b2], w[: len(extra[a:b2])])
 duck = duck * extra
-import os
-if os.environ.get("NOSFX"): sfx[:] = 0
-if os.environ.get("NOBED"): bed[:] = 0
-mix = bed * duck[:, None] * 1.9 + sfx + np.stack([v, v], 1)
-mix /= np.max(np.abs(mix)) / 10 ** (-1 / 20)
-wavfile.write("mix.wav", SR, (mix * 32767).astype(np.int16))
-sp = np.abs(v) > .02
-db = lambda x: 20 * np.log10(np.sqrt(np.mean(x ** 2)) + 1e-12)
-print("voice in speech", round(db(v[sp]), 1), "| music under speech", round(db((bed[:, 0] * duck * 1.9)[sp]), 1), "| music in gaps", round(db((bed[:, 0] * duck * 1.9)[~sp]), 1))
+
+# ---------- 배경음 크기 맞추기 + mix.wav (bedmix.py — 잔잔하게 들리게, 2026-11-05) ----------
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from bedmix import finish
+finish(bed, sfx, v, env, sm, duck, E["L02"] + .1, DUR - 1.2, SR)

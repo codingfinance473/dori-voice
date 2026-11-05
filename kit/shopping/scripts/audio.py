@@ -5,7 +5,8 @@
 
 - 배경음: 기본은 산뜻한 원곡 「도리 산책」(music.py — 우쿨렐레·마림바·글로켄, 마지막 대사 뒤에 끝 화음).
   episode.json "music": {"style": "fresh" | "lofi" | "none", "seed": 5, "bpm": 118} 로 바꿀 수 있다(lofi = 2판 배경음).
-- 배경음은 쉬는 동안 목소리보다 11dB 작게, 말하는 동안 8dB 더 낮춘다(덕킹, "level"·"duck" 으로 조절).
+- 배경음은 쉬는 동안 목소리보다 8dB 작게, 말하는 동안 6dB 더 낮춰 약 14dB 아래(덕킹, "level"·"duck" 으로 조절).
+  2026-11-05 사용자 지시 "배경음이 전혀 안 들린다 — 잔잔하게는 들리게": 예전 -11/-8(말하는 동안 19~20dB 아래)에서 올림.
   줄 사이 짧은 쉼에서는 다시 올라오지 않게 붙잡아 두어 출렁이지 않는다. 말하는 동안 1.2kHz 위쪽은 4dB 더("hi_duck"),
   숫자가 든 줄은 2dB 더("num_duck") 낮추고, 완성 믹스를 다시 받아써서 숫자가 덜 들린 줄은 그 줄만 더 낮춰 다시 섞는다.
 - 통합 음량 -15 LUFS, 최대 -1 dBFS.
@@ -230,7 +231,8 @@ def main(epdir):
         voice *= 10 ** ((-16 - lufs(voice)) / 20)
         voice = limiter(voice, SR, -3.0, look_ms=3.0, release_ms=40.0)   # 합성음의 순간 튐(파열음)만 살짝 눌러 둔다
     lv = lufs(voice) if voice.any() else -16
-    # 배경음: 쉬는 동안은 목소리보다 11dB 작게(멜로디가 들리게), 말하는 동안은 8dB 더 낮춰 약 19~20dB 아래(숫자가 또렷하게).
+    # 배경음: 쉬는 동안은 목소리보다 8dB 작게(멜로디가 들리게), 말하는 동안은 6dB 더 낮춰 약 14dB 아래(잔잔하게 들리게, 2026-11-05).
+    # 숫자 또렷함은 1.2kHz 위 hi_duck(4dB)·숫자 줄 num_duck(2dB)·덜 들린 줄 재믹스가 지킨다.
     # episode.music.level / duck 으로 조절. 끝 화음은 마지막 대사 바로 뒤에.
     style = mus.get("style", "fresh")
     last = max((l["t1"] for l in tl["lines"]), default=dur - 2.0)
@@ -242,7 +244,7 @@ def main(epdir):
     else:
         music, bpm = MUSIC.fresh(dur, ring=ring, bpm=mus.get("bpm"), seed=int(mus.get("seed", 5)))
         music = np.pad(music, (0, max(0, n - len(music))))[:n]
-    level, depth = float(mus.get("level", -11 if style == "fresh" else -14)), float(mus.get("duck", 8 if style == "fresh" else 10))
+    level, depth = float(mus.get("level", -8 if style == "fresh" else -11)), float(mus.get("duck", 6 if style == "fresh" else 8))
     if music.any():
         music *= 10 ** ((lv + level - lufs(music)) / 20)
     # 말하는 동안: 전체 depth dB + 자음이 사는 1.2kHz 위쪽은 hi_duck(4) dB 더(숫자 받침·끝소리가 묻히지 않게),
