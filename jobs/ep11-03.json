@@ -1,0 +1,60 @@
+{
+ "id": "ep11-03",
+ "note": "EP.11 빼빼로 3/3",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 909,
+   "takes": 4,
+   "texts": [
+    "그래도 일 년 전체로는, 아직 국내가 더 많대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 910,
+   "takes": 4,
+   "texts": [
+    "일 년 매출의 절반쯤이, 빼빼로데이 철에 몰린대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 911,
+   "takes": 4,
+   "texts": [
+    "정리하면, 빼빼로 해외 매출은 오 년 새 세 배!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 912,
+   "takes": 4,
+   "texts": [
+    "너는 무슨 맛 빼빼로가 제일 좋아?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L13",
+  "L13b",
+  "L14",
+  "L15"
+ ]
+}
