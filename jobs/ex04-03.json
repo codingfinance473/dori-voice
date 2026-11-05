@@ -1,0 +1,47 @@
+{
+ "id": "ex04-03",
+ "note": "EX.04 국민연금 수령액 (3/3)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 842,
+   "takes": 4,
+   "texts": [
+    "받기 시작하는 나이는, 육십구 년생부터 예순다섯 살이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 843,
+   "takes": 4,
+   "texts": [
+    "정리하면, 오래 낸 사람이 더 받았지만, 적정 생활비엔 모자랐어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 844,
+   "takes": 4,
+   "texts": [
+    "너는 국민연금, 몇 년째 내고 있어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L09",
+  "L10",
+  "L12"
+ ]
+}
