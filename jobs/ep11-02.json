@@ -1,0 +1,73 @@
+{
+ "id": "ep11-02",
+ "note": "EP.11 빼빼로 2/3",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 691,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 작년엔 재작년보다 이십사 퍼센트 더 팔았대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 692,
+   "takes": 4,
+   "texts": [
+    "세 배!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 693,
+   "takes": 4,
+   "texts": [
+    "이천 이십 년보다 작년에 세 배로 커졌대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 694,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 두 배는, 재작년에 이미 넘었네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 695,
+   "takes": 4,
+   "texts": [
+    "근데 올해 상반기엔, 해외에서 국내보다 더 많이 팔렸대!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12"
+ ]
+}
