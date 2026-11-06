@@ -1,0 +1,60 @@
+{
+ "id": "ep12-01",
+ "note": "EP.12 나스닥 1",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 907,
+   "takes": 4,
+   "texts": [
+    "이번 주 나스닥 지수가, 하루에 오 점 오 퍼센트 내렸대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 908,
+   "takes": 4,
+   "texts": [
+    "하락률로 따지면, 역대 몇 등일까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 909,
+   "takes": 4,
+   "texts": [
+    "일 등, 십 등 안, 삼십 등 밖 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 910,
+   "takes": 4,
+   "texts": [
+    "나는 일 등! 뉴스에 역대 최대라고 나왔거든."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05"
+ ]
+}
