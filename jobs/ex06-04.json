@@ -1,0 +1,21 @@
+{
+ "id": "ex06-04",
+ "note": "EX.06 L07 다시(이 백사십 → 백사십)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 626,
+   "takes": 4,
+   "texts": [
+    "백사십 퍼센트를 지키라는 증권사 의무를, 십일월 구일부터 석 달 동안 풀어 준대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L07b"
+ ]
+}
