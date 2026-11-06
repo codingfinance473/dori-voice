@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t00",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 659,
+  "takes": 4,
+  "texts": [
+   "정리하면, 제일 많이 오른 건 새우젓이야!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 3.76,
+   "gen_s": 44.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.2,
+   "gen_s": 39.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 3.2,
+   "gen_s": 38.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.44,
+   "gen_s": 41.2,
+   "sr": 24000
+  }
+ ]
+}
