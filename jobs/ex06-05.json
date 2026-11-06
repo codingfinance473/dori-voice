@@ -1,0 +1,47 @@
+{
+ "id": "ex06-05",
+ "note": "EX.06 석 달 → 3개월",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 240,
+   "takes": 4,
+   "texts": [
+    "정부가, 빚내서 산 주식의 담보 비율 의무를, 삼 개월 동안 면제한대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 241,
+   "takes": 4,
+   "texts": [
+    "백사십 퍼센트를 지키라는 증권사 의무를, 십일월 구일부터 삼 개월 동안 풀어 준대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 242,
+   "takes": 4,
+   "texts": [
+    "정리하면, 의무는 삼 개월 면제, 반대매매 기준은 증권사마다 달라."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01d",
+  "L07c",
+  "L14c"
+ ]
+}
