@@ -1,0 +1,60 @@
+{
+ "id": "ep12-03",
+ "note": "EP.12 나스닥 3",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 791,
+   "takes": 4,
+   "texts": [
+    "이보다 더 크게 내린 날이, 서른다섯 번이나 있었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 792,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 일 등은, 포인트 기준이었네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 793,
+   "takes": 4,
+   "texts": [
+    "그중 절반 넘게는, 이천 년대 초랑 이천팔 년이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 794,
+   "takes": 4,
+   "texts": [
+    "그래도 작년 사월 이후로는, 가장 큰 하락률이래."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L11",
+  "L11b",
+  "L12",
+  "L13"
+ ]
+}
