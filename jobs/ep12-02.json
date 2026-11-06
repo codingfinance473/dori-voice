@@ -1,0 +1,60 @@
+{
+ "id": "ep12-02",
+ "note": "EP.12 나스닥 2",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 801,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 포인트로 세면, 역대 최대 맞대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 802,
+   "takes": 4,
+   "texts": [
+    "그런데 지수가 커지면, 같은 비율이어도 포인트가 커진대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 803,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 역대 일 등 하락률은, 십이 점 삼 퍼센트래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 804,
+   "takes": 4,
+   "texts": [
+    "삼십 등 밖! 정확히는 삼십육 등이래!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L06",
+  "L06b",
+  "L07",
+  "L10"
+ ]
+}
