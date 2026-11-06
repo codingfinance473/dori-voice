@@ -1,0 +1,34 @@
+{
+ "id": "ep12-04",
+ "note": "EP.12 나스닥 4",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 304,
+   "takes": 4,
+   "texts": [
+    "정리하면, 포인트로는 일 등, 하락률로는 삼십육 등!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 305,
+   "takes": 4,
+   "texts": [
+    "너는 지수 볼 때, 포인트부터 봐, 퍼센트부터 봐?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L14",
+  "L15"
+ ]
+}
