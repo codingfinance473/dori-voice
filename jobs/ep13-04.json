@@ -1,0 +1,21 @@
+{
+ "id": "ep13-04",
+ "note": "EP.13 김장 L14 다시(새우젓이 오르고, 배추는 내렸어)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 189,
+   "takes": 4,
+   "texts": [
+    "정리하면, 새우젓이 오르고, 배추는 내렸어!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L14"
+ ]
+}
