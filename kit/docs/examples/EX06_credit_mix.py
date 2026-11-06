@@ -41,14 +41,15 @@ def marimba(f, L=.6):
     return (np.sin(2 * np.pi * f * t) + .25 * np.sin(2 * np.pi * 4 * f * t) * np.exp(-t * 30)) * np.exp(-t * 7) * np.minimum(1, t / .002)
 
 # ---------- 배경음 ----------
+# EX.06: 사용자가 후보 11개 중 K(장조 로파이 힙합)를 고름(2026-11-06 "설명할 때 듣기 좋게").
 # 배경음: 사운드폰트 악기로 연주(gmbed.py) — 2026-11-06 사용자 "배경음악이 좀 별로" → 합성 우쿨렐레 대신 실제 악기 소리. BEDSTYLE=A 피아노 · B 로파이(사용자 선택, 기본) · C 첼레스타
-quiet = [(T["L14"] - .4, E["L14"] + .05)]   # 정리 줄 동안 새 음 쉬기(완성 믹스 받아쓰기 1/3 → 비움)   # 정리 직전 한 박 쉼
+quiet = [(T["L14"] - .4, E["L14"] + .05), (T["L12"] - .1, E["L12"] + .05)]   # 정리 줄 동안 새 음 쉬기(완성 믹스 받아쓰기 1/3 → 비움)   # 정리 직전 한 박 쉼
 def q(t): return any(a <= t < b for a, b in quiet)
-thin = [(T[i] - .15, E[i] + .1) for i in ("L01", "L04", "L07", "L09", "L13", "L14", "L16")]   # 숫자·핵심어 줄: 멜로디를 빼고 현·베이스만
+thin = [(T[i] - .15, E[i] + .1) for i in ("L01", "L04", "L07", "L09", "L12", "L13", "L14", "L16")]   # 숫자·핵심어 줄: 멜로디를 빼고 현·베이스만
 def th(t): return any(a <= t < b for a, b in thin)
 import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gmbed
-bed[:] = gmbed.make(os.environ.get("BEDSTYLE", "B"), E["L02"] + .1, DUR - 1.15, DUR, SR, thin=th, quiet=q)
+bed[:] = gmbed.make(os.environ.get("BEDSTYLE", "K"), E["L02"] + .1, DUR - 1.15, DUR, SR, thin=th, quiet=q)
 
 def pop(at, g=.10, m=79): put(sfx, tone(hz(m), .16, a=.002, dec=.04, harm=(1, .2), bend=-.5), at, g)
 def whoosh(at, g=.06):
@@ -90,7 +91,7 @@ duck = 1 - .45 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)  
 # 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
 NUM_LINES = ("L01", "L04", "L07", "L09", "L13", "L14", "L14b", "L16")   # 이 편의 숫자·정답 줄(편마다 고친다)
-WEAK = {"L14": .5}                                                       # 예: {"L03": .5} — 완성 믹스에서 덜 들린 줄만
+WEAK = {"L14": .5, "L06": .6, "L12": .6}                                                       # 예: {"L03": .5} — 완성 믹스에서 덜 들린 줄만
 extra = np.ones(N)
 for l in TLL:
     if l["id"] in NUM_LINES:
