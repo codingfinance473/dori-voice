@@ -267,12 +267,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
     <div class="abs" id="stamp8">검산 끝!</div>
   </div>
 
-  <!-- 9 질문 -->
-  <div class="scene" id="s9">
-    <div class="ttl" id="e1">너는 지수 볼 때<br>뭐부터 봐?</div>
-    <div class="abs" id="two9"><div class="ch"><b>1421</b><span>포인트</span></div><div class="ch"><b style="color:var(--red)">5.5%</b><span>퍼센트</span></div></div>
-    <div class="abs" id="cta9">구독 · 좋아요 👍</div>
-  </div>
+  <div class="abs" id="cta9">구독 · 좋아요 👍</div>
 
   <div id="conf" class="abs"></div>
   <div class="abs" id="fly"></div>
@@ -362,8 +357,8 @@ const EX=[[0,{sad:.35}],[T.best,{sad:.8}],[A('L01',.97),{sad:.4}],
  [T.wApr,{sad:.7}],[A('L13',.95),{sad:.45}],
  [T.w119,{sad:1}],[T.wHeavy,{sad:1}],[A('X07',.98),{sad:.6}],
  [T.X06+.05,{sad:0,think:.4}],[A('X06',.95),{think:0}],
- [T.L14b,{squint:.7}],[T.L15-.47,{squint:0,happy:.5}],
- [T.L15+.03,{happy:0}],[T.L16+.04,{happy:1,pouch:1}]];
+ [T.L14b,{squint:.7}],[A('L14b',.98),{squint:0}],
+ [T.L15b+.1,{happy:.5}],[T.L16+.04,{happy:1,pouch:1}]];
 const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L16?.45:.35);
 const GZ=[[0,.2,.6],[A('L01',.98),0,0],[T.X03b+.08,.8,-.6],[T.X03b+1.48,0,0],[T.L06b+.2,.7,-.3],[T.L06b+1.6,0,0],[T.X04+.16,.8,-.6],[T.X04+1.56,0,0],[T.L12+.26,.7,-.6],[T.L12+1.46,0,0],[T.L13+.23,.7,-.6],[T.L13+1.63,0,0],[T.X05+.1,.2,.7],[A('X07',.98),0,0],[T.X06+.08,.6,-.8],[T.X06+1.28,0,0]];
 const gzT=Dori.track(GZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
@@ -376,7 +371,7 @@ const HOPS=[[T.L14b,26],[T.L16+.04,30]];
 function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
   if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
   return [h,sq];}
-const ARMR=[[0,0],[T.X03b+.08,.35],[T.X03b+1.68,0],[T.L06b+.1,.3],[A('L06b',.9),0],[T.X04+.1,.35],[A('X04',.9),0],[T.L12+.1,.35],[A('L12',.9),0],[T.X06+.08,.4],[T.X06+1.68,0],[T.L14b,.7],[T.L14b+1.17,0],[T.L15+.13,.45],[T.L15+1.43,0],[A('L16',.4),.9]];
+const ARMR=[[0,0],[T.X03b+.08,.35],[T.X03b+1.68,0],[T.L06b+.1,.3],[A('L06b',.9),0],[T.X04+.1,.35],[A('X04',.9),0],[T.L12+.1,.35],[A('L12',.9),0],[T.X06+.08,.4],[T.X06+1.68,0],[T.L14b,.7],[T.L14b+1.17,0],[T.L15b+.13,.45],[T.L15b+1.43,0],[A('L16',.4),.9]];
 const ARML=[[0,0],[T.L14b,.7],[T.L14b+1.17,0],[T.L16+.04,.55],[T.L16+.89,0]];
 const ARMC=new Map();
 function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
@@ -455,17 +450,14 @@ function render(t){
   vanim('h8',B8,t,T.X05+.2,.6,o6,BASE8,H8);
   pop('gap8',t,T.w119,o6,.35,0,.6);
 
-  // 8 정리
-  sv('s8',T.s8,T.s9+.3); const o8=T.s9-.1;
+  // 8 정리(카드는 끝까지 남는다 — o8=null)
+  sv('s8',T.s8,99); const o8=null;
   fx('c8',t,T.s8+.05,.5,o8,.35,50);
   ['k1','k2','k3','k4'].forEach((id,i)=>fx(id,t,T.X06+.3+i*.4,.4,null,0,20,-30));
-  const sk=P(t,T.stamp-.12,.3), sb=eIO(P(t,o8,.35)); $('stamp8').style.opacity=clamp(sk*5)*(1-sb);
+  const sk=P(t,T.stamp-.12,.3), sb=o8==null?0:eIO(P(t,o8,.35)); $('stamp8').style.opacity=clamp(sk*5)*(1-sb);
   $('stamp8').style.transform=`rotate(-10deg) scale(${sk<=0?1.5:1.5-.5*eOut(sk)})`;
 
-  // 9 질문
-  sv('s9',T.s9,99);
-  fx('e1',t,T.s9+.05,.5,null,0,50);
-  document.querySelectorAll('#two9 .ch').forEach((el,i)=>{const k=P(t,T.L15+.4+i*.5,.45);el.style.opacity=clamp(k*3);el.style.transform=`translateY(${(1-eOut(k))*40+Math.sin(t*2.4+i)*4}px) rotate(${Math.sin(t*1.7+i*1.3)*2}deg)`;});
+  // 끝: 정리 카드 위에서 구독·좋아요 칩
   pop('cta9',t,T.L15b-.05,T.L16+.2,.3,-2,.6);
   const fk=P(t,T.L16-.45,.55), fl=$('fly');
   if(fk>0&&fk<1){const x=lerp(800,230,eIO(fk)),y=lerp(560,1220,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L16-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.5})`;}
