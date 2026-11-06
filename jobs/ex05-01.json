@@ -1,0 +1,47 @@
+{
+ "id": "ex05-01",
+ "note": "EX.05 나스닥 설명형 1",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 363,
+   "takes": 4,
+   "texts": [
+    "이게 역대로 보면, 어느 정도일까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 364,
+   "takes": 4,
+   "texts": [
+    "포인트로 세면, 역대 가장 큰 하락폭이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 365,
+   "takes": 4,
+   "texts": [
+    "그래서 하락률로 다시 세면, 역대 삼십육 번째로 컸대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "X02",
+  "X03",
+  "X04"
+ ]
+}
