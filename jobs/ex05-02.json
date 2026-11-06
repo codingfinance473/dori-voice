@@ -1,0 +1,47 @@
+{
+ "id": "ex05-02",
+ "note": "EX.05 나스닥 설명형 2",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 241,
+   "takes": 4,
+   "texts": [
+    "사상 최고치보다는, 벌써 십일 점 구 퍼센트 낮아졌대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 242,
+   "takes": 4,
+   "texts": [
+    "마음이 좀, 무거운 숫자네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 243,
+   "takes": 4,
+   "texts": [
+    "정리하면, 포인트로는 역대 최대, 하락률로는 삼십육 번째야."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "X05",
+  "X07",
+  "X06"
+ ]
+}
