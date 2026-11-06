@@ -1,0 +1,190 @@
+{
+ "id": "ep13-01",
+ "note": "EP.13 김장 재료",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 378,
+   "takes": 4,
+   "texts": [
+    "김장 재료 중에, 작년보다 값이 제일 많이 오른 건 뭘까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 379,
+   "takes": 4,
+   "texts": [
+    "올해 네 식구는, 평균 이십삼 점 사 포기를 담근대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 380,
+   "takes": 4,
+   "texts": [
+    "배추, 무, 대파, 새우젓! 이 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 381,
+   "takes": 4,
+   "texts": [
+    "나는 배추! 재작년엔 한 포기에 만 원 가까이 했잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 382,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 올해 배추랑 무는, 작년보다 훨씬 많이 났대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 383,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 정답은 일 킬로그램에, 이만 원 가까이 해."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 384,
+   "takes": 4,
+   "texts": [
+    "새우젓!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 385,
+   "takes": 4,
+   "texts": [
+    "작년보다 이십오 점 팔 퍼센트 올랐대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 386,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 배추는, 오히려 이십삼 점 오 퍼센트 내렸어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 387,
+   "takes": 4,
+   "texts": [
+    "대파는 삼십 퍼센트나 내렸대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 388,
+   "takes": 4,
+   "texts": [
+    "근데 집에서 직접 김장하는 집은, 줄어서 열 집 중 여섯 집쯤이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 389,
+   "takes": 4,
+   "texts": [
+    "김장 재료 할인은, 역대 최대 규모래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 390,
+   "takes": 4,
+   "texts": [
+    "정리하면, 배추는 싸지고, 새우젓은 비싸졌어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 391,
+   "takes": 4,
+   "texts": [
+    "너희 집은 올해 김장해?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L13",
+  "L13b",
+  "L14",
+  "L15"
+ ]
+}
