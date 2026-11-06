@@ -1,0 +1,34 @@
+{
+ "id": "ep12-05",
+ "note": "EP.12 나스닥 다시(힌트 둘·연도 줄)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 198,
+   "takes": 4,
+   "texts": [
+    "두 번째 힌트! 역대 일 등 하락률은, 십이 점 삼 퍼센트래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 199,
+   "takes": 4,
+   "texts": [
+    "그중 절반 넘게가, 딱 세 해에 몰려 있대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L07",
+  "L12"
+ ]
+}
