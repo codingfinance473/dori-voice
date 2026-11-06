@@ -41,16 +41,42 @@ def marimba(f, L=.6):
     return (np.sin(2 * np.pi * f * t) + .25 * np.sin(2 * np.pi * 4 * f * t) * np.exp(-t * 30)) * np.exp(-t * 7) * np.minimum(1, t / .002)
 
 # ---------- 배경음 ----------
-# EX.06: 사용자가 후보 11개 중 K(장조 로파이 힙합)를 고름(2026-11-06 "설명할 때 듣기 좋게").
-# 배경음: 사운드폰트 악기로 연주(gmbed.py) — 2026-11-06 사용자 "배경음악이 좀 별로" → 합성 우쿨렐레 대신 실제 악기 소리. BEDSTYLE=A 피아노 · B 로파이(사용자 선택, 기본) · C 첼레스타
-quiet = [(T["L14"] - .4, E["L14"] + .05), (T["L12"] - .1, E["L12"] + .05)]   # 정리 줄 동안 새 음 쉬기(완성 믹스 받아쓰기 1/3 → 비움)   # 정리 직전 한 박 쉼
+# EX.06: 사용자 "원래 도리 쇼츠 브금으로"(2026-11-06 23:46) → 키트 기본 합성 우쿨렐레·마림바(사장조 116 BPM)로 되돌림(gmbed 안 씀).
+BPM = 116; BEAT = 60 / BPM; BAR = BEAT * 4
+chords = [[55, 59, 62, 67], [50, 57, 62, 66], [52, 55, 59, 64], [48, 55, 60, 64]]   # G D Em C (우쿨렐레 보이싱)
+bass = [43, 38, 40, 36]
+mel = [[71, 74, 76, 74, 71, 69, 67, 69], [69, 66, 69, 74, 72, 71, 69, 66], [67, 71, 74, 76, 74, 71, 67, 71], [72, 71, 69, 67, 64, 67, 69, 67]]
+pluck_cache = {}
+def strum(ch, at, g, down=True):
+    for j, m in enumerate(ch if down else ch[::-1]):
+        key = m
+        if key not in pluck_cache: pluck_cache[key] = pluck(hz(m), .8)
+        put(bed, pluck_cache[key], at + j * .012, g, pan=-.2 + j * .12)
+quiet = [(T["L14"] - .4, E["L14"] + .05), (T["L12"] - .1, E["L12"] + .05)]   # 정리 줄·L12 동안 새 음 쉬기
 def q(t): return any(a <= t < b for a, b in quiet)
-thin = [(T[i] - .15, E[i] + .1) for i in ("L01", "L04", "L07", "L09", "L12", "L13", "L14", "L16")]   # 숫자·핵심어 줄: 멜로디를 빼고 현·베이스만
+thin = [(T[i] - .15, E[i] + .1) for i in ("L01", "L04", "L07", "L08", "L09", "L11", "L12", "L13", "L14", "L16")]   # 숫자·핵심어 줄: 멜로디·박수·킥을 빼고 현·베이스만
 def th(t): return any(a <= t < b for a, b in thin)
-import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import gmbed
-bed[:] = gmbed.make(os.environ.get("BEDSTYLE", "K"), E["L02"] + .1, DUR - 1.15, DUR, SR, thin=th, quiet=q)
+b = 0.0; k = 0
+while b < DUR - 1.2:
+    ci = k % 4
+    for s8 in range(8):
+        tt = b + s8 * BEAT / 2
+        if tt >= DUR - 1.2 or q(tt) or tt < E["L02"] + .1: continue   # 배경음은 훅 두 줄(질문·숫자) 뒤에 들어온다
+        if s8 in (0, 3, 4, 6): strum(chords[ci], tt, .05 if s8 in (0, 4) else .035, down=s8 != 3)
+        if s8 in (0, 4): put(bed, lp(tone(hz(bass[ci]), .5, a=.01, dec=.25, harm=(1, .25)), 500), tt, .16)
+        if s8 in (0, 4) and tt > 3.0 and not th(tt):
+            n = int(.25 * SR); x = np.arange(n) / SR
+            put(bed, np.sin(2 * np.pi * np.cumsum(55 + 70 * np.exp(-x * 30)) / SR) * np.exp(-x * 12), tt, .14)
+        if s8 in (2, 6) and tt > 3.0 and not th(tt): put(bed, bp(noise(.12, .03), 900, 3500), tt, .05, pan=-.1)     # 박수
+        put(bed, hp(noise(.05, .015), 7000), tt + BEAT / 4, .018, pan=.3)                       # 셰이커
+        if k % 2 == 1 and tt > 3.0 and not th(tt): put(bed, marimba(hz(mel[ci][s8])), tt, .05, pan=.15)          # 마림바(짝수 마디만 쉼)
+    if k % 4 == 0: put(bed, tone(hz(86), 1.2, dec=.5, harm=(1, .2)), b, .02, pan=.4)            # 글로켄 반짝
+    b += BAR; k += 1
+end = DUR - 1.15                                               # 끝 화음
+strum(chords[0], end, .07); put(bed, tone(hz(79), 1.4, dec=.6), end + .05, .04)
+bed[-int(.4 * SR):] *= np.linspace(1, 0, int(.4 * SR))[:, None]
 
+# ---------- 효과음 ----------
 def pop(at, g=.10, m=79): put(sfx, tone(hz(m), .16, a=.002, dec=.04, harm=(1, .2), bend=-.5), at, g)
 def whoosh(at, g=.06):
     n = int(.4 * SR); t = np.arange(n) / SR
