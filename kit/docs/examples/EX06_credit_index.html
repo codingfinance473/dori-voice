@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!--
+  도리의 정보주머니 · 숫자 퀴즈 화면 템플릿 (EX.06 신용융자 담보비율 의무 면제 — 설명형, 2026-11-06)
+  render(t) 하나가 t초의 화면을 그린다(같은 t면 늘 같은 화면). 시각은 timeline.js 의 T(줄 시작·단어 시각)를 쓴다.
+  편마다 바꾸는 곳:
+   - 장면 마크업 s1~s9(제목·카드·막대·차트의 글자와 숫자, 출처 칩 "기관 · 기준 기간")
+   - 보기 카드 oA~oD 와 PICK(도리가 찍는 카드 id) — 동그라미는 카드 위치에서 자동 계산
+   - JS 의 차트 자료(US·JP 배열 등), 도리 연기 표(EX·GZ·HOPS·ARMR·ARML·marks)의 단어 시각 이름
+   - OUTFIT(도리 옷 — 주제에 맞게, 없으면 '') · thumb.html 의 CFG.outfit 도 같은 값
+   - 렌더 전에 python3 render.py qa (눈·옷·움직임·글자 자동 점검 + 훑어보기 시트) 를 통과시킨다
+  지키는 것: 뉴스 매체명은 화면에 넣지 않는다 · 끝 화면에 AI 문구 없음(위 칩) · 아래 420px·오른쪽 160px에 핵심 글자 없음 · 자막 2줄, 숫자에 쉼표 없음
+-->
+<meta charset="utf-8">
+<title>도리의 숫자 검산 신용융자</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Medium.otf);font-weight:500}
+@font-face{font-family:P;src:url(fonts/Pretendard-SemiBold.otf);font-weight:600}
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--sub:#7E6B5C;--mint:#2E9C83;--mintL:#D5F1E7;--mint2:#80D0BA;--red:#E2483A;--yel:#FFD45C;--line:#EBDDD0;--bottle:#5DBE8A}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;word-break:keep-all}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;visibility:hidden}
+.dot{position:absolute;border-radius:50%}
+#hdr{left:64px;top:146px;display:flex;align-items:center;gap:12px}
+.pill{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:9px 20px;font-size:25px;font-weight:800;color:var(--ink);white-space:nowrap}
+.pill i{display:block;width:16px;height:16px;border-radius:50%}
+#hdr .brand{font-family:Jua;font-weight:400;font-size:29px;padding:8px 22px 8px 12px}
+#hdr .ai{color:#8A7A6D;font-weight:700;font-size:23px;border-style:dashed}
+#prog{left:72px;top:226px;width:840px;height:6px;border-radius:3px;background:#F0E2D6;overflow:hidden}
+#progf{height:100%;width:0;background:var(--mint);border-radius:3px}
+.card{position:absolute;background:#fff;border-radius:40px;box-shadow:0 20px 44px rgba(120,80,40,.12);border:2px solid #F3E6DA}
+.ttl{position:absolute;font-family:Jua;font-weight:400;color:var(--ink);line-height:1.18}
+.unit{position:absolute;font-size:27px;font-weight:600;color:var(--sub)}
+.src{position:absolute;display:flex;align-items:center;gap:8px;font-size:24px;font-weight:700;color:#8A7A6D;background:#FBF3EA;border-radius:999px;padding:6px 16px;white-space:nowrap}
+.src:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--mint)}
+.stk{position:absolute;font-family:Jua;font-size:36px;color:#fff;background:var(--mint);border-radius:16px;padding:6px 22px;box-shadow:0 6px 14px rgba(46,156,131,.25)}
+.fb{display:inline-block;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px #fff,0 0 0 6px rgba(62,47,37,.10),0 5px 12px rgba(100,60,30,.22);line-height:0;flex:none}
+.fb svg{display:block}
+/* 1 */
+#t1{left:80px;top:300px;font-size:86px}
+#t1 span{display:block}
+#t1 em{font-style:normal;color:var(--mint)}
+#bottle{left:660px;top:600px;width:220px;height:460px;transform-origin:50% 95%}
+#c1{left:80px;top:722px;width:530px;padding:26px 30px}
+#c1 .k{font-size:28px;font-weight:700;color:var(--sub)}
+#c1 .v{font-size:70px;font-weight:900;letter-spacing:-2px;margin-top:6px;line-height:1.05;white-space:nowrap}
+#c1 .v small{font-size:38px;font-weight:800;letter-spacing:0}
+#first1{left:80px;top:640px;font-family:Jua;font-size:34px;color:#fff;background:var(--red);border-radius:999px;padding:6px 22px;box-shadow:0 8px 16px rgba(226,72,58,.3)}
+#src1{left:80px;top:932px}
+/* 2 */
+#t2{left:80px;top:292px;font-size:76px}
+#t2s{left:84px;top:390px}
+#ring{left:744px;top:280px;width:140px;height:140px;border-radius:50%;background:#fff;box-shadow:0 10px 24px rgba(120,80,40,.14);display:flex;align-items:center;justify-content:center}
+#ringPie{position:absolute;inset:10px;border-radius:50%}
+#ringN{position:relative;width:98px;height:98px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:66px}
+.opt{position:absolute;left:80px;width:800px;height:120px;display:flex;align-items:center;gap:28px;padding:0 32px}
+.opt .lt{width:60px;height:60px;border-radius:50%;background:var(--mintL);color:var(--mint);font-family:Jua;font-size:36px;display:flex;align-items:center;justify-content:center}
+.opt .nm{font-family:Jua;font-size:58px}
+#pickC{left:40px;top:590px;width:900px;height:200px;overflow:visible}
+#pickL{left:640px;top:646px;font-family:Jua;font-size:40px;color:var(--red);transform-origin:0 50%}
+/* 3 도넛 */
+#c3{left:60px;top:500px;width:860px;height:540px}
+#donut{left:110px;top:540px;width:460px;height:460px}
+#dLab{left:610px;top:600px;width:280px}
+#dLab .a{font-family:Jua;font-size:40px;color:var(--ink);line-height:1.25}
+#dLab .b{margin-top:16px;font-size:78px;font-weight:900;color:var(--mint);letter-spacing:-2px}
+#dLab .c{margin-top:6px;font-size:28px;font-weight:700;color:var(--sub)}
+#bot4{left:612px;top:880px;display:flex;gap:16px}
+#q3{left:300px;top:556px;width:84px;height:84px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:56px;box-shadow:0 0 0 6px #fff}
+/* 4 과일소주 */
+#c4{left:60px;top:500px;width:860px;height:540px;display:flex;flex-direction:column;align-items:center;padding-top:44px}
+#c4 .k{font-family:Jua;font-size:44px;color:var(--ink)}
+#c4 .row{display:flex;align-items:center;gap:36px;margin-top:30px}
+#c4 .qf{width:170px;height:170px;border-radius:50%;background:#FFF0E6;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:110px;color:var(--red);box-shadow:0 0 0 8px #fff,0 8px 20px rgba(100,60,30,.18)}
+#c4 .v{font-size:84px;font-weight:900;letter-spacing:-2px}
+#c4 .v small{font-size:40px;font-weight:800;letter-spacing:0}
+#fruits{margin-top:34px;display:flex;gap:26px}
+/* 5 */
+#r5a{left:80px;top:292px;font-size:70px}
+#r5b{left:80px;top:414px;display:flex;align-items:center;gap:34px;transform-origin:0 0}
+#r5b .nm{font-family:Jua;font-size:190px;line-height:1}
+#st5{left:650px;top:384px;width:190px;height:190px;border-radius:50%;border:8px solid var(--mint);display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:58px;color:var(--mint);background:rgba(255,255,255,.9);transform-origin:50% 50%}
+#c5{left:60px;top:618px;width:860px;height:440px}
+.br{position:absolute;left:96px;width:800px;height:110px}
+.br .bn{position:absolute;left:0;top:0;display:flex;align-items:center;gap:16px;font-family:Jua;font-size:42px;line-height:60px;white-space:nowrap}
+.br .bar{position:absolute;left:76px;top:70px;height:26px;border-radius:13px;width:0;background:linear-gradient(90deg,#CFEDE3,#9BD9C6)}
+.br .val{position:absolute;top:56px;font-size:40px;font-weight:800;white-space:nowrap;line-height:1}
+.br.win .bar{background:linear-gradient(90deg,#7FD3BC,var(--mint))}
+.br.win .val{color:var(--mint)}
+.tag{display:inline-block;font-family:Jua;font-size:27px;color:#fff;border-radius:999px;padding:3px 14px;line-height:1.3}
+#conf{left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+.cf{position:absolute;border-radius:3px}
+/* 6 일본 비중 */
+#t6{left:80px;top:290px;font-size:74px}
+#t6 em{font-style:normal;color:var(--red)}
+#c6{left:60px;top:450px;width:860px;height:600px}
+#line6{left:60px;top:450px;width:860px;height:600px;overflow:visible}
+.pv{position:absolute;font-size:38px;font-weight:900;white-space:nowrap;text-align:center;width:180px}
+.py{position:absolute;font-size:28px;font-weight:700;color:var(--sub);width:120px;text-align:center}
+#bot10{left:120px;top:880px;display:flex;gap:6px}
+#lab6{left:430px;top:500px;font-family:Jua;font-size:42px;color:var(--red);transform-origin:0 50%}
+/* 6 미국 비중 막대 */
+#t6u{left:80px;top:290px;font-size:74px}
+#t6u em{font-style:normal;color:var(--mint)}
+#c6u{left:60px;top:450px;width:860px;height:590px}
+.ub{position:absolute;width:150px;border-radius:24px 24px 10px 10px;background:linear-gradient(180deg,#CFEDE3,#9BD9C6)}
+.ub.last{background:linear-gradient(180deg,#7FD3BC,var(--mint))}
+.uv{position:absolute;width:220px;text-align:center;font-size:40px;font-weight:900;white-space:nowrap}
+.uy{position:absolute;width:220px;text-align:center;font-size:27px;font-weight:700;color:var(--sub);white-space:nowrap}
+#lab6u{left:560px;top:478px;width:330px;text-align:center;font-family:Jua;font-size:40px;color:var(--mint);transform-origin:50% 50%}
+/* 7 */
+#t7{left:80px;top:290px;font-size:74px}
+#c7{left:60px;top:450px;width:860px;height:590px}
+.cb{position:absolute;width:220px;border-radius:28px 28px 10px 10px}
+.cv{position:absolute;width:340px;text-align:center;font-size:44px;font-weight:900;white-space:nowrap}
+.cn{position:absolute;width:340px;text-align:center;font-family:Jua;font-size:40px}
+#lab7{left:605px;top:478px;width:250px;text-align:center;font-family:Jua;font-size:40px;color:var(--red);transform-origin:0 50%}
+/* 8 */
+#c8{left:60px;top:300px;width:860px;height:660px;display:flex;flex-direction:column;align-items:center;padding-top:56px}
+#c8 .stk{position:static;font-size:40px;padding:8px 30px}
+#c8 .row{display:flex;align-items:center;gap:36px;margin-top:40px}
+#c8 .nm{font-family:Jua;font-size:170px;line-height:1}
+#c8 .sub{margin-top:30px;font-size:36px;font-weight:800;color:var(--ink)}
+#c8 .sub b{color:var(--mint)}
+#c8 .per{margin-top:12px;font-size:27px;font-weight:600;color:var(--sub)}
+#stamp8{left:600px;top:928px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
+/* 9 */
+#e1{left:80px;top:294px;font-size:82px}
+#e2{left:80px;top:500px;display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:12px 30px;font-family:Jua;font-size:44px;color:var(--mint)}
+#e3{left:80px;top:630px;width:820px;padding:26px 34px}
+#e3 .k{display:inline-block;font-family:Jua;font-size:30px;color:#fff;background:var(--mint);border-radius:12px;padding:3px 16px}
+#e3 .v{margin-top:12px;font-family:Jua;font-size:50px}
+#fly{left:0;top:0;width:60px;height:120px}
+#dori{left:0;top:1004px;width:480px;height:498px}
+#bub{left:448px;top:1196px;max-width:472px;background:#fff;border-radius:34px;padding:24px 32px;font-family:Jua;font-size:40px;line-height:1.34;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;transform-origin:0 50%}
+#bub:before{content:"";position:absolute;left:-18px;top:50%;margin-top:-15px;border-width:15px 22px 15px 0;border-style:solid;border-color:transparent #fff transparent transparent}
+#pre{position:absolute;left:-5000px;top:0;font-family:Jua}
+/* EX.05 나스닥(설명형) */
+#t1{font-size:80px}
+#t1 em{color:var(--red)}
+#c1 .v{color:var(--red)}
+#first1{left:80px;top:640px}
+.hb{position:absolute;left:96px;width:800px;height:96px}
+.hb .bn{position:absolute;left:0;top:0;font-family:Jua;font-size:38px;line-height:48px;white-space:nowrap;display:flex;align-items:center;gap:12px}
+.hb .bar{position:absolute;left:0;top:54px;height:26px;border-radius:13px;width:0;background:linear-gradient(90deg,#E9DED3,#D6C7B8)}
+.hb .val{position:absolute;top:40px;font-size:38px;font-weight:800;white-space:nowrap;line-height:1}
+.hb.now .bar{background:linear-gradient(90deg,#F6B7A6,var(--red))}
+.hb.now .val{color:var(--red)}
+#calc3{left:80px;top:838px;width:820px;padding:22px 30px}
+#calc3 .k{font-family:Jua;font-size:38px;color:var(--ink)}
+#calc3 .r{display:flex;align-items:baseline;gap:14px;margin-top:10px;font-size:34px;font-weight:700;color:var(--sub);white-space:nowrap}
+#calc3 .r b{font-size:46px;font-weight:900;color:var(--ink)}
+#calc3 .r b.big{color:var(--red)}
+#tag4{left:96px;top:1040px;font-family:Jua;font-size:38px;color:#fff;background:#8A7A6D;border-radius:999px;padding:6px 26px;transform-origin:0 50%}
+.vb{position:absolute;border-radius:24px 24px 10px 10px;background:linear-gradient(180deg,#E9DED3,#D6C7B8)}
+.vb.win{background:linear-gradient(180deg,#F6B7A6,var(--red))}
+.vb.dom{background:linear-gradient(180deg,#7FD3BC,var(--mint))}
+.vb.cool{background:linear-gradient(180deg,#C9D3E2,#9EAFC8)}
+.vv{position:absolute;text-align:center;font-size:42px;font-weight:900;white-space:nowrap}
+.vy{position:absolute;text-align:center;font-family:Jua;font-size:32px;white-space:nowrap;line-height:1.2}
+#t6u em,#t7 em,#t8 em{font-style:normal;color:var(--red)}
+#t7,#t8{left:80px;top:290px;font-size:74px}
+#c7,#c9{left:60px;top:450px;width:860px;height:590px}
+#lab6u{left:100px;top:470px;width:auto;text-align:left;color:var(--mint);transform-origin:0 50%}
+#lab7{left:520px;top:466px;width:400px;text-align:center;font-family:Jua;font-size:36px;color:var(--red);transform-origin:50% 50%}
+#gap8{left:384px;top:560px;font-family:Jua;font-size:46px;color:#fff;background:#6F7F99;border-radius:999px;padding:8px 28px;transform-origin:50% 50%}
+#gloom{left:0;top:0;width:1080px;height:1920px;background:#8FA3BF;opacity:0;pointer-events:none}
+#cloud{left:150px;top:1014px;width:210px;height:150px;opacity:0;pointer-events:none}
+#c8 .sum{font-family:Jua;font-size:60px}
+#c8 .sum b{color:var(--red);font-weight:400}
+#c8 .chk{margin-top:22px;font-size:33px;font-weight:800;color:var(--ink);align-self:flex-start;margin-left:56px;white-space:nowrap}
+#c8 .chk.warn{color:#C0563F}
+#stamp8{left:540px;top:928px}
+#e1{left:80px;top:294px;font-size:82px}
+#two9{left:80px;top:640px;display:flex;gap:34px}
+#two9 .ch{width:300px;height:190px;border-radius:36px;background:#fff;border:3px solid var(--line);box-shadow:0 14px 30px rgba(120,80,40,.12);display:flex;flex-direction:column;align-items:center;justify-content:center}
+#two9 .ch b{font-size:76px;font-weight:900;line-height:1}
+#two9 .ch span{margin-top:10px;font-family:Jua;font-size:34px;color:var(--sub)}
+#cta9{left:448px;top:1300px;font-family:Jua;font-size:40px;color:var(--ink);background:#fff;border:3px solid var(--mint2);border-radius:999px;padding:8px 28px;box-shadow:0 10px 22px rgba(120,80,40,.12)}
+
+/* EX.06 신용융자 담보비율 */
+#t1{font-size:78px}
+#c1 .v{color:var(--ink);font-size:64px}
+#c1 .v s{color:#B9A99A;text-decoration-thickness:6px;text-decoration-color:var(--red)}
+#c1 .v small{color:var(--red)}
+.tt{position:absolute;left:80px;top:290px;font-family:Jua;font-size:74px;line-height:1.18}
+.tt em{font-style:normal;color:var(--red)}
+.tt em.m{color:var(--mint)}
+.uu{position:absolute;left:84px;top:390px;font-size:27px;font-weight:600;color:var(--sub);white-space:nowrap}
+#line2{left:110px;width:780px;height:0;border-top:5px dashed var(--red)}
+#line2l{left:104px;font-family:Jua;font-size:34px;color:var(--red);background:#fff;padding:0 10px}
+#chip2{left:480px;top:1050px;font-family:Jua;font-size:38px;color:#fff;background:var(--red);border-radius:999px;padding:6px 26px;transform-origin:0 50%;white-space:nowrap}
+.row3{position:absolute;left:100px;width:780px;display:flex;align-items:center;gap:20px;white-space:nowrap}
+.row3 .lb{font-family:Jua;font-size:34px;color:#fff;border-radius:999px;padding:4px 20px}
+.row3 .tx{font-family:Jua;font-size:42px}
+.row3 .tx s{text-decoration-thickness:5px;text-decoration-color:var(--red);color:#A89787}
+.lp{position:absolute;width:220px;height:110px;border-radius:28px;background:#FBF3EA;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:38px;white-space:nowrap}
+.lp b{font-weight:400;color:var(--red)}
+.ar{position:absolute;font-family:Jua;font-size:46px;color:#B9A99A}
+#cut3{left:620px;top:982px;font-family:Jua;font-size:34px;color:#fff;background:var(--mint);border-radius:999px;padding:5px 22px;transform-origin:50% 50%;white-space:nowrap}
+#x3{left:430px;top:800px;width:120px;height:120px;transform-origin:50% 50%}
+.bx{position:absolute;border-radius:30px;background:#FBF3EA;border:3px solid var(--line);padding:18px 24px}
+.bx .h{display:inline-block;font-family:Jua;font-size:32px;color:#fff;border-radius:12px;padding:2px 16px}
+.bx .b{margin-top:12px;font-family:Jua;font-size:40px;line-height:1.3}
+.bx .s{margin-top:8px;font-size:25px;font-weight:700;color:var(--sub);white-space:nowrap}
+#gap4{left:560px;top:478px;font-family:Jua;font-size:40px;color:#fff;background:#6F7F99;border-radius:999px;padding:8px 28px;transform-origin:50% 50%;white-space:nowrap}
+#c8 .sum{font-family:Jua;font-size:56px}
+#c8 .sum b{color:var(--red);font-weight:400}
+#c8 .sum b.m{color:var(--mint)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="dot" id="b1"></div><div class="dot" id="b2"></div><div class="dot" id="b3"></div><div class="dot" id="b4"></div>
+  <div class="abs" id="hdr">
+    <div class="pill brand"><span id="hdrDori"></span>도리의 정보주머니</div>
+    <div class="pill"><i style="background:#5B8CFF"></i>숫자 검산</div>
+    <div class="pill ai">AI 목소리</div>
+  </div>
+  <div class="abs" id="prog"><div id="progf"></div></div>
+
+  <!-- 1 질문 -->
+  <div class="scene" id="s1">
+    <svg class="abs" id="mk1" width="360" height="40" style="left:80px;top:556px;overflow:visible"><path d="M6 24 C80 16 170 28 350 18" stroke="#FFD3C8" stroke-width="28" stroke-linecap="round" fill="none"/></svg>
+    <div class="ttl" id="t1"><span>신용융자 담보비율</span><span>의무 석 달 면제,</span><span><em>반대매매 끝?</em></span></div>
+    <div class="abs" id="bottle"></div>
+    <div class="card" id="c1"><div class="k">증권사 신용융자 담보비율</div><div class="v"><s>140%</s> <small>유지 의무 면제</small></div></div>
+    <div class="abs" id="first1">11월 9일부터 3개월</div>
+    <div class="src" id="src1">관계기관 합동 시장상황점검회의 · 2026년 11월 6일</div>
+  </div>
+
+  <!-- 2 담보비율 140% -->
+  <div class="scene" id="s2">
+    <div class="tt" id="tt2">담보비율 <em>140%</em>란?</div>
+    <div class="uu" id="u2">신용융자(빌린 돈) 담보비율 = 계좌 평가금액 ÷ 빌린 돈 · 계산 예시</div>
+    <div class="card" id="c2" style="left:60px;top:450px;width:860px;height:590px"></div>
+    <div id="bars2"></div>
+    <div class="abs" id="line2"></div>
+    <div class="abs" id="line2l">140% 선</div>
+    <div class="abs" id="chip2">못 채우면 → 반대매매</div>
+  </div>
+
+  <!-- 3 무엇이 바뀌나 -->
+  <div class="scene" id="s3">
+    <div class="tt" id="tt3"><em>11월 9일</em>부터 석 달</div>
+    <div class="uu" id="u3">관계기관 합동 시장상황점검회의 · 2026년 11월 6일</div>
+    <div class="card" id="c3" style="left:60px;top:450px;width:860px;height:590px"></div>
+    <div class="row3" id="r3a" style="top:490px"><span class="lb" style="background:#8A7A6D">평소</span><span class="tx">증권사는 담보비율 <b>140%</b> 이상 유지</span></div>
+    <div class="row3" id="r3b" style="top:590px"><span class="lb" style="background:var(--red)">3개월</span><span class="tx">이 유지 의무를 <b style="color:var(--red);font-weight:400">면제</b></span></div>
+    <div class="lp" id="lp1" style="left:100px;top:740px">주가 <b>↓</b></div>
+    <div class="ar" id="ar1" style="left:336px;top:762px">→</div>
+    <div class="lp" id="lp2" style="left:390px;top:740px;width:250px">반대매매 <b>↑</b></div>
+    <div class="ar" id="ar2" style="left:656px;top:762px">→</div>
+    <div class="lp" id="lp3" style="left:710px;top:740px;width:180px">주가 <b>↓↓</b></div>
+    <svg class="abs" id="ret3" width="860" height="90" style="left:60px;top:860px;overflow:visible"><path d="M770 0 C770 70 560 80 400 80 C240 80 160 60 160 0" fill="none" stroke="#D9C9BA" stroke-width="6" stroke-dasharray="14 12"/><path d="M146 18 L160 0 L176 18" fill="none" stroke="#D9C9BA" stroke-width="6" stroke-linecap="round"/></svg>
+    <div class="abs" id="cut3">이 고리를 막으려고</div>
+  </div>
+
+  <!-- 4 신용융자 잔고 -->
+  <div class="scene" id="s4">
+    <div class="tt" id="tt4">신용융자 <em class="m">잔고</em>는?</div>
+    <div class="uu" id="u4">금융투자협회 · 신용거래융자 잔고(코스피+코스닥)</div>
+    <div class="card" id="c4" style="left:60px;top:450px;width:860px;height:590px"></div>
+    <div id="bars4"></div>
+    <div class="abs" id="gap4">−9조 8613억 원</div>
+  </div>
+
+  <!-- 5 반대 신호 -->
+  <div class="scene" id="s5">
+    <div class="tt" id="tt5" style="font-size:66px">반대매매, <em>없어지진 않아</em></div>
+    <div class="uu" id="u5">관계기관 합동 시장상황점검회의 · 2026년 11월 6일</div>
+    <div class="card" id="c5" style="left:60px;top:450px;width:860px;height:590px"></div>
+    <div class="bx" id="bx1" style="left:100px;top:486px;width:340px;height:220px"><span class="h" style="background:var(--mint)">정부</span><div class="b">140% 유지<br>의무 면제</div></div>
+    <div class="ar" id="ar5" style="left:458px;top:566px">→</div>
+    <div class="bx" id="bx2" style="left:530px;top:486px;width:350px;height:220px"><span class="h" style="background:var(--red)">증권사</span><div class="b">기준·유예는<br>각자 정해</div></div>
+    <div class="bx" id="bx3" style="left:100px;top:736px;width:780px;height:270px;background:#fff"><span class="h" style="background:#8A7A6D">2022년 7월 같은 조치 때</span><div class="b">조건 맞는 계좌만<br>반대매매 <span style="color:var(--red)">하루 유예</span>가 많았어</div><div class="s">2022년 7월 증권사 발표 · 메리츠·키움·미래에셋 등</div></div>
+  </div>
+
+  <!-- 8 정리 -->
+  <div class="scene" id="s8">
+    <div class="card" id="c8" style="height:720px;padding-top:44px"><div class="stk">정리</div>
+      <div class="sum" style="margin-top:26px">의무는 <b>석 달 면제</b></div>
+      <div class="sum">기준은 <b class="m">증권사마다</b></div>
+      <div class="chk" id="k1">✔ 11월 9일부터 140% 유지 의무 면제</div>
+      <div class="chk" id="k2">✔ 신용융자 잔고 28조 7715억 원(11월 5일)</div>
+      <div class="chk warn" id="k3">△ 반대매매 기준·유예는 증권사마다</div>
+      <div class="chk warn" id="k4">△ 2022년엔 조건부 하루 유예가 많았어</div>
+      <div class="per" style="margin-top:22px">시장상황점검회의(11월 6일) · 금융투자협회</div></div>
+    <div class="abs" id="stamp8">검산 끝!</div>
+  </div>
+
+  <div class="abs" id="cta9">구독 · 좋아요 👍</div>
+
+  <div id="conf" class="abs"></div>
+  <div class="abs" id="fly"></div>
+  <div class="abs" id="dori"></div>
+
+  <div class="abs" id="bub"><span id="bubT"></span></div>
+  <div id="pre"></div>
+</div>
+
+<script src="timeline.js"></script>
+<script src="dori_outfits.js"></script>
+<script src="dori.js"></script>
+<script>
+const T=TL.T, FPS=30, DUR=T.END;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,s,d)=>clamp((t-s)/d);
+const eOut=x=>1-Math.pow(1-x,3);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eBack=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);};
+const spring=x=>x<=0?0:x>=1?1:1-Math.exp(-6*x)*Math.cos(9*x);
+const lerp=(a,b,k)=>a+(b-a)*k;
+const $=id=>document.getElementById(id);
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+
+// 소품: 담보비율 계기판(상표 없음) — 바늘이 140% 선 근처
+const GAUGE=w=>`<svg viewBox="0 0 220 300" width="${w}" height="${w*300/220}">
+  <rect x="10" y="40" width="200" height="220" rx="30" fill="#FFFDF8" stroke="#4A3A33" stroke-width="5"/>
+  <path d="M40 180 A70 70 0 0 1 180 180" fill="none" stroke="#EFE4D9" stroke-width="22"/>
+  <path d="M40 180 A70 70 0 0 1 82 116" fill="none" stroke="#E2483A" stroke-width="22"/>
+  <path d="M82 116 A70 70 0 0 1 180 180" fill="none" stroke="#7FD3BC" stroke-width="22"/>
+  <line x1="82" y1="116" x2="70" y2="98" stroke="#4A3A33" stroke-width="5" stroke-linecap="round"/>
+  <g id="needle"><line x1="110" y1="180" x2="110" y2="124" stroke="#4A3A33" stroke-width="8" stroke-linecap="round"/></g>
+  <circle cx="110" cy="180" r="12" fill="#4A3A33"/>
+  <text x="110" y="232" text-anchor="middle" font-family="Jua" font-size="34" fill="#4A3A33">담보비율</text>
+  <rect x="58" y="62" width="104" height="14" rx="7" fill="#D5F1E7"/></svg>`;
+const TOKEN=w=>`<svg viewBox="0 0 60 60" width="${w}" height="${w}"><circle cx="30" cy="30" r="26" fill="#FFD45C" stroke="#4A3A33" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-family="Jua" font-size="32" fill="#4A3A33">%</text></svg>`;
+$('bottle').innerHTML=GAUGE(220);
+$('fly').innerHTML=TOKEN(46);
+$('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
+// 세로 막대(0부터, 과장 없이): [이름, 값, 종류, 글자]
+function vbars(host,id,data,X,bw,base,vw){
+  $(host).innerHTML=data.map(([n,v,k,txt],i)=>`<div class="vb ${k||''}" id="${id}b${i}" style="left:${X[i]}px;width:${bw}px"></div><div class="vv" id="${id}v${i}" style="left:${X[i]+bw/2-vw/2}px;width:${vw}px;${k==='win'?'color:var(--red)':k==='dom'?'color:var(--mint)':''}">${txt}</div><div class="vy" id="${id}y${i}" style="left:${X[i]+bw/2-vw/2}px;width:${vw}px;top:${base+14}px">${n}</div>`).join('');}
+function vanim(id,data,t,starts,out,base,H){data.forEach(([n,v],i)=>{const s=starts[i], g=spring(P(t,s,.9)), o=eIO(P(t,out,.35)), h=H(v)*clamp(g,0,1.06);
+  const b=$(id+'b'+i); b.style.height=Math.max(0,h)+'px'; b.style.top=(base-h)+'px'; b.style.opacity=(t>=s?1:0)*(1-o);
+  const vv=$(id+'v'+i); vv.style.top=(data[i][2]==='win'?base-h-48:base-h-60)+'px'; if(data[i][2]==='win')vv.style.fontSize='36px'; vv.style.opacity=clamp(P(t,s+.35,.35))*(1-o);
+  const y=$(id+'y'+i); y.style.opacity=clamp(P(t,s-.2,.35)*3)*(1-o);});}
+// 2: 빌린 돈 1000만 원 → 140% = 계좌 평가금액 1400만 원, 주가가 내리면(예) 1200만 원
+const B2=[['빌린 돈',1000,'','1000만 원'],['계좌 평가금액',1400,'dom','1400만 원'],['주가 내리면<br>(예시)',1200,'win','1200만 원']], X2=[140,420,700], BASE2=948, H2=v=>360*v/1400;
+vbars('bars2','b2',B2,X2,150,BASE2,260);
+$('line2').style.top=(BASE2-H2(1400))+'px'; $('line2l').style.top=(BASE2-H2(1400)-56)+'px';
+// 4: 신용거래융자 잔고 — 2026-06-24 38조 6328억(올해 최고) · 2026-11-05 28조 7715억(금융투자협회)
+const B4=[['6월 24일<br>올해 가장 많을 때',38.6328,'cool','38조 6328억'],['11월 5일',28.7715,'dom','28조 7715억']], X4=[190,610], BASE4=930, H4=v=>360*v/38.6328;
+vbars('bars4','b4',B4,X4,200,BASE4,380);
+$('pre').textContent=TL.lines.map(l=>l.text.replace(/<br>/g,' ')).join(' ')+document.body.innerText;
+
+function sv(id,a,b){$(id).style.visibility=(gT>=a&&gT<b)?'visible':'hidden';}
+function fx(el,t,inS,inD,outS,outD,dy=40,dx=0,rot=0){if(typeof el==='string')el=$(el);const a=eOut(P(t,inS,inD)),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=a*(1-b);el.style.transform=`translate(${(1-a)*dx}px,${(1-a)*dy-b*dy*.7}px) rotate(${rot}deg)`;return a*(1-b);}
+function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);const k=P(t,s,.5),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=clamp(k*4)*(1-b);el.style.transform=`rotate(${rot}deg) scale(${k<=0?from:from+(1-from)*eBack(k)})`;}
+let gT=0;
+
+// ---------- 도리 연기: 오해를 바로잡는 탐정 — 차분하게 궁금해하고, 끝에만 활짝 ----------
+const OUTFIT='detective';   // "반대매매 걱정 없어진다?" 오해 바로잡기 — EX.05(news)와 겹치지 않게
+Dori.mount($('dori'),{outfit:OUTFIT});
+const D={};TL.lines.forEach(l=>D[l.id]=l.d);
+const A=(id,f)=>T[id]+f*D[id];
+const EX=[[0,{happy:0}],[T.best,{surprise:.5}],[A('L01',.97),{surprise:0}],
+ [T.L02+.05,{think:.7}],[A('L02',.97),{think:0}],
+ [T.w140,{surprise:.35}],[A('L04',.95),{surprise:0}],
+ [T.wDrop,{sad:.45}],[A('L05',.95),{sad:0}],[T.wForce,{surprise:.55}],[A('L06',.95),{surprise:0}],
+ [T.wMonth,{happy:.45}],[A('L07',.95),{happy:0}],[T.L08+.1,{think:.4}],[A('L08',.95),{think:0}],
+ [T.wGap,{surprise:.4}],[T.wGap+1.2,{surprise:0}],
+ [T.L11+.05,{think:.7}],[A('L11',.97),{think:0}],[T.L12+.1,{think:.5}],[A('L12',.95),{think:0}],[T.wDay,{surprise:.35}],[A('L13',.95),{surprise:0}],
+ [T.L14+.05,{think:.35}],[A('L14',.95),{think:0}],
+ [T.L14b,{squint:.7}],[A('L14b',.98),{squint:0}],
+ [T.L15b+.1,{happy:.5}],[T.L16+.04,{happy:1,pouch:1}]];
+const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L16?.45:.35);
+const GZ=[[0,.2,.6],[A('L01',.98),0,0],[T.L04+.1,.8,-.6],[T.L04+1.5,0,0],[T.wDrop,.8,-.4],[T.wDrop+1.2,0,0],[T.L07+.1,.8,-.6],[T.L07+1.6,0,0],[T.L09+.1,.8,-.6],[T.L09+1.5,0,0],[T.wGap,.7,-.5],[T.wGap+1.2,0,0],[T.L12+.2,.8,-.6],[T.L12+1.6,0,0],[T.w2022,.7,-.3],[T.w2022+1.4,0,0],[T.L14+.08,.6,-.8],[T.L14+1.28,0,0]];
+const gzT=Dori.track(GZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
+function gaze(t){const g=gzT(t),m=Dori.micro(t);return [g.x+m[0]*.7,g.y+m[1]*.7];}
+const BL=Dori.blinks(DUR,EX.map(k=>k[0]),23);
+const blink=t=>Dori.blinkAt(BL,t);
+const EF=[];{const r=rng(7);let t=3.4;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=4.2+r()*5;}}
+function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
+const HOPS=[[T.L14b,26],[T.L16+.04,30]];
+function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
+  if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
+  return [h,sq];}
+const ARMR=[[0,0],[T.L04+.1,.35],[A('L04',.9),0],[T.wForce,.35],[A('L06',.9),0],[T.L07+.1,.4],[A('L07',.9),0],[T.L09+.1,.35],[A('L09',.9),0],[T.L12+.1,.35],[A('L12',.9),0],[T.L14+.08,.4],[T.L14+1.68,0],[T.L14b,.7],[T.L14b+1.17,0],[T.L15b+.13,.45],[T.L15b+1.43,0],[A('L16',.4),.9]];
+const ARML=[[0,0],[T.L14b,.7],[T.L14b+1.17,0],[T.L16+.04,.55],[T.L16+.89,0]];
+const ARMC=new Map();
+function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
+function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
+  for(const [a,b] of [[T.L02+.1,A('L02',.98)],[T.L11+.1,A('L11',.98)]]){const v=on(a,b);if(v>o){o=v;m='?';}}
+  return [m,o];}
+function renderDori(t){
+  const fr=Math.min(TL.env.length-1,Math.max(0,Math.round(t*FPS)));
+  const env=Math.max(TL.env[fr],(TL.env[fr-1]||0)*.55);
+  const e=expr(t),[gx,gy]=gaze(t),[h,sq]=hop(t);
+  const talk=clamp(env*1.2-.05)*(1-.6*e.sad);const [mk,mo]=marks(t);
+  const sweat=clamp(P(t,T.wForce,.4))*(1-P(t,A('L06',.95),.3))*.7;
+  const spark=Math.max(clamp(P(t,T.L14b,.2))*(1-P(t,T.L14b+1.27,.3))*.6,clamp(P(t,T.L16+.04,.2)));
+  const wv=A('L16',.4); let armR=arm(ARMR,t); if(t>wv) armR+=Math.sin((t-wv)*10)*.1*clamp(P(t,wv,.3));
+  const tilt=1.2*Math.sin(t*.6)+.6*Math.sin(t*1.7+.5)-e.think*7+e.sad*-4+e.surprise*Math.sin(t*22)*1.0;
+  Dori.draw({t,happy:e.happy,squint:e.squint,surprise:e.surprise,sad:e.sad,open:talk,blink:blink(t),gx:gx+e.think*.5,gy:gy-e.think*.7+e.sad*.4,
+    pouch:e.pouch,armL:arm(ARML,t),armR,earL:-flick(t,'L')*10-e.sad*18+e.surprise*6,earR:-flick(t,'R')*10-e.sad*18+e.surprise*6,
+    hop:h,squash:sq,breath:Math.sin(t*2*Math.PI*.24),tilt,sweat,sweatY:(t%1.4)*10,mark:mk,markO:mo,markY:Math.sin(t*5)*3,spark});
+  const ent=P(t,0,.8),x=lerp(-380,0,eOut(ent));
+  $('dori').style.transform=`translate(${x}px,0px)`;
+  let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
+  const bb=$('bub');
+  if(ln){if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
+    bb.style.opacity=clamp(a*4)*(1-o);bb.style.transform=`translate(${x}px,-50%) scale(${(a<=0?.7:.7+.3*eBack(a))*(1-.08*o)})`;}
+  else bb.style.opacity=0;
+}
+
+function render(t){
+  gT=t;
+  [['b1',-300,-260,980,'#D5F1E7'],['b2',640,460,820,'#FFEDB8'],['b3',-200,1240,860,'#FFE3D6'],['b4',760,1300,420,'#D5F1E7']].forEach(([id,x,y,s,c],i)=>{const el=$(id);
+    el.style.width=s+'px';el.style.height=s+'px';el.style.left=(x+Math.sin(t*.13+i*2)*40)+'px';el.style.top=(y+Math.cos(t*.1+i)*30)+'px';el.style.background=`radial-gradient(circle, ${c} 0%, ${c}00 68%)`;});
+  $('progf').style.width=(clamp(t/DUR)*100)+'%';
+  fx('hdr',t,0,.5,null,0,14); fx('prog',t,0,.5,null,0,0);
+
+  // 1 질문
+  sv('s1',0,T.s2+.4); const o1=T.s2-.1;
+  document.querySelectorAll('#t1 span').forEach((el,i)=>fx(el,t,[.2,.85,T.wQ-.2][i],.45,o1,.4,46));
+  fx('mk1',t,T.wQ,.5,o1,.4,0,-20); const mp=$('mk1').querySelector('path'); mp.style.strokeDasharray='360'; mp.style.strokeDashoffset=360*(1-eOut(P(t,T.wQ,.5)));
+  const gk=P(t,.5,.6), gb=eIO(P(t,o1,.4)); $('bottle').style.opacity=clamp(gk*3)*(1-gb);
+  $('bottle').style.transform=`translateY(${-gb*30}px) scale(${gk<=0?.6:.6+.4*eBack(gk)}) rotate(${Math.sin(t*1.1)*2}deg)`;
+  const nd=-58+Math.sin(t*2.3)*6-18*clamp(P(t,T.best,.6)); $('needle').setAttribute('transform',`rotate(${nd} 110 180)`);
+  fx('c1',t,T.best-.3,.45,o1,.4,40); fx('src1',t,T.best,.4,o1,.4,20); pop('first1',t,T.best+.4,o1,.4,-4,.5);
+
+  // 2 담보비율 140%
+  sv('s2',T.s2,T.s3+.3); const o2=T.s3-.1;
+  fx('tt2',t,T.s2+.05,.45,o2,.35,30); fx('u2',t,T.s2+.2,.45,o2,.35,20); fx('c2',t,T.s2+.15,.5,o2,.35,40);
+  vanim('b2',B2,t,[T.s2+.6,T.w140,T.wDrop],o2,BASE2,H2);
+  fx('line2',t,T.w140+.5,.4,o2,.35,0,-30); fx('line2l',t,T.w140+.6,.4,o2,.35,0,-20);
+  pop('chip2',t,T.wBM-.1,o2,.35,-2,.6);
+
+  // 3 11월 9일부터 석 달
+  sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1;
+  fx('tt3',t,T.s3+.05,.45,o3,.35,30); fx('u3',t,T.s3+.2,.45,o3,.35,20); fx('c3',t,T.s3+.15,.5,o3,.35,40);
+  fx('r3a',t,T.L07+.3,.4,o3,.35,0,-30); fx('r3b',t,T.wMonth-.1,.4,o3,.35,0,-30);
+  ['lp1','ar1','lp2','ar2','lp3','ret3'].forEach((id,i)=>fx(id,t,T.L08+.2+i*.32,.4,o3,.35,24));
+  pop('cut3',t,Math.min(T.wWhy,T.L08+2.2),o3,.35,-3,.6);
+
+  // 4 잔고
+  sv('s4',T.s4,T.s5+.3); const o4=T.s5-.1;
+  fx('tt4',t,T.s4+.05,.45,o4,.35,30); fx('u4',t,T.s4+.2,.45,o4,.35,20); fx('c4',t,T.s4+.15,.5,o4,.35,40);
+  vanim('b4',B4,t,[T.wJun,T.wBal-.2],o4,BASE4,H4);
+  pop('gap4',t,T.wGap,o4,.35,0,.6);
+
+  // 5 반대 신호
+  sv('s5',T.s5,T.s8+.3); const o5=T.s8-.1;
+  fx('tt5',t,T.s5+.05,.45,o5,.35,30); fx('u5',t,T.s5+.2,.45,o5,.35,20); fx('c5',t,T.s5+.15,.5,o5,.35,40);
+  fx('bx1',t,T.L11+.4,.45,o5,.35,30); fx('ar5',t,T.L12+.2,.4,o5,.35,0,-20); fx('bx2',t,T.wStd-.2,.45,o5,.35,30);
+  fx('bx3',t,T.w2022,.5,o5,.35,40);
+
+  // 8 정리(카드는 끝까지 남는다)
+  sv('s8',T.s8,99); const o8=null;
+  fx('c8',t,T.s8+.05,.5,o8,.35,50);
+  ['k1','k2','k3','k4'].forEach((id,i)=>fx(id,t,T.L14+.4+i*.4,.4,null,0,20,-30));
+  const sk=P(t,T.stamp-.12,.3); $('stamp8').style.opacity=clamp(sk*5);
+  $('stamp8').style.transform=`rotate(-10deg) scale(${sk<=0?1.5:1.5-.5*eOut(sk)})`;
+
+  // 끝: 정리 카드 위에서 구독·좋아요 칩
+  pop('cta9',t,T.L15b-.05,T.L16+.2,.3,-2,.6);
+  const fk=P(t,T.L16-.45,.55), fl=$('fly');
+  if(fk>0&&fk<1){const x=lerp(800,230,eIO(fk)),y=lerp(560,1220,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L16-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.5})`;}
+  else fl.style.opacity=0;
+
+  renderDori(t);
+}
+window.render=render;
+document.fonts.ready.then(()=>{render(0);setTimeout(()=>{document.fonts.ready.then(()=>{render(0);window.__ready=true;});},300);});
+</script>
+</body>
+</html>
