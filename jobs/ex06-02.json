@@ -1,0 +1,86 @@
+{
+ "id": "ex06-02",
+ "note": "EX.06 신용융자 다시(훅·잔고 줄)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 615,
+   "takes": 4,
+   "texts": [
+    "정부가, 신용 융자 담보 비율 의무를, 석 달 동안 면제한대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 616,
+   "takes": 4,
+   "texts": [
+    "정부가, 빚내서 산 주식의 담보 비율 의무를, 석 달 동안 면제한대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 617,
+   "takes": 4,
+   "texts": [
+    "강제로 파는 주식이 한꺼번에 쏟아져서, 주식값이 더 떨어지는 걸 막으려는 거래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 618,
+   "takes": 4,
+   "texts": [
+    "십일월 오일 기준으로, 신용 융자 잔고는 이십팔조 원이 넘는대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 619,
+   "takes": 4,
+   "texts": [
+    "신용 융자 잔고는, 십일월 오일에 이십팔조 원을 넘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 620,
+   "takes": 4,
+   "texts": [
+    "올해 가장 많았던 유월보다는, 십조 원 가까이 줄었대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01b",
+  "L01c",
+  "L08b",
+  "L09b",
+  "L09c",
+  "L10b"
+ ]
+}
