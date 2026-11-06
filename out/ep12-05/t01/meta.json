@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t01",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 199,
+  "takes": 4,
+  "texts": [
+   "그중 절반 넘게가, 딱 세 해에 몰려 있대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.3,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 4.0,
+   "gen_s": 40.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.24,
+   "gen_s": 42.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 2.96,
+   "gen_s": 34.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.84,
+   "gen_s": 39.9,
+   "sr": 24000
+  }
+ ]
+}
