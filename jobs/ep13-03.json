@@ -1,0 +1,21 @@
+{
+ "id": "ep13-03",
+ "note": "EP.13 김장 L14 다시(새우젓은→새우젓이)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 890,
+   "takes": 4,
+   "texts": [
+    "정리하면, 배추는 내리고, 새우젓이 올랐어!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L14"
+ ]
+}
