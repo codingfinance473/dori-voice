@@ -1,0 +1,190 @@
+{
+ "id": "ex06-01",
+ "note": "EX.06 신용융자 담보비율 면제",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 369,
+   "takes": 4,
+   "texts": [
+    "정부가, 신용융자 담보비율 의무를, 석 달 동안 면제한대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 370,
+   "takes": 4,
+   "texts": [
+    "그럼 이제, 반대매매 걱정은 없어지는 걸까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 371,
+   "takes": 4,
+   "texts": [
+    "신용융자는, 증권사에서 돈을 빌려서 주식을 사는 거야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 372,
+   "takes": 4,
+   "texts": [
+    "빌린 돈의 백사십 퍼센트만큼, 계좌 평가금액이 있어야 해."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 373,
+   "takes": 4,
+   "texts": [
+    "주가가 내려서 그 아래로 떨어지면, 정해진 때까지 돈을 채워야 해."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 374,
+   "takes": 4,
+   "texts": [
+    "못 채우면, 증권사가 주식을 강제로 팔아. 이게 반대매매야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 375,
+   "takes": 4,
+   "texts": [
+    "이 백사십 퍼센트를 지키라는 증권사 의무를, 십일월 구일부터 석 달 동안 풀어 준대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 376,
+   "takes": 4,
+   "texts": [
+    "강제로 파는 주식이 한꺼번에 쏟아져서, 주가가 더 떨어지는 걸 막으려는 거래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 377,
+   "takes": 4,
+   "texts": [
+    "십일월 오일 기준, 신용융자 잔고는 이십팔조 원이 넘는대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 378,
+   "takes": 4,
+   "texts": [
+    "유월 가장 많을 때보다는, 십조 원 가까이 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 379,
+   "takes": 4,
+   "texts": [
+    "그런데, 반대매매가 사라지는 건 아니래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 380,
+   "takes": 4,
+   "texts": [
+    "의무만 풀린 거라서, 기준을 얼마나 낮출지는 증권사마다 정한대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 381,
+   "takes": 4,
+   "texts": [
+    "이천 이십이 년 같은 조치 때도, 반대매매를 하루 미뤄 주는 정도가 많았대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 382,
+   "takes": 4,
+   "texts": [
+    "정리하면, 의무는 석 달 면제, 반대매매 기준은 증권사마다 달라."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L04",
+  "L05",
+  "L06",
+  "L07",
+  "L08",
+  "L09",
+  "L10",
+  "L11",
+  "L12",
+  "L13",
+  "L14"
+ ]
+}
