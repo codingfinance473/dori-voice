@@ -1,0 +1,60 @@
+{
+ "id": "ep13-02",
+ "note": "EP.13 김장 다시(새우젓 뒤 모음·58.6%)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 924,
+   "takes": 4,
+   "texts": [
+    "보기는 배추, 무, 대파, 그리고 새우젓이야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 925,
+   "takes": 4,
+   "texts": [
+    "새우젓이야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 926,
+   "takes": 4,
+   "texts": [
+    "근데 직접 김장하는 집은, 오십팔 점 육 퍼센트로 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 927,
+   "takes": 4,
+   "texts": [
+    "정리하면, 새우젓은 오르고, 배추는 내렸어!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L03",
+  "L10",
+  "L13",
+  "L14"
+ ]
+}
