@@ -1,0 +1,21 @@
+{
+ "id": "ex06-03",
+ "note": "EX.06 잔고 줄 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 141,
+   "takes": 4,
+   "texts": [
+    "주식 사려고 증권사에서 빌린 돈은, 십일월 오일에 이십팔조 원이 넘었대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L09d"
+ ]
+}
