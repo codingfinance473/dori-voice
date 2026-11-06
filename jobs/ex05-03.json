@@ -1,0 +1,21 @@
+{
+ "id": "ex05-03",
+ "note": "EX.05 나스닥 X03 다시(하락폭→크게 내린 날)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 499,
+   "takes": 4,
+   "texts": [
+    "포인트로 세면, 역대 가장 크게 내린 날이래."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "X03b"
+ ]
+}
