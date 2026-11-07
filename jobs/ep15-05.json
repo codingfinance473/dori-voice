@@ -1,0 +1,21 @@
+{
+ "id": "ep15-05",
+ "note": "EP.15 L02 다시(값 올릴 → 가격 올릴)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 487,
+   "takes": 4,
+   "texts": [
+    "작년에 빼빼로 가격 올릴 때, 이유로 꼽힌 그 코코아야!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L02"
+ ]
+}
