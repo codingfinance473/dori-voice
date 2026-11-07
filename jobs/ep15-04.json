@@ -1,0 +1,21 @@
+{
+ "id": "ep15-04",
+ "note": "EP.15 L07 다시(최고 땐 → 제일 비쌀 땐)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 273,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 제일 비쌀 땐 만 달러가 넘었는데, 구월엔 육천 달러가 안 됐대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L07"
+ ]
+}
