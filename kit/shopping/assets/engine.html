@@ -327,7 +327,7 @@ $('#hdr .lab').textContent = (E.series || '도리의 가격 검산') + (E.ep ? `
 $('#hdr .ttl').textContent = F.title;
 const WM = F.sample ? '예시 데이터 · 실제 가격 아님' : (F.verified === false ? '검증 전 · 올리지 마세요' : '');
 const TM = WEB && F.price_time && F.price_time.label && F.verified === true ? `<div class="tchip tm"><b>가격</b>${esc(F.price_time.label)} 확인</div>` : '';
-$('#topchips').innerHTML = (WM ? `<div class="tchip wmc">${esc(WM)}</div>` : '') + (F.has_tags ? '<div class="tchip ad"><b>광고</b>제휴 수수료</div>' : '') + '<div class="tchip ai">AI 목소리</div>' + TM;
+$('#topchips').innerHTML = (WM ? `<div class="tchip wmc">${esc(WM)}</div>` : '') + (F.has_tags ? '<div class="tchip ad"><b>광고</b>제휴 수수료</div>' : '') + TM;   // AI 목소리 칩은 2026-11-07부터 뺌 — 설명란 한 줄만
 if (!F.has_tags) $('#disc').remove();
 $('#wm').remove();
 if (!WM) $('#wmBig').remove(); else $('#wmBig').textContent = WM;

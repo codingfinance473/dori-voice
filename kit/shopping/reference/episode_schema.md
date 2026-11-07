@@ -87,7 +87,7 @@ facts 의 시각·환율: price_time.label(10/24 01:33~01:46)·local_label·kr_l
 | item:<id> | card → local → krw → kr → diff → stamp | 제목·그림 → 검산표 줄(출처·확인 시각) → 싼 쪽 동그라미 → 판정 도장 |
 | note:<key> | title → b1 → b2 → b3 | 알아 둘 점 카드(최대 3줄) |
 | summary | bars → result | 현지 vs 한국 막대 → 아낀 돈(+면세 환급 약) |
-| outro | ask → source | 다음 주제 질문 → 검산 기준(환율 고시일·가격 확인 시각·주의)·출처·AI 목소리 표시 |
+| outro | ask → source | 다음 주제 질문 → 검산 기준(환율 고시일·가격 확인 시각·주의)·출처(AI 목소리 표시는 설명란에만) |
 
 값: 그 줄 대사 속 낱말(숫자 말고), `^` 줄 시작, `$` 줄 끝. 빠진 단계는 앞뒤 사이에 자동으로 놓인다.
 
