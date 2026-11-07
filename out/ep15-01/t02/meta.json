@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t02",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 480,
+  "takes": 4,
+  "texts": [
+   "십오 퍼센트, 사십오 퍼센트, 칠십오 퍼센트 중에 하나야!"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.8,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 5.36,
+   "gen_s": 23.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 4.24,
+   "gen_s": 20.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 3.2,
+   "gen_s": 16.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.04,
+   "gen_s": 15.5,
+   "sr": 24000
+  }
+ ]
+}
