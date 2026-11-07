@@ -98,7 +98,7 @@ python3 $SK/scripts/run.py ~/shorts/ep02 video     # 정지 화면 → 화면 �
 1. **영상**: `out/` 의 MP4 하나(10MB 버전 없음).
 2. **제목 1개**: `out/upload.md` 의 제목 칸(태그가 있으면 맨 앞 `[광고]`). 판정을 제목에 쓰지 않는다.
 3. **설명**: `out/upload.md` 의 설명(요약 1~2줄 + 검산 기준·출처·AI 목소리 문구는 그대로 + 해시태그 5개).
-4. **썸네일 1장**: 키트 `templates/quiz/thumb.html` 을 작업 폴더에 복사해 `CFG`(칩 `가격 검산`, 제목, `flags` 대신 `key`에 상품 아이콘·"반값?" 같은 핵심 그림 하나, 소품)를 고치고 `python3 $K/scripts/episode/shoot_thumb.py` → `thumb_check.png` 로 4:5·1:1·3:2 잘림 확인. 판정 도장은 넣지 않는다.
+4. **썸네일 1장**: 키트 `templates/quiz/thumb.html` 을 작업 폴더에 복사해 `CFG`(칩은 넣지 않는다 — 2026-11-07, 제목, `flags` 대신 `key`에 상품 아이콘·"반값?" 같은 핵심 그림, 소품 — 공통 지침 2절대로 소품 하나가 아니라 장면으로)를 고치고 `python3 $K/scripts/episode/shoot_thumb.py` → `thumb_check.png` 로 4:5·1:1·3:2 잘림 확인. 판정 도장은 넣지 않는다.
    (shoot_thumb.py 는 같은 폴더의 thumb.html·dori.js·글꼴을 쓴다 — `cp $K/templates/quiz/{thumb.html,dori.js} . && cp -r ~/.cache/dori-shorts/fonts/jua jua && mkdir -p fonts && cp ~/.cache/dori-shorts/fonts/pretendard/*.otf fonts/`)
 
 상품 태그 연결은 사용자가 유튜브 스튜디오에서 한다.

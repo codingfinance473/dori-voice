@@ -78,16 +78,18 @@ function dori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y
 
 // ---- 안 잘리는 썸네일 1장 (1080×1920) ----
 // 핵심 띠(가로 3:2로 보여도 남는 곳) y 600~1320 · x 90~960 : 제목 + 국기
-// 보조 영역(쇼츠 선반·검색 UI가 덮지 않는 곳) y 380~1540 : 칩·도리·소품
+// 보조 영역(쇼츠 선반·검색 UI가 덮지 않는 곳) y 380~1540 : 도리·장면 소품(시리즈 칩은 넣지 않는다 — 2026-11-07)
 blobs([[-320,-260,1100,'#D5F1E7'],[560,-200,900,'#FFEDB8'],[-260,1280,1000,'#FFE3D6'],[620,1340,800,'#D5F1E7']]);
 // ===== 편마다 바꾸는 곳 =====
-// 핵심 띠 y 600~1320 · x 90~960: 제목(2줄, 줄당 8자 안팎) + 핵심 그림 하나 / 보조 y 380~1540: 칩·도리·소품 / 그 밖은 배경만
+// 핵심 띠 y 600~1320 · x 90~960: 제목(2줄, 줄당 8자 안팎) + 핵심 그림 하나 / 보조 y 380~1540: 도리·장면 소품 / 그 밖은 배경만
+// 칩 없이, 딱 보면 무슨 내용인지 알고 누르고 싶은 귀여운 썸네일(2026-11-07 사용자 지시) — 소품 하나 툭이 아니라 장면으로 짠다.
+// 이 아래 기본 배치(제목 + 그림 줄 + 소품)는 뼈대일 뿐 — 편마다 무대를 그려 넣는다. 예: kit/docs/examples/EP13_kimjang_thumb.html(시장 차양·간판·김장 대야·가격 꽂이 "?원")
 // 답(정답 국기·판정 도장)을 보여 주지 않는다. "?"는 따로 떨어진 원으로.
 const CARD=(w,c1,c2,rot=0)=>`<svg viewBox="0 0 160 104" width="${w}" height="${w*.65}" style="transform:rotate(${rot}deg)"><defs><linearGradient id="tc${c1.slice(1)}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect x="3" y="3" width="154" height="98" rx="14" fill="url(#tc${c1.slice(1)})" stroke="#4A3A33" stroke-width="4"/><rect x="3" y="24" width="154" height="16" fill="#3E2F25" opacity=".55"/><rect x="18" y="52" width="30" height="22" rx="5" fill="#FFD45C" stroke="#4A3A33" stroke-width="3"/><path d="M60 80 H96 M104 80 H128" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".85"/></svg>`;
 const OPT=v=>`<div style="display:inline-flex;align-items:center;height:118px;padding:0 30px;margin-right:18px;background:#fff;border-radius:30px;border:3px solid #EBDDD0;box-shadow:0 12px 26px rgba(120,80,40,.14);font-family:Jua;font-size:62px;color:#3E2F25;white-space:nowrap">${v}</div>`;
 const CFG={
   outfit:'',                                                          // 도리 옷 — index.html 의 OUTFIT 과 같게(news·tax·export·factory·winter·kimjang·science·trivia·detective·travel·office 또는 '')
-  chip:'생활 검산 · 연금저축·IRP',
+  chip:'',                                                           // 시리즈 칩은 넣지 않는다(2026-11-07 사용자 지시) — 비워 둔다
   title:'900만 원 넣으면<br><span class="hl">얼마</span> 돌려받지?',
   titleSize:124,
   flags:[],
@@ -95,7 +97,7 @@ const CFG={
   prop:()=>JAR(200,'#E8833A',''),
   dori:{tilt:-6,gx:.6,gy:-.6,armR:.55,earL:-10,surprise:.15},
 };
-add(`<div class="abs chip" style="left:110px;top:440px;font-size:36px;padding:12px 30px"><i style="width:20px;height:20px"></i>${CFG.chip}</div>`);
+if(CFG.chip) add(`<div class="abs chip" style="left:110px;top:440px;font-size:36px;padding:12px 30px"><i style="width:20px;height:20px"></i>${CFG.chip}</div>`);   // 기본은 칩 없음
 add(`<div class="abs title" style="left:104px;top:618px;font-size:${CFG.titleSize}px">${CFG.title}</div>`);
 if(CFG.flags.length){const n=CFG.flags.length, sz=n>4?120:150, gap=n>4?18:22, x0=120;
   CFG.flags.forEach((c,i)=>add(`<div class="abs" style="left:${x0+i*(sz+gap)}px;top:1010px">${flag(c,sz)}</div>`));
