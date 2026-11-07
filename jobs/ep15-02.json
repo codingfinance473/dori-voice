@@ -1,0 +1,60 @@
+{
+ "id": "ep15-02",
+ "note": "EP.15 짧게 다시(L12·L12c·L13b·L15)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 524,
+   "takes": 4,
+   "texts": [
+    "왜냐면, 코코아 생산은 팔 점 오 퍼센트 늘었는데,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 525,
+   "takes": 4,
+   "texts": [
+    "그래서 코코아가, 다시 남기 시작했대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 526,
+   "takes": 4,
+   "texts": [
+    "과자 회사는, 비쌀 때 사 둔 원료를 아직 쓴대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 527,
+   "takes": 4,
+   "texts": [
+    "요즘 초콜릿 과자, 너도 비싸다고 느껴?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L12",
+  "L12c",
+  "L13b",
+  "L15"
+ ]
+}
