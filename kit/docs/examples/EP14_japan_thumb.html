@@ -115,12 +115,28 @@ blobs([[-320,-260,1100,'#D5F1E7'],[560,-200,900,'#FFEDB8'],[-260,1280,1000,'#FFE
 // ===== 편마다 바꾸는 곳 =====
 // 핵심 띠 y 600~1320 · x 90~960: 제목(2줄, 줄당 8자 안팎) + 핵심 그림 하나 / 보조 y 380~1540: 칩·도리·소품 / 그 밖은 배경만
 // 답(정답 국기·판정 도장)을 보여 주지 않는다. "?"는 따로 떨어진 원으로.
-const PLANE=w=>`<svg viewBox="0 0 300 200" width="${w}" height="${w*2/3}">
-  <path d="M30 104 C30 92 44 86 60 86 H220 C250 86 276 96 286 108 C276 120 250 128 220 128 H60 C44 128 30 118 30 104Z" fill="#FFFDF8" stroke="${K}" stroke-width="7"/>
-  <path d="M130 90 L176 26 C180 20 192 20 194 28 L178 90 Z" fill="#7FD3BC" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M130 124 L170 182 C174 188 186 188 188 180 L176 124 Z" fill="#5EC2A6" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M40 100 L22 54 C20 48 28 44 34 48 L70 90" fill="#E2483A" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <g fill="#BFE6F7" stroke="${K}" stroke-width="4"><circle cx="120" cy="104" r="8"/><circle cx="148" cy="104" r="8"/><circle cx="176" cy="104" r="8"/><circle cx="204" cy="104" r="8"/></g></svg>`;
+const PLANE=w=>`<svg viewBox="0 0 360 240" width="${w}" height="${w*2/3}">
+ <defs><linearGradient id="pf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#F4F1EC"/><stop offset="1" stop-color="#D9D3CB"/></linearGradient>
+  <linearGradient id="pw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9EEF2"/><stop offset="1" stop-color="#C6CED6"/></linearGradient>
+  <linearGradient id="ptr" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+ <g transform="rotate(-14 180 130)">
+  <path d="M10,138 C60,132 110,130 150,130 L150,142 C110,142 60,146 10,146 Z" fill="url(#ptr)" opacity=".9"/>
+  <path d="M30,156 C70,152 110,150 140,150 L140,158 C110,158 70,162 30,163 Z" fill="url(#ptr)" opacity=".6"/>
+  <path d="M196,118 L246,62 C250,57 262,58 262,66 L236,120 Z" fill="url(#pw)" stroke="${K}" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M120,112 L98,66 C96,60 104,56 110,60 L150,112 Z" fill="#2E9C83" stroke="${K}" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M104,74 L112,92" stroke="#7FD3BC" stroke-width="5" stroke-linecap="round"/>
+  <path d="M122,110 L94,94 C88,91 84,98 89,102 L118,120 Z" fill="#C6CED6" stroke="${K}" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M118,126 L80,128 C72,129 72,138 80,139 L124,138 Z" fill="url(#pw)" stroke="${K}" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M108,108 C108,100 118,96 134,96 L280,96 C312,96 334,108 342,122 C334,136 312,146 280,146 L134,146 C118,146 108,140 108,132 Z" fill="url(#pf)" stroke="${K}" stroke-width="6"/>
+  <path d="M126,140 C180,147 280,147 316,136 L320,138 C300,150 180,152 126,146 Z" fill="#2A1A10" opacity=".08"/>
+  <path d="M130,136 L304,136" stroke="#2E9C83" stroke-width="7" stroke-linecap="round"/>
+  <path d="M130,104 C180,100 260,100 300,104" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".9"/>
+  <g fill="#9ED8EE" stroke="${K}" stroke-width="2.4">${[150,170,190,210,230,250,270].map(x=>`<rect x="${x}" y="111" width="11" height="13" rx="5"/>`).join('')}</g>
+  <path d="M308,108 L322,108 C330,110 336,114 338,118 L310,118 Z" fill="#3E4652" stroke="${K}" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M188,140 L236,204 C240,210 252,209 252,201 L228,140 Z" fill="url(#pw)" stroke="${K}" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M206,166 C206,160 212,158 222,158 L250,158 C256,158 258,162 258,166 C258,170 256,174 250,174 L222,174 C212,174 206,172 206,166 Z" fill="#E4E9EE" stroke="${K}" stroke-width="4"/>
+  <ellipse cx="256" cy="166" rx="4" ry="7" fill="#3E4652"/>
+  <path d="M232,198 L242,196" stroke="#E2483A" stroke-width="5" stroke-linecap="round"/></g></svg>`;   // 2026-11-07 다시 그림(명암·창문 줄·엔진·꼬리날개·비행운) — "너무 대충 그린 것 같다"는 의견
 const CFG={
   outfit:'travel',                                                    // index.html 의 OUTFIT 과 같게
   chip:'숫자 퀴즈',
@@ -128,7 +144,7 @@ const CFG={
   titleSize:118,
   flags:[],
   key:`<div style="display:flex;align-items:center;gap:20px">${['500만','800만','1200만'].map(x=>`<div style="font-family:Jua;font-size:58px;background:#fff;border-radius:999px;padding:14px 30px;box-shadow:0 0 0 5px #fff,0 0 0 8px rgba(62,47,37,.10),0 8px 18px rgba(100,60,30,.18);white-space:nowrap">${x}</div>`).join('')}<div class="q" style="position:static;width:110px;height:110px;font-size:84px;transform:rotate(10deg)">?</div></div><div style="font-weight:800;font-size:38px;color:#7E6B5C;margin-top:18px">2026년 1~9월 · 작년 1년은 945만 명</div>`,
-  prop:()=>PLANE(240),
+  prop:()=>`<div style="margin:-40px 0 0 -130px">${PLANE(350)}</div>`,   // 비행기는 크게(가운데 4:5·1:1 자르기 안, x 960 이내)
   dori:{tilt:-6,gx:.6,gy:-.6,armR:.55,earL:-10,surprise:.15},
 };
 add(`<div class="abs chip" style="left:110px;top:440px;font-size:36px;padding:12px 30px"><i style="width:20px;height:20px"></i>${CFG.chip}</div>`);

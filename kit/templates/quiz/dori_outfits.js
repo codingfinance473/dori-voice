@@ -227,7 +227,8 @@ const OUTFIT={
     <path d="M239,376 Q244,369 253,369" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></g>`,
   glove:`<rect x="-27" y="-30" width="54" height="56" fill="#A8845A"/><rect x="-27" y="-30" width="54" height="56" fill="url(#dTw2)"/><rect x="-27" y="20" width="54" height="7" fill="#FFFDF8"/><path d="M-27,20 H27 M-27,27 H27" stroke="${OL}" stroke-width="2.6"/>`},
 
- // 9) 해외여행·환율·면세 — 밀짚모자(민트 리본·선글라스) + 하늘색 꽃무늬 셔츠(열린 깃)
+ // 9) 해외여행·환율·면세 — 밀짚모자(민트 리본·선글라스) + 알로하(캠프 칼라) 셔츠: 짙은 청록 바탕에 큰 몬스테라 잎·히비스커스, 넓게 젖힌 깃
+ //    (2026-11-07 사용자 선택 A — 예전 하늘색 잔꽃무늬 셔츠는 "잠옷 같다"는 의견으로 바꿈)
  travel:{bag:false,
   head:`${TILT(-5,`${SH('M70,124 Q200,100 330,124 Q336,140 312,146 Q200,126 88,146 Q64,140 70,124 Z',7,.2)}
    ${G('bb','M68,124 Q200,98 332,124 Q338,140 314,147 Q200,126 86,147 Q62,140 68,124 Z','#F3E2B2','<path d="M84,132 Q200,110 316,132 M96,140 Q200,120 304,140" stroke="#E2CB8E" stroke-width="2.6" fill="none"/>',OW,false)}
@@ -235,13 +236,18 @@ const OUTFIT={
    ${G('br','M128,106 Q200,94 272,106 L274,122 Q200,108 126,122 Z','#7FC8B2','<path d="M132,110 Q200,98 270,110" stroke="#A5DCCB" stroke-width="3" fill="none"/>',3.6,false)}
    <g transform="translate(200,86)"><path d="M-38,-5 h28 a5,5 0 0 1 5,5 v3 a13,13 0 0 1 -13,13 h-8 a13,13 0 0 1 -13,-13 v-3 a5,5 0 0 1 5,-5 z" fill="#3E4652" stroke="${OL}" stroke-width="3"/><path d="M10,-5 h28 a5,5 0 0 1 5,5 v3 a13,13 0 0 1 -13,13 h-8 a13,13 0 0 1 -13,-13 v-3 a5,5 0 0 1 5,-5 z" fill="#3E4652" stroke="${OL}" stroke-width="3"/>
     <path d="M-5,0 Q0,-4 5,0" stroke="${OL}" stroke-width="3" fill="none"/><path d="M-33,0 l8,8 M15,0 l8,8" stroke="#8FA3B8" stroke-width="2.6" stroke-linecap="round"/></g>`)}`,
-  body:`<defs><pattern id="dFlo" width="64" height="60" patternUnits="userSpaceOnUse"><g transform="translate(16,16)"><g fill="#FFFDF8"><circle cx="0" cy="-6" r="5"/><circle cx="6" cy="-2" r="5"/><circle cx="4" cy="5" r="5"/><circle cx="-4" cy="5" r="5"/><circle cx="-6" cy="-2" r="5"/></g><circle r="2.6" fill="#F2C46B"/></g>
-    <g transform="translate(48,44)"><g fill="#FBDDE2"><circle cx="0" cy="-5" r="4"/><circle cx="5" cy="-1.5" r="4"/><circle cx="3" cy="4" r="4"/><circle cx="-3" cy="4" r="4"/><circle cx="-5" cy="-1.5" r="4"/></g><circle r="2.2" fill="#FFFDF8"/></g></pattern></defs>
-   ${G('shl',PL(174,350),'#A9D4EC','<rect x="-70" y="-70" width="540" height="560" fill="url(#dFlo)"/>',OW)}
-   ${G('shr',PR(226,350),'#A9D4EC','<rect x="-70" y="-70" width="540" height="560" fill="url(#dFlo)"/>',OW)}
-   <path d="M200,350 V440" stroke="${OL}" stroke-width="3.6"/><g fill="#FFFDF8" stroke="${OL}" stroke-width="2.2"><circle cx="207" cy="368" r="3.6"/><circle cx="207" cy="394" r="3.6"/></g>${CHIN()}`,
-  top:`${G('acl',`M174,${NY(174).toFixed(1)} L200,350 L178,344 L136,${(NY(136)+10).toFixed(1)} Z`,'#C3E3F3','',3.6,false)}${G('acr',`M226,${NY(226).toFixed(1)} L200,350 L222,344 L264,${(NY(264)+10).toFixed(1)} Z`,'#C3E3F3','',3.6,false)}`,
-  glove:`<rect x="-27" y="-30" width="54" height="42" fill="#A9D4EC"/><rect x="-27" y="-30" width="54" height="42" fill="url(#dFlo)"/><path d="M-27,12 H27" stroke="${OL}" stroke-width="2.8"/>`},
+  body:`<defs><pattern id="dAlo" width="132" height="124" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)">
+     <g transform="translate(30,34) rotate(-30)"><path d="M0,0 C10,-34 52,-40 66,-4 C58,26 18,34 0,0 Z" fill="#3E9A6E"/><path d="M4,0 C24,-6 44,-6 62,-4 M20,-2 L30,-20 M36,-3 L48,-22 M22,2 L30,16 M40,0 L50,14" stroke="#2B7656" stroke-width="3.4" fill="none" stroke-linecap="round"/></g>
+     <g transform="translate(96,86) rotate(140)"><path d="M0,0 C10,-30 46,-34 58,-4 C50,22 16,30 0,0 Z" fill="#4BAA7A"/><path d="M4,0 C22,-5 40,-5 54,-4 M18,-2 L26,-17 M32,-3 L42,-19" stroke="#2F7E5C" stroke-width="3.2" fill="none" stroke-linecap="round"/></g>
+     <g transform="translate(92,26)"><g fill="#F4795B" stroke="#D85A3E" stroke-width="1.6"><ellipse cx="0" cy="-11" rx="9" ry="12"/><ellipse cx="0" cy="-11" rx="9" ry="12" transform="rotate(72)"/><ellipse cx="0" cy="-11" rx="9" ry="12" transform="rotate(144)"/><ellipse cx="0" cy="-11" rx="9" ry="12" transform="rotate(216)"/><ellipse cx="0" cy="-11" rx="9" ry="12" transform="rotate(288)"/></g><circle r="4.6" fill="#FFD45C"/></g>
+     <g transform="translate(34,98) scale(.8)"><g fill="#FFFDF8" stroke="#E8DCCB" stroke-width="1.6"><ellipse cx="0" cy="-11" rx="9" ry="12"/><ellipse cx="0" cy="-11" rx="9" ry="12" transform="rotate(72)"/><ellipse cx="0" cy="-11" rx="9" ry="12" transform="rotate(144)"/><ellipse cx="0" cy="-11" rx="9" ry="12" transform="rotate(216)"/><ellipse cx="0" cy="-11" rx="9" ry="12" transform="rotate(288)"/></g><circle r="4.6" fill="#F4795B"/></g></pattern></defs>
+   ${G('alL',PL(168,368),'#1F6E78','<rect x="-70" y="-70" width="540" height="560" fill="url(#dAlo)"/>',OW)}
+   ${G('alR',PR(232,368),'#1F6E78','<rect x="-70" y="-70" width="540" height="560" fill="url(#dAlo)"/>',OW)}
+   <path d="M200,368 V440" stroke="${OL}" stroke-width="3.6"/><g fill="#F3E2B2" stroke="${OL}" stroke-width="2.2"><circle cx="208" cy="386" r="4"/><circle cx="208" cy="414" r="4"/></g>${CHIN()}`,
+  top:`${SH(`M168,${NY(168).toFixed(1)} L200,368 L172,360 L118,${(NY(118)+20).toFixed(1)} Z`,4,.16)}${SH(`M232,${NY(232).toFixed(1)} L200,368 L228,360 L282,${(NY(282)+20).toFixed(1)} Z`,4,.16)}
+   ${G('alcl',`M168,${NY(168).toFixed(1)} L200,368 L172,360 L118,${(NY(118)+20).toFixed(1)} L122,${(NY(122)-4).toFixed(1)} Z`,'#2A8590','<rect x="-70" y="-70" width="540" height="560" fill="url(#dAlo)" opacity=".85"/>',3.8,false)}
+   ${G('alcr',`M232,${NY(232).toFixed(1)} L200,368 L228,360 L282,${(NY(282)+20).toFixed(1)} L278,${(NY(278)-4).toFixed(1)} Z`,'#2A8590','<rect x="-70" y="-70" width="540" height="560" fill="url(#dAlo)" opacity=".85"/>',3.8,false)}`,
+  glove:`<rect x="-27" y="-30" width="54" height="44" fill="#1F6E78"/><rect x="-27" y="-30" width="54" height="44" fill="url(#dAlo)"/><rect x="-27" y="8" width="54" height="8" fill="#2A8590"/><path d="M-27,8 H27 M-27,16 H27" stroke="${OL}" stroke-width="2.6"/>`},
 
  // 10) 월급·연봉·고용·직장 — 하늘색 셔츠(소매 걷음·주머니 펜) + 민트 끈 사원증
  office:{bag:false,
