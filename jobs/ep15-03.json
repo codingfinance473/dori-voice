@@ -1,0 +1,34 @@
+{
+ "id": "ep15-03",
+ "note": "EP.15 짧게 다시(L12b·L14)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 606,
+   "takes": 4,
+   "texts": [
+    "비싸서, 초콜릿에 쓴 양은 삼 점 삼 퍼센트 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 607,
+   "takes": 4,
+   "texts": [
+    "결국, 코코아는 거의 반값, 빼빼로는 그대로!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L12b",
+  "L14"
+ ]
+}
