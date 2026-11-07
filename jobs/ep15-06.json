@@ -1,0 +1,21 @@
+{
+ "id": "ep15-06",
+ "note": "EP.15 L02 다시(코코아가 이유 중 하나였대)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 869,
+   "takes": 4,
+   "texts": [
+    "작년에 빼빼로 가격 올릴 때도, 코코아가 이유 중 하나였대!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L02"
+ ]
+}
