@@ -123,12 +123,12 @@ blobs([[-300,380,900,'#FFE2D2'],[560,520,760,'#FFEFC2'],[-200,900,700,'#E2F4EC']
  let sc2='';for(let i=0;i<13;i++)sc2+=`<path d="M${i*90} 250 q22.5 46 45 0" fill="#E2483A" stroke="#4A3A33" stroke-width="5"/>`;
  add(`<svg class="abs" style="left:0;top:0" width="1080" height="320" viewBox="0 0 1080 320"><rect width="1080" height="250" fill="#FFF6EC"/>${st}${sc}${sc2}<rect x="0" y="242" width="1080" height="10" fill="#4A3A33" opacity=".85"/><rect x="0" y="0" width="1080" height="250" fill="url(#aw)" opacity=".25"/><defs><linearGradient id="aw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient></defs></svg>`);}
 // 차양에 매단 나무 간판
-add(`<svg class="abs" style="left:330px;top:250px" width="420" height="190" viewBox="0 0 420 190">
- <path d="M90 0 L110 70 M330 0 L310 70" stroke="#4A3A33" stroke-width="6" stroke-linecap="round"/>
- <rect x="20" y="62" width="380" height="104" rx="22" fill="#C98E5C" stroke="#4A3A33" stroke-width="7"/>
- <rect x="34" y="76" width="352" height="76" rx="14" fill="#FFF6EC" stroke="#4A3A33" stroke-width="4"/>
- <circle cx="110" cy="70" r="7" fill="#4A3A33"/><circle cx="310" cy="70" r="7" fill="#4A3A33"/>
- <text x="210" y="130" text-anchor="middle" font-family="Jua" font-size="44" fill="#4A3A33">오늘의 김장 시세</text></svg>`);
+add(`<svg class="abs" style="left:330px;top:250px" width="420" height="320" viewBox="0 0 420 320">
+ <path d="M90 0 L110 212 M330 0 L310 212" stroke="#4A3A33" stroke-width="6" stroke-linecap="round"/>
+ <rect x="20" y="204" width="380" height="104" rx="22" fill="#C98E5C" stroke="#4A3A33" stroke-width="7"/>
+ <rect x="34" y="218" width="352" height="76" rx="14" fill="#FFF6EC" stroke="#4A3A33" stroke-width="4"/>
+ <circle cx="110" cy="212" r="7" fill="#4A3A33"/><circle cx="310" cy="212" r="7" fill="#4A3A33"/>
+ <text x="210" y="272" text-anchor="middle" font-family="Jua" font-size="44" fill="#4A3A33">오늘의 김장 시세</text></svg>`);
 // 식탁보(빨강 체크) — 대야·도리가 올라앉는 바닥
 add(`<div class="abs" style="left:0;top:1226px;width:1080px;height:694px;background:
   repeating-linear-gradient(90deg,rgba(226,72,58,.38) 0 46px,transparent 46px 92px),
@@ -173,9 +173,6 @@ const SCENE=`<svg viewBox="0 -260 800 510" width="800" height="510" style="overf
  ${PICK(118,-96,'배추',-8)}${PICK(262,-214,'무',-5)}${PICK(470,-226,'대파',5)}${PICK(742,-150,'새우젓',8)}
 </svg>`;
 add(`<div class="abs" style="left:186px;top:884px;width:800px;height:510px;transform:scale(.88);transform-origin:0 0">${SCENE}</div>`);
-// 칩
-add(`<div class="abs chip" style="left:100px;top:486px;font-size:36px;padding:12px 30px"><i style="width:20px;height:20px"></i>숫자 퀴즈</div>`);
-add(`<div class="abs chip" style="left:364px;top:486px;font-size:36px;padding:12px 30px;background:#E2483A;border-color:#E2483A;color:#fff">2026 김장철</div>`);
 // 제목 — 흰 테두리 스티커 글씨
 add(`<div class="abs title" style="left:96px;top:606px;font-size:122px;-webkit-text-stroke:16px #fff;paint-order:stroke fill;text-shadow:0 10px 0 rgba(62,47,37,.12)"><span class="hl">김장 재료</span>,<br><span style="color:#E2483A">제일 오른 건?</span></div>`);
 // '작년보다 ▲?' 딱지
