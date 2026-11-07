@@ -1,0 +1,229 @@
+{
+ "id": "ep15-01",
+ "note": "EP.15 코코아 값 vs 빼빼로 값",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 478,
+   "takes": 4,
+   "texts": [
+    "있잖아, 코코아 값, 제일 비쌀 때보다 얼마나 내렸게?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 479,
+   "takes": 4,
+   "texts": [
+    "빼빼로 값 올릴 때도, 이유로 꼽혔던 그 코코아야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 480,
+   "takes": 4,
+   "texts": [
+    "십오 퍼센트, 사십오 퍼센트, 칠십오 퍼센트 중에 하나야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 481,
+   "takes": 4,
+   "texts": [
+    "나는 칠십오 퍼센트! 올봄에 폭락했다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 482,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 올봄 바닥에서, 다시 꽤 올랐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 483,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 최고 땐 만 달러가 넘었는데, 구월엔 육천 달러가 안 됐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 484,
+   "takes": 4,
+   "texts": [
+    "사십오 퍼센트!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 485,
+   "takes": 4,
+   "texts": [
+    "거의 반값이 된 거야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 486,
+   "takes": 4,
+   "texts": [
+    "내가 찍은 칠십오 퍼센트는, 올봄 얘기였네."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 487,
+   "takes": 4,
+   "texts": [
+    "왜 내렸냐면, 지난 시즌 코코아 생산은 팔 점 오 퍼센트 늘었는데,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 488,
+   "takes": 4,
+   "texts": [
+    "비싸서, 초콜릿 만드는 데 쓴 양은 삼 점 삼 퍼센트 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 489,
+   "takes": 4,
+   "texts": [
+    "그래서 모자라던 코코아가, 다시 남기 시작한 거야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 490,
+   "takes": 4,
+   "texts": [
+    "근데 빼빼로 값은? 여전히 이천 원이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t13",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 491,
+   "takes": 4,
+   "texts": [
+    "과자 회사들은, 몇 달 전 비쌀 때 사 둔 원료를 아직 쓴대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t14",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 492,
+   "takes": 4,
+   "texts": [
+    "게다가 코코아 값, 이천 이십 이 년보단 아직 두 배 넘게 비싸!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t15",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 493,
+   "takes": 4,
+   "texts": [
+    "정리하면, 코코아는 거의 반값, 빼빼로는 그대로!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t16",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 494,
+   "takes": 4,
+   "texts": [
+    "너는 요즘 초콜릿 과자, 비싸다고 느껴?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L11b",
+  "L12",
+  "L12b",
+  "L12c",
+  "L13",
+  "L13b",
+  "L13c",
+  "L14",
+  "L15"
+ ]
+}
