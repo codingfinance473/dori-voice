@@ -1,0 +1,164 @@
+{
+ "id": "ep14-01",
+ "note": "EP.14 일본 간 한국인",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 483,
+   "takes": 4,
+   "texts": [
+    "올해 일본에 간 한국 사람, 구월까지 몇 명일까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 484,
+   "takes": 4,
+   "texts": [
+    "작년엔 일 년 동안, 구백사십오만 명이 갔대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 485,
+   "takes": 4,
+   "texts": [
+    "보기는 오백만, 팔백만, 그리고 천이백만 명!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 486,
+   "takes": 4,
+   "texts": [
+    "나는 천이백만! 요즘 엔화가 엄청 싸잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 487,
+   "takes": 4,
+   "texts": [
+    "힌트 하나. 올해는 작년보다 이십 퍼센트 넘게 늘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 488,
+   "takes": 4,
+   "texts": [
+    "힌트 둘. 아직 천만 명은 안 넘었어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 489,
+   "takes": 4,
+   "texts": [
+    "팔백이십육만 명!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 490,
+   "takes": 4,
+   "texts": [
+    "아홉 달 만에, 작년 일 년의 팔십칠 퍼센트를 채웠어!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 491,
+   "takes": 4,
+   "texts": [
+    "일본에 온 외국인 네 명 중 한 명이, 한국 사람이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 492,
+   "takes": 4,
+   "texts": [
+    "중국에서 온 사람은, 작년보다 절반 넘게 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 493,
+   "takes": 4,
+   "texts": [
+    "이대로면, 십일월에 처음으로 천만 명을 넘을 거래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 494,
+   "takes": 4,
+   "texts": [
+    "정리하면, 구월까지 팔백이십육만 명이야!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L05",
+  "L06",
+  "L07",
+  "L10",
+  "L11",
+  "L12",
+  "L13",
+  "L13b",
+  "L14"
+ ]
+}
