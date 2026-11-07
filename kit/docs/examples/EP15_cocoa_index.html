@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!--
+  도리의 정보주머니 · 숫자 퀴즈 EP.15 코코아 값 vs 빼빼로 값 (2026-11-07)
+  render(t) 하나가 t초의 화면을 그린다(같은 t면 늘 같은 화면). 시각은 timeline.js 의 T(줄 시작·단어 시각)를 쓴다.
+  지키는 것: 뉴스 매체명은 화면에 넣지 않는다 · 끝 화면에 AI 문구 없음(위 칩) · 아래 420px·오른쪽 160px에 핵심 글자 없음 · 자막 2줄, 숫자에 쉼표 없음
+  막대·선은 0부터(과장 없이). 가격은 IMF 코코아 국제가격 월평균(ICCO 가격) 하나로 통일.
+-->
+<meta charset="utf-8">
+<title>도리의 숫자 퀴즈 코코아</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Medium.otf);font-weight:500}
+@font-face{font-family:P;src:url(fonts/Pretendard-SemiBold.otf);font-weight:600}
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--sub:#7E6B5C;--mint:#2E9C83;--mintL:#D5F1E7;--mint2:#80D0BA;--red:#E2483A;--yel:#FFD45C;--line:#EBDDD0;--choc:#6B3E26;--pod:#E4A13C}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;word-break:keep-all}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;visibility:hidden}
+.dot{position:absolute;border-radius:50%}
+#hdr{left:64px;top:146px;display:flex;align-items:center;gap:12px}
+.pill{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:9px 20px;font-size:25px;font-weight:800;color:var(--ink);white-space:nowrap}
+.pill i{display:block;width:16px;height:16px;border-radius:50%}
+#hdr .brand{font-family:Jua;font-weight:400;font-size:29px;padding:8px 22px 8px 12px}
+#hdr .ai{color:#8A7A6D;font-weight:700;font-size:23px;border-style:dashed}
+#prog{left:72px;top:226px;width:840px;height:6px;border-radius:3px;background:#F0E2D6;overflow:hidden}
+#progf{height:100%;width:0;background:var(--mint);border-radius:3px}
+.card{position:absolute;background:#fff;border-radius:40px;box-shadow:0 20px 44px rgba(120,80,40,.12);border:2px solid #F3E6DA}
+.ttl{position:absolute;font-family:Jua;font-weight:400;color:var(--ink);line-height:1.18}
+.unit{position:absolute;font-size:27px;font-weight:600;color:var(--sub)}
+.src{position:absolute;display:flex;align-items:center;gap:8px;font-size:24px;font-weight:700;color:#8A7A6D;background:#FBF3EA;border-radius:999px;padding:6px 16px;white-space:nowrap}
+.src:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--mint)}
+.stk{position:absolute;font-family:Jua;font-size:36px;color:#fff;background:var(--mint);border-radius:16px;padding:6px 22px;box-shadow:0 6px 14px rgba(46,156,131,.25)}
+.tag{display:inline-block;font-family:Jua;font-size:27px;color:#fff;border-radius:999px;padding:3px 14px;line-height:1.3}
+/* 1 훅 */
+#t1{left:80px;top:300px;font-size:86px}
+#t1 span{display:block}
+#t1 em{font-style:normal;color:var(--red)}
+#pod1{left:676px;top:560px;width:220px;height:400px;transform-origin:50% 90%}
+#c1{left:80px;top:722px;width:560px;padding:26px 30px}
+#c1 .k{font-size:28px;font-weight:700;color:var(--sub)}
+#c1 .v{font-size:66px;font-weight:900;letter-spacing:-2px;margin-top:6px;line-height:1.05;white-space:nowrap}
+#c1 .v b{color:var(--red)}
+#c1 .v small{font-size:44px;font-weight:800;letter-spacing:0;color:var(--sub);margin:0 6px}
+#first1{left:80px;top:640px;font-family:Jua;font-size:34px;color:#fff;background:var(--choc);border-radius:999px;padding:6px 22px;box-shadow:0 8px 16px rgba(107,62,38,.3)}
+#src1{left:80px;top:932px}
+/* 2 보기 */
+#t2{left:80px;top:292px;font-size:76px}
+#t2s{left:84px;top:390px}
+#ring{left:744px;top:280px;width:140px;height:140px;border-radius:50%;background:#fff;box-shadow:0 10px 24px rgba(120,80,40,.14);display:flex;align-items:center;justify-content:center}
+#ringPie{position:absolute;inset:10px;border-radius:50%}
+#ringN{position:relative;width:98px;height:98px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:66px}
+.opt{position:absolute;left:80px;width:800px;height:120px;display:flex;align-items:center;gap:28px;padding:0 32px}
+.opt .lt{width:60px;height:60px;border-radius:50%;background:var(--mintL);color:var(--mint);font-family:Jua;font-size:36px;display:flex;align-items:center;justify-content:center}
+.opt .nm{font-family:Jua;font-size:68px}
+.opt .dn{font-family:Jua;font-size:40px;color:var(--sub)}
+#pickC{left:40px;top:590px;width:900px;height:200px;overflow:visible}
+#pickL{left:640px;top:646px;font-family:Jua;font-size:40px;color:var(--red);transform-origin:0 50%}
+#pickAsk{left:80px;top:884px;font-family:Jua;font-size:40px;color:var(--ink);background:#FFF1C9;border:3px solid var(--yel);border-radius:999px;padding:8px 28px}
+/* 3 힌트 1 선 그래프 */
+#c3{left:60px;top:500px;width:860px;height:560px}
+#ch3{left:0;top:0;width:1080px;height:1100px;overflow:visible}
+.yl{position:absolute;font-size:27px;font-weight:700;color:var(--sub);width:120px;text-align:center}
+#pk3,#lo3{position:absolute;font-family:Jua;font-size:32px;white-space:nowrap;line-height:1.2}
+#pk3{color:var(--ink)}
+#lo3{color:var(--red);text-align:right}
+#up3{position:absolute;font-family:Jua;font-size:34px;color:var(--red);white-space:nowrap;transform-origin:0 50%}
+#q3b{position:absolute;width:88px;height:88px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:60px;box-shadow:0 0 0 6px #fff}
+/* 4 힌트 2 */
+#c4{left:60px;top:500px;width:860px;height:540px;display:flex;flex-direction:column;align-items:center;padding-top:44px}
+#c4 .k{font-family:Jua;font-size:44px;color:var(--ink)}
+#c4 .row{display:flex;align-items:center;gap:18px;margin-top:36px}
+#c4 .yb{display:flex;flex-direction:column;align-items:center;justify-content:center;width:290px;height:190px;border-radius:30px;background:#F3FBF8;border:3px solid var(--mint2)}
+#c4 .yb.now{background:#FFF4EC;border-color:#F2B79A}
+#c4 .yb .v{font-size:54px;font-weight:900;letter-spacing:-1px;line-height:1;white-space:nowrap}
+#c4 .yb .y{margin-top:12px;font-size:27px;font-weight:700;color:var(--sub);white-space:nowrap}
+#c4 .ar{display:flex;flex-direction:column;align-items:center;gap:4px}
+#c4 .ar b{font-family:Jua;font-weight:400;font-size:46px;color:var(--red);white-space:nowrap}
+#calc4{margin-top:40px;font-family:Jua;font-size:42px;color:var(--sub);background:#FBF3EA;border-radius:999px;padding:10px 34px;white-space:nowrap}
+/* 5 정답 */
+#r5a{left:80px;top:292px;font-size:70px}
+#r5b{left:80px;top:414px;display:flex;align-items:center;gap:34px;transform-origin:0 0}
+#r5b .nm{font-family:Jua;font-size:190px;line-height:1}
+#r5b .pre{font-family:Jua;font-size:90px;line-height:1;margin-right:-18px;color:var(--sub)}
+#st5{left:650px;top:384px;width:190px;height:190px;border-radius:50%;border:8px solid var(--mint);display:flex;align-items:center;justify-content:center;font-family:Jua;font-size:58px;color:var(--mint);background:rgba(255,255,255,.9);transform-origin:50% 50%}
+#c5{left:60px;top:618px;width:860px;height:440px}
+.br{position:absolute;left:96px;width:800px;height:110px}
+.br .bn{position:absolute;left:0;top:0;display:flex;align-items:center;gap:16px;font-family:Jua;font-size:40px;line-height:60px;white-space:nowrap}
+.br .bar{position:absolute;left:0;top:70px;height:26px;border-radius:13px;width:0;background:linear-gradient(90deg,#E9DED3,#D6C7B8)}
+.br .val{position:absolute;top:56px;font-size:38px;font-weight:800;white-space:nowrap;line-height:1}
+.br.peak .bar{background:linear-gradient(90deg,#B98A6A,var(--choc))}
+.br.win .bar{background:linear-gradient(90deg,#7FD3BC,var(--mint))}
+.br.win .val{color:var(--mint)}
+#conf{left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+.cf{position:absolute;border-radius:3px}
+/* 6 이유 */
+#t6{left:80px;top:290px;font-size:74px}
+#t6 em{font-style:normal;color:var(--red)}
+#u6{left:84px;top:386px}
+.why{position:absolute;top:450px;width:400px;height:350px;display:flex;flex-direction:column;align-items:center;padding-top:26px}
+.why .ic{height:92px;display:flex;align-items:flex-end}
+.why .k{margin-top:14px;font-family:Jua;font-size:38px;white-space:nowrap}
+.why .v{margin-top:6px;font-size:86px;font-weight:900;letter-spacing:-2px;line-height:1;white-space:nowrap}
+.why .s{margin-top:12px;font-size:27px;font-weight:700;color:var(--sub);white-space:nowrap}
+#w6a{left:80px}
+#w6a .v{color:var(--mint)}
+#w6b{left:500px}
+#w6b .v{color:var(--red)}
+#left6{left:80px;top:828px;width:820px;padding:24px 34px;display:flex;align-items:center;gap:26px}
+#left6 .sc{flex:none}
+#left6 .a{font-family:Jua;font-size:44px;line-height:1.28;white-space:nowrap}
+#left6 .a em{font-style:normal;color:var(--mint)}
+#left6 .b{margin-top:6px;font-size:27px;font-weight:700;color:var(--sub);white-space:nowrap}
+/* 7 빼빼로 값 */
+#t7{left:80px;top:290px;font-size:74px}
+#t7 em{font-style:normal;color:var(--red)}
+#u7{left:84px;top:386px}
+#c7{left:60px;top:440px;width:860px;height:330px}
+.pt{position:absolute;top:505px;width:230px;height:200px;border-radius:28px;background:#FBF3EA;border:3px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pt .v{font-size:56px;font-weight:900;letter-spacing:-1px;line-height:1;white-space:nowrap}
+.pt .y{margin-top:12px;font-size:26px;font-weight:700;color:var(--sub);white-space:nowrap}
+.pt.now{background:#FFF0EC;border-color:var(--red)}
+.pt.now .v{color:var(--red)}
+.pa{position:absolute;top:579px;width:56px;height:52px}
+#same7{left:640px;top:712px;font-family:Jua;font-size:38px;color:#fff;background:var(--red);border-radius:999px;padding:6px 24px;box-shadow:0 8px 16px rgba(226,72,58,.3);white-space:nowrap}
+#raw7{left:80px;top:794px;width:820px;padding:18px 28px}
+#raw7 .r{display:flex;align-items:center;gap:22px}
+#raw7 .a{font-family:Jua;font-size:36px;line-height:1.28;white-space:nowrap}
+#raw7 .a em{font-style:normal;color:var(--red)}
+#raw7 .b{margin-top:4px;font-size:23px;font-weight:700;color:var(--sub);white-space:nowrap}
+#still7{margin-top:12px;padding-top:12px;border-top:3px dashed #F0E2D6}
+#still7 .a{font-size:31px}
+#still7 .a b{font-weight:400;color:var(--choc)}
+/* 7b 아직 비싸(쓰지 않음) */
+#t7b{left:80px;top:290px;font-size:74px}
+#t7b em{font-style:normal;color:var(--red)}
+#u7b{left:84px;top:386px}
+#c7b{left:60px;top:450px;width:860px;height:600px}
+.vb{position:absolute;border-radius:24px 24px 10px 10px;background:linear-gradient(180deg,#E9DED3,#D6C7B8)}
+.vb.now{background:linear-gradient(180deg,#B98A6A,var(--choc))}
+.vv{position:absolute;text-align:center;font-size:42px;font-weight:900;white-space:nowrap}
+.vy{position:absolute;text-align:center;font-family:Jua;font-size:34px;white-space:nowrap}
+#x7b{left:120px;top:520px;font-family:Jua;font-size:44px;color:#fff;background:var(--red);border-radius:999px;padding:6px 26px;box-shadow:0 8px 16px rgba(226,72,58,.3);white-space:nowrap;transform-origin:50% 50%}
+/* 8 결론 */
+#c8{left:60px;top:300px;width:860px;height:660px;display:flex;flex-direction:column;align-items:center;padding-top:50px}
+#c8 .stk{position:static;font-size:40px;padding:8px 30px}
+#c8 .row{display:flex;gap:28px;margin-top:34px}
+#c8 .bx{width:370px;height:380px;border-radius:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+#c8 .bx.c{background:#F3FBF8;border:3px solid var(--mint2)}
+#c8 .bx.p{background:#FFF4EC;border:3px solid #F2B79A}
+#c8 .bx .ic{height:96px;display:flex;align-items:flex-end}
+#c8 .bx .n{margin-top:8px;font-family:Jua;font-size:42px}
+#c8 .bx .v{font-size:72px;font-weight:900;letter-spacing:-2px;line-height:1.1;white-space:nowrap}
+#c8 .bx.c .v{color:var(--mint)}
+#c8 .bx.p .v{color:var(--red)}
+#c8 .bx .s{font-size:27px;font-weight:700;color:var(--sub);white-space:nowrap}
+#c8 .per{margin-top:22px;font-size:24px;font-weight:600;color:var(--sub);white-space:nowrap}
+#stamp8{left:600px;top:928px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
+/* 9 마무리 */
+#e1{left:80px;top:294px;font-size:82px}
+#e1 em{font-style:normal;color:var(--choc)}
+#snk9{left:80px;top:640px;width:820px;height:380px;display:flex;align-items:flex-end;justify-content:center;gap:56px}
+#cta9{left:448px;top:1300px;font-family:Jua;font-size:40px;color:var(--ink);background:#fff;border:3px solid var(--mint2);border-radius:999px;padding:8px 28px;box-shadow:0 10px 22px rgba(120,80,40,.12)}
+#fly{left:0;top:0;width:60px;height:120px}
+#dori{left:0;top:1004px;width:480px;height:498px}
+#bub{left:448px;top:1196px;max-width:472px;background:#fff;border-radius:34px;padding:24px 32px;font-family:Jua;font-size:40px;line-height:1.34;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;transform-origin:0 50%}
+#bub:before{content:"";position:absolute;left:-18px;top:50%;margin-top:-15px;border-width:15px 22px 15px 0;border-style:solid;border-color:transparent #fff transparent transparent}
+#pre{position:absolute;left:-5000px;top:0;font-family:Jua}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="dot" id="b1"></div><div class="dot" id="b2"></div><div class="dot" id="b3"></div><div class="dot" id="b4"></div>
+  <div class="abs" id="hdr">
+    <div class="pill brand"><span id="hdrDori"></span>도리의 정보주머니</div>
+    <div class="pill"><i style="background:var(--mint)"></i>숫자 퀴즈</div>
+    <div class="pill ai">AI 목소리</div>
+  </div>
+  <div class="abs" id="prog"><div id="progf"></div></div>
+
+  <!-- 1 훅 -->
+  <div class="scene" id="s1">
+    <svg class="abs" id="mk1" width="400" height="40" style="left:80px;top:540px;overflow:visible"><path d="M6 24 C90 16 200 28 390 18" stroke="#F6CFC0" stroke-width="28" stroke-linecap="round" fill="none"/></svg>
+    <div class="ttl" id="t1"><span>코코아 값,</span><span>최고점보다</span><span><em>얼마나</em> 내렸을까?</span></div>
+    <div class="abs" id="pod1"></div>
+    <div class="abs" id="first1">빼빼로 값 올릴 때 꼽힌 이유</div>
+    <div class="card" id="c1"><div class="k">2025년 2월 · 초코 빼빼로 54g</div><div class="v">1800원<small>→</small><b>2000원</b></div></div>
+    <div class="src" id="src1">롯데웰푸드 · 2025년 2월 · 권장소비자가격</div>
+  </div>
+
+  <!-- 2 보기 -->
+  <div class="scene" id="s2">
+    <div class="ttl" id="t2">얼마나 내렸을까?</div>
+    <div class="unit" id="t2s">코코아 국제가격 · 최고(2025년 1월) → 2026년 9월</div>
+    <div class="abs" id="ring"><div id="ringPie"></div><div id="ringN">3</div></div>
+    <div class="card opt" id="oA" style="top:450px"><div class="lt">A</div><div class="nm">15%</div><div class="dn">내림</div></div>
+    <div class="card opt" id="oB" style="top:590px"><div class="lt">B</div><div class="nm">45%</div><div class="dn">내림</div></div>
+    <div class="card opt" id="oC" style="top:730px"><div class="lt">C</div><div class="nm">75%</div><div class="dn">내림</div></div>
+    <div class="abs" id="pickAsk">너도 하나 골라 봐 👀</div>
+    <svg class="abs" id="pickC"><path id="pickP" d="M0 0" fill="none" stroke="#E2483A" stroke-width="7" stroke-linecap="round"/></svg>
+    <div class="abs" id="pickL">도리 픽!</div>
+  </div>
+
+  <!-- 3 힌트 1: 월평균 선 그래프 -->
+  <div class="scene" id="s3">
+    <div class="stk" id="k3" style="left:80px;top:290px;transform:rotate(-4deg)">힌트 1</div>
+    <div class="ttl" id="tt3" style="left:80px;top:366px;font-size:60px">올봄 바닥에서 다시 올랐대</div>
+    <div class="unit" id="u3" style="left:84px;top:446px">IMF · 2022년 1월~2026년 9월 · 코코아 국제가격(월평균)</div>
+    <div class="card" id="c3"></div>
+    <svg class="abs" id="ch3" viewBox="0 0 1080 1100"><path id="ln3" d="" fill="none" stroke="#6B3E26" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path id="up3p" d="" fill="none" stroke="#E2483A" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/><line id="bs3" x1="120" x2="880" stroke="#E7D8CA" stroke-width="3"/><circle id="pkd3" r="12" fill="#6B3E26" stroke="#fff" stroke-width="5"/><circle id="lod3" r="12" fill="#E2483A" stroke="#fff" stroke-width="5"/></svg>
+    <div id="yl3"></div>
+    <div id="pk3">최고 · 2025년 1월</div>
+    <div id="lo3">올봄 바닥<br>2026년 3월</div>
+    <div id="q3b">?</div>
+  </div>
+
+  <!-- 4 힌트 2 -->
+  <div class="scene" id="s4">
+    <div class="stk" id="k4" style="left:80px;top:290px;transform:rotate(-4deg)">힌트 2</div>
+    <div class="ttl" id="tt4" style="left:80px;top:366px;font-size:60px">1만 달러 넘던 게 6천 달러 아래로</div>
+    <div class="unit" id="u4" style="left:84px;top:446px">IMF · 코코아 국제가격(월평균, 1톤)</div>
+    <div class="card" id="c4"><div class="k">코코아 1톤 값</div>
+      <div class="row"><div class="yb"><div class="v">1만 710달러</div><div class="y">2025년 1월 · 최고</div></div>
+        <div class="ar"><b>▼ ?%</b><svg width="96" height="40" viewBox="0 0 96 40"><path d="M6 20 H78 M62 6 L84 20 L62 34" stroke="#E2483A" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="yb now"><div class="v">5919달러</div><div class="y">2026년 9월</div></div></div>
+      <div id="calc4">(10710 − 5919) ÷ 10710 = ?</div></div>
+  </div>
+
+  <!-- 5 정답 -->
+  <div class="scene" id="s5">
+    <div class="ttl" id="r5a">정답은<span id="dots5"></span></div>
+    <div class="abs" id="r5b"><span class="pre">약</span><span class="nm">45%</span></div>
+    <div class="abs" id="st5">정답!</div>
+    <div class="card" id="c5"></div>
+    <div class="unit" id="u5" style="left:100px;top:644px;font-size:25px">IMF · 코코아 국제가격(월평균, 1톤)</div>
+    <div class="br peak" id="b5a" style="top:694px"><div class="bn">2025년 1월<span class="tag" style="background:var(--choc)">최고</span></div><div class="bar"></div><div class="val">1만 710달러</div></div>
+    <div class="br" id="b5b" style="top:808px"><div class="bn">2026년 3월<span class="tag" id="pk5" style="background:var(--red)">여기선 70% 내림</span></div><div class="bar"></div><div class="val">3241달러</div></div>
+    <div class="br win" id="b5c" style="top:922px"><div class="bn">2026년 9월<span class="tag" id="ak5" style="background:var(--mint)">최고점보다 약 45% 내림</span></div><div class="bar"></div><div class="val">5919달러</div></div>
+  </div>
+
+  <!-- 6 반전 1: 왜 내렸을까 -->
+  <div class="scene" id="s6">
+    <div class="ttl" id="t6">왜 <em>내렸을까?</em></div>
+    <div class="unit" id="u6">국제코코아기구(ICCO) · 2024/25 시즌(2024년 10월~2025년 9월)</div>
+    <div class="card why" id="w6a"><div class="ic" id="ic6a"></div><div class="k">세계 코코아 생산</div><div class="v">+8.5%</div><div class="s">473만 톤</div></div>
+    <div class="card why" id="w6b"><div class="ic" id="ic6b"></div><div class="k">초콜릿 등에 쓴 양</div><div class="v">−3.3%</div><div class="s">465만 톤 · 비싸서 덜 씀</div></div>
+    <div class="card" id="left6"><div class="sc" id="sc6"></div><div><div class="a">모자라던 코코아가<br><em>다시 남기 시작!</em></div><div class="b">2024/25 시즌 3만 7천 톤 남음</div></div></div>
+  </div>
+
+  <!-- 7 반전 2: 빼빼로 값은 그대로 -->
+  <div class="scene" id="s7">
+    <div class="ttl" id="t7">근데 <em>빼빼로 값</em>은?</div>
+    <div class="unit" id="u7">롯데웰푸드 · 초코 빼빼로 54g · 권장소비자가격</div>
+    <div class="card" id="c7"></div>
+    <div class="pt" id="p7a" style="left:80px;width:220px"><div class="v">1700원</div><div class="y">2024년 5월까지</div></div>
+    <svg class="pa" id="a7a" style="left:308px" viewBox="0 0 56 52"><path d="M6 26 H40 M28 12 L44 26 L28 40" stroke="#B9A797" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="pt" id="p7b" style="left:372px;width:220px"><div class="v">1800원</div><div class="y">2024년 6월</div></div>
+    <svg class="pa" id="a7b" style="left:600px" viewBox="0 0 56 52"><path d="M6 26 H40 M28 12 L44 26 L28 40" stroke="#B9A797" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="pt now" id="p7c" style="left:664px;width:236px"><div class="v">2000원</div><div class="y">2025년 2월부터</div></div>
+    <div class="abs" id="same7">지금도 그대로!</div>
+    <div class="card" id="raw7"><div class="r"><div id="ic7"></div><div><div class="a">몇 달 전 <em>비쌀 때</em><br>미리 사 둔 원료를 쓴대</div><div class="b">제과업계 설명 · 2025~2026년 보도</div></div></div>
+      <div class="r" id="still7"><div id="ic7b"></div><div><div class="a"><b>코코아 값도</b> 아직 2022년의 <em>약 2.5배</em></div><div class="b">IMF 월평균 · 2022년 평균 2369달러 → 2026년 9월 5919달러</div></div></div></div>
+  </div>
+
+  <!-- 8 결론 -->
+  <div class="scene" id="s8">
+    <div class="card" id="c8"><div class="stk">정리</div>
+      <div class="row">
+        <div class="bx c"><div class="ic" id="ic8a"></div><div class="n">코코아</div><div class="v">▼약 45%</div><div class="s">최고점보다 · 거의 반값</div></div>
+        <div class="bx p"><div class="ic" id="ic8b"></div><div class="n">빼빼로</div><div class="v">2000원</div><div class="s">2025년 2월부터 그대로</div></div>
+      </div>
+      <div class="per">IMF 월평균 2025년 1월 → 2026년 9월 · 롯데웰푸드 권장소비자가격</div></div>
+    <div class="abs" id="stamp8">검산 끝!</div>
+  </div>
+
+  <!-- 9 마무리 -->
+  <div class="scene" id="s9">
+    <div class="ttl" id="e1">너는 요즘<br><em>초콜릿 과자,</em><br>비싸다고 느껴?</div>
+    <div class="abs" id="snk9"></div>
+    <div class="abs" id="cta9">구독 · 좋아요 👍</div>
+  </div>
+
+  <div id="conf" class="abs"></div>
+  <div class="abs" id="fly"></div>
+  <div class="abs" id="dori"></div>
+  <div class="abs" id="bub"><span id="bubT"></span></div>
+  <div id="pre"></div>
+</div>
+
+<script src="timeline.js"></script>
+<script src="dori_outfits.js"></script>
+<script src="dori.js"></script>
+<script>
+const T=TL.T, FPS=30, DUR=T.END;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,s,d)=>clamp((t-s)/d);
+const eOut=x=>1-Math.pow(1-x,3);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eBack=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);};
+const spring=x=>x<=0?0:x>=1?1:1-Math.exp(-6*x)*Math.cos(9*x);
+const lerp=(a,b,k)=>a+(b-a)*k;
+const $=id=>document.getElementById(id);
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+
+// ---------- 소품(상표 없이) ----------
+// 코코아 열매: 길쭉한 골진 열매
+const POD=(w,rot=0)=>`<svg viewBox="0 0 220 400" width="${w}" height="${w*400/220}"><g transform="rotate(${rot} 110 200)">
+  <defs><linearGradient id="pg${w}" x1="0" x2="1"><stop offset="0" stop-color="#F4BE5A"/><stop offset=".55" stop-color="#E39A38"/><stop offset="1" stop-color="#B8642A"/></linearGradient></defs>
+  <path d="M104 14 C102 6 110 2 116 8 L114 22" fill="#7A5236" stroke="#4A3A33" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M110 20 C164 40 194 120 192 204 C190 290 152 360 110 384 C68 360 30 290 28 204 C26 120 56 40 110 20 Z" fill="url(#pg${w})" stroke="#4A3A33" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M110 28 C122 130 122 280 110 376 M78 44 C62 140 62 280 80 356 M142 44 C158 140 158 280 140 356 M52 80 C40 160 42 270 58 330 M168 80 C180 160 178 270 162 330" stroke="#A9572A" stroke-width="5" fill="none" opacity=".55" stroke-linecap="round"/>
+  <path d="M62 112 C54 160 54 230 66 282" stroke="#fff" stroke-width="10" fill="none" opacity=".35" stroke-linecap="round"/></g></svg>`;
+const BEAN=(w)=>`<svg viewBox="0 0 70 50" width="${w}" height="${w*50/70}"><ellipse cx="35" cy="25" rx="30" ry="20" fill="#7A4A30" stroke="#4A3A33" stroke-width="5"/><path d="M12 25 C26 19 44 31 58 25" stroke="#4A2C1E" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="24" cy="17" rx="8" ry="4" fill="#fff" opacity=".25"/></svg>`;
+// 판 초콜릿(포장 반쯤 벗김, 상표 없음)
+const CHOC=(w)=>`<svg viewBox="0 0 220 250" width="${w}" height="${w*250/220}">
+  <rect x="34" y="14" width="152" height="150" rx="16" fill="#6B3E26" stroke="#4A3A33" stroke-width="6"/>
+  ${[0,1,2].map(r=>[0,1].map(c=>`<rect x="${48+c*66}" y="${28+r*44}" width="58" height="36" rx="8" fill="#82502F" stroke="#5A321F" stroke-width="3"/>`).join('')).join('')}
+  <path d="M56 34 H96" stroke="#fff" stroke-width="5" opacity=".25" stroke-linecap="round"/>
+  <path d="M26 120 L40 110 L54 122 L68 108 L82 122 L96 108 L110 122 L124 108 L138 122 L152 108 L166 122 L180 110 L194 120 L194 238 Q194 244 188 244 H32 Q26 244 26 238 Z" fill="#DCE3E6" stroke="#4A3A33" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="26" y="150" width="168" height="94" rx="6" fill="#2E9C83" stroke="#4A3A33" stroke-width="6"/>
+  <path d="M26 176 H194" stroke="#80D0BA" stroke-width="6"/><circle cx="110" cy="208" r="16" fill="#80D0BA" stroke="#4A3A33" stroke-width="4"/></svg>`;
+// 막대과자(초콜릿 묻힌 비스킷 막대) — EP.11 과 같은 그림
+function stickG(cx,by,ang,coat,s=1){const L=380*s,W=24*s;
+  return `<g transform="translate(${cx},${by}) rotate(${ang})">
+  <rect x="${-W/2}" y="${-L}" width="${W}" height="${L}" rx="${W/2}" fill="#E8B46F" stroke="#4A3A33" stroke-width="${4*s}"/>
+  <rect x="${-W/2-3*s}" y="${-L-2*s}" width="${W+6*s}" height="${L*.74}" rx="${W/2+3*s}" fill="${coat}" stroke="#4A3A33" stroke-width="${4*s}"/>
+  <path d="M${-W/2+5*s} ${-L+18*s} V${-L*.34}" stroke="#fff" stroke-width="${4.5*s}" stroke-linecap="round" opacity=".38"/></g>`;}
+const STICKS=w=>`<svg viewBox="0 0 220 460" width="${w}" height="${w*460/220}">
+  ${[-14,-7,0,7,14].map(a=>stickG(110,446,a,'#5B3A29')).join('')}
+  <path d="M84 332 C60 300 46 330 58 344 C66 354 80 346 92 340 Z M136 332 C160 300 174 330 162 344 C154 354 140 346 128 340 Z" fill="#E2483A" stroke="#4A3A33" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="74" y="322" width="72" height="28" rx="12" fill="#F06A5C" stroke="#4A3A33" stroke-width="4"/>
+  <circle cx="110" cy="336" r="11" fill="#E2483A" stroke="#4A3A33" stroke-width="4"/></svg>`;
+const ONE=w=>`<svg viewBox="-20 -400 40 410" width="${w}" height="${w*410/40}">${stickG(0,4,0,'#5B3A29')}</svg>`;
+// 저울(남는 쪽으로 기움)
+const SCALE=w=>`<svg viewBox="0 0 160 130" width="${w}" height="${w*130/160}">
+  <path d="M80 18 V112 M50 118 H110" stroke="#4A3A33" stroke-width="7" stroke-linecap="round"/>
+  <g transform="rotate(-10 80 22)"><path d="M18 22 H142" stroke="#4A3A33" stroke-width="7" stroke-linecap="round"/>
+  <path d="M18 22 L4 58 H32 Z" fill="#FFE7B0" stroke="#4A3A33" stroke-width="5" stroke-linejoin="round"/><path d="M142 22 L128 58 H156 Z" fill="#FFE7B0" stroke="#4A3A33" stroke-width="5" stroke-linejoin="round"/>
+  <ellipse cx="18" cy="52" rx="10" ry="7" fill="#7A4A30" stroke="#4A3A33" stroke-width="3"/><ellipse cx="9" cy="50" rx="7" ry="5" fill="#7A4A30" stroke="#4A3A33" stroke-width="3"/><ellipse cx="26" cy="50" rx="7" ry="5" fill="#7A4A30" stroke="#4A3A33" stroke-width="3"/>
+  <ellipse cx="142" cy="52" rx="9" ry="6" fill="#7A4A30" stroke="#4A3A33" stroke-width="3"/></g>
+  <circle cx="80" cy="20" r="8" fill="#2E9C83" stroke="#4A3A33" stroke-width="4"/></svg>`;
+// 상자(미리 사 둔 원료)
+const BOX=w=>`<svg viewBox="0 0 140 120" width="${w}" height="${w*120/140}"><path d="M14 40 L70 18 L126 40 L126 100 L70 118 L14 100 Z" fill="#E8C49A" stroke="#4A3A33" stroke-width="6" stroke-linejoin="round"/><path d="M14 40 L70 60 L126 40 M70 60 V118" stroke="#4A3A33" stroke-width="5" fill="none" stroke-linejoin="round"/><path d="M42 29 L98 50" stroke="#C99A68" stroke-width="10"/><ellipse cx="98" cy="84" rx="12" ry="8" fill="#7A4A30" stroke="#4A3A33" stroke-width="3" transform="rotate(-20 98 84)"/><path d="M30 70 l14 5" stroke="#4A3A33" stroke-width="4" stroke-linecap="round"/></svg>`;
+$('pod1').innerHTML=`<div style="position:relative">${POD(220,-8)}<div style="position:absolute;left:-40px;top:330px">${BEAN(70)}</div><div style="position:absolute;left:150px;top:350px">${BEAN(58)}</div></div>`;
+$('ic6a').innerHTML=POD(56,-12); $('ic6b').innerHTML=CHOC(80); $('sc6').innerHTML=SCALE(130); $('ic7').innerHTML=BOX(100); $('ic7b').innerHTML=`<div style="width:100px;display:flex;justify-content:center">${POD(40,-20)}</div>`;
+$('ic8a').innerHTML=POD(52,-10); $('ic8b').innerHTML=`<svg viewBox="0 0 220 460" width="46" height="96">${[-8,0,8].map(a=>stickG(110,446,a,'#5B3A29')).join('')}</svg>`;
+$('snk9').innerHTML=[CHOC(170),STICKS(150),POD(130,8)].map((s,i)=>`<div class="sn" style="display:flex;align-items:flex-end">${s}</div>`).join('');
+$('fly').innerHTML=ONE(30);
+$('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
+
+// ---------- 힌트 1: IMF 코코아 국제가격 월평균(달러/톤), 2022년 1월~2026년 9월 ----------
+const CP=[2467.4,2551.3,2459.4,2457.4,2363.9,2323.1,2239.4,2270.1,2220.2,2243.6,2380.8,2456.2,
+ 2540.1,2586.5,2665.8,2823.3,2905.3,3124.4,3346.6,3434.4,3629.2,3691.6,4095.4,4253.9,
+ 4442.9,5640.1,7297.6,9865.2,7768.1,8380.1,7164.6,6792.0,6421.8,6582.9,7919.3,10412.2,
+ 10710.3,9792.7,8079.6,8132.2,9000.8,8402.0,7371.9,7604.1,7006.5,5953.6,5590.7,5814.9,
+ 5018.1,3587.2,3241.5,3392.1,4143.0,4395.5,5619.2,5990.5,5919.0];
+const CX0=130, CX1=870, CB=990, CH=400, CMAX=11000;
+const cx=i=>CX0+(CX1-CX0)*i/(CP.length-1), cy=v=>CB-CH*v/CMAX;
+const IPK=36, ILO=50, IEND=CP.length-1;
+$('ln3').setAttribute('d',CP.map((v,i)=>(i?'L':'M')+cx(i).toFixed(1)+' '+cy(v).toFixed(1)).join(' '));
+$('up3p').setAttribute('d',CP.slice(ILO).map((v,j)=>(j?'L':'M')+cx(ILO+j).toFixed(1)+' '+cy(v).toFixed(1)).join(' '));
+$('bs3').setAttribute('y1',CB); $('bs3').setAttribute('y2',CB);
+$('pkd3').setAttribute('cx',cx(IPK)); $('pkd3').setAttribute('cy',cy(CP[IPK]));
+$('lod3').setAttribute('cx',cx(ILO)); $('lod3').setAttribute('cy',cy(CP[ILO]));
+$('yl3').innerHTML=[0,12,24,36,48].map((i,k)=>`<div class="yl" style="left:${cx(i)-60}px;top:${CB+10}px">${2022+k}</div>`).join('');
+$('pk3').style.left=(cx(IPK)-128)+'px'; $('pk3').style.top=(cy(CP[IPK])-56)+'px';
+$('lo3').style.left=(cx(ILO)-250)+'px'; $('lo3').style.top=(cy(CP[ILO])+4)+'px'; $('lo3').style.width='220px';
+$('q3b').style.left=(cx(IEND)-44)+'px'; $('q3b').style.top=(cy(CP[IEND])-44)+'px';
+const ln3L=$('ln3').getTotalLength(), up3L=$('up3p').getTotalLength();
+
+// 색종이
+const CONF=[], cr=rng(9), COLS=['#2E9C83','#80D0BA','#FFD45C','#E2483A','#FF9EB0','#6B3E26'];
+for(let i=0;i<60;i++){const d=document.createElement('div');d.className='cf';const w=10+cr()*12,h=w*(cr()<.5?.5:1);d.style.width=w+'px';d.style.height=h+'px';d.style.background=COLS[i%COLS.length];if(cr()<.35)d.style.borderRadius='50%';$('conf').appendChild(d);
+  const a=(-90+(cr()-.5)*130)*Math.PI/180, sp=900+cr()*900;CONF.push({d,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,rs:(cr()-.5)*900,x0:520+(cr()-.5)*80,y0:520});}
+// 도리 픽 동그라미: 고른 카드의 실제 위치·크기에서 손그림 고리를 계산한다
+const PICK='oC';
+(function(){const c=$(PICK),x0=c.offsetLeft,y0=c.offsetTop,w=c.offsetWidth,h=c.offsetHeight,px=22,py=11,m=24;
+  const L=x0-px,T0=y0-py,W=w+2*px,H=h+2*py, l=m,t=m,r=m+W,b=m+H, X=f=>(l+f*W).toFixed(1), Y=f=>(t+f*H).toFixed(1);
+  const sv=$('pickC'); sv.style.left=(L-m)+'px'; sv.style.top=(T0-m)+'px'; sv.style.width=(W+2*m)+'px'; sv.style.height=(H+2*m)+'px';
+  sv.setAttribute('viewBox',`0 0 ${W+2*m} ${H+2*m}`);
+  $('pickP').setAttribute('d',`M ${X(.16)} ${Y(.02)} C ${X(.4)} ${Y(-.02)}, ${X(.66)} ${Y(-.01)}, ${X(.86)} ${Y(.03)} C ${r+2} ${Y(.08)}, ${r+3} ${Y(.3)}, ${r} ${Y(.52)} C ${r-3} ${Y(.88)}, ${X(.8)} ${b}, ${X(.5)} ${b} C ${X(.2)} ${b+1}, ${l-3} ${Y(.88)}, ${l} ${Y(.5)} C ${l+1} ${Y(.16)}, ${X(.06)} ${Y(.03)}, ${X(.3)} ${Y(-.05)}`);
+  const lb=$('pickL'); lb.style.left=(x0+w-205)+'px'; lb.style.top=(y0+h/2-27)+'px';})();
+const pkLen=$('pickP').getTotalLength();
+$('pre').textContent=TL.lines.map(l=>l.text.replace(/<br>/g,' ')).join(' ')+document.body.innerText;
+
+function sv(id,a,b){$(id).style.visibility=(gT>=a&&gT<b)?'visible':'hidden';}
+function fx(el,t,inS,inD,outS,outD,dy=40,dx=0,rot=0){if(typeof el==='string')el=$(el);const a=eOut(P(t,inS,inD)),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=a*(1-b);el.style.transform=`translate(${(1-a)*dx}px,${(1-a)*dy-b*dy*.7}px) rotate(${rot}deg)`;return a*(1-b);}
+function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);const k=P(t,s,.5),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=clamp(k*4)*(1-b);el.style.transform=`rotate(${rot}deg) scale(${k<=0?from:from+(1-from)*eBack(k)})`;}
+let gT=0;
+
+// ---------- 도리 연기 ----------
+// 도리 옷: 코코아·초콜릿 과자 이야기 → 초콜릿 파티시에(pastry). 직전 편 EP.14 는 travel.
+const OUTFIT='pastry';
+Dori.mount($('dori'),{outfit:OUTFIT});
+const D={};TL.lines.forEach(l=>D[l.id]=l.d);
+const A=(id,f)=>T[id]+f*D[id];
+const EX=[[0,{happy:0}],[T.wPep,{surprise:.5}],[A('L02',.95),{surprise:0}],
+ [T.C3-.3,{think:1}],[T.L05,{think:0,squint:1}],[A('L05',.35),{squint:0,happy:1}],[A('L05',.75),{happy:0}],
+ [T.wUp,{surprise:.5}],[A('L06',.97),{surprise:0}],[T.L07-.04,{think:.8}],[T.w6k,{think:0,surprise:.45}],[A('L07',.96),{surprise:0}],
+ [T.L09,{think:1}],[T.drum,{think:0,squint:1}],[T.L10,{squint:0,surprise:1}],[T.L11,{surprise:.25}],[A('L11',.8),{surprise:0}],
+ [T.san,{sad:1}],[T.L12-.17,{sad:0}],[T.wProd,{surprise:.5}],[A('L12',.95),{surprise:0}],[T.L12b+.1,{think:.6}],[A('L12b',.95),{think:0}],
+ [T.wLeft,{happy:1}],[A('L12c',.95),{happy:0}],
+ [T.w2000,{surprise:.9}],[A('L13',.95),{surprise:0}],[T.L13b+.1,{think:.7}],[A('L13b',.95),{think:0}],
+ [T.L14b,{squint:1}],[T.L15-.47,{squint:0,happy:1}],
+ [T.L15+.03,{happy:0}],[T.L16+.04,{happy:1,pouch:1}]];
+const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L16?.45:.28);
+const GZ=[[0,0,0],[T.L03-.16,.7,-.6],[A('L03',.98),0,0],[T.C3-.31,.4,-1],[T.L05-.13,0,0],[T.L06+.08,.8,-.6],[T.L06+1.48,0,0],[T.L07+.16,.8,-.6],[T.L07+1.56,0,0],[T.L09+.05,.3,-1],[T.drum,0,0],[T.L10+.08,.7,-.7],[T.L10+1.0,0,0],[T.san+.05,.7,-.4],[T.san+1.0,0,0],[T.L12+.26,.7,-.6],[T.L12+1.46,0,0],[T.L12b+.2,.7,-.5],[T.L12b+1.4,0,0],[T.L13+.23,.7,-.6],[T.L13+1.63,0,0],[T.L14+.08,.6,-.8],[T.L14+1.28,0,0]];
+const gzT=Dori.track(GZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.22);
+function gaze(t){const g=gzT(t),m=Dori.micro(t);return [g.x+m[0],g.y+m[1]];}
+const BL=Dori.blinks(DUR,EX.map(k=>k[0]),23);
+const blink=t=>Dori.blinkAt(BL,t);
+const EF=[];{const r=rng(7);let t=2.8;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=3.2+r()*4;}}
+function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
+const HOPS=[[T.wPep,24],[T.L05,22],[T.L10,84],[T.wLeft,36],[T.w2000,40],[T.L14b,70],[T.L16+.04,30]];
+function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
+  if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
+  return [h,sq];}
+const ARMR=[[0,0],[A('L01',.2),.35],[A('L01',.55),0],[T.wPep,.8],[A('L02',.88),0],[T.L03,.45],[A('L03',.9),0],[T.L05,.62],[A('L05',.59),0],[T.L06+.08,.4],[T.L06+1.68,0],[T.L10,.6],[T.L10+1.0,0],[T.wProd,.7],[T.wProd+1.0,0],[T.wLeft,.8],[T.wLeft+1.0,0],[T.L14+.08,.4],[T.L14+1.68,0],[T.L14b,.95],[T.L14b+1.17,0],[T.L15+.13,.5],[T.L15+1.43,0],[A('L16',.4),.9]];
+const ARML=[[0,0],[T.wPep,.8],[A('L02',.88),0],[T.L10,.6],[T.L10+1.0,0],[T.w2000,.6],[T.w2000+.9,0],[T.L14b,.95],[T.L14b+1.17,0],[T.L16+.04,.55],[T.L16+.89,0]];
+const ARMC=new Map();
+function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
+function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
+  for(const [a,b] of [[T.L10,T.L10+1.2],[T.w2000,T.w2000+1.03]]){const v=on(a,b);if(v>o){o=v;m='!';}}
+  for(const [a,b] of [[T.C3-.2,T.L05-.23],[T.L09+.05,T.drum],[T.L07+.36,T.w6k-.1],[T.L12b+.2,T.wUse+.4]]){const v=on(a,b);if(v>o){o=v;m='?';}}
+  return [m,o];}
+function renderDori(t){
+  const fr=Math.min(TL.env.length-1,Math.max(0,Math.round(t*FPS)));
+  const env=Math.max(TL.env[fr],(TL.env[fr-1]||0)*.55);
+  const e=expr(t),[gx,gy]=gaze(t),[h,sq]=hop(t);
+  const talk=clamp(env*1.3-.05);const [mk,mo]=marks(t);
+  const sweat=clamp(P(t,T.san,.3))*(1-P(t,T.L12-.27,.3));
+  const spark=Math.max(clamp(P(t,T.wLeft,.2))*(1-P(t,T.wLeft+1.2,.3)),clamp(P(t,T.L14b,.2))*(1-P(t,T.L14b+1.27,.3)),clamp(P(t,T.L16+.04,.2)));
+  const wv=A('L16',.4); let armR=arm(ARMR,t); if(t>wv) armR+=Math.sin((t-wv)*10)*.1*clamp(P(t,wv,.3));
+  const tilt=1.8*Math.sin(t*.8)+.9*Math.sin(t*2.1+.5)-e.think*7+e.sad*-3+e.surprise*Math.sin(t*22)*1.2*(1-P(t,T.L10,1));
+  Dori.draw({t,happy:e.happy,squint:e.squint,surprise:e.surprise,sad:e.sad,open:talk,blink:blink(t),gx:gx+e.think*.5,gy:gy-e.think*.7,
+    pouch:e.pouch,armL:arm(ARML,t),armR,earL:-flick(t,'L')*14-e.sad*14+e.surprise*6,earR:-flick(t,'R')*14-e.sad*14+e.surprise*6,
+    hop:h,squash:sq,breath:Math.sin(t*2*Math.PI*.3),tilt,sweat,sweatY:(t%1.2)*10,mark:mk,markO:mo,markY:Math.sin(t*6)*4,spark});
+  const ent=P(t,0,.7),x=lerp(-380,0,eOut(ent)),jy=ent<1?Math.abs(Math.sin(ent*Math.PI*2))*55*(1-ent):0;
+  $('dori').style.transform=`translate(${x}px,${-jy}px)`;
+  let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
+  const bb=$('bub');
+  if(ln){if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
+    bb.style.opacity=clamp(a*4)*(1-o);bb.style.transform=`translate(${x}px,-50%) scale(${(a<=0?.7:.7+.3*eBack(a))*(1-.08*o)})`;}
+  else bb.style.opacity=0;
+}
+
+function render(t){
+  gT=t;
+  [['b1',-300,-260,980,'#D5F1E7'],['b2',640,460,820,'#FFE7C2'],['b3',-200,1240,860,'#FFE3D6'],['b4',760,1300,420,'#D5F1E7']].forEach(([id,x,y,s,c],i)=>{const el=$(id);
+    el.style.width=s+'px';el.style.height=s+'px';el.style.left=(x+Math.sin(t*.16+i*2)*46)+'px';el.style.top=(y+Math.cos(t*.12+i)*36)+'px';el.style.background=`radial-gradient(circle, ${c} 0%, ${c}00 68%)`;});
+  $('progf').style.width=(clamp(t/DUR)*100)+'%';
+  fx('hdr',t,0,.5,null,0,14); fx('prog',t,0,.5,null,0,0);
+
+  // 1 훅
+  sv('s1',0,T.s2+.4); const o1=T.s2-.1;
+  document.querySelectorAll('#t1 span').forEach((el,i)=>fx(el,t,[.2,.8,1.4][i],.45,o1,.4,46));
+  fx('mk1',t,2.1,.5,o1,.4,0,-20); const mp=$('mk1').querySelector('path'); mp.style.strokeDasharray='400'; mp.style.strokeDashoffset=400*(1-eOut(P(t,2.1,.5)));
+  const gk=P(t,.5,.6), gb=eIO(P(t,o1,.4)); $('pod1').style.opacity=clamp(gk*3)*(1-gb);
+  $('pod1').style.transform=`translateY(${-gb*30}px) scale(${gk<=0?.6:.6+.4*eBack(gk)}) rotate(${Math.sin(t*1.3)*3}deg)`;
+  pop('first1',t,T.L02,o1,.4,-3,.5); fx('c1',t,T.L02+.25,.45,o1,.4,40); fx('src1',t,T.L02+.5,.4,o1,.4,20);
+  { const v1=document.querySelector('#c1 .v b'); const k=P(t,T.wPep+.4,.5); v1.style.display='inline-block'; v1.style.transform=`scale(${k<=0||k>=1?1:1+.1*Math.sin(k*Math.PI)})`; }
+
+  // 2 보기
+  sv('s2',T.s2,T.s3+.3); const o2=T.s3-.1;
+  fx('t2',t,T.s2+.05,.45,o2,.35,40); fx('t2s',t,T.s2+.2,.45,o2,.35,30);
+  [['oA',T.cA,-1.2],['oB',T.cB,.9],['oC',T.cC,-.6]].forEach(([id,s,r])=>{const el=$(id);const k=P(t,s-.05,.5),b=eIO(P(t,o2,.35));
+    el.style.opacity=clamp(k*3)*(1-b);el.style.transform=`translateY(${(1-eOut(k))*-30-b*30}px) rotate(${r}deg) scale(${k<=0?.85:.85+.15*eBack(k)})`;});
+  pop('pickAsk',t,T.L03b,o2,.35,-2,.6);
+  pop('ring',t,T.C3-.3,T.L05+.6,.3,0,.5);
+  const cd=t<T.C2?3:t<T.C1?2:1; $('ringN').textContent=cd;
+  const pie=clamp((t-T.C3)/(T.C1+.66-T.C3)); $('ringPie').style.background=`conic-gradient(var(--mint) ${pie*360}deg, #E9F5F0 0deg)`;
+  const tk=[T.C3,T.C2,T.C1].reduce((m,s)=>Math.max(m,t>=s&&t<s+.5?1-(t-s)*2:0),0); $('ringN').style.transform=`scale(${1+.16*tk})`;
+  const pk=eOut(P(t,T.pick,.65)), pb=eIO(P(t,o2,.35));
+  $('pickC').style.opacity=(pk>0?1:0)*(1-pb); $('pickP').style.strokeDasharray=pkLen; $('pickP').style.strokeDashoffset=pkLen*(1-pk);
+  pop('pickL',t,T.pick+.4,o2,.35,-8);
+
+  // 3 힌트 1: 선 그래프
+  sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1, b3=1-eIO(P(t,o3,.35));
+  fx('k3',t,T.s3+.05,.4,o3,.35,30,0,-4); fx('tt3',t,T.s3+.15,.45,o3,.35,30); fx('u3',t,T.s3+.25,.45,o3,.35,20); fx('c3',t,T.s3+.2,.5,o3,.35,40);
+  { const lk=eIO(P(t,T.L06+.1,1.6)); $('ch3').style.opacity=clamp(P(t,T.s3+.3,.3))*b3;
+    $('ln3').style.strokeDasharray=ln3L; $('ln3').style.strokeDashoffset=ln3L*(1-lk);
+    const uk=eOut(P(t,T.wUp-.1,.6)); $('up3p').style.strokeDasharray=up3L; $('up3p').style.strokeDashoffset=up3L*(1-uk); $('up3p').style.opacity=uk>0?1:0;
+    const pkx=P(t,T.L06+.1+1.6*.62,.3), lox=P(t,T.L06+.1+1.6*.86,.3);
+    $('pkd3').style.opacity=clamp(pkx*3); $('lod3').style.opacity=clamp(lox*3);
+    $('yl3').style.opacity=clamp(P(t,T.s3+.4,.4))*b3; }
+  fx('pk3',t,T.L06+.1+1.6*.62,.4,o3,.35,0,-20); fx('lo3',t,T.L06+.1+1.6*.86,.4,o3,.35,20);
+  pop('q3b',t,T.wUp+.5,o3,.35,8,.4);
+
+  // 4 힌트 2
+  sv('s4',T.s4,T.s5+.3); const o4=T.s5-.1;
+  fx('k4',t,T.s4+.05,.4,o4,.35,30,0,-4); fx('tt4',t,T.s4+.15,.45,o4,.35,30); fx('u4',t,T.s4+.25,.45,o4,.35,20); fx('c4',t,T.s4+.2,.5,o4,.35,40);
+  { const ybs=document.querySelectorAll('#c4 .yb'); fx(ybs[0],t,T.wMan-.15,.4,null,0,24); fx(ybs[1],t,T.w6k-.15,.4,null,0,24);
+    const ar=document.querySelector('#c4 .ar'); const k=P(t,T.w6k-.3,.45); ar.style.opacity=clamp(k*3); ar.style.transform=`translateX(${(1-eOut(k))*-30}px)`; }
+  fx('calc4',t,A('L07',1)+.3,.45,o4,.35,24);
+
+  // 5 정답
+  sv('s5',T.s5,T.s6+.3); const o5=T.s6-.1;
+  fx('r5a',t,T.s5+.05,.4,o5,.35,30);
+  const dn=t<T.L10?Math.floor((t-T.s5)*3)%4:3; $('dots5').textContent='.'.repeat(Math.max(0,dn));
+  const s5=P(t,T.L10,.45), r5=$('r5b'); r5.style.opacity=clamp(s5*5)*(1-eIO(P(t,o5,.35)));
+  r5.style.transform=`scale(${s5<=0?1.5:1.5-.5*eOut(s5)}) rotate(${(1-eOut(s5))*-4}deg)`;
+  pop('st5',t,T.L10+.3,o5,.35,-12,1.8);
+  fx('c5',t,T.L11-.25,.5,o5,.35,40); fx('u5',t,T.L11-.15,.4,o5,.35,20);
+  [['b5a',10710,T.L11-.15],['b5b',3241,T.L11+.1],['b5c',5919,T.wHalf-.1]].forEach(([id,v,s])=>{const el=$(id);fx(el,t,s,.4,o5,.35,0,-40);
+    const g=spring(P(t,s+.1,.9)), w=560*v/10710*clamp(g,0,1.08);
+    el.querySelector('.bar').style.width=Math.max(0,w)+'px'; el.querySelector('.val').style.left=(w+20)+'px'; el.querySelector('.val').style.opacity=clamp((P(t,s+.1,.9)-.35)*2);});
+  pop('ak5',t,T.wHalf+.35,o5,.35,0,.5);
+  pop('pk5',t,T.san,o5,.35,0,.5);
+  const cdT=t-T.L10;
+  CONF.forEach(c=>{if(cdT<0||cdT>2.2){c.d.style.opacity=0;return;}const x=c.x0+c.vx*cdT*.55,y=c.y0+c.vy*cdT*.55+1100*cdT*cdT;c.d.style.opacity=1-clamp((cdT-1.6)/.6);c.d.style.transform=`translate(${x}px,${y}px) rotate(${c.rs*cdT}deg)`;});
+
+  // 6 반전 1: 왜 내렸을까
+  sv('s6',T.s6,T.s7+.3); const o6=T.s7-.1;
+  fx('t6',t,T.s6+.05,.45,o6,.35,40); fx('u6',t,T.s6+.2,.4,o6,.35,20);
+  fx('w6a',t,T.L12+.15,.5,o6,.35,40); fx('w6b',t,T.L12b-.1,.5,o6,.35,40);
+  { const va=document.querySelector('#w6a .v'), vb=document.querySelector('#w6b .v');
+    const ka=P(t,T.wProd,.5), kb=P(t,T.wUse,.5); va.style.transform=`scale(${ka<=0||ka>=1?1:1+.12*Math.sin(ka*Math.PI)})`; vb.style.transform=`scale(${kb<=0||kb>=1?1:1+.12*Math.sin(kb*Math.PI)})`; }
+  fx('left6',t,T.L12c-.2,.5,o6,.35,40);
+  { const sc=$('sc6'); const k=P(t,T.wLeft-.2,.8); sc.style.transform=`rotate(${(1-spring(k))*10}deg)`; sc.style.transformOrigin='50% 20%'; }
+
+  // 7 반전 2: 빼빼로 값
+  sv('s7',T.s7,T.s8+.3); const o7=T.s8-.1;
+  fx('t7',t,T.s7+.05,.45,o7,.35,40); fx('u7',t,T.s7+.2,.4,o7,.35,20); fx('c7',t,T.s7+.2,.5,o7,.35,40);
+  fx('p7a',t,T.s7+.35,.4,o7,.35,30); fx('a7a',t,T.s7+.55,.35,o7,.35,0,-20); fx('p7b',t,T.s7+.7,.4,o7,.35,30); fx('a7b',t,T.s7+.9,.35,o7,.35,0,-20);
+  pop('p7c',t,T.w2000-.15,o7,.35,0,.6); pop('same7',t,T.w2000+.45,o7,.35,-4,.5);
+  fx('raw7',t,T.L13b-.2,.5,o7,.35,40); { const k=eOut(P(t,T.wRaw+.6,.5)); $('still7').style.opacity=k; $('still7').style.transform=`translateY(${(1-k)*16}px)`; }
+
+  // 8 결론
+  sv('s8',T.s8,T.s9+.3); const o8=T.s9-.1;
+  fx('c8',t,T.s8+.05,.5,o8,.35,50);
+  { const bx=document.querySelectorAll('#c8 .bx'); pop(bx[0],t,T.L14+.25,null,0,0,.8); pop(bx[1],t,T.wSame8-.2,null,0,0,.8); }
+  const sk=P(t,T.stamp-.12,.3), sb=eIO(P(t,o8,.35)); $('stamp8').style.opacity=clamp(sk*5)*(1-sb);
+  $('stamp8').style.transform=`rotate(-10deg) scale(${sk<=0?2.2:2.2-1.2*eOut(sk)})`;
+
+  // 9 마무리
+  sv('s9',T.s9,99);
+  fx('e1',t,T.s9+.05,.5,null,0,50);
+  document.querySelectorAll('#snk9 .sn').forEach((el,i)=>{const k=P(t,T.L15+.3+i*.18,.45);el.style.opacity=clamp(k*3);el.style.transform=`translateY(${(1-eOut(k))*40+Math.sin(t*2.4+i)*4}px) rotate(${Math.sin(t*1.7+i*1.3)*3}deg)`;});
+  pop('cta9',t,T.L15b-.05,T.L16+.2,.3,-2,.6);
+  const fk=P(t,T.L16-.45,.55), fl=$('fly');
+  if(fk>0&&fk<1){const x=lerp(470,230,eIO(fk)),y=lerp(700,1220,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L16-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.5})`;}
+  else fl.style.opacity=0;
+
+  renderDori(t);
+}
+window.render=render;
+document.fonts.ready.then(()=>{render(0);setTimeout(()=>{document.fonts.ready.then(()=>{render(0);window.__ready=true;});},300);});
+</script>
+</body>
+</html>
