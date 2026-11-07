@@ -34,8 +34,11 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #hdr .ai{color:#8A7A6D;font-weight:700;font-size:23px;border-style:dashed}
 #prog{left:72px;top:226px;width:840px;height:6px;border-radius:3px;background:#F0E2D6;overflow:hidden}
 #progf{height:100%;width:0;background:var(--mint);border-radius:3px}
-.card{position:absolute;background:#fff;border-radius:40px;box-shadow:0 20px 44px rgba(120,80,40,.12);border:2px solid #F3E6DA}
-.ttl{position:absolute;font-family:Jua;font-weight:400;color:var(--ink);line-height:1.18}
+/* 2026-11-07 화면 그림 — 붙인 느낌 없이(공통 지침 14절): 카드도 도리 그림체(외곽선 + 아래로 떨어지는 단색 그림자), 소품은 접시·무대 위에 */
+.card{position:absolute;background:linear-gradient(180deg,#FFFFFF 0%,#FFFAF3 100%);border-radius:36px;border:5px solid #4A3A33;box-shadow:0 12px 0 rgba(74,58,51,.16),0 22px 34px rgba(120,70,40,.10)}
+.plate{width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#FFFFFF 0%,#F6EDE2 70%,#EADDCF 100%);border:4px solid #4A3A33;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none;box-shadow:inset 0 -6px 0 rgba(74,58,51,.08)}
+#stage>.scene,#stage>.abs,#stage>#hdr,#stage>#prog{z-index:2}
+.ttl{position:absolute;font-family:Jua;font-weight:400;color:var(--ink);line-height:1.18;-webkit-text-stroke:12px #FFF8F0;paint-order:stroke fill}
 .unit{position:absolute;font-size:27px;font-weight:600;color:var(--sub)}
 .src{position:absolute;display:flex;align-items:center;gap:8px;font-size:24px;font-weight:700;color:#8A7A6D;background:#FBF3EA;border-radius:999px;padding:6px 16px;white-space:nowrap}
 .src:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--mint)}
@@ -201,6 +204,8 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #e3 .v{margin-top:12px;font-family:Jua;font-size:50px}
 #fly{left:0;top:0;width:60px;height:120px}
 #dori{left:0;top:1004px;width:480px;height:498px}
+#dsh{left:60px;top:1466px;width:360px;height:44px}
+#deco{left:740px;top:1338px;width:340px;height:180px}
 #bub{left:448px;top:1196px;max-width:472px;background:#fff;border-radius:34px;padding:24px 32px;font-family:Jua;font-size:40px;line-height:1.34;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;transform-origin:0 50%}
 #bub:before{content:"";position:absolute;left:-18px;top:50%;margin-top:-15px;border-width:15px 22px 15px 0;border-style:solid;border-color:transparent #fff transparent transparent}
 #pre{position:absolute;left:-5000px;top:0;font-family:Jua}
@@ -208,7 +213,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 </head>
 <body>
 <div id="stage">
-  <div class="dot" id="b1"></div><div class="dot" id="b2"></div><div class="dot" id="b3"></div><div class="dot" id="b4"></div>
+  <div class="dot" id="b1" style="display:none"></div><div class="dot" id="b2" style="display:none"></div><div class="dot" id="b3" style="display:none"></div><div class="dot" id="b4" style="display:none"></div>
   <div class="abs" id="hdr">
     <div class="pill brand"><span id="hdrDori"></span>도리의 정보주머니</div>
     <div class="pill"><i style="background:#5B8CFF"></i>숫자 검산</div>
@@ -282,6 +287,8 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 
   <div id="conf" class="abs"></div>
   <div class="abs" id="fly"></div>
+  <div class="abs" id="deco"></div>   <!-- 탁자 위 주제 소품(편마다) -->
+  <div class="abs" id="dsh"></div>
   <div class="abs" id="dori"></div>
   <div class="abs" id="bub"><span id="bubT"></span></div>
   <div id="pre"></div>
@@ -290,8 +297,12 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 <script src="timeline.js"></script>
 <script src="dori_outfits.js"></script>
 <script src="dori.js"></script>
+<script src="scenekit.js"></script>
 <script src="money.js"></script>
 <script>
+// 무대(공통 지침 14절): 주제에 맞게 고른다 — 시장·장보기 {awning:true,table:'gingham'} · 그 밖 {table:'wood'}. 탁자 위 소품은 #deco 에(예: EP.13 김치통·배추).
+const STAGE={awning:false,table:'wood',tableTop:1468};
+SK.stage(document.getElementById('stage'),STAGE);
 const T=TL.T, FPS=30, DUR=T.END;
 const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const P=(t,s,d)=>clamp((t-s)/d);
@@ -398,6 +409,8 @@ function renderDori(t){
     hop:h,squash:sq,breath:Math.sin(t*2*Math.PI*.3),tilt,sweat,sweatY:(t%1.2)*10,mark:mk,markO:mo,markY:Math.sin(t*6)*4,spark});
   const ent=P(t,0,.7),x=lerp(-380,0,eOut(ent)),jy=ent<1?Math.abs(Math.sin(ent*Math.PI*2))*55*(1-ent):0;
   $('dori').style.transform=`translate(${x}px,${-jy}px)`;
+  if(!$('dsh').innerHTML) $('dsh').innerHTML=SK.ground(360,1);
+  $('dsh').style.transform=`translate(${x}px,0) scale(${1-Math.min(.45,(h+jy)/180)})`; $('dsh').style.opacity=clamp(ent*2);   // 도리 바닥 그림자
   let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
   const bb=$('bub');
   if(ln){if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
