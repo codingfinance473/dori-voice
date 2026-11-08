@@ -123,6 +123,10 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
   <linearGradient id="gLotion" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFE6EC"/><stop offset=".55" stop-color="#F8B9C8"/><stop offset="1" stop-color="#E58BA2"/></linearGradient>
   <radialGradient id="gCoin" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#FFF1B8"/><stop offset=".5" stop-color="#F4C64E"/><stop offset="1" stop-color="#C98F1E"/></radialGradient>
   <linearGradient id="gHang" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D9A56C"/><stop offset="1" stop-color="#A9743F"/></linearGradient>
+  <linearGradient id="gFront" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3C489"/><stop offset=".6" stop-color="#E3A964"/><stop offset="1" stop-color="#D0914F"/></linearGradient>
+  <linearGradient id="gSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C98A4E"/><stop offset="1" stop-color="#B07338"/></linearGradient>
+  <linearGradient id="gTop" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9D7A5"/><stop offset="1" stop-color="#EBBB80"/></linearGradient>
+  <radialGradient id="gSh2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
 </defs></svg>
 <div id="stage">
   <div class="abs" id="hdr">
@@ -249,18 +253,29 @@ document.querySelectorAll('.fb').forEach(e=>{const s=+e.dataset.s;e.style.width=
 
 // ---------- 소품(상표 없음, 빛은 왼쪽 위, 외곽선 #4A3A33) ----------
 const K='#4A3A33';
-// 택배 상자 — 테이프·송장·비행기 스티커(나라 국기 스티커는 선택)
-const PARCEL=(w,fl)=>`<svg viewBox="0 0 260 300" width="${w}" height="${w*300/260}">
-  <path d="M30 96 L130 64 L232 96 L132 128 Z" fill="url(#gBoxTop)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M30 96 L132 128 L132 280 L30 246 Z" fill="url(#gBox)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M132 128 L232 96 L232 244 L132 280 Z" fill="#C98A4E" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M78 80 L180 112 L180 132 L78 100 Z" fill="#FBE7C2" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>
-  <path d="M160 128 L190 118 L190 268 L160 278 Z" fill="#F4D7A4" opacity=".85"/>
-  <path d="M46 150 L112 171 L112 214 L46 193 Z" fill="#FFFFFF" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>
-  <path d="M58 172 L100 185 M58 186 L90 196" stroke="#B9A99A" stroke-width="5" stroke-linecap="round"/>
-  <g transform="translate(196 176) rotate(-17)"><circle r="24" fill="#5B8CFF" stroke="${K}" stroke-width="4"/><path d="M-13 3 L13 -3 L9 -9 L5 -8 L0 -2 L-7 -1 L-10 -6 L-13 -5 L-11 2 Z M-2 0 L2 9 L6 8 L4 -1 Z" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></g>
-  ${fl?`<g transform="translate(74 232) rotate(16)"><rect x="-26" y="-18" width="52" height="36" rx="6" fill="#fff" stroke="${K}" stroke-width="4"/><g transform="translate(-20 -13) scale(1.35)"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/></g><rect x="-26" y="-18" width="52" height="36" rx="6" fill="none" stroke="${K}" stroke-width="4"/></g>`:''}
-  <path d="M40 104 L120 130" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+function flagIn(f){
+  if(f==='us'){let b='';for(let i=0;i<13;i++)b+=`<rect y="${(i*20/13).toFixed(3)}" width="30" height="${(20/13+.03).toFixed(3)}" fill="${i%2?'#fff':'#C8283C'}"/>`;b+=`<rect width="13" height="10.8" fill="#2E3A7A"/>`;for(let r=0;r<4;r++)for(let c=0;c<5;c++)b+=`<circle cx="${1.5+c*2.5}" cy="${1.4+r*2.6}" r=".55" fill="#fff"/>`;return b;}
+  if(f==='jp')return `<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/>`;
+  if(f==='cn')return `<rect width="30" height="20" fill="#E3242B"/><path d="${star(8,7,3.2)}" fill="#FFD84A"/>`+[[13,3.5],[15,6],[15,9],[13,11.5]].map(([x,y])=>`<path d="${star(x,y,1.1)}" fill="#FFD84A"/>`).join('');
+  return '';}
+// 택배 상자(2026-11-08 사용자 "박스가 좀 이상해" → 시안 A+ 선택): 정면 + 윗면 + 옆면(비스듬 투영), 테이프는 평평하게, 비행기 실루엣 스티커, 국기 스티커는 fl('cn'|'us'|'jp')일 때만
+const PLANE=(cx,cy,r,rot=-35)=>`<g transform="translate(${cx} ${cy}) rotate(${rot})"><circle r="${r}" fill="#5B8CFF" stroke="${K}" stroke-width="4"/>
+  <g transform="scale(${r/24})" fill="#fff"><rect x="-2.6" y="-15" width="5.2" height="28" rx="2.6"/><path d="M-2 -3 L-15 4 L-15 7 L-2 3 Z M2 -3 L15 4 L15 7 L2 3 Z"/><path d="M-1.5 9 L-7 13 L-7 15 L-1.5 13 Z M1.5 9 L7 13 L7 15 L1.5 13 Z"/></g></g>`;
+const PARCEL=(w,fl)=>`<svg viewBox="0 0 270 300" width="${w}" height="${w*300/270}" style="overflow:visible">
+  <ellipse cx="138" cy="276" rx="128" ry="16" fill="url(#gSh2)"/>
+  <path d="M30 110 L82 72 L242 72 L190 110 Z" fill="url(#gTop)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M190 110 L242 72 L242 232 L190 270 Z" fill="url(#gSide)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="30" y="110" width="160" height="160" rx="4" fill="url(#gFront)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M56 91 L216 91" stroke="${K}" stroke-width="3.5" stroke-linecap="round" opacity=".45"/>
+  <path d="M95 110 L147 72 L167 72 L115 110 Z" fill="#FBE7C2" opacity=".95"/>
+  <path d="M95 110 L147 72 M115 110 L167 72" stroke="${K}" stroke-width="3" opacity=".35"/>
+  <rect x="95" y="110" width="20" height="44" fill="#FBE7C2" opacity=".95"/>
+  <path d="M95 154 L115 154" stroke="${K}" stroke-width="3" opacity=".35"/>
+  <rect x="44" y="186" width="80" height="58" rx="7" fill="#FFFFFF" stroke="${K}" stroke-width="4"/>
+  <path d="M56 204 H110 M56 220 H96" stroke="#B9A99A" stroke-width="5" stroke-linecap="round"/>
+  ${fl?`<g transform="translate(132 126)"><rect width="46" height="32" rx="5" fill="#fff" stroke="${K}" stroke-width="4"/><g transform="translate(4 4) scale(1.27 1.2)">${flagIn(fl)}</g><rect width="46" height="32" rx="5" fill="none" stroke="${K}" stroke-width="4"/></g>`:''}
+  ${PLANE(160,226,20)}
+  <path d="M40 124 L40 250" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".35"/>
 </svg>`;
 // 옷걸이에 걸린 티셔츠
 const SHIRT=w=>`<svg viewBox="0 0 240 230" width="${w}" height="${w*230/240}">
@@ -292,10 +307,10 @@ const COIN=(w,txt)=>`<svg viewBox="0 0 140 140" width="${w}" height="${w}">
   <path d="M34 44 C42 30 56 22 72 20" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7"/>
 </svg>`;
 $('box1').innerHTML=PARCEL(260,false); $('box1g').innerHTML=SK.ground(280,1);
-$('box5').innerHTML=PARCEL(280,true); $('box5g').innerHTML=SK.ground(280,1);
+$('box5').innerHTML=PARCEL(280,'jp'); $('box5g').innerHTML=SK.ground(280,1);
 $('shirt').innerHTML=SHIRT(230); $('lotion').innerHTML=LOTION(132);
 $('coin0').insertAdjacentHTML('afterbegin',COIN(132,'위안')); $('coin1').insertAdjacentHTML('afterbegin',COIN(132,'달러')); $('coin2').insertAdjacentHTML('afterbegin',COIN(132,'엔'));
-$('deco').innerHTML=`<div style="position:absolute;left:10px;top:118px">${SK.ground(250,1)}</div><div style="position:absolute;left:0;top:10px">${PARCEL(130,false)}</div><div style="position:absolute;left:112px;top:46px">${PARCEL(110,true)}</div>`;
+$('deco').innerHTML=`<div style="position:absolute;left:10px;top:118px">${SK.ground(250,1)}</div><div style="position:absolute;left:0;top:10px">${PARCEL(130,false)}</div><div style="position:absolute;left:112px;top:46px">${PARCEL(110,'jp')}</div>`;
 $('fly').innerHTML=COIN(70,'원');
 $('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
 
@@ -385,7 +400,7 @@ function render(t){
   sv('s1',0,T.s2+.4); const o1=T.s2-.1;
   document.querySelectorAll('#t1 span').forEach((el,i)=>fx(el,t,[.15,.6,T.wQ-.25][i],.45,o1,.4,46));
   const gk=P(t,.2,.6), gb=eIO(P(t,o1,.4)); $('box1').style.opacity=clamp(gk*3)*(1-gb); $('box1g').style.opacity=clamp(gk*3)*(1-gb);
-  $('box1').style.transform=`translateY(${-gb*30}px) scale(${gk<=0?.6:.6+.4*eBack(gk)}) rotate(${Math.sin(t*1.1)*2.5}deg)`;
+  $('box1').style.transform=`translateY(${-gb*30+Math.sin(t*1.6)*4}px) scale(${gk<=0?.6:.6+.4*eBack(gk)})`;
   pop('first1',t,.9,o1,.4,-2,.5); fx('c1',t,A('L01',.55),.45,o1,.4,40);
 
   // 2 매년 3분기
@@ -420,7 +435,7 @@ function render(t){
   sv('s5',T.s5,T.s6+.3); const o5=T.s6-.1;
   fx('t5',t,T.s5+.05,.45,o5,.35,30); fx('u5',t,T.s5+.2,.45,o5,.35,20); fx('c5',t,T.s5+.1,.5,o5,.35,40);
   const bk=P(t,T.s5+.2,.6), bo=eIO(P(t,o5,.35)); $('box5').style.opacity=clamp(bk*3)*(1-bo); $('box5g').style.opacity=clamp(bk*3)*(1-bo);
-  $('box5').style.transform=`scale(${bk<=0?.6:.6+.4*eBack(bk)}) rotate(${Math.sin(t*1.2)*2.5}deg) translateY(${-Math.abs(Math.sin(clamp(P(t,T.wJP,.5))*Math.PI))*26}px)`;
+  $('box5').style.transform=`scale(${bk<=0?.6:.6+.4*eBack(bk)}) translateY(${-Math.abs(Math.sin(clamp(P(t,T.wJP,.5))*Math.PI))*26}px)`;
   J.forEach(([y,v],i)=>{const s0=i?T.wJP-.3:T.L09+.3, g=spring(P(t,s0,.85)), b=eIO(P(t,o5,.35)), h=JH(v)*clamp(g,0,1.06), el=$('jb'+i);
     el.style.height=Math.max(0,h)+'px'; el.style.top=(JB-h)+'px'; el.style.opacity=(t>=s0?1:0)*(1-b);
     const jv=$('jv'+i); jv.style.top=(JB-h-56)+'px'; jv.style.opacity=clamp((P(t,s0,.85)-.35)*2)*(1-b);

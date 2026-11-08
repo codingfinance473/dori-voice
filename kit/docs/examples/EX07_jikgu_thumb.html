@@ -25,6 +25,10 @@ body{background:var(--cream);font-family:P,sans-serif;color:var(--ink);word-brea
   <linearGradient id="gBox" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6CF9A"/><stop offset=".55" stop-color="#E2A869"/><stop offset="1" stop-color="#B97A40"/></linearGradient>
   <linearGradient id="gBoxTop" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FBDDB0"/><stop offset="1" stop-color="#E5B47A"/></linearGradient>
   <radialGradient id="gSh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".34"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gFront" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3C489"/><stop offset=".6" stop-color="#E3A964"/><stop offset="1" stop-color="#D0914F"/></linearGradient>
+  <linearGradient id="gSide" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C98A4E"/><stop offset="1" stop-color="#B07338"/></linearGradient>
+  <linearGradient id="gTop" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9D7A5"/><stop offset="1" stop-color="#EBBB80"/></linearGradient>
+  <radialGradient id="gSh2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
 </defs></svg>
 <div id="root"></div>
 <script src="dori_outfits.js"></script>
@@ -39,18 +43,24 @@ function flagIn(f){
   if(f==='jp')return `<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/>`;
   if(f==='cn')return `<rect width="30" height="20" fill="#E3242B"/><path d="${star(8,7,3.2)}" fill="#FFD84A"/>`+[[13,3.5],[15,6],[15,9],[13,11.5]].map(([x,y])=>`<path d="${star(x,y,1.1)}" fill="#FFD84A"/>`).join('');
   return '';}
-// 해외 택배 상자(상표 없음) — 테이프·송장·비행기 스티커·국기 스티커, 꼬리표 "?%"
-const PARCEL=(w,fl,rot=0)=>`<svg viewBox="0 0 260 300" width="${w}" height="${w*300/260}" style="overflow:visible">
-  <ellipse cx="132" cy="284" rx="124" ry="18" fill="url(#gSh)"/>
-  <path d="M30 96 L130 64 L232 96 L132 128 Z" fill="url(#gBoxTop)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M30 96 L132 128 L132 280 L30 246 Z" fill="url(#gBox)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M132 128 L232 96 L232 244 L132 280 Z" fill="#C98A4E" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M78 80 L180 112 L180 132 L78 100 Z" fill="#FBE7C2" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>
-  <path d="M160 128 L190 118 L190 268 L160 278 Z" fill="#F4D7A4" opacity=".85"/>
-  <path d="M44 146 L114 168 L114 212 L44 190 Z" fill="#fff" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>
-  <g transform="matrix(1.95 .61 0 1.95 50 151)">${flagIn(fl)}<rect width="30" height="20" fill="none" stroke="${K}" stroke-width="1.6"/></g>
-  <g transform="translate(200 182) rotate(-17)"><circle r="24" fill="#5B8CFF" stroke="${K}" stroke-width="4"/><path d="M-13 3 L13 -3 L9 -9 L5 -8 L0 -2 L-7 -1 L-10 -6 L-13 -5 L-11 2 Z M-2 0 L2 9 L6 8 L4 -1 Z" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></g>
-  <path d="M40 104 L120 130" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+// 택배 상자(2026-11-08 사용자 "박스가 좀 이상해" → 시안 A+ 선택): 정면 + 윗면 + 옆면(비스듬 투영), 테이프는 평평하게, 비행기 실루엣 스티커, 국기 스티커는 fl('cn'|'us'|'jp')일 때만
+const PLANE=(cx,cy,r,rot=-35)=>`<g transform="translate(${cx} ${cy}) rotate(${rot})"><circle r="${r}" fill="#5B8CFF" stroke="${K}" stroke-width="4"/>
+  <g transform="scale(${r/24})" fill="#fff"><rect x="-2.6" y="-15" width="5.2" height="28" rx="2.6"/><path d="M-2 -3 L-15 4 L-15 7 L-2 3 Z M2 -3 L15 4 L15 7 L2 3 Z"/><path d="M-1.5 9 L-7 13 L-7 15 L-1.5 13 Z M1.5 9 L7 13 L7 15 L1.5 13 Z"/></g></g>`;
+const PARCEL=(w,fl)=>`<svg viewBox="0 0 270 300" width="${w}" height="${w*300/270}" style="overflow:visible">
+  <ellipse cx="138" cy="276" rx="128" ry="16" fill="url(#gSh2)"/>
+  <path d="M30 110 L82 72 L242 72 L190 110 Z" fill="url(#gTop)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M190 110 L242 72 L242 232 L190 270 Z" fill="url(#gSide)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="30" y="110" width="160" height="160" rx="4" fill="url(#gFront)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M56 91 L216 91" stroke="${K}" stroke-width="3.5" stroke-linecap="round" opacity=".45"/>
+  <path d="M95 110 L147 72 L167 72 L115 110 Z" fill="#FBE7C2" opacity=".95"/>
+  <path d="M95 110 L147 72 M115 110 L167 72" stroke="${K}" stroke-width="3" opacity=".35"/>
+  <rect x="95" y="110" width="20" height="44" fill="#FBE7C2" opacity=".95"/>
+  <path d="M95 154 L115 154" stroke="${K}" stroke-width="3" opacity=".35"/>
+  <rect x="44" y="186" width="80" height="58" rx="7" fill="#FFFFFF" stroke="${K}" stroke-width="4"/>
+  <path d="M56 204 H110 M56 220 H96" stroke="#B9A99A" stroke-width="5" stroke-linecap="round"/>
+  ${fl?`<g transform="translate(132 126)"><rect width="46" height="32" rx="5" fill="#fff" stroke="${K}" stroke-width="4"/><g transform="translate(4 4) scale(1.27 1.2)">${flagIn(fl)}</g><rect width="46" height="32" rx="5" fill="none" stroke="${K}" stroke-width="4"/></g>`:''}
+  ${PLANE(160,226,20)}
+  <path d="M40 124 L40 250" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".35"/>
 </svg>`;
 // 꼬리표 — 셋 모두 같은 "?%"
 const TAG=(rot)=>`<svg viewBox="-70 -110 140 190" width="140" height="190" style="overflow:visible;transform:rotate(${rot}deg)">
@@ -78,17 +88,18 @@ add(`<svg class="abs" style="left:0;top:0" width="1080" height="420" viewBox="0 
   <g transform="translate(980 112) rotate(-12)"><path d="M-46 4 L40 -6 C52 -7 60 -2 60 4 C60 10 52 14 40 13 L-46 12 Z" fill="#fff" stroke="${K}" stroke-width="5"/><path d="M0 0 L-24 -40 L-10 -40 L22 -2 Z M0 10 L-22 46 L-8 46 L22 12 Z" fill="#DCE4EC" stroke="${K}" stroke-width="5" stroke-linejoin="round"/><path d="M-44 4 L-58 -22 L-46 -22 L-30 2 Z" fill="#2E9C83" stroke="${K}" stroke-width="4" stroke-linejoin="round"/></g></svg>`);
 blobs([[-280,520,860,'#FFE7D6'],[600,540,700,'#FFF0C8'],[-200,980,640,'#E2F4EC']]);
 // 바닥 — 나무 마루 + 현관 매트
-add(`<div class="abs" style="left:0;top:1250px;width:1080px;height:670px;background:
+add(`<div class="abs" style="left:0;top:1100px;width:1080px;height:820px;background:
   repeating-linear-gradient(90deg,rgba(74,58,51,.10) 0 4px,transparent 4px 180px),
   linear-gradient(180deg,#E2B27C 0%,#C98E5C 100%);border-top:8px solid #4A3A33"></div>`);
-add(`<div class="abs" style="left:330px;top:1278px;width:660px;height:120px;border-radius:30px;background:repeating-linear-gradient(90deg,#5E8E7A 0 26px,#6FA08A 26px 52px);border:6px solid #4A3A33;transform:perspective(600px) rotateX(38deg);transform-origin:50% 0"></div>`);
+add(`<div class="abs" style="left:330px;top:1230px;width:660px;height:120px;border-radius:30px;background:repeating-linear-gradient(90deg,#5E8E7A 0 26px,#6FA08A 26px 52px);border:6px solid #4A3A33;transform:perspective(600px) rotateX(38deg);transform-origin:50% 0"></div>`);
 // 상자 셋(뒤 → 앞) + 꼬리표
-add(`<div class="abs" style="left:610px;top:800px;transform:rotate(4deg)">${PARCEL(320,'us')}</div>`);
-add(`<div class="abs" style="left:330px;top:850px;transform:rotate(-5deg)">${PARCEL(330,'cn')}</div>`);
-add(`<div class="abs" style="left:520px;top:1010px;transform:rotate(2deg)">${PARCEL(290,'jp')}</div>`);
-add(`<div class="abs" style="left:356px;top:796px">${TAG(-10)}</div>`);
-add(`<div class="abs" style="left:780px;top:748px">${TAG(8)}</div>`);
-add(`<div class="abs" style="left:520px;top:984px">${TAG(-4)}</div>`);
+// 상자 셋 — 반듯하게(기울이지 않음): 뒤 둘(중국·미국)은 나란히, 앞 하나(일본)는 가운데 아래. 스티커가 가려지지 않게. 꼬리표 셋 모두 "?%"
+add(`<div class="abs" style="left:300px;top:800px">${PARCEL(330,'cn')}</div>`);
+add(`<div class="abs" style="left:612px;top:800px">${PARCEL(330,'us')}</div>`);
+add(`<div class="abs" style="left:470px;top:1010px">${PARCEL(330,'jp')}</div>`);
+add(`<div class="abs" style="left:296px;top:812px">${TAG(-10)}</div>`);
+add(`<div class="abs" style="left:818px;top:800px">${TAG(8)}</div>`);
+add(`<div class="abs" style="left:708px;top:1066px">${TAG(6)}</div>`);
 // 제목 — 흰 테두리 스티커 글씨(질문, 답 없음)
 add(`<div class="abs title" style="left:92px;top:604px;font-size:118px;-webkit-text-stroke:16px #fff;paint-order:stroke fill;text-shadow:0 10px 0 rgba(62,47,37,.12)"><span class="hl">해외 직구</span>,<br><span style="color:#E2483A">정말 줄었을까?</span></div>`);
 // '블프 앞두고' 딱지 — 보조 영역
