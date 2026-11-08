@@ -52,7 +52,7 @@ def strum(ch, at, g, down=True):
         key = m
         if key not in pluck_cache: pluck_cache[key] = pluck(hz(m), .8)
         put(bed, pluck_cache[key], at + j * .012, g, pan=-.2 + j * .12)
-quiet = [(T["L13"] - .4, E["L13"] + .05), (T["L03"] - .2, E["L03"] + .05)]   # 정리 줄·L03(이조 원) 동안 새 음 쉬기
+quiet = [(T["L13"] - .4, E["L13"] + .05), (T["L03"] - .2, E["L03"] + .05), (T["L11"] - .2, E["L11"] + .05)]   # 정리 줄·L03(이조 원)·L11(엔화) 동안 새 음 쉬기
 def q(t): return any(a <= t < b for a, b in quiet)
 thin = [(T[i] - .15, E[i] + .1) for i in ("L01", "L03", "L04", "L05", "L06", "L07", "L08", "L09", "L11", "L12", "L13", "L15")]   # 숫자·핵심어 줄: 멜로디·박수·킥을 빼고 현·베이스만
 def th(t): return any(a <= t < b for a, b in thin)
@@ -118,7 +118,7 @@ duck = 1 - .45 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)  
 # 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
 NUM_LINES = ("L03", "L04", "L05", "L06", "L07", "L08", "L09", "L11", "L13", "L13b", "L15")   # 이 편의 숫자·정답 줄(편마다 고친다)
-WEAK = {"L03": .5, "L13": .6}                                                       # 예: {"L03": .5} — 완성 믹스에서 덜 들린 줄만
+WEAK = {"L03": .5, "L13": .6, "L11": .5}                                                       # 예: {"L03": .5} — 완성 믹스에서 덜 들린 줄만
 extra = np.ones(N)
 for l in TLL:
     if l["id"] in NUM_LINES:
