@@ -6,7 +6,7 @@
    3. 도리와 같은 그림체: 외곽선 #4A3A33 6~7px, 둥근 끝. 카드도 같은 외곽선 + 아래로 떨어지는 단색 그림자(스티커 느낌).
    4. 소품은 크게, 결·주름·무늬로 '사물'로 보이게(배추 잎맥, 무 잔뿌리, 대파 묶음 끈, 젓갈 새우 마디).
   쓰는 법: <script src="scenekit.js"></script> 뒤에 SK.defs(); SK.stage(document.getElementById('stage'), {awning:true, table:'gingham'})
-          소품: SK.cabbage(w) · SK.half(w) · SK.radish(w) · SK.pa(w) · SK.jar(w) · SK.basin(w) · SK.crate(w,'cabbage'|'radish') · SK.scale(w) · SK.house(w,fill,id) · SK.tub(w) · SK.cocoaBean(w,face,rot) · SK.cocoaBowl(w)
+          소품: SK.cabbage(w) · SK.half(w) · SK.radish(w) · SK.pa(w) · SK.jar(w) · SK.basin(w) · SK.crate(w,'cabbage'|'radish') · SK.scale(w) · SK.house(w,fill,id) · SK.tub(w) · SK.cocoaBean(w,face,rot) · SK.cocoaBowl(w) · SK.parcel(w,'cn'|'us'|'jp'|false)
           바닥 그림자: SK.ground(w) — 소품 아래에 깔 타원 SVG
 */
 const SK = (() => {
@@ -32,6 +32,9 @@ const SK = (() => {
       <linearGradient id="skRoof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0816F"/><stop offset="1" stop-color="#C9493A"/></linearGradient>
       <linearGradient id="skRoofOff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D8CFC6"/><stop offset="1" stop-color="#B9AEA3"/></linearGradient>
       <linearGradient id="skKimchi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F49A78"/><stop offset="1" stop-color="#D9573F"/></linearGradient>
+      <linearGradient id="skBoxF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3C489"/><stop offset=".6" stop-color="#E3A964"/><stop offset="1" stop-color="#D0914F"/></linearGradient>
+      <linearGradient id="skBoxS" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C98A4E"/><stop offset="1" stop-color="#B07338"/></linearGradient>
+      <linearGradient id="skBoxT" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#F9D7A5"/><stop offset="1" stop-color="#EBBB80"/></linearGradient>
       <linearGradient id="skCocoa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C07A4E"/><stop offset=".55" stop-color="#94532F"/><stop offset="1" stop-color="#6E3B22"/></linearGradient>
       <radialGradient id="skShadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
     </defs></svg>`;
@@ -224,5 +227,29 @@ const SK = (() => {
     <path d="M18 96 C24 146 70 172 130 172 C190 172 236 146 242 96 C214 112 46 112 18 96Z" fill="url(#skWood)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
     <path d="M40 120 C70 140 190 140 220 120" stroke="#9C6838" stroke-width="4" fill="none" opacity=".55" stroke-linecap="round"/>
     <path d="M34 108 C40 128 52 140 66 148" stroke="#fff" stroke-width="7" fill="none" opacity=".35" stroke-linecap="round"/></svg>`;
-  return { K, defs, stage, ground, cabbage, half, radish, pa, jar, basin, crate, scale, house, tub, cocoaBean, cocoaBowl, at };
+
+  // 택배 상자(EX.07, 2026-11-08 사용자 시안 A+) — 정면 + 윗면 + 옆면(비스듬 투영), 테이프는 평평하게(양 끝을 세로로 자르면 판자처럼 솟아 보임),
+  // 비행기 실루엣 스티커, 국기 스티커는 fl('cn'|'us'|'jp')일 때만. 기울여 놓지 않는다(쓰러지는 느낌). viewBox 270×300, 바닥 그림자 포함.
+  function parcel(w, fl) {
+    const st=(cx,cy,r)=>{let d='';for(let i=0;i<10;i++){const rr=i%2?r*.382:r;const a=(-90+i*36)*Math.PI/180;d+=(i?'L':'M')+(cx+rr*Math.cos(a)).toFixed(2)+' '+(cy+rr*Math.sin(a)).toFixed(2);}return d+'Z';};
+    const flag=f=>f==='us'?(()=>{let b='';for(let i=0;i<13;i++)b+=`<rect y="${(i*20/13).toFixed(3)}" width="30" height="${(20/13+.03).toFixed(3)}" fill="${i%2?'#fff':'#C8283C'}"/>`;b+=`<rect width="13" height="10.8" fill="#2E3A7A"/>`;for(let r=0;r<4;r++)for(let c=0;c<5;c++)b+=`<circle cx="${1.5+c*2.5}" cy="${1.4+r*2.6}" r=".55" fill="#fff"/>`;return b;})()
+      :f==='jp'?`<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/>`
+      :f==='cn'?`<rect width="30" height="20" fill="#E3242B"/><path d="${st(8,7,3.2)}" fill="#FFD84A"/>`+[[13,3.5],[15,6],[15,9],[13,11.5]].map(([x,y])=>`<path d="${st(x,y,1.1)}" fill="#FFD84A"/>`).join(''):'';
+    const plane=`<g transform="translate(160 226) rotate(-35)"><circle r="20" fill="#5B8CFF" stroke="${K}" stroke-width="4"/><g transform="scale(.833)" fill="#fff"><rect x="-2.6" y="-15" width="5.2" height="28" rx="2.6"/><path d="M-2 -3 L-15 4 L-15 7 L-2 3 Z M2 -3 L15 4 L15 7 L2 3 Z"/><path d="M-1.5 9 L-7 13 L-7 15 L-1.5 13 Z M1.5 9 L7 13 L7 15 L1.5 13 Z"/></g></g>`;
+    return `<svg viewBox="0 0 270 300" width="${w}" height="${w*300/270}" style="overflow:visible">
+      <ellipse cx="138" cy="276" rx="128" ry="16" fill="url(#skShadow)"/>
+      <path d="M30 110 L82 72 L242 72 L190 110 Z" fill="url(#skBoxT)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M190 110 L242 72 L242 232 L190 270 Z" fill="url(#skBoxS)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="30" y="110" width="160" height="160" rx="4" fill="url(#skBoxF)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M56 91 L216 91" stroke="${K}" stroke-width="3.5" stroke-linecap="round" opacity=".45"/>
+      <path d="M95 110 L147 72 L167 72 L115 110 Z" fill="#FBE7C2" opacity=".95"/>
+      <path d="M95 110 L147 72 M115 110 L167 72" stroke="${K}" stroke-width="3" opacity=".35"/>
+      <rect x="95" y="110" width="20" height="44" fill="#FBE7C2" opacity=".95"/><path d="M95 154 L115 154" stroke="${K}" stroke-width="3" opacity=".35"/>
+      <rect x="44" y="186" width="80" height="58" rx="7" fill="#FFFFFF" stroke="${K}" stroke-width="4"/>
+      <path d="M56 204 H110 M56 220 H96" stroke="#B9A99A" stroke-width="5" stroke-linecap="round"/>
+      ${fl?`<g transform="translate(132 126)"><rect width="46" height="32" rx="5" fill="#fff" stroke="${K}" stroke-width="4"/><g transform="translate(4 4) scale(1.27 1.2)">${flag(fl)}</g><rect width="46" height="32" rx="5" fill="none" stroke="${K}" stroke-width="4"/></g>`:''}
+      ${plane}
+      <path d="M40 124 L40 250" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".35"/></svg>`;
+  }
+  return { K, defs, stage, ground, cabbage, half, radish, pa, jar, basin, crate, scale, house, tub, cocoaBean, cocoaBowl, parcel, at };
 })();
