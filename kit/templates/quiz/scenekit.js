@@ -6,7 +6,7 @@
    3. 도리와 같은 그림체: 외곽선 #4A3A33 6~7px, 둥근 끝. 카드도 같은 외곽선 + 아래로 떨어지는 단색 그림자(스티커 느낌).
    4. 소품은 크게, 결·주름·무늬로 '사물'로 보이게(배추 잎맥, 무 잔뿌리, 대파 묶음 끈, 젓갈 새우 마디).
   쓰는 법: <script src="scenekit.js"></script> 뒤에 SK.defs(); SK.stage(document.getElementById('stage'), {awning:true, table:'gingham'})
-          소품: SK.cabbage(w) · SK.half(w) · SK.radish(w) · SK.pa(w) · SK.jar(w) · SK.basin(w) · SK.crate(w,'cabbage'|'radish') · SK.scale(w) · SK.house(w,fill,id) · SK.tub(w)
+          소품: SK.cabbage(w) · SK.half(w) · SK.radish(w) · SK.pa(w) · SK.jar(w) · SK.basin(w) · SK.crate(w,'cabbage'|'radish') · SK.scale(w) · SK.house(w,fill,id) · SK.tub(w) · SK.cocoaBean(w,face,rot) · SK.cocoaBowl(w)
           바닥 그림자: SK.ground(w) — 소품 아래에 깔 타원 SVG
 */
 const SK = (() => {
@@ -32,6 +32,7 @@ const SK = (() => {
       <linearGradient id="skRoof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0816F"/><stop offset="1" stop-color="#C9493A"/></linearGradient>
       <linearGradient id="skRoofOff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D8CFC6"/><stop offset="1" stop-color="#B9AEA3"/></linearGradient>
       <linearGradient id="skKimchi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F49A78"/><stop offset="1" stop-color="#D9573F"/></linearGradient>
+      <linearGradient id="skCocoa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C07A4E"/><stop offset=".55" stop-color="#94532F"/><stop offset="1" stop-color="#6E3B22"/></linearGradient>
       <radialGradient id="skShadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
     </defs></svg>`;
     document.body.prepend(d.firstElementChild);
@@ -205,5 +206,23 @@ const SK = (() => {
     <rect x="32" y="58" width="136" height="98" rx="16" fill="none" stroke="${K}" stroke-width="6"/>
     <path d="M42 76 V138" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".6"/></svg>`;
 
-  return { K, defs, stage, ground, cabbage, half, radish, pa, jar, basin, crate, scale, house, tub, at };
+  // 코코아 콩(EP.15, 2026-11-08 사용자 의견: 열매 그림이 커서 코코넛 같음 → 작은 콩 여러 개, 귀엽게).
+  // 커피콩과 다르게: 아몬드처럼 통통, 붉은 갈색, 가운데 진한 홈 대신 옅은 결. face=true 면 웃는 얼굴·볼터치.
+  const beanG = (x, y, rot = 0, s = 1, face = false) => `<g transform="translate(${x},${y}) rotate(${rot}) scale(${s})">
+    <path d="M-31 2 C-27 -14 -9 -20 6 -19 C22 -17 32 -7 31 2 C29 14 13 21 -2 20 C-18 19 -33 13 -31 2Z" fill="url(#skCocoa)" stroke="${K}" stroke-width="4.5"/>
+    <path d="M-24 5 C-10 1 10 1 25 3" stroke="#D59A6E" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".75"/>
+    <ellipse cx="-12" cy="-10" rx="8" ry="3.4" fill="#fff" opacity=".4" transform="rotate(-14 -12 -10)"/>
+    ${face ? `<circle cx="-8" cy="3" r="3.8" fill="#271B17"/><circle cx="8" cy="3" r="3.8" fill="#271B17"/><circle cx="-6.8" cy="1.6" r="1.3" fill="#fff"/><circle cx="9.2" cy="1.6" r="1.3" fill="#fff"/><path d="M-4 9.5 Q0 13 4 9.5" stroke="#271B17" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="-16" cy="8" rx="4.4" ry="2.8" fill="#FF9EB0" opacity=".8"/><ellipse cx="16" cy="8" rx="4.4" ry="2.8" fill="#FF9EB0" opacity=".8"/>` : ''}</g>`;
+  const cocoaBean = (w, face = false, rot = 0) => `<svg viewBox="-34 -26 68 52" width="${w}" height="${w * 52 / 68}" style="overflow:visible">${beanG(0, 0, rot, 1, face)}</svg>`;
+  // 나무 그릇에 담긴 코코아 콩 무더기 + 초록 잎(위 두 콩은 웃는 얼굴)
+  const cocoaBowl = w => `<svg viewBox="0 0 260 180" width="${w}" height="${w * 180 / 260}" style="overflow:visible">
+    <ellipse cx="130" cy="172" rx="104" ry="9" fill="${K}" opacity=".14"/>
+    <path d="M168 66 C196 30 238 22 254 34 C240 64 204 82 168 66Z" fill="#6DBE7E" stroke="${K}" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M170 65 C198 50 224 40 252 35" stroke="#3E8F55" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="130" cy="96" rx="112" ry="17" fill="#8A5A34" stroke="${K}" stroke-width="5"/>
+    ${[[70, 84, -16, 1.1, 0], [192, 84, 14, 1.1, 0], [100, 62, 18, 1.15, 1], [160, 64, -14, 1.15, 0], [130, 40, -4, 1.2, 1], [96, 98, -6, 1.1, 0], [164, 98, 8, 1.1, 0], [130, 82, 0, 1.15, 0]].map(([x, y, r, sc, f]) => beanG(x, y, r, sc, !!f)).join('')}
+    <path d="M18 96 C24 146 70 172 130 172 C190 172 236 146 242 96 C214 112 46 112 18 96Z" fill="url(#skWood)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M40 120 C70 140 190 140 220 120" stroke="#9C6838" stroke-width="4" fill="none" opacity=".55" stroke-linecap="round"/>
+    <path d="M34 108 C40 128 52 140 66 148" stroke="#fff" stroke-width="7" fill="none" opacity=".35" stroke-linecap="round"/></svg>`;
+  return { K, defs, stage, ground, cabbage, half, radish, pa, jar, basin, crate, scale, house, tub, cocoaBean, cocoaBowl, at };
 })();
