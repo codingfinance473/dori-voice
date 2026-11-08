@@ -1,0 +1,177 @@
+{
+ "id": "ex07-01",
+ "note": "EX.07 해외직구 숫자 검산",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 180,
+   "takes": 4,
+   "texts": [
+    "곧 블랙 프라이데이인데, 해외 직구가 줄고 있대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 181,
+   "takes": 4,
+   "texts": [
+    "정말 줄고 있는 걸까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 182,
+   "takes": 4,
+   "texts": [
+    "올해 삼 분기, 해외 직구로 산 물건값은, 이조 원에 조금 못 미쳤대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 183,
+   "takes": 4,
+   "texts": [
+    "작년 같은 때보다, 육 점 삼 퍼센트 줄었어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 184,
+   "takes": 4,
+   "texts": [
+    "두 분기 연속 줄어든 건, 이천 십사 년 통계를 만든 뒤 처음이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 185,
+   "takes": 4,
+   "texts": [
+    "가장 많이 사는 중국은, 구 점 일 퍼센트 줄었고,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 186,
+   "takes": 4,
+   "texts": [
+    "미국은, 십일 점 일 퍼센트 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 187,
+   "takes": 4,
+   "texts": [
+    "상품 중엔 옷이랑 패션 상품이, 십오 퍼센트 넘게 줄었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 188,
+   "takes": 4,
+   "texts": [
+    "그런데 일본 직구는, 오히려 삼십이 퍼센트 넘게 늘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 189,
+   "takes": 4,
+   "texts": [
+    "같은 기간 환율을 보면, 위안화와 달러는 작년보다 비싸졌고,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 190,
+   "takes": 4,
+   "texts": [
+    "엔화는, 오 퍼센트 싸졌대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 191,
+   "takes": 4,
+   "texts": [
+    "환율이 오른 곳에선 덜 사고, 내린 일본에선 더 샀대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 192,
+   "takes": 4,
+   "texts": [
+    "정리하면, 직구는 두 분기 연속 줄었고, 중국 미국은 줄고 일본은 늘었어."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L04",
+  "L05",
+  "L06",
+  "L07",
+  "L08",
+  "L09",
+  "L10",
+  "L11",
+  "L12",
+  "L13"
+ ]
+}
