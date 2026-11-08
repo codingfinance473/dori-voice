@@ -1,0 +1,86 @@
+{
+ "id": "ex07-02",
+ "note": "EX.07 해외직구 다시(위안·엔화·국내 온라인)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 866,
+   "takes": 4,
+   "texts": [
+    "같은 기간 환율을 보면, 위안이랑 달러는, 일 년 전보다 비싸졌고,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 867,
+   "takes": 4,
+   "texts": [
+    "같은 기간, 중국 위안이랑 미국 달러는, 일 년 전보다 비싸졌고,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 868,
+   "takes": 4,
+   "texts": [
+    "일본 엔화는, 오 퍼센트 싸졌대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 869,
+   "takes": 4,
+   "texts": [
+    "일본 돈 엔화는, 오 퍼센트 싸졌대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 870,
+   "takes": 4,
+   "texts": [
+    "그런데 국내 온라인 쇼핑은, 오히려 육 점 사 퍼센트 늘었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 871,
+   "takes": 4,
+   "texts": [
+    "국내 온라인 쇼핑은 같은 기간, 육 점 사 퍼센트 늘었대."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L10b",
+  "L10c",
+  "L11b",
+  "L11c",
+  "N01",
+  "N01b"
+ ]
+}
