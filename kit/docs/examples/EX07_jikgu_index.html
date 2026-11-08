@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!--
+  도리의 정보주머니 · 숫자 검산(설명형) EX.07 블프 앞두고 해외직구 정말 줄고 있을까? (2026-11-08)
+  render(t) 하나가 t초의 화면을 그린다(같은 t면 늘 같은 화면). 시각은 timeline.js 의 T(줄 시작·단어 시각)를 쓴다.
+  숫자: 국가데이터처 온라인쇼핑동향(KOSIS 101/DT_1KE1009, 2026년 3분기) · 한국은행 ECOS 731Y001(3분기 평균 매매기준율, 계산) — 대조표 EX07_jikgu_factsheet.md
+  지키는 것: 뉴스 매체명은 화면에 넣지 않는다 · AI 표시는 설명란 한 줄만(화면 칩 없음) · 아래 420px·오른쪽 160px에 핵심 글자 없음 · 자막 2줄, 숫자에 쉼표 없음
+-->
+<meta charset="utf-8">
+<title>도리의 숫자 검산 해외직구</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Medium.otf);font-weight:500}
+@font-face{font-family:P;src:url(fonts/Pretendard-SemiBold.otf);font-weight:600}
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--sub:#7E6B5C;--mint:#2E9C83;--mintL:#D5F1E7;--mint2:#80D0BA;--red:#E2483A;--yel:#FFD45C;--line:#EBDDD0;--slate:#5E6F8C}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;word-break:keep-all}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;visibility:hidden}
+#hdr{left:64px;top:146px;display:flex;align-items:center;gap:12px}
+.pill{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:9px 20px;font-size:25px;font-weight:800;color:var(--ink);white-space:nowrap}
+.pill i{display:block;width:16px;height:16px;border-radius:50%}
+#hdr .brand{font-family:Jua;font-weight:400;font-size:29px;padding:8px 22px 8px 12px}
+#prog{left:72px;top:226px;width:840px;height:6px;border-radius:3px;background:#F0E2D6;overflow:hidden}
+#progf{height:100%;width:0;background:#5B8CFF;border-radius:3px}
+/* 화면 그림 — 붙인 느낌 없이(공통 지침 14절): 카드도 도리 그림체(외곽선 + 아래로 떨어지는 단색 그림자) */
+.card{position:absolute;background:linear-gradient(180deg,#FFFFFF 0%,#FFFAF3 100%);border-radius:36px;border:5px solid #4A3A33;box-shadow:0 12px 0 rgba(74,58,51,.16),0 22px 34px rgba(120,70,40,.10)}
+#stage>.scene,#stage>.abs,#stage>#hdr,#stage>#prog{z-index:2}
+.ttl{position:absolute;font-family:Jua;font-weight:400;color:var(--ink);line-height:1.18;-webkit-text-stroke:12px #FFF8F0;paint-order:stroke fill}
+.ttl em{font-style:normal;color:var(--red)}
+.ttl em.m{color:var(--mint)}
+.tt{left:80px;top:290px;font-size:74px}
+.uu{position:absolute;left:84px;top:392px;font-size:26px;font-weight:700;color:var(--sub);white-space:nowrap;background:rgba(255,248,240,.85);border-radius:10px;padding:2px 8px}
+.chip{position:absolute;font-family:Jua;font-size:36px;color:#fff;border-radius:999px;padding:6px 24px;white-space:nowrap;border:4px solid #4A3A33;box-shadow:0 6px 0 rgba(74,58,51,.18)}
+.chip.red{background:var(--red)} .chip.mint{background:var(--mint)} .chip.slate{background:var(--slate)} .chip.yel{background:#FFD45C;color:var(--ink)}
+.fb{display:inline-block;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px #fff,0 0 0 8px #4A3A33;line-height:0;flex:none}
+.fb svg{display:block}
+/* 1 질문 */
+#t1{left:80px;top:300px;font-size:86px}
+#t1 span{display:block}
+#first1{left:80px;top:652px;font-size:34px}
+#c1{left:80px;top:744px;width:540px;padding:26px 32px 30px}
+#c1 .k{display:inline-block;font-family:Jua;font-size:32px;color:#fff;background:#5B8CFF;border-radius:12px;padding:2px 16px}
+#c1 .v{margin-top:14px;font-family:Jua;font-size:52px;line-height:1.25}
+#box1{left:650px;top:640px;width:260px;height:300px;transform-origin:50% 90%}
+#box1g{left:640px;top:916px;width:280px}
+/* 2 매년 3분기 상자 기둥 */
+.qb{position:absolute;border:5px solid #4A3A33;border-radius:14px 14px 6px 6px;background:linear-gradient(90deg,#F2C48C 0%,#E2A869 60%,#C98A4E 100%);overflow:hidden}
+.qb:before{content:"";position:absolute;left:50%;margin-left:-13px;top:0;bottom:0;width:26px;background:rgba(255,236,196,.75);border-left:3px solid rgba(74,58,51,.18);border-right:3px solid rgba(74,58,51,.18)}
+.qb:after{content:"";position:absolute;left:0;right:0;top:34px;height:4px;background:rgba(74,58,51,.22)}
+.qb.now{background:linear-gradient(90deg,#F7A897 0%,#EE7867 60%,#D24D3D 100%)}
+.qv{position:absolute;text-align:center;font-size:30px;font-weight:900;white-space:nowrap}
+.qy{position:absolute;text-align:center;font-family:Jua;font-size:32px;white-space:nowrap}
+#ch2a{font-size:40px}
+#ch2b,#ch2c{font-size:32px}
+/* 3 나라별 */
+.row{position:absolute;left:96px;width:800px}
+.row .hd{display:flex;align-items:center;gap:18px}
+.row .nm{font-family:Jua;font-size:52px}
+.row .sh{font-size:26px;font-weight:800;color:var(--sub);background:#FBF3EA;border:2px solid var(--line);border-radius:999px;padding:3px 14px}
+.hb{position:absolute;left:176px;height:44px;border:4px solid #4A3A33;border-radius:10px 22px 22px 10px;width:0}
+.hb.old{background:linear-gradient(180deg,#E9DED3,#CDBDAE)}
+.hb.new{background:linear-gradient(180deg,#F7A897,#D24D3D)}
+.hl{position:absolute;left:100px;font-family:Jua;font-size:30px;color:var(--sub);width:70px}
+.hv{position:absolute;font-size:34px;font-weight:900;white-space:nowrap}
+/* 4 상품군 */
+#cA{left:60px;top:450px;width:480px;height:600px}
+#cB{left:560px;top:450px;width:360px;height:600px}
+.pr{position:absolute;display:flex;flex-direction:column;align-items:center;text-align:center}
+.pr .nm{font-family:Jua;font-size:50px;margin-top:6px}
+.pr .v{font-size:50px;font-weight:900;margin-top:4px;white-space:nowrap}
+.pr .s{font-size:26px;font-weight:700;color:var(--sub);margin-top:6px;white-space:nowrap}
+/* 5 일본 */
+.vb{position:absolute;border:5px solid #4A3A33;border-radius:22px 22px 8px 8px}
+.vb.old{background:linear-gradient(90deg,#E9DED3,#CDBDAE)}
+.vb.up{background:linear-gradient(90deg,#9FE0CC,#56B89D 60%,#2E9C83)}
+.vv{position:absolute;text-align:center;font-size:40px;font-weight:900;white-space:nowrap}
+.vy{position:absolute;text-align:center;font-family:Jua;font-size:30px;white-space:nowrap;line-height:1.2}
+#box5{left:96px;top:560px;width:280px;height:320px;transform-origin:50% 90%}
+/* 6 환율 */
+.fx{position:absolute;top:450px;width:260px;height:600px;display:flex;flex-direction:column;align-items:center;padding-top:26px}
+.fx .coin{position:relative;width:132px;height:132px}
+.fx .coin .fb{position:absolute;right:-18px;top:-6px}
+.fx .nm{font-family:Jua;font-size:44px;margin-top:12px;white-space:nowrap}
+.fx .rt{font-size:26px;font-weight:700;color:var(--sub);margin-top:6px;white-space:nowrap}
+.fx .ch{font-size:56px;font-weight:900;margin-top:4px;white-space:nowrap;letter-spacing:-1px}
+.fx .wd{font-family:Jua;font-size:32px;white-space:nowrap}
+.fx .jk{position:absolute;left:18px;right:18px;top:430px;height:140px;border-top:4px dashed #D9C9BA;display:flex;flex-direction:column;align-items:center;padding-top:16px}
+.fx .jk .a{font-family:Jua;font-size:30px;color:var(--sub);white-space:nowrap}
+.fx .jk .b{font-size:46px;font-weight:900;white-space:nowrap}
+.up{color:var(--red)} .dn{color:var(--slate)} .gd{color:var(--mint)}
+/* 8 정리 */
+#c8{left:60px;top:300px;width:860px;height:720px;display:flex;flex-direction:column;align-items:center;padding-top:44px}
+#c8 .stk{font-family:Jua;font-size:40px;color:#fff;background:#5B8CFF;border-radius:16px;padding:6px 30px;border:4px solid #4A3A33}
+#c8 .sum{font-family:Jua;font-size:58px;margin-top:26px}
+#c8 .sum b{color:var(--red);font-weight:400}
+#c8 .chk{margin-top:22px;font-size:32px;font-weight:800;color:var(--ink);align-self:flex-start;margin-left:52px;white-space:nowrap}
+#c8 .chk.warn{color:#2A8A72}
+#c8 .per{margin-top:26px;font-size:25px;font-weight:700;color:var(--sub)}
+#stamp8{left:560px;top:930px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
+#cta9{left:448px;top:1300px;font-family:Jua;font-size:40px;color:var(--ink);background:#fff;border:4px solid #4A3A33;border-radius:999px;padding:8px 28px;box-shadow:0 6px 0 rgba(74,58,51,.16)}
+#fly{left:0;top:0;width:70px;height:70px}
+#dori{left:0;top:1004px;width:480px;height:498px}
+#dsh{left:60px;top:1466px;width:360px;height:44px}
+#deco{left:790px;top:1366px;width:280px;height:150px}
+#bub{left:448px;top:1196px;max-width:472px;background:#fff;border-radius:34px;padding:24px 32px;font-family:Jua;font-size:40px;line-height:1.34;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;transform-origin:0 50%;border:4px solid #4A3A33}
+#bub:before{content:"";position:absolute;left:-22px;top:50%;margin-top:-15px;border-width:15px 22px 15px 0;border-style:solid;border-color:transparent #4A3A33 transparent transparent}
+#bub:after{content:"";position:absolute;left:-15px;top:50%;margin-top:-11px;border-width:11px 17px 11px 0;border-style:solid;border-color:transparent #fff transparent transparent}
+#pre{position:absolute;left:-5000px;top:0;font-family:Jua}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="gBox" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6CF9A"/><stop offset=".55" stop-color="#E2A869"/><stop offset="1" stop-color="#B97A40"/></linearGradient>
+  <linearGradient id="gBoxTop" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FBDDB0"/><stop offset="1" stop-color="#E5B47A"/></linearGradient>
+  <linearGradient id="gShirt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A9E3F7"/><stop offset=".6" stop-color="#6CBCE3"/><stop offset="1" stop-color="#3F8FC2"/></linearGradient>
+  <linearGradient id="gLotion" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFE6EC"/><stop offset=".55" stop-color="#F8B9C8"/><stop offset="1" stop-color="#E58BA2"/></linearGradient>
+  <radialGradient id="gCoin" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#FFF1B8"/><stop offset=".5" stop-color="#F4C64E"/><stop offset="1" stop-color="#C98F1E"/></radialGradient>
+  <linearGradient id="gHang" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D9A56C"/><stop offset="1" stop-color="#A9743F"/></linearGradient>
+</defs></svg>
+<div id="stage">
+  <div class="abs" id="hdr">
+    <div class="pill brand"><span id="hdrDori"></span>도리의 정보주머니</div>
+    <div class="pill"><i style="background:#5B8CFF"></i>숫자 검산</div>
+  </div>
+  <div class="abs" id="prog"><div id="progf"></div></div>
+
+  <!-- 1 질문 -->
+  <div class="scene" id="s1">
+    <div class="ttl" id="t1"><span>블프 앞두고</span><span>해외 직구,</span><span><em>정말 줄었을까?</em></span></div>
+    <div class="chip yel" id="first1">블랙프라이데이 · 11월 27일</div>
+    <div class="card" id="c1"><span class="k">해외 직구란?</span><div class="v">해외 쇼핑몰에서<br>직접 사는 것</div></div>
+    <div class="abs" id="box1g"></div>
+    <div class="abs" id="box1"></div>
+  </div>
+
+  <!-- 2 매년 3분기 -->
+  <div class="scene" id="s2">
+    <div class="ttl tt" id="t2">매년 <em>3분기</em>만 보면</div>
+    <div class="uu" id="u2">국가데이터처 · 각 연도 3분기 온라인 해외직접구매액</div>
+    <div class="card" id="cq" style="left:60px;top:450px;width:860px;height:600px"></div>
+    <div id="qbars"></div>
+    <div class="chip slate" id="ch2b" style="left:96px;top:470px">2분기도 ↓ 두 분기 연속</div>
+    <div class="chip red" id="ch2c" style="left:96px;top:540px">2014년 이후 처음</div>
+    <div class="chip red" id="ch2a" style="left:728px;top:498px">−6.3%</div>
+  </div>
+
+  <!-- 3 나라별 -->
+  <div class="scene" id="s3">
+    <div class="ttl tt" id="t3">나라별로 보면</div>
+    <div class="uu" id="u3">국가데이터처 · 3분기 온라인 해외직접구매액(작년 → 올해)</div>
+    <div class="card" id="c3" style="left:60px;top:450px;width:860px;height:600px"></div>
+    <div class="row" id="rA" style="top:480px"><div class="hd"><span class="fb" data-f="cn" data-s="70"></span><span class="nm">중국</span><span class="sh">전체의 64.6%</span></div></div>
+    <div class="hl" id="hlA0" style="top:570px">작년</div><div class="hb old" id="hbA0" style="top:568px;left:176px"></div><div class="hv" id="hvA0" style="top:570px">1조 4140억</div>
+    <div class="hl" id="hlA1" style="top:632px">올해</div><div class="hb new" id="hbA1" style="top:630px;left:176px"></div><div class="hv" id="hvA1" style="top:632px">1조 2860억</div>
+    <div class="chip red" id="tgA" style="left:680px;top:484px">−9.1%</div>
+    <div class="row" id="rB" style="top:760px"><div class="hd"><span class="fb" data-f="us" data-s="70"></span><span class="nm">미국</span><span class="sh">전체의 15.6%</span></div></div>
+    <div class="hl" id="hlB0" style="top:850px">작년</div><div class="hb old" id="hbB0" style="top:848px;left:176px"></div><div class="hv" id="hvB0" style="top:850px">3479억</div>
+    <div class="hl" id="hlB1" style="top:912px">올해</div><div class="hb new" id="hbB1" style="top:910px;left:176px"></div><div class="hv" id="hvB1" style="top:912px">3094억</div>
+    <div class="chip red" id="tgB" style="left:660px;top:764px">−11.1%</div>
+  </div>
+
+  <!-- 4 상품군 -->
+  <div class="scene" id="s4">
+    <div class="ttl tt" id="t4">무엇을 덜 샀을까?</div>
+    <div class="uu" id="u4">국가데이터처 · 3분기 상품군별 온라인 해외직접구매액</div>
+    <div class="card" id="cA"></div><div class="card" id="cB"></div>
+    <div class="pr" id="pA" style="left:60px;width:480px;top:478px"><div id="shirt"></div><div class="nm">옷·패션</div><div class="v">7539억 원</div><div class="s">직구 품목 중 가장 많아</div></div>
+    <div class="pr" id="pB" style="left:560px;width:360px;top:478px"><div id="lotion"></div><div class="nm">화장품</div><div class="v">946억 원</div><div class="s">작년 1092억 원</div></div>
+    <div class="chip red" id="tgC" style="left:300px;top:930px">−15.5%</div>
+    <div class="chip red" id="tgD" style="left:660px;top:930px">−13.3%</div>
+  </div>
+
+  <!-- 5 반대 신호: 일본 -->
+  <div class="scene" id="s5">
+    <div class="ttl tt" id="t5">그런데 <em class="m">일본</em>은?</div>
+    <div class="uu" id="u5">국가데이터처 · 3분기 일본 온라인 해외직접구매액</div>
+    <div class="card" id="c5" style="left:60px;top:450px;width:860px;height:600px"></div>
+    <div class="abs" id="box5g" style="left:96px;top:858px;width:280px"></div>
+    <div class="abs" id="box5"></div>
+    <div id="jbars"></div>
+    <div class="chip mint" id="tgJ" style="left:646px;top:470px">+32.4%</div>
+  </div>
+
+  <!-- 6 환율 -->
+  <div class="scene" id="s6">
+    <div class="ttl tt" id="t6">같은 기간 <em>환율</em>은?</div>
+    <div class="uu" id="u6">한국은행 · 3분기 평균 매매기준율(1년 전 대비, 계산)</div>
+    <div class="card fx" id="fx0" style="left:60px"><div class="coin" id="coin0"><span class="fb" data-f="cn" data-s="52"></span></div><div class="nm">위안</div><div class="rt">193.5 → 211.1원</div><div class="ch up">▲9.1%</div><div class="wd up">비싸졌어</div>
+      <div class="jk" id="jk0"><div class="a">중국 직구</div><div class="b dn">▼9.1%</div></div></div>
+    <div class="card fx" id="fx1" style="left:360px"><div class="coin" id="coin1"><span class="fb" data-f="us" data-s="52"></span></div><div class="nm">달러</div><div class="rt">1385 → 1423원</div><div class="ch up">▲2.8%</div><div class="wd up">비싸졌어</div>
+      <div class="jk" id="jk1"><div class="a">미국 직구</div><div class="b dn">▼11.1%</div></div></div>
+    <div class="card fx" id="fx2" style="left:660px"><div class="coin" id="coin2"><span class="fb" data-f="jp" data-s="52"></span></div><div class="nm">엔(100엔)</div><div class="rt">939.7 → 893.2원</div><div class="ch gd">▼5.0%</div><div class="wd gd">싸졌어</div>
+      <div class="jk" id="jk2"><div class="a">일본 직구</div><div class="b gd">▲32.4%</div></div></div>
+  </div>
+
+  <!-- 8 정리(끝까지 남는다) -->
+  <div class="scene" id="s8">
+    <div class="card" id="c8"><div class="stk">정리</div>
+      <div class="sum">해외 직구 <b>두 분기 연속 ↓</b></div>
+      <div class="chk" id="k1">✔ 3분기 1조 9893억 원 · 1년 전보다 6.3% ↓</div>
+      <div class="chk" id="k2">✔ 2014년 이후 처음 두 분기 연속 감소</div>
+      <div class="chk" id="k3">✔ 중국 9.1% ↓ · 미국 11.1% ↓ · 옷·패션 15.5% ↓</div>
+      <div class="chk warn" id="k4">△ 일본은 32.4% ↑ · 엔화는 5% 싸졌어</div>
+      <div class="per">국가데이터처 · 2026년 3분기 · 한국은행 환율</div></div>
+    <div class="abs" id="stamp8">검산 끝!</div>
+  </div>
+
+  <div class="abs" id="cta9">구독 · 좋아요 👍</div>
+  <div class="abs" id="fly"></div>
+  <div class="abs" id="deco"></div>
+  <div class="abs" id="dsh"></div>
+  <div class="abs" id="dori"></div>
+  <div class="abs" id="bub"><span id="bubT"></span></div>
+  <div id="pre"></div>
+</div>
+
+<script src="timeline.js"></script>
+<script src="dori_outfits.js"></script>
+<script src="dori.js"></script>
+<script src="scenekit.js"></script>
+<script>
+// 무대: 시장이 아니라 해설 — 나무 탁자, 탁자 위엔 택배 상자 두 개(#deco)
+const STAGE={awning:false,table:'wood',tableTop:1468};
+SK.stage(document.getElementById('stage'),STAGE);
+const T=TL.T, FPS=30, DUR=T.END;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,s,d)=>clamp((t-s)/d);
+const eOut=x=>1-Math.pow(1-x,3);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eBack=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);};
+const spring=x=>x<=0?0:x>=1?1:1-Math.exp(-6*x)*Math.cos(9*x);
+const lerp=(a,b,k)=>a+(b-a)*k;
+const $=id=>document.getElementById(id);
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+function star(cx,cy,r){let d='';for(let i=0;i<10;i++){const rr=i%2?r*.382:r;const a=(-90+i*36)*Math.PI/180;d+=(i?'L':'M')+(cx+rr*Math.cos(a)).toFixed(2)+' '+(cy+rr*Math.sin(a)).toFixed(2);}return d+'Z';}
+function flag(f,s){let b='';
+  if(f==='us'){for(let i=0;i<13;i++)b+=`<rect y="${(i*20/13).toFixed(3)}" width="30" height="${(20/13+.03).toFixed(3)}" fill="${i%2?'#fff':'#C8283C'}"/>`;b+=`<rect width="13" height="10.8" fill="#2E3A7A"/>`;for(let r=0;r<4;r++)for(let c=0;c<5;c++)b+=`<circle cx="${1.5+c*2.5}" cy="${1.4+r*2.6}" r=".55" fill="#fff"/>`;}
+  else if(f==='jp')b=`<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/>`;
+  else if(f==='cn'){b=`<rect width="30" height="20" fill="#E3242B"/><path d="${star(8,7,3.2)}" fill="#FFD84A"/>`+[[13,3.5],[15,6],[15,9],[13,11.5]].map(([x,y])=>`<path d="${star(x,y,1.1)}" fill="#FFD84A"/>`).join('');}
+  return `<svg width="${s}" height="${s}" viewBox="5 0 20 20" preserveAspectRatio="xMidYMid slice">${b}</svg>`;}
+document.querySelectorAll('.fb').forEach(e=>{const s=+e.dataset.s;e.style.width=s+'px';e.style.height=s+'px';e.innerHTML=flag(e.dataset.f,s);});
+
+// ---------- 소품(상표 없음, 빛은 왼쪽 위, 외곽선 #4A3A33) ----------
+const K='#4A3A33';
+// 택배 상자 — 테이프·송장·비행기 스티커(나라 국기 스티커는 선택)
+const PARCEL=(w,fl)=>`<svg viewBox="0 0 260 300" width="${w}" height="${w*300/260}">
+  <path d="M30 96 L130 64 L232 96 L132 128 Z" fill="url(#gBoxTop)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M30 96 L132 128 L132 280 L30 246 Z" fill="url(#gBox)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M132 128 L232 96 L232 244 L132 280 Z" fill="#C98A4E" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M78 80 L180 112 L180 132 L78 100 Z" fill="#FBE7C2" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M160 128 L190 118 L190 268 L160 278 Z" fill="#F4D7A4" opacity=".85"/>
+  <path d="M46 150 L112 171 L112 214 L46 193 Z" fill="#FFFFFF" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M58 172 L100 185 M58 186 L90 196" stroke="#B9A99A" stroke-width="5" stroke-linecap="round"/>
+  <g transform="translate(196 176) rotate(-17)"><circle r="24" fill="#5B8CFF" stroke="${K}" stroke-width="4"/><path d="M-13 3 L13 -3 L9 -9 L5 -8 L0 -2 L-7 -1 L-10 -6 L-13 -5 L-11 2 Z M-2 0 L2 9 L6 8 L4 -1 Z" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></g>
+  ${fl?`<g transform="translate(74 232) rotate(16)"><rect x="-26" y="-18" width="52" height="36" rx="6" fill="#fff" stroke="${K}" stroke-width="4"/><g transform="translate(-20 -13) scale(1.35)"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/></g><rect x="-26" y="-18" width="52" height="36" rx="6" fill="none" stroke="${K}" stroke-width="4"/></g>`:''}
+  <path d="M40 104 L120 130" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+</svg>`;
+// 옷걸이에 걸린 티셔츠
+const SHIRT=w=>`<svg viewBox="0 0 240 230" width="${w}" height="${w*230/240}">
+  <path d="M120 40 C120 22 138 18 140 32 C141 40 132 42 128 48" fill="none" stroke="${K}" stroke-width="6" stroke-linecap="round"/>
+  <path d="M120 48 L36 92 L204 92 Z" fill="none" stroke="url(#gHang)" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M120 48 L36 92 L204 92 Z" fill="none" stroke="${K}" stroke-width="3" stroke-linejoin="round" opacity=".5"/>
+  <path d="M90 74 C102 88 138 88 150 74 L200 96 L226 142 L192 160 L180 140 L180 214 L60 214 L60 140 L48 160 L14 142 L40 96 Z" fill="url(#gShirt)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M96 76 C106 98 134 98 144 76" fill="none" stroke="${K}" stroke-width="5" stroke-linecap="round"/>
+  <path d="M60 140 L60 120 M180 140 L180 120" stroke="${K}" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+  <rect x="134" y="120" width="30" height="30" rx="5" fill="none" stroke="${K}" stroke-width="4" opacity=".55"/>
+  <path d="M72 110 C70 150 72 180 76 204" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+  <g transform="translate(176 180) rotate(14)"><path d="M0 0 L34 0 L44 12 L34 24 L0 24 Z" fill="#FFF6EC" stroke="${K}" stroke-width="4" stroke-linejoin="round"/><circle cx="34" cy="12" r="3.5" fill="${K}"/></g>
+</svg>`;
+// 화장품(로션 병, 상표 없음)
+const LOTION=w=>`<svg viewBox="0 0 160 230" width="${w}" height="${w*230/160}">
+  <path d="M64 30 L104 30 L104 18 L126 18 L126 30" fill="none" stroke="${K}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="62" y="30" width="44" height="36" rx="6" fill="#FFFFFF" stroke="${K}" stroke-width="6"/>
+  <rect x="40" y="62" width="88" height="150" rx="26" fill="url(#gLotion)" stroke="${K}" stroke-width="6"/>
+  <rect x="54" y="108" width="60" height="58" rx="10" fill="#FFFFFF" stroke="${K}" stroke-width="4"/>
+  <path d="M66 126 H102 M66 142 H92" stroke="#E58BA2" stroke-width="5" stroke-linecap="round"/>
+  <path d="M54 80 C50 120 52 160 58 196" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".6"/>
+</svg>`;
+// 동전(글자로 통화 구분 — ¥는 위안·엔 둘 다라 쓰지 않는다)
+const COIN=(w,txt)=>`<svg viewBox="0 0 140 140" width="${w}" height="${w}">
+  <circle cx="70" cy="74" r="58" fill="#C98F1E" stroke="${K}" stroke-width="6"/>
+  <circle cx="70" cy="66" r="58" fill="url(#gCoin)" stroke="${K}" stroke-width="6"/>
+  <circle cx="70" cy="66" r="44" fill="none" stroke="#B57E14" stroke-width="4" stroke-dasharray="6 6"/>
+  <text x="70" y="${txt.length>2?78:82}" text-anchor="middle" font-family="Jua" font-size="${txt.length>2?30:40}" fill="#7A5208">${txt}</text>
+  <path d="M34 44 C42 30 56 22 72 20" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7"/>
+</svg>`;
+$('box1').innerHTML=PARCEL(260,false); $('box1g').innerHTML=SK.ground(280,1);
+$('box5').innerHTML=PARCEL(280,true); $('box5g').innerHTML=SK.ground(280,1);
+$('shirt').innerHTML=SHIRT(230); $('lotion').innerHTML=LOTION(132);
+$('coin0').insertAdjacentHTML('afterbegin',COIN(132,'위안')); $('coin1').insertAdjacentHTML('afterbegin',COIN(132,'달러')); $('coin2').insertAdjacentHTML('afterbegin',COIN(132,'엔'));
+$('deco').innerHTML=`<div style="position:absolute;left:10px;top:118px">${SK.ground(250,1)}</div><div style="position:absolute;left:0;top:10px">${PARCEL(130,false)}</div><div style="position:absolute;left:112px;top:46px">${PARCEL(110,true)}</div>`;
+$('fly').innerHTML=COIN(70,'원');
+$('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
+
+// 2: 매년 3분기 해외직접구매액(억 원) — 국가데이터처 KOSIS(0부터, 과장 없이)
+const Q=[['2022년',14464,'1조 4464억'],['2023년',16433,'1조 6433억'],['2024년',19431,'1조 9431억'],['2025년',21223,'2조 1223억'],['2026년',19893,'1조 9893억']];
+const QX=[110,272,434,596,758], QW=128, QB=972, QH=v=>350*v/21223;
+$('qbars').innerHTML=Q.map(([y,v,txt],i)=>`<div class="qb${i===4?' now':''}" id="qb${i}" style="left:${QX[i]}px;width:${QW}px"></div><div class="qv" id="qv${i}" style="left:${QX[i]-26}px;width:${QW+52}px;${i===4?'color:var(--red)':''}">${txt}</div><div class="qy" id="qy${i}" style="left:${QX[i]-26}px;width:${QW+52}px;top:${QB+10}px">${y}</div>`).join('');
+// 3: 나라별 가로 막대(행마다 0부터, 작년 = 가득)
+const HB={A:[14140,12860],B:[3479,3094]}, HW=430;
+// 5: 일본 세로 막대
+const J=[['2025년<br>3분기',1503,'old','1503억'],['2026년<br>3분기',1989,'up','1989억']], JX=[470,690], JW=150, JB=930, JH=v=>320*v/1989;
+$('jbars').innerHTML=J.map(([y,v,k,txt],i)=>`<div class="vb ${k}" id="jb${i}" style="left:${JX[i]}px;width:${JW}px"></div><div class="vv" id="jv${i}" style="left:${JX[i]-40}px;width:${JW+80}px;${k==='up'?'color:var(--mint)':''}">${txt}</div><div class="vy" id="jy${i}" style="left:${JX[i]-40}px;width:${JW+80}px;top:${JB+12}px">${y}</div>`).join('');
+$('pre').textContent=TL.lines.map(l=>l.text.replace(/<br>/g,' ')).join(' ')+document.body.innerText;
+
+function sv(id,a,b){$(id).style.visibility=(gT>=a&&gT<b)?'visible':'hidden';}
+function fx(el,t,inS,inD,outS,outD,dy=40,dx=0,rot=0){if(typeof el==='string')el=$(el);const a=eOut(P(t,inS,inD)),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=a*(1-b);el.style.transform=`translate(${(1-a)*dx}px,${(1-a)*dy-b*dy*.7}px) rotate(${rot}deg)`;return a*(1-b);}
+function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);const k=P(t,s,.5),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=clamp(k*4)*(1-b);el.style.transform=`rotate(${rot}deg) scale(${k<=0?from:from+(1-from)*eBack(k)})`;}
+let gT=0;
+
+// ---------- 도리 연기: 경제 해설 — 차분하게 짚고, 일본에서 깜짝, 끝에만 활짝 ----------
+const OUTFIT='news';   // 환율·경제 해설 — EX.06·EP.12 detective, EP.14 travel 과 겹치지 않게
+Dori.mount($('dori'),{outfit:OUTFIT});
+const D={};TL.lines.forEach(l=>D[l.id]=l.d);
+const A=(id,f)=>T[id]+f*D[id];
+const EX=[[0,{happy:0}],[A('L01',.35),{think:.45}],[A('L01',.97),{think:0}],
+ [T.wQ,{think:.7}],[A('L02',.97),{think:0}],
+ [T.wSum,{surprise:.4}],[A('L03',.96),{surprise:0}],
+ [T.wDrop,{sad:.45}],[A('L04',.95),{sad:0}],
+ [T.wFirst,{surprise:.6}],[A('L05',.96),{surprise:0}],
+ [T.wCN,{sad:.35}],[A('L06',.95),{sad:0}],[T.wUS,{sad:.4}],[A('L07',.95),{sad:0}],
+ [T.wC15,{surprise:.4}],[A('L08',.95),{surprise:0}],
+ [T.wJP,{surprise:.7}],[T.wJP+.7,{surprise:0,happy:.6}],[A('L09',.97),{happy:0}],
+ [T.L10+.1,{think:.55}],[A('L10',.95),{think:0}],[T.wYen,{surprise:.45}],[A('L11',.95),{surprise:0}],
+ [T.wMore,{happy:.5}],[A('L12',.96),{happy:0}],
+ [T.L13+.08,{think:.3}],[A('L13',.95),{think:0}],
+ [T.L13b,{squint:.7}],[A('L13b',.98),{squint:0}],
+ [T.L14b+.1,{happy:.5}],[T.L15+.04,{happy:1,pouch:1}]];
+const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L15?.45:.32);
+const GZ=[[0,.2,.4],[A('L01',.98),0,0],[T.L03+.1,.8,-.6],[A('L05',.96),0,0],[T.L06+.1,.8,-.6],[A('L07',.96),0,0],[T.L08+.1,.8,-.6],[A('L08',.96),0,0],[T.L09+.1,.8,-.6],[A('L09',.96),0,0],[T.L10+.1,.8,-.7],[A('L12',.96),0,0],[T.L13+.08,.6,-.8],[A('L13',.96),0,0]];
+const gzT=Dori.track(GZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
+function gaze(t){const g=gzT(t),m=Dori.micro(t);return [g.x+m[0]*.7,g.y+m[1]*.7];}
+const BL=Dori.blinks(DUR,EX.map(k=>k[0]),23);
+const blink=t=>Dori.blinkAt(BL,t);
+const EF=[];{const r=rng(7);let t=3.4;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=4.2+r()*5;}}
+function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
+const HOPS=[[T.wJP,28],[T.L13b,26],[T.L15+.04,30]];
+function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
+  if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
+  return [h,sq];}
+const ARMR=[[0,0],[T.L03+.1,.4],[A('L04',.9),0],[T.L06+.1,.4],[A('L07',.9),0],[T.L08+.1,.35],[A('L08',.9),0],[T.wJP,.6],[A('L09',.95),0],[T.L10+.1,.4],[A('L12',.9),0],[T.L13+.08,.4],[A('L13',.9),0],[T.L13b,.7],[T.L13b+1.0,0],[T.L14b+.13,.45],[T.L14b+1.43,0],[A('L15',.4),.9]];
+const ARML=[[0,0],[T.wJP,.45],[T.wJP+.9,0],[T.L13b,.7],[T.L13b+1.0,0],[T.L15+.04,.55],[T.L15+.89,0]];
+const ARMC=new Map();
+function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
+function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
+  for(const [a,b] of [[T.L02+.1,A('L02',.98)],[T.L10+.1,T.wFX+.6]]){const v=on(a,b);if(v>o){o=v;m='?';}}
+  for(const [a,b] of [[T.wJP,T.wJP+1.1]]){const v=on(a,b);if(v>o){o=v;m='!';}}
+  return [m,o];}
+function renderDori(t){
+  const fr=Math.min(TL.env.length-1,Math.max(0,Math.round(t*FPS)));
+  const env=Math.max(TL.env[fr],(TL.env[fr-1]||0)*.55);
+  const e=expr(t),[gx,gy]=gaze(t),[h,sq]=hop(t);
+  const talk=clamp(env*1.2-.05)*(1-.6*e.sad);const [mk,mo]=marks(t);
+  const spark=Math.max(clamp(P(t,T.wJP+.5,.2))*(1-P(t,T.wJP+1.6,.3))*.7,clamp(P(t,T.L13b,.2))*(1-P(t,T.L13b+1.1,.3))*.6,clamp(P(t,T.L15+.04,.2)));
+  const wv=A('L15',.4); let armR=arm(ARMR,t); if(t>wv) armR+=Math.sin((t-wv)*10)*.1*clamp(P(t,wv,.3));
+  const tilt=1.2*Math.sin(t*.6)+.6*Math.sin(t*1.7+.5)-e.think*7+e.sad*-4+e.surprise*Math.sin(t*22)*1.0;
+  Dori.draw({t,happy:e.happy,squint:e.squint,surprise:e.surprise,sad:e.sad,open:talk,blink:blink(t),gx:gx+e.think*.5,gy:gy-e.think*.7+e.sad*.4,
+    pouch:e.pouch,armL:arm(ARML,t),armR,earL:-flick(t,'L')*10-e.sad*18+e.surprise*6,earR:-flick(t,'R')*10-e.sad*18+e.surprise*6,
+    hop:h,squash:sq,breath:Math.sin(t*2*Math.PI*.24),tilt,sweat:0,sweatY:0,mark:mk,markO:mo,markY:Math.sin(t*5)*3,spark});
+  const ent=P(t,0,.8),x=lerp(-380,0,eOut(ent));
+  $('dori').style.transform=`translate(${x}px,0px)`;
+  if(!$('dsh').innerHTML) $('dsh').innerHTML=SK.ground(360,1);
+  $('dsh').style.transform=`translate(${x}px,0) scale(${1-Math.min(.45,h/180)})`; $('dsh').style.opacity=clamp(ent*2);
+  let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
+  const bb=$('bub');
+  if(ln){if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
+    bb.style.opacity=clamp(a*4)*(1-o);bb.style.transform=`translate(${x}px,-50%) scale(${(a<=0?.7:.7+.3*eBack(a))*(1-.08*o)})`;}
+  else bb.style.opacity=0;
+}
+
+function render(t){
+  gT=t;
+  $('progf').style.width=(clamp(t/DUR)*100)+'%';
+  fx('hdr',t,0,.5,null,0,14); fx('prog',t,0,.5,null,0,0);
+  fx('deco',t,.3,.6,null,0,30);
+
+  // 1 질문 — 상자는 처음부터(빈 순간 없이)
+  sv('s1',0,T.s2+.4); const o1=T.s2-.1;
+  document.querySelectorAll('#t1 span').forEach((el,i)=>fx(el,t,[.15,.6,T.wQ-.25][i],.45,o1,.4,46));
+  const gk=P(t,.2,.6), gb=eIO(P(t,o1,.4)); $('box1').style.opacity=clamp(gk*3)*(1-gb); $('box1g').style.opacity=clamp(gk*3)*(1-gb);
+  $('box1').style.transform=`translateY(${-gb*30}px) scale(${gk<=0?.6:.6+.4*eBack(gk)}) rotate(${Math.sin(t*1.1)*2.5}deg)`;
+  pop('first1',t,.9,o1,.4,-2,.5); fx('c1',t,A('L01',.55),.45,o1,.4,40);
+
+  // 2 매년 3분기
+  sv('s2',T.s2,T.s3+.3); const o2=T.s3-.1;
+  fx('t2',t,T.s2+.05,.45,o2,.35,30); fx('u2',t,T.s2+.2,.45,o2,.35,20); fx('cq',t,T.s2+.1,.5,o2,.35,40);
+  Q.forEach(([y,v],i)=>{const s0=i<4?T.s2+.15+i*.16:T.wSum-.15, g=spring(P(t,s0,.85)), b=eIO(P(t,o2,.35)), h=QH(v)*clamp(g,0,1.06), el=$('qb'+i);
+    el.style.height=Math.max(0,h)+'px'; el.style.top=(QB-h)+'px'; el.style.opacity=(t>=s0?1:0)*(1-b);
+    const qv=$('qv'+i); qv.style.top=(QB-h-44)+'px'; qv.style.opacity=clamp((P(t,s0,.85)-.35)*2)*(1-b);
+    $('qy'+i).style.opacity=clamp(P(t,s0-.1,.35))*(1-b);});
+  pop('ch2a',t,T.wDrop,o2,.35,-4,.5); pop('ch2b',t,T.wTwo,o2,.35,-2,.6); pop('ch2c',t,T.wFirst-.1,o2,.35,-2,.6);
+
+  // 3 나라별
+  sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1;
+  fx('t3',t,T.s3+.05,.45,o3,.35,30); fx('u3',t,T.s3+.2,.45,o3,.35,20); fx('c3',t,T.s3+.1,.5,o3,.35,40);
+  [['A',T.L06+.05,T.wCN],['B',T.L07,T.wUS]].forEach(([r,s0,sw])=>{const b=eIO(P(t,o3,.35));
+    fx('r'+r,t,s0,.4,o3,.35,20,-30);
+    HB[r].forEach((v,i)=>{const s=i?sw-.25:s0+.25, g=spring(P(t,s,.8)), w=HW*v/HB[r][0]*clamp(g,0,1.04), el=$('hb'+r+i);
+      el.style.width=Math.max(0,w)+'px'; el.style.opacity=(t>=s?1:0)*(1-b);
+      const hv=$('hv'+r+i); hv.style.left=(176+w+18)+'px'; hv.style.opacity=clamp((P(t,s,.8)-.3)*2)*(1-b);
+      $('hl'+r+i).style.opacity=clamp(P(t,s-.1,.3))*(1-b);});});
+  pop('tgA',t,T.wCN,o3,.35,-3,.5); pop('tgB',t,T.wUS,o3,.35,-3,.5);
+
+  // 4 상품군
+  sv('s4',T.s4,T.s5+.3); const o4=T.s5-.1;
+  fx('t4',t,T.s4+.05,.45,o4,.35,30); fx('u4',t,T.s4+.2,.45,o4,.35,20);
+  fx('cA',t,T.s4+.1,.5,o4,.35,40); fx('cB',t,T.s4+.3,.5,o4,.35,40);
+  fx('pA',t,T.s4+.2,.5,o4,.35,30); fx('pB',t,T.s4+.45,.5,o4,.35,30);
+  $('shirt').style.transform=`rotate(${Math.sin(t*1.6)*3}deg)`; $('shirt').style.transformOrigin='50% 12%';
+  pop('tgC',t,T.wC15,o4,.35,-4,.5); pop('tgD',t,T.wC15+.45,o4,.35,3,.5);
+
+  // 5 반대 신호: 일본
+  sv('s5',T.s5,T.s6+.3); const o5=T.s6-.1;
+  fx('t5',t,T.s5+.05,.45,o5,.35,30); fx('u5',t,T.s5+.2,.45,o5,.35,20); fx('c5',t,T.s5+.1,.5,o5,.35,40);
+  const bk=P(t,T.s5+.2,.6), bo=eIO(P(t,o5,.35)); $('box5').style.opacity=clamp(bk*3)*(1-bo); $('box5g').style.opacity=clamp(bk*3)*(1-bo);
+  $('box5').style.transform=`scale(${bk<=0?.6:.6+.4*eBack(bk)}) rotate(${Math.sin(t*1.2)*2.5}deg) translateY(${-Math.abs(Math.sin(clamp(P(t,T.wJP,.5))*Math.PI))*26}px)`;
+  J.forEach(([y,v],i)=>{const s0=i?T.wJP-.3:T.L09+.3, g=spring(P(t,s0,.85)), b=eIO(P(t,o5,.35)), h=JH(v)*clamp(g,0,1.06), el=$('jb'+i);
+    el.style.height=Math.max(0,h)+'px'; el.style.top=(JB-h)+'px'; el.style.opacity=(t>=s0?1:0)*(1-b);
+    const jv=$('jv'+i); jv.style.top=(JB-h-56)+'px'; jv.style.opacity=clamp((P(t,s0,.85)-.35)*2)*(1-b);
+    $('jy'+i).style.opacity=clamp(P(t,s0-.1,.35))*(1-b);});
+  pop('tgJ',t,T.wJP+.15,o5,.35,-4,.5);
+
+  // 6 환율
+  sv('s6',T.s6,T.s8+.3); const o6=T.s8-.1;
+  fx('t6',t,T.s6+.05,.45,o6,.35,30); fx('u6',t,T.s6+.2,.45,o6,.35,20);
+  [T.s6+.15,T.wFX+.2,T.wYen-.35].forEach((s,i)=>{fx('fx'+i,t,s,.45,o6,.35,40);
+    const c=$('coin'+i); c.style.transform=`rotate(${Math.sin(t*1.4+i)*4}deg)`;});
+  fx('jk0',t,T.wLess-.05,.4,o6,.35,20); fx('jk1',t,T.wLess+.2,.4,o6,.35,20); fx('jk2',t,T.wMore-.05,.4,o6,.35,20);
+
+  // 8 정리(카드는 끝까지 남는다)
+  sv('s8',T.s8,99);
+  fx('c8',t,T.s8+.05,.5,null,0,50);
+  ['k1','k2','k3','k4'].forEach((id,i)=>fx(id,t,T.L13+.35+i*.45,.4,null,0,20,-30));
+  const sk=P(t,T.stamp-.12,.3); $('stamp8').style.opacity=clamp(sk*5);
+  $('stamp8').style.transform=`rotate(-10deg) scale(${sk<=0?1.6:1.6-.6*eOut(sk)})`;
+
+  // 끝: 정리 카드 위 구독·좋아요 칩, 동전이 볼주머니로
+  pop('cta9',t,T.L14b-.05,T.L15+.25,.3,-2,.6);
+  const fk=P(t,T.L15-.45,.55), fl=$('fly');
+  if(fk>0&&fk<1){const x=lerp(820,230,eIO(fk)),y=lerp(760,1230,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L15-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.5})`;}
+  else fl.style.opacity=0;
+
+  renderDori(t);
+}
+window.render=render;
+document.fonts.ready.then(()=>{render(0);setTimeout(()=>{document.fonts.ready.then(()=>{render(0);window.__ready=true;});},300);});
+</script>
+</body>
+</html>
