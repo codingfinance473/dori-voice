@@ -1,0 +1,86 @@
+{
+ "id": "ex08-04",
+ "note": "EX.08 2판 — 모리 소개 줄(도리) + 모리 대사 5줄을 3번 목소리(voices/mori-alt)로 비교용",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 777,
+   "takes": 4,
+   "texts": [
+    "아, 얘는 모리. 내 말이면 일단 의심부터 해."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-alt",
+   "seed": 778,
+   "takes": 4,
+   "texts": [
+    "거짓말. 올봄에 기름값 올랐다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-alt",
+   "seed": 779,
+   "takes": 4,
+   "texts": [
+    "그럼 올랐다는 말은 뭔데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-alt",
+   "seed": 780,
+   "takes": 4,
+   "texts": [
+    "집은 왜 안 올렸는데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-alt",
+   "seed": 781,
+   "takes": 4,
+   "texts": [
+    "그래서, 그게 내 지갑이랑 무슨 상관인데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-alt",
+   "seed": 782,
+   "takes": 4,
+   "texts": [
+    "흐음, 인정."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01c",
+  "M01x",
+  "M03bx",
+  "M04x",
+  "M05x",
+  "M06x"
+ ]
+}
