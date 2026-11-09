@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t06",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 688,
+  "takes": 4,
+  "texts": [
+   "공장용은 진짜 많이 올랐어. 이월엔 메가줄에 십칠 원이던 산업용 도매요금이, 지금은 이십육 점 오 원. 오십육 퍼센트 올랐대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.3,
+ "cpu": 4,
+ "cpu_model": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 14.96,
+   "gen_s": 88.4,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 21.52,
+   "gen_s": 120.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 10.48,
+   "gen_s": 64.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 10.4,
+   "gen_s": 64.4,
+   "sr": 24000
+  }
+ ]
+}
