@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t03",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 635,
+  "takes": 4,
+  "texts": [
+   "집 요금은 정부가 동결했거든. 그래서 가스공사가 못 받은 돈이 십삼 조 넘게 쌓였대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.8,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 6.4,
+   "gen_s": 22.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 6.32,
+   "gen_s": 24.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 7.28,
+   "gen_s": 26.6,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 7.2,
+   "gen_s": 27.2,
+   "sr": 24000
+  }
+ ]
+}
