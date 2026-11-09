@@ -1,0 +1,73 @@
+{
+ "id": "ex08-03",
+ "note": "EX.08 도시가스 — 받아쓰기 약한 줄 다시(가스 요금 띄움·도매/서울 줄 나눔·십삼 조 원)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 570,
+   "takes": 4,
+   "texts": [
+    "올겨울 집 가스 요금, 거의 그대로래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 571,
+   "takes": 4,
+   "texts": [
+    "가스공사 요금표 봐. 집 도매요금은 이천 이십사 년 팔월부터 쭉 그대로야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 572,
+   "takes": 4,
+   "texts": [
+    "서울 소비자 요금도, 팔월에 일 퍼센트도 안 올랐고."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 573,
+   "takes": 4,
+   "texts": [
+    "집 요금은 정부가 동결했거든. 그래서 가스공사가 못 받은 돈이 십삼 조 원 넘게 쌓였대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 574,
+   "takes": 4,
+   "texts": [
+    "너희 집 보일러, 벌써 켰어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01b",
+  "L02c",
+  "L03c",
+  "L05c",
+  "L08b"
+ ]
+}
