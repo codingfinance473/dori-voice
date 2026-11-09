@@ -1,0 +1,14 @@
+{
+ "id": "mori-clone-01",
+ "note": "모리 목소리 = 후보 4번(집사) 테이크 1 음색 고정. 그 음색으로 (1) 발음이 또렷한 기준 문장을 1.7B Base 로 다시 읽혀 최종 voices/mori/ref.wav 후보를 만들고 (2) 매 편 쓰는 0.6B Base 로 실제 모리 대사 5줄을 따라 읽혀 음높이·받아쓰기를 본다.",
+ "tasks": [
+  {"id": "ref_a", "mode": "clone", "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base", "voice": "voices/mori-take1", "seed": 201, "takes": 2,
+   "texts": ["흐음, 그 말 진짜야? 근거부터 보여 줘. 코코아 값이 일 년 만에 반으로 떨어졌다고? 숫자가 그렇다면 할 말 없지. 그래서, 그게 내 지갑이랑 무슨 상관인데? 알았어, 인정. 이번엔 네 말이 맞았어."]},
+  {"id": "ref_b", "mode": "clone", "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base", "voice": "voices/mori-take1", "seed": 202, "takes": 2,
+   "texts": ["흐음, 그 말 진짜야? 근거부터 보여 줘. 코코아 값이 일 년 만에 반으로 떨어졌다고? 숫자가 그렇다면 할 말 없지. 그래서, 그게 내 지갑이랑 무슨 상관인데? 알았어, 인정. 이번엔 네 말이 맞았어."]},
+  {"id": "lines_a", "mode": "clone", "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base", "voice": "voices/mori-take1", "seed": 301, "takes": 3,
+   "texts": ["거짓말. 그런 게 어디 있어?", "근거는? 숫자로 보여 줘.", "그래서, 그게 내 지갑이랑 무슨 상관인데?"]},
+  {"id": "lines_b", "mode": "clone", "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base", "voice": "voices/mori-take1", "seed": 302, "takes": 3,
+   "texts": ["흐음, 인정. 이번엔 네 말이 맞았어.", "작년 이맘때보다 반값이면, 빼빼로도 싸져야 하는 거 아니야?"]}
+ ]
+}
