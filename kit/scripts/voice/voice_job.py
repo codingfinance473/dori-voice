@@ -1,4 +1,4 @@
-"""도리 목소리 C 작업 올리기·기다리기 — 사용자 저장소 codingfinance473/dori-voice(2026-10-29부터 공개 — 액션 무료) 의 깃허브 액션(Qwen3-TTS 0.6B Base, voices/dori).
+"""도리·모리 목소리 작업 올리기·기다리기 — 사용자 저장소 codingfinance473/dori-voice 의 깃허브 액션(Qwen3-TTS 0.6B Base, 줄마다 voices/dori 또는 voices/mori).
 
   python3 voice/voice_job.py make <작업id> L02 L06 … [--takes 4] [--note "EP.03 화장품"] [--trailer "커밋 끝줄"] [--dry]
       voice/lines.json 의 say 를 줄마다 작업(task) 하나로 jobs/<작업id>.json 에 쓰고 push 한다.
@@ -32,7 +32,8 @@ def make(jid, ids, takes=4, note="", trailer="", dry=False):
     tasks, seed0 = [], zlib.crc32(jid.encode()) % 900 + 100
     for i, lid in enumerate(ids):
         say = L[lid]["say"]
-        tasks.append({"id": f"t{i:02d}", "mode": "clone", "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base", "voice": "voices/dori",
+        voice = L[lid].get("voice", "voices/dori")   # 줄마다 목소리: 기본 도리(voices/dori), 모리 줄은 "voice": "voices/mori" (2026-11-09 2인 형식)
+        tasks.append({"id": f"t{i:02d}", "mode": "clone", "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base", "voice": voice,
                       "seed": seed0 + i, "takes": takes, "texts": [say], "dtype": "auto"})
     job = {"id": jid, "note": note or f"대사 {len(ids)}줄", "tasks": tasks, "lines": ids}
     if dry: print(json.dumps(job, ensure_ascii=False, indent=1)); return
