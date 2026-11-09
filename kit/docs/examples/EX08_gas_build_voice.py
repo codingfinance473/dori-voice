@@ -1,7 +1,10 @@
 """대사 wav 를 시간표대로 한 트랙(voice.wav)으로 합치고 timeline.js 를 만든다 — 2인 형식(도리·모리).
 편마다 고치는 곳: order(줄·앞 쉼·장면), WORD(화면·효과음 단어 시각). 아래 값은 EX.08 도시가스(2026-11-09).
 timeline.js: T(줄·장면·단어 시각), lines(id·t·d·text·who), env(둘 합침), envD(도리 입), envM(모리 입)."""
-import json, sys
+import json, sys, os
+ALT = os.environ.get("MORI_ALT", "1") == "1"   # 기본 1: 사용자가 3번 목소리를 골랐다(2026-11-10)
+#   # 1이면 모리 줄을 비교용 3번 목소리(…x)로 — 같은 id 로 시간표를 만든다
+def SRC(lid): return lid + "x" if ALT and lid[0] == "M" and (lid + "x") in meta else lid
 import numpy as np
 from scipy.io import wavfile
 from scipy.signal import resample_poly
@@ -11,12 +14,12 @@ meta = {m["id"]: m for m in json.load(open("voice/voice_meta.json", encoding="ut
 WHO = {l["id"]: l.get("who", "D") for l in json.load(open("voice/lines.json", encoding="utf-8"))}
 GAP, SCENE = 0.35, 0.55
 order = [  # (줄, 앞 쉼, 장면 시작 표시)
-    ("L01b", 0.30, "s1"), ("M01", GAP, None),
-    ("L02c", SCENE + .15, "s2"), ("L03c", GAP, None), ("M03b", GAP, None),
-    ("L04b", SCENE + .15, "s3"), ("M04", GAP, None),
-    ("L05c", SCENE + .15, "s4"), ("M05", GAP, None),
-    ("L06b", SCENE + .15, "s5"),
-    ("M06", 0.45, "s8"), ("L07", 0.30, None), ("L08", 0.40, None),
+    ("L01b", 0.30, "s1"), ("M01", 0.18, None), ("M00", 0.35, None),
+    ("L02c", SCENE, "s2"), ("L03c", GAP, None), ("M03b", 0.18, None),
+    ("L04b", SCENE, "s3"), ("M04", 0.18, None),
+    ("L05c", SCENE, "s4"), ("M05", 0.18, None),
+    ("L06b", SCENE, "s5"),
+    ("M06", 0.40, "s8"), ("L07", 0.25, None), ("L08", 0.40, None),
     ("L09", 0.35, None), ("L10", 0.20, None),
 ]
 T, lines, t = {}, [], 0.0
@@ -24,19 +27,19 @@ for lid, gap, scene in order:
     t += gap
     if scene: T[scene] = round(t - (0.25 if scene != "s1" else 0.3), 3)
     T[lid] = round(t, 3)
-    lines.append({"id": lid, "t": T[lid], "d": meta[lid]["dur"], "text": meta[lid]["text"], "who": WHO.get(lid, "D")})
-    t += meta[lid]["dur"]
+    lines.append({"id": lid, "t": T[lid], "d": meta[SRC(lid)]["dur"], "text": meta[SRC(lid)]["text"], "who": WHO.get(lid, "D")})
+    t += meta[SRC(lid)]["dur"]
 T["END"] = round(t + 1.1, 3)
 sys.path.insert(0, "voice")
 from asr import rec
 def words(lid):
-    sr, x = wavfile.read(f"voice/{lid}.wav"); x = x.astype(np.float32) / 32768
+    sr, x = wavfile.read(f"voice/{SRC(lid)}.wav"); x = x.astype(np.float32) / 32768
     x = resample_poly(x, 16000, sr).astype(np.float32)
     s = rec.create_stream(); s.accept_waveform(16000, x); rec.decode_stream(s)
     return list(zip(s.result.tokens, s.result.timestamps))
 WORD = {  # 이름: (줄, 찾을 글자 후보, 몇 번째, 못 찾을 때 비율)
-    "w2085": ("L02c", ["도매"], 1, .32), "wSame": ("L02c", ["그대로", "그래도"], 1, .86), "w2253": ("L03c", ["서울"], 1, .02), "wAug": ("L03c", ["퍼센트", "일퍼"], 1, .60),
-    "wFeb": ("L04b", ["이월", "2월"], 1, .55), "wNow": ("L04b", ["보다"], 1, .66), "w56": ("L04b", ["오십육", "56", "오십"], 1, .76),
+    "wMori": ("M00", ["모리", "머리"], 1, .12), "w2085": ("L02c", ["도매"], 1, .32), "wSame": ("L02c", ["그대로", "그래도"], 1, .86), "w2253": ("L03c", ["서울"], 1, .02), "wAug": ("L03c", ["퍼센트", "일퍼"], 1, .60),
+    "wSan": ("L04b", ["산업", "3학"], 1, .40), "wFeb": ("L04b", ["이월", "2월"], 1, .55), "wNow": ("L04b", ["보다"], 1, .66), "w56": ("L04b", ["오십육", "56", "오십"], 1, .76),
     "wFreeze": ("L05c", ["동결"], 1, .28), "w13": ("L05c", ["십삼", "13"], 1, .74),
     "wTot": ("L06b", ["오만", "5만"], 1, .55), "w350": ("L06b", ["삼백", "350"], 1, .86),
     "stamp": ("L07", "끝", 1, .45), "pouch": ("L10", "볼", 1, .03)}
@@ -54,13 +57,13 @@ for k, (lid, tgt, nth, frac) in WORD.items():
             if pos < 0: break
         if pos >= 0: break
     if pos >= 0: at = starts[pos]
-    T[k] = round(T[lid] + (at if at is not None else frac * meta[lid]["dur"]), 3)
+    T[k] = round(T[lid] + (at if at is not None else frac * meta[SRC(lid)]["dur"]), 3)
     print(f"{k:8s} {lid:5s} {str(tgt)[:14]:14s} -> {'찾음' if at is not None else '비율'} {T[k]-T[lid]:.2f}s")
 
 n = int(T["END"] * SR)
 track = np.zeros(n, dtype=np.float32); trD = np.zeros(n, dtype=np.float32); trM = np.zeros(n, dtype=np.float32)
 for l in lines:
-    sr, x = wavfile.read(f"voice/{l['id']}.wav")
+    sr, x = wavfile.read(f"voice/{SRC(l['id'])}.wav")
     x = x.astype(np.float32) / 32768
     if sr != SR: x = resample_poly(x, SR, sr).astype(np.float32)
     i = int(l["t"] * SR); seg = x[: n - i]

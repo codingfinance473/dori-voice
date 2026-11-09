@@ -14,7 +14,7 @@
  {
   "id": "M01",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-butler",
   "say": "거짓말. 올봄에 기름값 올랐다던데?",
   "sub": "거짓말<br>올봄에 기름값 올랐다던데?",
   "keys": [
@@ -39,7 +39,7 @@
  {
   "id": "M02",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-butler",
   "say": "도매 말고. 내 고지서 기준은?",
   "sub": "도매 말고<br>내 고지서 기준은?",
   "keys": [
@@ -64,7 +64,7 @@
  {
   "id": "M03",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-butler",
   "say": "그럼 올랐다는 말은 어디서 나온 건데?",
   "sub": "그럼 올랐다는 말은<br>어디서 나온 건데?",
   "keys": [
@@ -89,7 +89,7 @@
  {
   "id": "M04",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-butler",
   "say": "집은 왜 안 올렸는데?",
   "sub": "집은 왜 안 올렸는데?",
   "keys": [
@@ -114,7 +114,7 @@
  {
   "id": "M05",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-butler",
   "say": "그래서, 그게 내 지갑이랑 무슨 상관인데?",
   "sub": "그래서 그게 내 지갑이랑<br>무슨 상관인데?",
   "keys": [
@@ -138,7 +138,7 @@
  {
   "id": "M06",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-butler",
   "say": "흐음, 인정.",
   "sub": "흐음… 인정.",
   "keys": [
@@ -190,7 +190,7 @@
  {
   "id": "M03b",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-butler",
   "say": "그럼 올랐다는 말은 뭔데?",
   "sub": "그럼 올랐다는 말은<br>뭔데?",
   "keys": [
@@ -291,5 +291,100 @@
    "보일러",
    "켰"
   ]
+ },
+ {
+  "id": "L01c",
+  "who": "D",
+  "say": "아, 얘는 모리. 내 말이면 일단 의심부터 해.",
+  "sub": "아, 얘는 모리<br>내 말이면 일단 의심부터 해",
+  "keys": [
+   "모리",
+   "의심"
+  ],
+  "note": "도리가 소개하는 판 — \"모리\"가 받아쓰기에 머리/뭐이로 들려 모리 자기소개(M00)로 바꿈"
+ },
+ {
+  "id": "M01x",
+  "who": "M",
+  "voice": "voices/mori",
+  "say": "거짓말. 올봄에 기름값 올랐다던데?",
+  "sub": "거짓말<br>올봄에 기름값 올랐다던데?",
+  "keys": [
+   "거짓말",
+   "기름"
+  ],
+  "note": "비교용 — 3번 쿨한 10대 목소리"
+ },
+ {
+  "id": "M03bx",
+  "who": "M",
+  "voice": "voices/mori",
+  "say": "그럼 올랐다는 말은 뭔데?",
+  "sub": "그럼 올랐다는 말은<br>뭔데?",
+  "keys": [
+   "올랐다",
+   "뭔데"
+  ],
+  "note": "비교용 — 3번 쿨한 10대 목소리"
+ },
+ {
+  "id": "M04x",
+  "who": "M",
+  "voice": "voices/mori",
+  "say": "집은 왜 안 올렸는데?",
+  "sub": "집은 왜 안 올렸는데?",
+  "keys": [
+   "집",
+   "올렸"
+  ],
+  "note": "비교용 — 3번 쿨한 10대 목소리"
+ },
+ {
+  "id": "M05x",
+  "who": "M",
+  "voice": "voices/mori",
+  "say": "그래서, 그게 내 지갑이랑 무슨 상관인데?",
+  "sub": "그래서 그게 내 지갑이랑<br>무슨 상관인데?",
+  "keys": [
+   "지갑",
+   "상관"
+  ],
+  "note": "비교용 — 3번 쿨한 10대 목소리"
+ },
+ {
+  "id": "M06x",
+  "who": "M",
+  "voice": "voices/mori",
+  "say": "흐음, 인정.",
+  "sub": "흐음… 인정.",
+  "keys": [
+   "인정"
+  ],
+  "note": "비교용 — 3번 쿨한 10대 목소리"
+ },
+ {
+  "id": "M00",
+  "who": "M",
+  "voice": "voices/mori-butler",
+  "say": "난 모리. 근거 없는 말은 안 믿어.",
+  "sub": "난 모리<br>근거 없는 말은 안 믿어",
+  "keys": [
+   "모리",
+   "근거",
+   "믿어"
+  ]
+ },
+ {
+  "id": "M00x",
+  "who": "M",
+  "voice": "voices/mori",
+  "say": "난 모리. 근거 없는 말은 안 믿어.",
+  "sub": "난 모리<br>근거 없는 말은 안 믿어",
+  "keys": [
+   "모리",
+   "근거",
+   "믿어"
+  ],
+  "note": "비교용 — 3번 목소리"
  }
 ]

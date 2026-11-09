@@ -52,19 +52,21 @@ def strum(ch, at, g, down=True):
         key = m
         if key not in pluck_cache: pluck_cache[key] = pluck(hz(m), .8)
         put(bed, pluck_cache[key], at + j * .012, g, pan=-.2 + j * .12)
-quiet = [(T["L05c"] - .2, E["L05c"] + .05), (T["L06b"] - .2, E["L06b"] + .05), (T["L02c"] - .25, T["L02c"] + .7), (T["L03c"] - .25, T["L03c"] + .7), (T["L08"] - .2, E["L08"] + .05), (T["L04b"] - .2, E["L04b"] + .05)]   # 미수금·계산 줄 동안, 그리고 근거 두 줄 첫마디·끝 질문 줄 동안 새 음 쉬기
+quiet = [(T["wMori"] - .2, T["wMori"] + .5), (T["L02c"] - .2, T["L02c"] + .7), (T["L03c"] - .2, T["L03c"] + .6), (T["wSan"] - .15, T["wSan"] + .7), (T["w56"] - .15, T["w56"] + .7), (E["L08"] - .7, E["L08"] + .05), (E["M05"] - 1.0, E["M05"] + .05)]   # 2판: 통째로 끊지 않고 핵심 단어 0.5~0.7초만 새 음을 쉰다(사용자 2026-11-10 "중간에 꺼지는 게 뜬금없다")
 def q(t): return any(a <= t < b for a, b in quiet)
-thin = [(T[i] - .15, E[i] + .1) for i in ("L02c", "L03c", "L04b", "L05c", "L06b", "M06", "L10")]   # 숫자·핵심어 줄: 멜로디·박수·킥을 빼고 현·베이스만
+thin = [(T[i] - .15, E[i] + .1) for i in ("L02c", "L03c", "L04b", "L05c", "L06b", "L08", "M06", "L10")]   # 숫자·핵심어 줄: 멜로디·박수·킥을 빼고 현·베이스만
 def th(t): return any(a <= t < b for a, b in thin)
+MORI = [(T[i] - .25, E[i] + .15) for i in ("M01", "M00", "M03b", "M04", "M05", "M06")]   # 모리 줄: 낮은 목소리와 겹치는 베이스·킥은 빼고 현은 작게
+def mo(t): return any(a <= t < b for a, b in MORI)
 b = 0.0; k = 0
 while b < DUR - 1.2:
     ci = k % 4
     for s8 in range(8):
         tt = b + s8 * BEAT / 2
         if tt >= DUR - 1.2 or q(tt) or tt < E["M01"] + .1: continue   # 배경음은 콜드오픈 두 줄 뒤에 들어온다
-        if s8 in (0, 3, 4, 6): strum(chords[ci], tt, .05 if s8 in (0, 4) else .035, down=s8 != 3)
-        if s8 in (0, 4): put(bed, lp(tone(hz(bass[ci]), .5, a=.01, dec=.25, harm=(1, .25)), 500), tt, .16)
-        if s8 in (0, 4) and tt > 3.0 and not th(tt):
+        if s8 in (0, 3, 4, 6): strum(chords[ci], tt, (.05 if s8 in (0, 4) else .035) * (.55 if mo(tt) else 1), down=s8 != 3)
+        if s8 in (0, 4) and not mo(tt): put(bed, lp(tone(hz(bass[ci]), .5, a=.01, dec=.25, harm=(1, .25)), 500), tt, .16)
+        if s8 in (0, 4) and tt > 3.0 and not th(tt) and not mo(tt):
             n = int(.25 * SR); x = np.arange(n) / SR
             put(bed, np.sin(2 * np.pi * np.cumsum(55 + 70 * np.exp(-x * 30)) / SR) * np.exp(-x * 12), tt, .14)
         if s8 in (2, 6) and tt > 3.0 and not th(tt): put(bed, bp(noise(.12, .03), 900, 3500), tt, .05, pan=-.1)     # 박수
@@ -111,19 +113,19 @@ sr, v = wavfile.read("voice.wav"); v = v.astype(np.float32) / 32768
 v = v[:N] if len(v) >= N else np.pad(v, (0, N - len(v)))
 v = hp(v, 90)
 env = np.convolve(np.abs(v), np.ones(int(.05 * SR)) / int(.05 * SR), mode="same")
-att, rel = np.exp(-1 / (.03 * SR)), np.exp(-1 / (.25 * SR)); sm = np.zeros_like(env); g = 0.0
+att, rel = np.exp(-1 / (.03 * SR)), np.exp(-1 / (.14 * SR)); sm = np.zeros_like(env); g = 0.0
 for i in range(0, N, 64):
     e = env[i]; g = att * g + (1 - att) * e if e > g else rel * g + (1 - rel) * e; sm[i:i + 64] = g
-duck = 1 - .45 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)   # 말하는 동안 약 5dB만 낮춘다(2026-11-05: 예전 .62 + 줄별 lv 로 배경음이 거의 안 들렸다)
+duck = 1 - .62 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)   # 말하는 동안 약 5dB만 낮춘다(2026-11-05: 예전 .62 + 줄별 lv 로 배경음이 거의 안 들렸다)
 # 숫자·짧은 정답 줄만 그 줄 동안 배경음을 조금 더 낮춘다 — 기본 0.7(-3dB), 완성 믹스 받아쓰기에서 실제로 덜 들린 줄만 0.5(-6dB)까지.
 # 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
-NUM_LINES = ("L02c", "L03c", "L04b", "L05c", "L06b", "L07", "L08", "L10")   # 이 편의 숫자·결론 줄
-WEAK = {"L02c": .5, "L03c": .5, "L04b": .5, "L08": .5}                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
+NUM_LINES = ("L02c", "L03c", "L04b", "L05c", "L06b", "L07", "L08", "L10", "M00", "M01", "M03b", "M04", "M05", "M06")   # 이 편의 숫자·결론 줄
+WEAK = {"L02c": .5, "L03c": .5, "L04b": .5, "L08": .5, "M00": .5, "M01": .6, "M03b": .5, "M04": .6, "M05": .5, "M06": .5}                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
 extra = np.ones(N)
 for l in TLL:
     if l["id"] in NUM_LINES:
-        a, b2 = int((l["t"] - .15) * SR), int((l["t"] + l["d"] + .1) * SR)
+        a, b2 = int((l["t"] - .12) * SR), int((l["t"] + l["d"] + .1) * SR)   # 첫마디가 덮이지 않게 .35초 앞서 내린다
         lv = max(.5, WEAK.get(l["id"], .7))
         ramp = int(.12 * SR); w = np.ones(b2 - a) * lv; w[:ramp] = np.linspace(1, lv, ramp); w[-ramp:] = np.linspace(lv, 1, ramp)
         extra[a:b2] = np.minimum(extra[a:b2], w[: len(extra[a:b2])])
@@ -131,5 +133,8 @@ duck = duck * extra
 
 # ---------- 배경음 크기 맞추기 + mix.wav (bedmix.py — 잔잔하게 들리게, 2026-11-05) ----------
 import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import os
+os.environ.setdefault("BED_UNDER", "12.7")   # 2인 형식은 쉼이 짧아(0.2초) 쉼에서만 키우기 어렵다 → 전체를 조금 크게, 고르게 깐다
 from bedmix import finish
+bed *= 2.6   # 2판: 모리 줄에서 베이스·킥을 빼 전체가 얇아져 자동 배율(최대 8)로는 쉼이 너무 조용 → 원 소리를 키워 맞춘다
 finish(bed, sfx, v, env, sm, duck, E["M01"] + .1, DUR - 1.2, SR)
