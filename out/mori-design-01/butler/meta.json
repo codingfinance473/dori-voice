@@ -1,0 +1,37 @@
+{
+ "task": {
+  "id": "butler",
+  "label": "점잖은 집사 고양이(30대)",
+  "mode": "design",
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+  "seed": 104,
+  "takes": 2,
+  "texts": [
+   "뻥치지 마, 어디서 들은 건데? 근거 있어? 코코아가 톤당 육천 달러에서 삼천 달러로? 흐음, 숫자가 그렇다면야. 그래서 그게 내 지갑이랑 무슨 상관인데? 인정. 이번엔 네 말이 맞았어."
+  ],
+  "instruct": "Polite gentleman cat in his thirties, like a composed butler who doubts everything courteously. Low velvety voice, slow and deliberate, crisp Korean consonants, dry wit with restrained emotion, slight formal elegance even when speaking casually. Calm, never gruff or intimidating."
+ },
+ "load_s": 34.2,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 17.92,
+   "gen_s": 68.1,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 17.12,
+   "gen_s": 64.9,
+   "sr": 24000
+  }
+ ]
+}

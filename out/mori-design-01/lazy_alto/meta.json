@@ -1,0 +1,37 @@
+{
+ "task": {
+  "id": "lazy_alto",
+  "label": "나른한 젊은 여자(낮은 알토)",
+  "mode": "design",
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+  "seed": 102,
+  "takes": 2,
+  "texts": [
+   "뻥치지 마, 어디서 들은 건데? 근거 있어? 코코아가 톤당 육천 달러에서 삼천 달러로? 흐음, 숫자가 그렇다면야. 그래서 그게 내 지갑이랑 무슨 상관인데? 인정. 이번엔 네 말이 맞았어."
+  ],
+  "instruct": "Cartoon cat character with a young woman's low alto voice. Languid and relaxed like a cat lounging in the sun, soft slight drawl, unimpressed but gentle, slow and even pace, a hint of a smile, clear and smooth pronunciation. Dry humor, not sleepy-slurred, not cold."
+ },
+ "load_s": 15.9,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 19.76,
+   "gen_s": 1086.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 20.64,
+   "gen_s": 1415.5,
+   "sr": 24000
+  }
+ ]
+}
