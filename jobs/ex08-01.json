@@ -1,0 +1,177 @@
+{
+ "id": "ex08-01",
+ "note": "EX.08 도시가스 요금(도리·모리 2인 형식 첫 편) — 도리 7줄 · 모리 6줄",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 682,
+   "takes": 4,
+   "texts": [
+    "올겨울 집 가스요금, 거의 그대로래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 683,
+   "takes": 4,
+   "texts": [
+    "거짓말. 올봄에 기름값 올랐다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 684,
+   "takes": 4,
+   "texts": [
+    "가스공사 요금표 봐. 집에 오는 가스 도매요금은 메가줄에 이십 점 팔 원. 이천 이십사 년 팔월부터 그대로야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 685,
+   "takes": 4,
+   "texts": [
+    "도매 말고. 내 고지서 기준은?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 686,
+   "takes": 4,
+   "texts": [
+    "서울 소비자요금은 메가줄에 이십이 점 오 원. 팔월에 조금 올랐는데, 일 퍼센트도 안 돼."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 687,
+   "takes": 4,
+   "texts": [
+    "그럼 올랐다는 말은 어디서 나온 건데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 688,
+   "takes": 4,
+   "texts": [
+    "공장용은 진짜 많이 올랐어. 이월엔 메가줄에 십칠 원이던 산업용 도매요금이, 지금은 이십육 점 오 원. 오십육 퍼센트 올랐대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 689,
+   "takes": 4,
+   "texts": [
+    "집은 왜 안 올렸는데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 690,
+   "takes": 4,
+   "texts": [
+    "집 요금은 정부가 동결해 두고 있거든. 대신 가스공사가 못 받은 돈이, 작년 말에 십삼 조 팔천 억 원이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 691,
+   "takes": 4,
+   "texts": [
+    "그래서, 그게 내 지갑이랑 무슨 상관인데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 692,
+   "takes": 4,
+   "texts": [
+    "한 달에 이천 메가줄 쓰는 서울 집이면, 부가세까지 약 오만 천 원. 팔월 인상분은 한 달 삼백오십 원쯤이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 693,
+   "takes": 4,
+   "texts": [
+    "흐음, 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 694,
+   "takes": 4,
+   "texts": [
+    "너희 집 보일러는 벌써 켰어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "M01",
+  "L02",
+  "M02",
+  "L03",
+  "M03",
+  "L04",
+  "M04",
+  "L05",
+  "M05",
+  "L06",
+  "M06",
+  "L08"
+ ]
+}
