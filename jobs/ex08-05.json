@@ -1,0 +1,34 @@
+{
+ "id": "ex08-05",
+ "note": "EX.08 2판 — 모리 자기소개 한 줄(4번·3번 목소리)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 247,
+   "takes": 4,
+   "texts": [
+    "난 모리. 근거 없는 말은 안 믿어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-alt",
+   "seed": 248,
+   "takes": 4,
+   "texts": [
+    "난 모리. 근거 없는 말은 안 믿어."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "M00",
+  "M00x"
+ ]
+}
