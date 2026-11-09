@@ -1,0 +1,73 @@
+{
+ "id": "ex08-02",
+ "note": "EX.08 도시가스 — 대사 줄여 다시(도리 4줄·모리 1줄, 2판)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 632,
+   "takes": 4,
+   "texts": [
+    "가스공사 요금표 봐. 집 도매요금은 이천 이십사 년 팔월부터 쭉 그대로야. 서울 소비자요금도 팔월에 일 퍼센트도 안 올랐고."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 633,
+   "takes": 4,
+   "texts": [
+    "그럼 올랐다는 말은 뭔데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 634,
+   "takes": 4,
+   "texts": [
+    "공장용은 진짜 올랐어. 산업용 도매요금이 이월보다 오십육 퍼센트나."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 635,
+   "takes": 4,
+   "texts": [
+    "집 요금은 정부가 동결했거든. 그래서 가스공사가 못 받은 돈이 십삼 조 넘게 쌓였대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 636,
+   "takes": 4,
+   "texts": [
+    "한 달 이천 메가줄 쓰는 서울 집이면 약 오만 천 원. 오른 건 한 달 삼백오십 원쯤."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L02b",
+  "M03b",
+  "L04b",
+  "L05b",
+  "L06b"
+ ]
+}
