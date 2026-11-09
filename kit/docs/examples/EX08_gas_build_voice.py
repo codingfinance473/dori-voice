@@ -1,0 +1,80 @@
+"""대사 wav 를 시간표대로 한 트랙(voice.wav)으로 합치고 timeline.js 를 만든다 — 2인 형식(도리·모리).
+편마다 고치는 곳: order(줄·앞 쉼·장면), WORD(화면·효과음 단어 시각). 아래 값은 EX.08 도시가스(2026-11-09).
+timeline.js: T(줄·장면·단어 시각), lines(id·t·d·text·who), env(둘 합침), envD(도리 입), envM(모리 입)."""
+import json, sys
+import numpy as np
+from scipy.io import wavfile
+from scipy.signal import resample_poly
+
+SR, FPS = 44100, 30
+meta = {m["id"]: m for m in json.load(open("voice/voice_meta.json", encoding="utf-8"))}
+WHO = {l["id"]: l.get("who", "D") for l in json.load(open("voice/lines.json", encoding="utf-8"))}
+GAP, SCENE = 0.35, 0.55
+order = [  # (줄, 앞 쉼, 장면 시작 표시)
+    ("L01b", 0.30, "s1"), ("M01", GAP, None),
+    ("L02c", SCENE + .15, "s2"), ("L03c", GAP, None), ("M03b", GAP, None),
+    ("L04b", SCENE + .15, "s3"), ("M04", GAP, None),
+    ("L05c", SCENE + .15, "s4"), ("M05", GAP, None),
+    ("L06b", SCENE + .15, "s5"),
+    ("M06", 0.45, "s8"), ("L07", 0.30, None), ("L08", 0.40, None),
+    ("L09", 0.35, None), ("L10", 0.20, None),
+]
+T, lines, t = {}, [], 0.0
+for lid, gap, scene in order:
+    t += gap
+    if scene: T[scene] = round(t - (0.25 if scene != "s1" else 0.3), 3)
+    T[lid] = round(t, 3)
+    lines.append({"id": lid, "t": T[lid], "d": meta[lid]["dur"], "text": meta[lid]["text"], "who": WHO.get(lid, "D")})
+    t += meta[lid]["dur"]
+T["END"] = round(t + 1.1, 3)
+sys.path.insert(0, "voice")
+from asr import rec
+def words(lid):
+    sr, x = wavfile.read(f"voice/{lid}.wav"); x = x.astype(np.float32) / 32768
+    x = resample_poly(x, 16000, sr).astype(np.float32)
+    s = rec.create_stream(); s.accept_waveform(16000, x); rec.decode_stream(s)
+    return list(zip(s.result.tokens, s.result.timestamps))
+WORD = {  # 이름: (줄, 찾을 글자 후보, 몇 번째, 못 찾을 때 비율)
+    "w2085": ("L02c", ["도매"], 1, .32), "wSame": ("L02c", ["그대로", "그래도"], 1, .86), "w2253": ("L03c", ["서울"], 1, .02), "wAug": ("L03c", ["퍼센트", "일퍼"], 1, .60),
+    "wFeb": ("L04b", ["이월", "2월"], 1, .55), "wNow": ("L04b", ["보다"], 1, .66), "w56": ("L04b", ["오십육", "56", "오십"], 1, .76),
+    "wFreeze": ("L05c", ["동결"], 1, .28), "w13": ("L05c", ["십삼", "13"], 1, .74),
+    "wTot": ("L06b", ["오만", "5만"], 1, .55), "w350": ("L06b", ["삼백", "350"], 1, .86),
+    "stamp": ("L07", "끝", 1, .45), "pouch": ("L10", "볼", 1, .03)}
+cache = {}
+for k, (lid, tgt, nth, frac) in WORD.items():
+    if lid not in cache: cache[lid] = words(lid)
+    toks = cache[lid]; txt = ""; starts = []
+    for tok, ts in toks:
+        for ch in tok.replace(" ", ""): txt += ch; starts.append(ts)
+    pos, at = -1, None
+    for tg in (tgt if isinstance(tgt, list) else [tgt]):
+        pos = -1
+        for _ in range(nth):
+            pos = txt.find(tg, pos + 1)
+            if pos < 0: break
+        if pos >= 0: break
+    if pos >= 0: at = starts[pos]
+    T[k] = round(T[lid] + (at if at is not None else frac * meta[lid]["dur"]), 3)
+    print(f"{k:8s} {lid:5s} {str(tgt)[:14]:14s} -> {'찾음' if at is not None else '비율'} {T[k]-T[lid]:.2f}s")
+
+n = int(T["END"] * SR)
+track = np.zeros(n, dtype=np.float32); trD = np.zeros(n, dtype=np.float32); trM = np.zeros(n, dtype=np.float32)
+for l in lines:
+    sr, x = wavfile.read(f"voice/{l['id']}.wav")
+    x = x.astype(np.float32) / 32768
+    if sr != SR: x = resample_poly(x, SR, sr).astype(np.float32)
+    i = int(l["t"] * SR); seg = x[: n - i]
+    track[i:i + len(seg)] += seg
+    (trM if l["who"] == "M" else trD)[i:i + len(seg)] += seg
+wavfile.write("voice.wav", SR, (np.clip(track, -1, 1) * 32767).astype(np.int16))
+hop = SR // FPS
+def envelope(tr):
+    env = [float(np.sqrt(np.mean(tr[i:i + hop] ** 2))) for i in range(0, n, hop)]
+    loud = [e for e in env if e > 0.01]
+    mx = np.percentile(loud, 95) if loud else 1.0
+    return [round(min(1.0, e / mx), 3) for e in env]
+env, envD, envM = envelope(track), envelope(trD), envelope(trM)
+open("timeline.js", "w", encoding="utf-8").write("window.TL=" + json.dumps({"T": T, "lines": lines, "env": env, "envD": envD, "envM": envM}, ensure_ascii=False) + ";")
+print("END", T["END"])
+for l in lines: print(f'{l["t"]:6.2f}-{l["t"] + l["d"]:6.2f} {l["who"]} {l["id"]}')
+print({k: T[k] for k in ["s2", "s3", "s4", "s5", "s8", "stamp"]})
