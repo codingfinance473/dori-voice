@@ -1,0 +1,78 @@
+{
+ "id": "mori-design-01",
+ "note": "모리(도리 상대역 고양이, 의심 많고 시큰둥) 목소리 후보 6가지 — 도리(높고 밝은 여자아이)와 대비되게 모두 낮고 느리게, 방향만 다르게. 후보마다 2번씩. 고르면 그 테이크가 voices/mori/ref.wav 가 된다.",
+ "tasks": [
+  {
+   "id": "dry_boy",
+   "label": "시큰둥한 소년(12살쯤)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 101,
+   "takes": 2,
+   "texts": [
+    "뻥치지 마, 어디서 들은 건데? 근거 있어? 코코아가 톤당 육천 달러에서 삼천 달러로? 흐음, 숫자가 그렇다면야. 그래서 그게 내 지갑이랑 무슨 상관인데? 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Cartoon cat sidekick, a deadpan boy about 12 years old. Lower-mid pitch for a child, calm and slightly bored, mostly flat intonation with small dry lifts at the end of questions, unhurried pace with short pauses before replies, very clear Korean articulation. Skeptical but warm underneath, never whiny, never mean."
+  },
+  {
+   "id": "lazy_alto",
+   "label": "나른한 젊은 여자(낮은 알토)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 102,
+   "takes": 2,
+   "texts": [
+    "뻥치지 마, 어디서 들은 건데? 근거 있어? 코코아가 톤당 육천 달러에서 삼천 달러로? 흐음, 숫자가 그렇다면야. 그래서 그게 내 지갑이랑 무슨 상관인데? 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Cartoon cat character with a young woman's low alto voice. Languid and relaxed like a cat lounging in the sun, soft slight drawl, unimpressed but gentle, slow and even pace, a hint of a smile, clear and smooth pronunciation. Dry humor, not sleepy-slurred, not cold."
+  },
+  {
+   "id": "cool_teen",
+   "label": "쿨한 10대 남자(변성기 뒤)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 103,
+   "takes": 2,
+   "texts": [
+    "뻥치지 마, 어디서 들은 건데? 근거 있어? 코코아가 톤당 육천 달러에서 삼천 달러로? 흐음, 숫자가 그렇다면야. 그래서 그게 내 지갑이랑 무슨 상관인데? 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Cool teenage boy around 16, voice already low and smooth. Composed, measured pace, skeptical and a little sarcastic in a friendly way, deadpan delivery with precise diction, quiet confidence, no shouting, no roughness. Sounds like the sensible friend who asks for proof."
+  },
+  {
+   "id": "butler",
+   "label": "점잖은 집사 고양이(30대)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 104,
+   "takes": 2,
+   "texts": [
+    "뻥치지 마, 어디서 들은 건데? 근거 있어? 코코아가 톤당 육천 달러에서 삼천 달러로? 흐음, 숫자가 그렇다면야. 그래서 그게 내 지갑이랑 무슨 상관인데? 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Polite gentleman cat in his thirties, like a composed butler who doubts everything courteously. Low velvety voice, slow and deliberate, crisp Korean consonants, dry wit with restrained emotion, slight formal elegance even when speaking casually. Calm, never gruff or intimidating."
+  },
+  {
+   "id": "sleepy_neutral",
+   "label": "졸린 듯 느린 중성 마스코트",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 105,
+   "takes": 2,
+   "texts": [
+    "뻥치지 마, 어디서 들은 건데? 근거 있어? 코코아가 톤당 육천 달러에서 삼천 달러로? 흐음, 숫자가 그렇다면야. 그래서 그게 내 지갑이랑 무슨 상관인데? 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Gender-neutral cartoon cat mascot, drowsy and unbothered. Low-mid pitch, soft and rounded tone, slow pace as if just woken from a nap, mild lazy grumble but every word still clear, small bored sighs between phrases. Cute and harmless, not sloppy, not mumbling."
+  },
+  {
+   "id": "zh_lazy_cat",
+   "label": "나른한 고양이(중국어 설명)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 106,
+   "takes": 2,
+   "texts": [
+    "뻥치지 마, 어디서 들은 건데? 근거 있어? 코코아가 톤당 육천 달러에서 삼천 달러로? 흐음, 숫자가 그렇다면야. 그래서 그게 내 지갑이랑 무슨 상관인데? 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "懒洋洋、慢悠悠的卡通猫，音调偏低、平稳，语气淡淡的、不太相信别人说的话，带一点傲娇和冷幽默，但很可爱不刻薄；语速偏慢，每个字清晰，句尾有一点点上扬的反问感。"
+  }
+ ]
+}
