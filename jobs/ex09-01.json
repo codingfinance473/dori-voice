@@ -1,0 +1,164 @@
+{
+ "id": "ex09-01",
+ "note": "EX.09 수능 스마트안경(2인 형식)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 359,
+   "takes": 4,
+   "texts": [
+    "수능 날 스마트 안경, 쓰기만 해도 시험 무효래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 360,
+   "takes": 4,
+   "texts": [
+    "거짓말. 안 켜면 그냥 안경이잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 361,
+   "takes": 4,
+   "texts": [
+    "교육부 안내 봐. 쓰고 있기만 해도, 사용한 걸로 본대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 362,
+   "takes": 4,
+   "texts": [
+    "그해 시험은 무효, 다음 해 수능도 못 봐."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 363,
+   "takes": 4,
+   "texts": [
+    "그럼 그냥 안경 쓴 사람은?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 364,
+   "takes": 4,
+   "texts": [
+    "감독관이 보자고 하면, 벗어서 확인받는대. 거부하면 같은 처분이고."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 365,
+   "takes": 4,
+   "texts": [
+    "뉴스엔 삼 년 못 본다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 366,
+   "takes": 4,
+   "texts": [
+    "그건 아직 추진 중이래. 올해는 일 년이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori",
+   "seed": 367,
+   "takes": 4,
+   "texts": [
+    "그래서, 나랑 무슨 상관인데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 368,
+   "takes": 4,
+   "texts": [
+    "지원자 오십오만 명 모두야. 시험장마다 전담도 한 명씩 둔대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 369,
+   "takes": 4,
+   "texts": [
+    "깜빡 들고 왔으면, 일 교시 전에 내야 한대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 370,
+   "takes": 4,
+   "texts": [
+    "수험생들, 끝까지 힘내!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "M01",
+  "L02",
+  "L03",
+  "M02",
+  "L04",
+  "M03",
+  "L05",
+  "M04",
+  "L06",
+  "L07",
+  "L09"
+ ]
+}
