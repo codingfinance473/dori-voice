@@ -97,14 +97,14 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #fly{left:0;top:0;width:70px;height:70px}
 #dori{left:0;top:1118px;width:400px;height:415px}
 #dsh{left:50px;top:1466px;width:300px;height:38px}
-#mori{left:650px;top:1090px;width:440px;height:456px}
-#msh{left:720px;top:1466px;width:320px;height:38px}
+#mori{left:678px;top:1044px;width:311px;height:443px}
+#msh{left:700px;top:1466px;width:270px;height:38px}
 .bub{position:absolute;top:985px;max-width:600px;background:#fff;border-radius:32px;padding:20px 30px;font-family:Jua;font-size:38px;line-height:1.32;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;border:4px solid #4A3A33}
-.bub.d{left:60px;max-width:560px;transform-origin:20% 100%} .bub.m{right:170px;transform-origin:80% 100%}
+.bub.d{left:60px;max-width:560px;transform-origin:20% 100%} .bub.m{right:395px;max-width:520px;transform-origin:90% 100%}
 .bub:before{content:"";position:absolute;bottom:-26px;border-width:26px 16px 0 16px;border-style:solid;border-color:#4A3A33 transparent transparent transparent}
 .bub:after{content:"";position:absolute;bottom:-18px;border-width:19px 11px 0 11px;border-style:solid;border-color:#fff transparent transparent transparent}
 .bub.d:before{left:92px} .bub.d:after{left:97px}
-.bub.m:before{right:92px} .bub.m:after{right:97px}
+.bub.m:before{right:34px} .bub.m:after{right:39px}
 #pre{position:absolute;left:-5000px;top:0;font-family:Jua}
 </style>
 </head>
@@ -200,7 +200,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
   <div class="abs" id="dori"></div>
   <div class="abs" id="mori"></div>
   <div class="abs bub d" id="bub"><span id="bubT"></span></div>
-  <div class="abs chip" id="tagM" style="left:786px;top:1426px;background:var(--lav);color:#2B2140;font-size:40px;padding:6px 28px;opacity:0;z-index:5">모리</div>
+  <div class="abs chip" id="tagM" style="left:648px;top:1400px;background:var(--lav);color:#2B2140;font-size:40px;padding:6px 28px;opacity:0;z-index:5">모리</div>
   
   <div id="pre"></div>
 </div>
@@ -349,7 +349,7 @@ const BL=Dori.blinks(DUR,EX.map(k=>k[0]),23);
 const blink=t=>Dori.blinkAt(BL,t);
 const EF=[];{const r=rng(7);let t=3.4;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=4.2+r()*5;}}
 function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
-const HOPS=[[T.wVoid,22],[T.L08,26],[T.L11+.04,30]];
+const HOPS=[[T.M01+.08,9],[T.wVoid,22],[T.L08,26],[T.L11+.04,30]];
 function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
   if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
   return [h,sq];}
@@ -361,8 +361,8 @@ function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=nul
   for(const [a,b] of [[T.wVoid,T.wVoid+1.0]]){const v=on(a,b);if(v>o){o=v;m='!';}}
   return [m,o];}
 
-// ---------- 모리 연기: 눈은 늘 반쯤 감은 채(공통 지침 15절), 숫자엔 더 가늘게, 끝에 마지못해 인정 ----------
-const mori=Mori.mount($('mori'),{variant:'cream'});
+// ---------- 모리 연기(3판): 둥근 눈꺼풀 반달 눈, 두 눈 같게, 받아친 뒤 입꼬리, 숫자엔 더 가늘게, 끝에 마지못해 인정 ----------
+const mori=Mori.mount($('mori'));   // 모리 그림 3판(능글맞은 고양이, 도리 1.5배, M 명찰)
 const SK1={lidL:.52,lidR:.26,browR:.75}, BASE={lidL:.42,lidR:.42,browL:0,browR:0};
 const MX=[[0,{...BASE,happy:0,surprise:0,smile:0,sweat:0}],
  [T.M01,SK1],[A('M01',.98),BASE],
@@ -383,7 +383,9 @@ function nod(t){let v=0;for(const n of NODS){const d=t-n;if(d>=0&&d<.6)v=Math.ma
 const mgzT=Dori.track(MGZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
 const MBL=Dori.blinks(DUR,MX.map(k=>k[0]),37);
 const MARMR=[[0,0],[T.M01,.35],[A('M01',.95),0],[T.M00+.05,.5],[A('M00',.95),0],[T.M02,.3],[A('M02',.95),0],[T.M04,.4],[A('M04',.95),0],[T.M05,.2],[A('M05',.95),0],[T.L11+.04,.5],[T.L11+.9,0]];
-const MARML=[[0,0],[T.wVoid,.4],[T.wVoid+.9,0],[T.M03,.4],[A('M03',.95),0]];
+const MARML=[[0,0],[T.wVoid,.4],[T.wVoid+.9,0],[T.M03,.4],[A('M03',.95),0],[T.L07,.45],[T.L07+1.0,0]];
+const SMK=['M01','M00','M02','M03','M04'].map(id=>A(id,1)+.05);
+function smirk(t){for(const a of SMK){if(t>=a&&t<a+1.1)return 1;}return 0;}   // 받아친 뒤 1초쯤 한쪽 입꼬리
 function envAt(arr,t){const fr=Math.min(arr.length-1,Math.max(0,Math.round(t*FPS)));return Math.max(arr[fr],(arr[fr-1]||0)*.55);}
 function envSm(arr,t){const fr=Math.min(arr.length-1,Math.max(0,Math.round(t*FPS)));return (arr[fr]+(arr[fr-1]||0)+(arr[fr+1]||0))/3;}
 
@@ -404,11 +406,11 @@ function renderChars(t){
   const m=mexpr(t), mg=mgzT(t), mm=Dori.micro(t+7.3);
   const mtalk=clamp(envSm(TL.envM,t)*.95-.04);
   const mtilt=-1.0*Math.sin(t*.5+1)+.5*Math.sin(t*1.3)-(m.browR>0.3?3:0)+nod(t)*2.5;
-  mori.draw({lidL:m.lidL,lidR:m.lidR,browL:m.browL,browR:m.browR,happy:0,smile:m.smile,surprise:0,sweat:m.sweat,open:mtalk,blink:Dori.blinkAt(MBL,t),
-    gx:mg.x+mm[0]*.6,gy:mg.y+mm[1]*.6,armL:arm(MARML,t),armR:arm(MARMR,t),tilt:mtilt,tail:Math.sin(t*1.1)*.6+(m.browR>0.3?.5:0),squash:0,hop:0});
+  mori.draw({lidL:m.lidL,lidR:m.lidR,browL:m.browL,browR:m.browR,happy:0,smile:Math.max(m.smile,smirk(t)),surprise:0,sweat:m.sweat,open:mtalk,blink:Dori.blinkAt(MBL,t),
+    gx:mg.x+mm[0]*.6,gy:mg.y+mm[1]*.6,armL:clamp(Math.max(arm(MARML,t),arm(MARMR,t))*2.2),armR:0,tilt:mtilt,tail:Math.sin(t*1.1)*.6+(m.browR>0.3?.5:0),squash:0,hop:0});
   const ment=P(t,.3,.8),mx=lerp(380,0,eOut(ment));
   $('mori').style.transform=`translate(${mx}px,0px)`;
-  if(!$('msh').innerHTML) $('msh').innerHTML=SK.ground(320,1);
+  if(!$('msh').innerHTML) $('msh').innerHTML=SK.ground(270,1);
   $('msh').style.transform=`translate(${mx}px,0)`; $('msh').style.opacity=clamp(ment*2);
   let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
   const bb=$('bub');
