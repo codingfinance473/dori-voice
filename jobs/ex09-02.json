@@ -1,0 +1,60 @@
+{
+ "id": "ex09-02",
+ "note": "EX.09 2판 — 훅·무효 줄 다시",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 557,
+   "takes": 4,
+   "texts": [
+    "수능 날 스마트 안경, 쓰기만 해도 시험이 날아간대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 558,
+   "takes": 4,
+   "texts": [
+    "수능 날 스마트 안경, 쓰기만 해도 시험이 무효 처리된대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 559,
+   "takes": 4,
+   "texts": [
+    "올해 시험은 날아가고, 내년 수능도 못 봐."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 560,
+   "takes": 4,
+   "texts": [
+    "올해 시험은 무효 처리, 내년 수능도 못 봐."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01b",
+  "L01c",
+  "L03b",
+  "L03c"
+ ]
+}
