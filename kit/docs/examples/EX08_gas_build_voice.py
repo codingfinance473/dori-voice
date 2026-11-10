@@ -12,6 +12,19 @@ from scipy.signal import resample_poly
 SR, FPS = 44100, 30
 meta = {m["id"]: m for m in json.load(open("voice/voice_meta.json", encoding="utf-8"))}
 WHO = {l["id"]: l.get("who", "D") for l in json.load(open("voice/lines.json", encoding="utf-8"))}
+
+from scipy.signal import butter, sosfilt
+def _f(x, f, kind): return sosfilt(butter(2, f, kind, fs=SR, output="sos"), x)
+def _act(x): a = x[np.abs(x) > .02 * np.max(np.abs(x))]; return float(np.sqrt(np.mean(a ** 2)))
+DORI_RMS = 10 ** (-13.1 / 20)   # 도리 줄의 말하는 구간 평균 음량(EX.08 실측)
+def mori_fx(x):
+    """모리(낮은 목소리)를 도리와 같은 크기·또렷함으로(2026-11-10): 실측 — 모리 줄이 평균 2.6dB 작고 에너지의 43%가 300Hz 아래(도리 6%)라
+    베이스에 묻히고 폰 스피커에선 얇아졌다. 110Hz 아래를 자르고 300Hz 아래를 덜고(-5dB) 2~5kHz 를 올린(+4dB) 뒤 도리 음량에 맞춘다."""
+    x = _f(x, 110, "high"); low = _f(x, 300, "low"); x = x - .6 * low
+    x = x + .6 * _f(x, [2000, 5000], "band")
+    x = x * (DORI_RMS / (_act(x) + 1e-9))
+    x = np.tanh(x * 1.1) / 1.1; x = x * (DORI_RMS / (_act(x) + 1e-9))
+    return np.clip(x, -.97, .97).astype(np.float32)   # 올린 만큼 넘치는 봉우리만 부드럽게 누른다
 GAP, SCENE = 0.35, 0.55
 order = [  # (줄, 앞 쉼, 장면 시작 표시)
     ("L01b", 0.30, "s1"), ("M01", 0.18, None), ("M00", 0.35, None),
@@ -66,6 +79,7 @@ for l in lines:
     sr, x = wavfile.read(f"voice/{SRC(l['id'])}.wav")
     x = x.astype(np.float32) / 32768
     if sr != SR: x = resample_poly(x, SR, sr).astype(np.float32)
+    if l["who"] == "M": x = mori_fx(x)
     i = int(l["t"] * SR); seg = x[: n - i]
     track[i:i + len(seg)] += seg
     (trM if l["who"] == "M" else trD)[i:i + len(seg)] += seg

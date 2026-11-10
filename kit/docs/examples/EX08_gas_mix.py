@@ -78,6 +78,14 @@ end = DUR - 1.15                                               # 끝 화음
 strum(chords[0], end, .07); put(bed, tone(hz(79), 1.4, dec=.6), end + .05, .04)
 bed[-int(.4 * SR):] *= np.linspace(1, 0, int(.4 * SR))[:, None]
 
+BED_STYLE = os.environ.get("BED", "B")   # 2026-11-10 사용자 선택: B 미니멀 그루브. BED= 로 비우면 예전 「도리 산책」
+BED_STYLE = "" if BED_STYLE == "OLD" else BED_STYLE
+#   # A·B·C 시안(beds.py), 비우면 「도리 산책」
+if BED_STYLE:
+    bed[:] = 0
+    import beds; beds.make(BED_STYLE, globals())
+    bed[-int(.4 * SR):] *= np.linspace(1, 0, int(.4 * SR))[:, None]
+
 # ---------- 효과음 ----------
 def pop(at, g=.10, m=79): put(sfx, tone(hz(m), .16, a=.002, dec=.04, harm=(1, .2), bend=-.5), at, g)
 def whoosh(at, g=.06):
@@ -121,7 +129,7 @@ duck = 1 - .62 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)  
 # 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
 NUM_LINES = ("L02c", "L03c", "L04b", "L05c", "L06b", "L07", "L08", "L10", "M00", "M01", "M03b", "M04", "M05", "M06")   # 이 편의 숫자·결론 줄
-WEAK = {"L02c": .5, "L03c": .5, "L04b": .5, "L08": .5, "M00": .5, "M01": .6, "M03b": .5, "M04": .6, "M05": .5, "M06": .5}                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
+WEAK = {"L02c": .5, "L03c": .5, "L04b": .5, "L08": .5}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
 extra = np.ones(N)
 for l in TLL:
     if l["id"] in NUM_LINES:
