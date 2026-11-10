@@ -48,7 +48,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #deskArt{left:60px;top:518px;width:860px;height:430px}
 /* 2 근거: 착용 = 사용 */
 #c2{left:60px;top:430px;width:860px;height:545px}
-#gl2{left:96px;top:468px;width:300px}
+#gl2{left:100px;top:470px;width:300px}
 #eq2{left:420px;top:500px;font-family:Jua;font-size:64px;color:var(--ink)}
 #use2{left:520px;top:470px;width:370px;height:150px;border-radius:26px;background:#FFF1EE;border:5px solid var(--red);display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:Jua;color:var(--red);line-height:1.1}
 #use2 b{font-weight:400;font-size:56px} #use2 small{font-size:30px;color:var(--ink)}
@@ -210,6 +210,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 <script src="dori.js"></script>
 <script src="mori.js"></script>
 <script src="scenekit.js"></script>
+<script src="smart_glasses.js"></script>
 <script>
 // 무대: 겨울 거실 — 잔무늬 벽 + 나무 마루(탁자 윗면 1468이 마루 선)
 const STAGE={awning:false,table:'wood',tableTop:1468};
@@ -285,8 +286,8 @@ const DESK=()=>`<svg viewBox="0 0 860 430" width="860" height="430" style="posit
 <div class="abs" style="left:46px;top:150px;transform:rotate(-7deg)">${TICKET(170)}</div>
 <div class="abs" style="left:228px;top:118px;transform:rotate(5deg)">${OMR(190)}</div>
 <div class="abs" style="left:694px;top:38px">${CLOCK(120)}</div>
-<div class="abs" id="glDesk" style="left:420px;top:262px">${GLASSES(390)}</div>
-<div class="abs" id="qDesk" style="left:770px;top:192px;width:66px;height:66px;border-radius:50%;background:#E2483A;border:5px solid ${K};color:#fff;font-family:Jua;font-size:44px;display:flex;align-items:center;justify-content:center">?</div>`;
+<div class="abs" id="glDesk" style="left:372px;top:196px">${SG3(410)}</div>
+<div class="abs" id="qDesk" style="left:788px;top:182px;width:66px;height:66px;border-radius:50%;background:#E2483A;border:5px solid ${K};color:#fff;font-family:Jua;font-size:44px;display:flex;align-items:center;justify-content:center">?</div>`;
 const TRAY=()=>`<svg viewBox="0 0 300 170" width="300" height="170" style="overflow:visible">
   <ellipse cx="150" cy="160" rx="140" ry="10" fill="url(#gSh2)"/>
   <path d="M14 70 H286 L264 150 H36 Z" fill="#E9D4BB" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
@@ -294,7 +295,7 @@ const TRAY=()=>`<svg viewBox="0 0 300 170" width="300" height="170" style="overf
 </svg>
 <div class="abs" style="left:34px;top:-6px;transform:rotate(-10deg)">${PHONE(54)}</div>
 <div class="abs" style="left:112px;top:-4px;transform:rotate(6deg)">${WATCH(54)}</div>
-<div class="abs" style="left:170px;top:30px;transform:rotate(-4deg)">${GLASSES(124,{fold:true})}</div>`;
+<div class="abs" style="left:166px;top:22px;transform:rotate(-4deg)">${SG3(134,{fold:true})}</div>`;
 const COIN=(w,txt)=>`<svg viewBox="0 0 140 140" width="${w}" height="${w}">
   <circle cx="70" cy="74" r="58" fill="#C98F1E" stroke="${K}" stroke-width="6"/>
   <circle cx="70" cy="66" r="58" fill="url(#gCoin)" stroke="${K}" stroke-width="6"/>
@@ -303,10 +304,10 @@ const COIN=(w,txt)=>`<svg viewBox="0 0 140 140" width="${w}" height="${w}">
   <path d="M34 44 C42 30 56 22 72 20" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7"/>
 </svg>`;
 $('desk1').innerHTML=DESK();
-$('gl2').innerHTML=GLASSES(300);
+$('gl2').innerHTML=SG3(300);
 $('r2aArt').innerHTML=`<div style="position:relative;width:180px;height:170px"><div class="abs" style="left:30px;top:0">${OMR(120)}</div><div class="abs" id="vst" style="left:50px;top:20px">${STAMPV(130,'무효')}</div></div>`;
 $('r2bArt').innerHTML=`<div style="position:relative;width:170px;height:170px"><div class="abs" style="left:10px;top:4px">${CAL(156,false)}</div><div class="abs" id="calx" style="left:10px;top:4px">${CAL(156,true)}</div></div>`;
-$('st3aArt').innerHTML=`<div style="position:relative;width:340px;height:250px;margin-top:6px"><svg viewBox="0 0 340 250" width="340" height="250" style="position:absolute"><rect x="10" y="120" width="320" height="120" rx="18" fill="url(#gWood)" stroke="${K}" stroke-width="5"/><path d="M30 150 H200 M120 200 H300" stroke="#B57A48" stroke-width="5" stroke-linecap="round" opacity=".5"/></svg><div class="abs" id="gl3" style="left:50px;top:60px">${GLASSES(240,{fold:true})}</div><div class="abs" id="ok3" style="left:252px;top:6px;width:72px;height:72px;border-radius:50%;background:#2E9C83;border:5px solid ${K};color:#fff;font-family:Jua;font-size:46px;display:flex;align-items:center;justify-content:center">✔</div></div>`;
+$('st3aArt').innerHTML=`<div style="position:relative;width:340px;height:250px;margin-top:6px"><svg viewBox="0 0 340 250" width="340" height="250" style="position:absolute"><rect x="10" y="120" width="320" height="120" rx="18" fill="url(#gWood)" stroke="${K}" stroke-width="5"/><path d="M30 150 H200 M120 200 H300" stroke="#B57A48" stroke-width="5" stroke-linecap="round" opacity=".5"/></svg><div class="abs" id="gl3" style="left:44px;top:34px">${SG3(250,{fold:true})}</div><div class="abs" id="ok3" style="left:252px;top:6px;width:72px;height:72px;border-radius:50%;background:#2E9C83;border:5px solid ${K};color:#fff;font-family:Jua;font-size:46px;display:flex;align-items:center;justify-content:center">✔</div></div>`;
 $('st3bArt').innerHTML=`<div style="position:relative;width:340px;height:214px;margin-top:6px"><div class="abs" style="left:34px;top:10px">${OMR(140)}</div><div class="abs" id="vst3" style="left:58px;top:40px">${STAMPV(120,'무효')}</div><div class="abs" style="left:184px;top:34px">${CAL(140,true)}</div></div>`;
 $('trayArt').innerHTML=`<div style="position:relative;width:300px;height:170px">${TRAY()}</div>`;
 $('ax4').innerHTML=`<svg viewBox="0 0 560 40" width="560" height="40" style="overflow:visible"><line x1="0" y1="6" x2="540" y2="6" stroke="#C9B8A7" stroke-width="4"/>${[0,1,2,3].map(i=>`<line x1="${i*180}" y1="0" x2="${i*180}" y2="14" stroke="#C9B8A7" stroke-width="4"/><text x="${i*180}" y="38" text-anchor="middle" font-family="Jua" font-size="24" fill="#7E6B5C">${i}년</text>`).join('')}</svg>`;
@@ -429,7 +430,7 @@ function render(t){
   sv('s1',0,T.s2+.4); const o1=T.s2-.1;
   document.querySelectorAll('#t1 span').forEach((el,i)=>fx(el,t,[.15,.55][i],.45,o1,.4,46));
   fx('desk1',t,.1,.5,o1,.4,40);
-  const led=.35+.65*(.5+.5*Math.sin(t*5)); document.querySelectorAll('.led').forEach(el=>el.setAttribute('opacity',String(led)));
+  const led=.35+.65*(.5+.5*Math.sin(t*5)); document.querySelectorAll('.sgLed circle:first-child').forEach(el=>el.setAttribute('opacity',String(.85*led)));
   $('glDesk').style.transform=`translateY(${-6*Math.sin(t*1.6)}px) rotate(${-2+1.5*Math.sin(t*1.1)}deg)`;
   pop('qDesk',t,.9,null,0,8,.5);
   const ang=t*.35; const ck=document.getElementById('ckM'); if(ck){ck.setAttribute('x2',String(70+26*Math.sin(ang+1.57)));ck.setAttribute('y2',String(70-26*Math.cos(ang+1.57)));}
