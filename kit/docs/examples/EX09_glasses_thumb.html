@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>도리 썸네일</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--mint:#2E9C83;--red:#E2483A;--yel:#FFD45C;--blue:#5B8CFF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);font-family:P,sans-serif;color:var(--ink);word-break:keep-all}
+.frame{position:relative;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.J{font-family:Jua;font-weight:400}
+.blob{position:absolute;border-radius:50%}
+.title{isolation:isolate;font-family:Jua;line-height:1.08;letter-spacing:-2px;color:var(--ink)}
+.hl{position:relative;display:inline-block}
+.hl:before{content:"";position:absolute;left:-10px;right:-10px;bottom:6%;height:34%;background:var(--yel);border-radius:14px;z-index:-1;transform:rotate(-1.5deg)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="gLens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF4FC"/><stop offset="1" stop-color="#A9C8E8"/></linearGradient>
+  <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7B57E"/><stop offset="1" stop-color="#C98C55"/></linearGradient>
+  <linearGradient id="gBoard" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4E7A63"/><stop offset="1" stop-color="#355A48"/></linearGradient>
+  <linearGradient id="gFlame" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5B8CFF"/><stop offset=".55" stop-color="#8FB7FF"/><stop offset="1" stop-color="#E3F0FF"/></linearGradient>
+  <linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3E9DD"/></linearGradient>
+  <radialGradient id="gSh2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
+</defs></svg>
+<div id="root"></div>
+<script src="dori_outfits.js"></script>
+<script src="dori.js"></script>
+<script src="mori.js"></script>
+<script>
+const qs=new URLSearchParams(location.search), G=qs.get('guide')==='1';
+const W=1080, H=1920, K='#4A3A33';
+const base={t:1.2,blink:0,happy:0,squint:0,surprise:0,sad:0,open:0,gx:0,gy:0,pouch:0,armL:0,armR:0,earL:0,earR:0,hop:0,squash:0,breath:0,tilt:0};
+const root=document.getElementById('root');
+root.innerHTML=`<div class="frame" id="f" style="width:${W}px;height:${H}px"></div>`;
+const f=document.getElementById('f');
+const add=(html)=>{f.insertAdjacentHTML('beforeend',html);return f.lastElementChild;};
+function blobs(list){list.forEach(([x,y,s,c])=>add(`<div class="blob" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:radial-gradient(circle,${c} 0%,${c}00 68%)"></div>`));}
+function dori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*560/540}px"></div>`);Dori.mount(d,{outfit:CFG.outfit||''});Dori.draw({...base,...st});return d;}
+function mori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*560/540}px"></div>`);const m=Mori.mount(d,{variant:'cream'});m.draw(st);return d;}
+
+// ===== EX.09 수능 스마트안경 — 시험실 장면: 뒤엔 칠판·시계, 가운데 책상 위엔 수험표와 카메라 점이 달린 안경 "?", 도리(탐정 옷)는 깜짝, 모리는 의심 =====
+// 핵심 띠 y 600~1320 · x 90~960: 제목 + 책상 위 안경 / 보조 y 380~1540: 칠판 아래쪽·도리·모리 / 그 밖은 벽·바닥. 답(무효인지)은 드러내지 않는다.
+const CFG={outfit:'detective'};   // index.html 의 OUTFIT 과 같게
+f.style.background='linear-gradient(180deg,#EEF3E8 0%,#FFF6EC 45%,#FFF3E6 100%)';
+add(`<div class="abs" style="left:0;top:0;width:1080px;height:1920px;background-image:radial-gradient(rgba(74,58,51,.07) 2px,transparent 2.5px);background-size:46px 46px"></div>`);
+// 칠판(배경, 글자 없음 — 분필 낙서만)
+add(`<svg class="abs" style="left:60px;top:110px" width="700" height="440" viewBox="0 0 700 440">
+  <rect x="10" y="10" width="680" height="400" rx="26" fill="#B98F65" stroke="${K}" stroke-width="8"/>
+  <rect x="34" y="34" width="632" height="352" rx="14" fill="url(#gBoard)" stroke="${K}" stroke-width="5"/>
+  <path d="M90 110 q40 -30 80 0 t80 0 M90 170 H300 M90 220 H250 M420 120 l60 60 m0 -60 l-60 60 M420 250 q50 -40 100 0" stroke="#E8F0EA" stroke-width="7" stroke-linecap="round" fill="none" opacity=".55"/>
+  <rect x="80" y="396" width="160" height="16" rx="8" fill="#fff" stroke="${K}" stroke-width="4"/>
+</svg>`);
+// 시계(오른쪽 위)
+add(`<svg class="abs" style="left:800px;top:150px" width="220" height="220" viewBox="0 0 140 140">
+  <circle cx="70" cy="70" r="62" fill="#fff" stroke="${K}" stroke-width="7"/>
+  ${[...Array(12)].map((_,i)=>{const a=i*Math.PI/6;return `<line x1="${70+48*Math.sin(a)}" y1="${70-48*Math.cos(a)}" x2="${70+54*Math.sin(a)}" y2="${70-54*Math.cos(a)}" stroke="${K}" stroke-width="${i%3?3:6}" stroke-linecap="round"/>`;}).join('')}
+  <line x1="70" y1="70" x2="70" y2="36" stroke="${K}" stroke-width="7" stroke-linecap="round"/><line x1="70" y1="70" x2="44" y2="84" stroke="#E2483A" stroke-width="5" stroke-linecap="round"/><circle cx="70" cy="70" r="6" fill="${K}"/>
+</svg>`);
+blobs([[-260,620,800,'#FFE7D6'],[560,620,680,'#FFF0C8'],[-200,1040,640,'#E8F2FA']]);
+// 바닥 — 나무 마루
+add(`<div class="abs" style="left:0;top:1360px;width:1080px;height:560px;background:
+  repeating-linear-gradient(90deg,rgba(74,58,51,.10) 0 4px,transparent 4px 180px),
+  linear-gradient(180deg,#E2B27C 0%,#C98E5C 100%);border-top:8px solid ${K}"></div>`);
+// 책상(가운데) + 수험표 + 안경(핵심 그림)
+add(`<svg class="abs" style="left:250px;top:960px" width="580" height="400" viewBox="0 0 580 400">
+  <ellipse cx="290" cy="388" rx="250" ry="12" fill="url(#gSh2)"/>
+  <rect x="70" y="180" width="26" height="200" fill="#9A6B44" stroke="${K}" stroke-width="6"/><rect x="484" y="180" width="26" height="200" fill="#9A6B44" stroke="${K}" stroke-width="6"/>
+  <path d="M20 120 H560 L540 196 H40 Z" fill="url(#gWood)" stroke="${K}" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M60 150 H300" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+  <g transform="translate(40 -12) rotate(-8)"><rect x="0" y="0" width="150" height="150" rx="12" fill="url(#gPaper)" stroke="${K}" stroke-width="5"/><path d="M0 12 Q0 0 12 0 H138 Q150 0 150 12 V38 H0 Z" fill="#2E9C83" stroke="${K}" stroke-width="5"/><rect x="16" y="54" width="50" height="62" rx="5" fill="#DDE7F2" stroke="${K}" stroke-width="3"/><path d="M82 64 H134 M82 86 H124 M82 108 H130" stroke="#C9B8A7" stroke-width="6" stroke-linecap="round"/></g>
+</svg>`);
+add(`<svg class="abs" style="left:395px;top:950px" width="440" height="193" viewBox="0 0 320 140" style="overflow:visible">
+  <ellipse cx="160" cy="132" rx="140" ry="9" fill="url(#gSh2)"/>
+  <path d="M30 46 L4 40 M290 46 L316 40" stroke="#3E2F25" stroke-width="12" stroke-linecap="round"/>
+  <rect x="30" y="28" width="118" height="86" rx="32" fill="url(#gLens)" stroke="#3E2F25" stroke-width="9"/>
+  <rect x="172" y="28" width="118" height="86" rx="32" fill="url(#gLens)" stroke="#3E2F25" stroke-width="9"/>
+  <path d="M148 56 Q160 42 172 56" fill="none" stroke="#3E2F25" stroke-width="9" stroke-linecap="round"/>
+  <path d="M52 92 L96 46 M74 100 L112 60 M194 92 L238 46 M216 100 L254 60" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".55"/>
+  <rect x="14" y="30" width="32" height="30" rx="10" fill="#3E2F25"/><circle cx="30" cy="45" r="9" fill="#24242E" stroke="#8C8FA3" stroke-width="3"/><circle cx="27" cy="42" r="3" fill="#fff"/>
+  <circle cx="300" cy="40" r="7" fill="#7FE3FF" stroke="#3E2F25" stroke-width="2"/>
+</svg>`);
+// "?" 표(안경 위)
+add(`<div class="abs J" style="left:150px;top:900px;width:110px;height:110px;border-radius:50%;background:#E2483A;border:7px solid ${K};color:#fff;font-size:76px;display:flex;align-items:center;justify-content:center;transform:rotate(-8deg);box-shadow:0 10px 0 rgba(62,47,37,.16)">?</div>`);
+// 제목 — 흰 테두리 스티커 글씨(질문, 답 없음)
+add(`<div class="abs title" style="left:92px;top:600px;font-size:118px;-webkit-text-stroke:16px #fff;paint-order:stroke fill;text-shadow:0 10px 0 rgba(62,47,37,.12)">수능 날 <span class="hl">이 안경</span>,<br><span style="color:#E2483A">써도 될까?</span></div>`);
+// 딱지 — 안 켜면 괜찮을까?
+add(`<div class="abs J" style="left:610px;top:842px;transform:rotate(5deg);background:#fff;border:6px solid ${K};border-radius:24px;padding:10px 24px 8px;font-size:42px;line-height:1.1;text-align:center;box-shadow:0 10px 0 rgba(62,47,37,.14)"><span style="font-size:28px;color:#7E6B5C">안 켜고 쓰기만 하면</span><br><span style="color:#5B8CFF">괜찮을까?</span></div>`);
+[[940,760,24],[70,1060,22],[250,1300,18],[960,1180,18]].forEach(([x,y,r])=>add(`<svg class="abs" style="left:${x-r}px;top:${y-r}px" width="${2*r}" height="${2*r}" viewBox="-10 -10 20 20"><path d="M0 -10 Q1.6 -1.6 10 0 Q1.6 1.6 0 10 Q-1.6 1.6 -10 0 Q-1.6 -1.6 0 -10Z" fill="#FFD45C" stroke="#4A3A33" stroke-width="1.4"/></svg>`));
+dori(-30,1070,450,{tilt:-6,gx:.8,gy:-.3,armL:.6,armR:.9,earL:4,earR:4,surprise:.8,open:.5});
+mori(660,1080,420,{lidL:.5,lidR:.15,browR:1,gx:-.9,gy:-.2,tilt:-5,tail:.7,armR:.3});
+if(G){
+  add(`<div class="abs" style="left:0;top:0;width:1080px;height:380px;background:rgba(226,72,58,.18)"></div><div class="abs" style="left:0;top:1540px;width:1080px;height:380px;background:rgba(226,72,58,.18)"></div><div class="abs" style="left:960px;top:0;width:120px;height:1920px;background:rgba(226,72,58,.12)"></div><div class="abs" style="left:0;top:600px;width:1080px;height:720px;border-top:4px dashed #2E9C83;border-bottom:4px dashed #2E9C83"></div><div class="abs" style="left:0;top:285px;width:1080px;height:1350px;border-top:4px dotted #5B8CFF;border-bottom:4px dotted #5B8CFF"></div>`);
+}
+document.fonts.ready.then(()=>{setTimeout(()=>{window.__ready=true;},300);});
+</script>
+</body>
+</html>
