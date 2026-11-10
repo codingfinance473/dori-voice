@@ -15,6 +15,7 @@ T = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-
 DUR = T["END"]; N = int(SR * DUR)
 E = {l["id"]: l["t"] + l["d"] for l in json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]}   # 줄 끝 시각
 rng = np.random.default_rng(5)
+TLL0 = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
 bed = np.zeros((N, 2)); sfx = np.zeros((N, 2))
 def lp(x, f): return sosfilt(butter(2, f, "low", fs=SR, output="sos"), x)
 def hp(x, f): return sosfilt(butter(2, f, "high", fs=SR, output="sos"), x)
@@ -52,7 +53,7 @@ def strum(ch, at, g, down=True):
         key = m
         if key not in pluck_cache: pluck_cache[key] = pluck(hz(m), .8)
         put(bed, pluck_cache[key], at + j * .012, g, pan=-.2 + j * .12)
-quiet = [(T["wMori"] - .2, T["wMori"] + .5), (T["L02c"] - .2, T["L02c"] + .7), (T["L03c"] - .2, T["L03c"] + .6), (T["wSan"] - .15, T["wSan"] + .7), (T["w56"] - .15, T["w56"] + .7), (E["L08"] - .7, E["L08"] + .05), (E["M05"] - 1.0, E["M05"] + .05)]   # 2판: 통째로 끊지 않고 핵심 단어 0.5~0.7초만 새 음을 쉰다(사용자 2026-11-10 "중간에 꺼지는 게 뜬금없다")
+quiet = [(T["wMori"] - .2, T["wMori"] + .5), (T["L02c"] - .2, T["L02c"] + .7), (T["L03c"] - .2, T["L03c"] + .6), (T["wSan"] - .15, T["wSan"] + .7), (T["w56"] - .15, T["w56"] + .7), (E["L08"] - .7, E["L08"] + .05), (E["M05"] - 1.0, E["M05"] + .05), (T["L04b"] - .2, T["L04b"] + .7), (T["M06"] - .2, E["M06"] + .05)]   # 2판: 통째로 끊지 않고 핵심 단어 0.5~0.7초만 새 음을 쉰다(사용자 2026-11-10 "중간에 꺼지는 게 뜬금없다")
 def q(t): return any(a <= t < b for a, b in quiet)
 thin = [(T[i] - .15, E[i] + .1) for i in ("L02c", "L03c", "L04b", "L05c", "L06b", "L08", "M06", "L10")]   # 숫자·핵심어 줄: 멜로디·박수·킥을 빼고 현·베이스만
 def th(t): return any(a <= t < b for a, b in thin)
@@ -78,7 +79,8 @@ end = DUR - 1.15                                               # 끝 화음
 strum(chords[0], end, .07); put(bed, tone(hz(79), 1.4, dec=.6), end + .05, .04)
 bed[-int(.4 * SR):] *= np.linspace(1, 0, int(.4 * SR))[:, None]
 
-BED_STYLE = os.environ.get("BED", "B")   # 2026-11-10 사용자 선택: B 미니멀 그루브. BED= 로 비우면 예전 「도리 산책」
+BED_STYLE = os.environ.get("BED", "N")   # N = 배경음 없음 + 징글·효과음(2026-11-10 사용자 확정) · B 그루브 · H 훅 · OLD 도리 산책
+_old_default = os.environ.get("BED_OLD_DEFAULT", "B")   # 2026-11-10 사용자 선택: B 미니멀 그루브. BED= 로 비우면 예전 「도리 산책」
 BED_STYLE = "" if BED_STYLE == "OLD" else BED_STYLE
 #   # A·B·C 시안(beds.py), 비우면 「도리 산책」
 if BED_STYLE:
@@ -116,6 +118,25 @@ n = int(.16 * SR); t = np.arange(n) / SR                                        
 put(sfx, np.sin(2 * np.pi * np.cumsum(500 + 900 * t / .16) / SR) * np.sin(np.pi * t / .16), T["L10"] - .42, .07)
 chime(E["L10"] + .07, [86, 91], .04, .1)
 
+if BED_STYLE == "N":
+    # 배경음 없이 빈틈없게(2026-11-10): 대화가 리듬을 만든다 — 음악 대신 ① 시작·끝 징글 ② 말하는 쪽이 바뀔 때 작은 신호 ③ 숫자마다 한 번씩 ④ 아주 낮은 공간 소리
+    def bell(m, at, g, pan=0.0):
+        f = hz(m); a = tone(f, .55, a=.002, dec=.17, harm=(1, .45, .2, .1)); b2 = tone(2 * f * 1.003, .3, a=.002, dec=.09, harm=(1, .2)); a[:len(b2)] += .45 * b2
+        put(sfx, a, at, g, pan)
+    for i, m in enumerate((71, 76)): bell(m, .02 + i * .1, .07, -.2 + i * .4)                      # 시작 징글 "띠링"(첫 말 앞 0.3초)
+    for i, l in enumerate(TLL0):                                                                # 말하는 쪽이 바뀌는 순간: 모리 = 낮은 톡, 도리 = 높은 톡
+        if i and l["who"] != TLL0[i - 1]["who"]:
+            put(sfx, tone(hz(55 if l["who"] == "M" else 79), .12, a=.002, dec=.035, harm=(1, .2), bend=-.3), l["t"] - .17, .026 if l["who"] == "M" else .02, pan=.35 if l["who"] == "M" else -.35)
+    for s_ in ("s2", "s3", "s4", "s5", "s8"): whoosh(T[s_], .03); put(sfx, bp(noise(.06, .012), 1800, 5200), T[s_] + .02, .03)   # 장면 전환을 또렷하게
+    bell(83, T["w2085"] + .45, .03, .3)                                                          # 근거 숫자가 뜰 때 한 번
+    thump(E["L05c"] - .05, .05)                                                                  # 미수금 — 묵직하게
+    for i, m in enumerate((79, 86)): bell(m, T["wTot"] + .75 + i * .08, .035, .2)               # 계산 합계 "띵"
+    pop(T["w350"] + .6, .05, 83)
+    for i, m in enumerate((71, 74, 79)): bell(m, E["L10"] + .22 + i * .1, .06, -.2 + i * .2)     # 끝 징글(시작과 같은 음에서 올라가며 닫는다)
+    put(sfx, lp(tone(hz(43), .9, a=.005, dec=.4, harm=(1, .3)), 600), E["L10"] + .22, .1)
+    room = lp(rng.standard_normal(N), 900) * .0016; room[:int(.2 * SR)] *= np.linspace(0, 1, int(.2 * SR)); room[-int(.3 * SR):] *= np.linspace(1, 0, int(.3 * SR))
+    sfx[:, 0] += room; sfx[:, 1] += room                                                         # 줄 사이가 디지털 무음으로 뚝 끊기지 않게
+
 # ---------- 목소리 + 덕킹 ----------
 sr, v = wavfile.read("voice.wav"); v = v.astype(np.float32) / 32768
 v = v[:N] if len(v) >= N else np.pad(v, (0, N - len(v)))
@@ -129,7 +150,7 @@ duck = 1 - .62 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)  
 # 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
 NUM_LINES = ("L02c", "L03c", "L04b", "L05c", "L06b", "L07", "L08", "L10", "M00", "M01", "M03b", "M04", "M05", "M06")   # 이 편의 숫자·결론 줄
-WEAK = {"L02c": .5, "L03c": .5, "L04b": .5, "L08": .5}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
+WEAK = {"L02c": .5, "L03c": .5, "L04b": .5, "L08": .5, "M06": .5}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
 extra = np.ones(N)
 for l in TLL:
     if l["id"] in NUM_LINES:
@@ -145,4 +166,4 @@ import os
 os.environ.setdefault("BED_UNDER", "12.7")   # 2인 형식은 쉼이 짧아(0.2초) 쉼에서만 키우기 어렵다 → 전체를 조금 크게, 고르게 깐다
 from bedmix import finish
 bed *= 2.6   # 2판: 모리 줄에서 베이스·킥을 빼 전체가 얇아져 자동 배율(최대 8)로는 쉼이 너무 조용 → 원 소리를 키워 맞춘다
-finish(bed, sfx, v, env, sm, duck, E["M01"] + .1, DUR - 1.2, SR)
+finish(bed, sfx, v, env, sm, duck, (.05 if BED_STYLE == "H" else E["M01"] + .1), DUR - 1.2, SR)

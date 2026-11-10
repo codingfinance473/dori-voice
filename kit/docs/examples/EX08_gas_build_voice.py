@@ -25,9 +25,9 @@ def mori_fx(x):
     x = x * (DORI_RMS / (_act(x) + 1e-9))
     x = np.tanh(x * 1.1) / 1.1; x = x * (DORI_RMS / (_act(x) + 1e-9))
     return np.clip(x, -.97, .97).astype(np.float32)   # 올린 만큼 넘치는 봉우리만 부드럽게 누른다
-GAP, SCENE = 0.35, 0.55
+GAP, SCENE = 0.30, 0.32   # 배경음 없는 판(2026-11-10): 쉼이 그대로 무음이라 조금 더 촘촘하게
 order = [  # (줄, 앞 쉼, 장면 시작 표시)
-    ("L01b", 0.30, "s1"), ("M01", 0.18, None), ("M00", 0.35, None),
+    ("L01b", 0.30, "s1"), ("M01", 0.18, None), ("M00", 0.15, None),
     ("L02c", SCENE, "s2"), ("L03c", GAP, None), ("M03b", 0.18, None),
     ("L04b", SCENE, "s3"), ("M04", 0.18, None),
     ("L05c", SCENE, "s4"), ("M05", 0.18, None),

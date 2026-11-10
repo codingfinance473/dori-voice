@@ -93,3 +93,38 @@ def make(style, G):
                 if s8 % 2 == 1: put(bed, hat(), at, .009, pan=.3)
             b += BAR; k += 1
         for j, m in enumerate(ch[0]): put(bed, pl(m, 1.4, .9985, 4200), t1 + .05 + j * .03, .06, pan=-.2 + j * .12)
+
+    elif style == "H":                              # 훅 멜로디 그루브 — 0초부터, 귀에 남는 두 마디 멜로디(2026-11-10 사용자: "시작부터 안 나와 집중이 안 된다, 몰입되는 멜로디 라인이 없다")
+        t0 = 0.0
+        BEAT = 60 / 104; BAR = BEAT * 4
+        riffm = [{0: 40, 3: 40, 4: 43, 6: 45}, {0: 40, 3: 40, 4: 43, 6: 47, 7: 45}]
+        riffM = [{0: 43, 3: 43, 4: 47, 6: 50}, {0: 43, 3: 43, 4: 50, 6: 47, 7: 45}]
+        m1 = {0: 71, 2: 74, 3: 71, 5: 76, 7: 74}; m2 = {0: 71, 2: 67, 3: 69, 5: 71}; m2b = {0: 76, 2: 74, 3: 71, 5: 69, 6: 67}
+        def bell(m):
+            k = ("bell", m)
+            if k not in cache:
+                f = hz(m); a = tone(f, .55, a=.002, dec=.17, harm=(1, .45, .2, .1)); b2 = tone(2 * f * 1.003, .3, a=.002, dec=.09, harm=(1, .2))
+                a[:len(b2)] += .45 * b2; cache[k] = a
+            return cache[k]
+        b = 0.0; k = 0
+        while b < t1:
+            major = b + BAR * .5 >= T["s8"]
+            riff = (riffM if major else riffm)[k % 2]; stab = (67, 71, 74) if major else (64, 67, 71)
+            mot = m1 if k % 2 == 0 else (m2b if k % 8 == 7 else m2)
+            for s8 in range(8):
+                at = b + s8 * BEAT / 2
+                if not (t0 <= at < t1): continue
+                if s8 in riff and not q(at):
+                    m = riff[s8]; put(bed, pl(m, .5, .992, 700), at, .16); put(bed, sub(hz(m), .4, .22), at, .14)
+                if s8 in (0, 4) and not th(at): put(bed, kick(), at, .1)
+                if s8 in (2, 6) and not q(at): put(bed, snap(), at, .05, pan=.15); put(bed, rim(), at, .02, pan=-.1)
+                if s8 % 2 == 1: put(bed, hat(), at, .012, pan=.35)
+                if s8 in mot and not q(at):              # 훅 멜로디 + 점8분 메아리
+                    g = .03 if th(at) else .05
+                    put(bed, bell(mot[s8]), at, g, pan=.1); put(bed, bell(mot[s8]), at + BEAT * .75, g * .32, pan=-.35)
+                if at >= T["s3"] and s8 in (3, 6) and not th(at) and not q(at):
+                    for j, m in enumerate(stab): put(bed, pl(m, .25, .975), at + j * .006, .026, pan=-.25 + j * .2)
+                if at >= T["s5"]: put(bed, hat(), at + BEAT / 4, .006, pan=-.3)
+            b += BAR; k += 1
+        put(bed, pl(43, .9, .995, 700), t1 + .05, .2); put(bed, sub(hz(43), .8, .4), t1 + .05, .14)
+        for j, m in enumerate((71, 74, 79)): put(bed, bell(m), t1 + .05 + j * .09, .06, pan=-.2 + j * .2)
