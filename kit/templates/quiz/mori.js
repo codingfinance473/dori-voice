@@ -29,7 +29,7 @@ function svg(p){
  <path d="${BODY}" fill="url(#mGB${p})"/><g clip-path="url(#mBC${p})"><ellipse cx="216" cy="366" rx="36" ry="62" fill="${LT}"/></g>${foot(182,512,-4,'fill="#FFFDFB"')}${foot(278,510,10,'fill="#FFFDFB"')}
  ${arm('mArmL')}${arm('mArmR')}
  <path d="M172,246 Q216,262 260,246 L260,266 Q216,282 172,266 Z" fill="#B28FE0" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
- <circle cx="222" cy="292" r="16" fill="#F2C24B" stroke="${K}" stroke-width="5"/><text x="222" y="300" text-anchor="middle" font-family="Jua,'Noto Sans CJK KR',sans-serif" font-size="22" fill="${K}">?</text>
+ <circle cx="222" cy="292" r="16" fill="#F2C24B" stroke="${K}" stroke-width="5"/><text x="222" y="300" text-anchor="middle" font-family="Jua,'Noto Sans CJK KR',sans-serif" font-size="19" fill="${K}">M</text>
  <g class="mHead">
   ${ear}<g transform="translate(430 0) scale(-1 1)">${ear}</g>
   <path d="${HEAD}" fill="url(#mGH${p})" stroke="${K}" stroke-width="6.5" stroke-linejoin="round"/><ellipse cx="160" cy="104" rx="30" ry="12" fill="#fff" opacity=".22" transform="rotate(-28 160 104)"/>
