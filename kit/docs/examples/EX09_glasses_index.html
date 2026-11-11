@@ -339,8 +339,8 @@ const EX=[[0,{happy:0}],[T.L01+.1,{surprise:.35}],[A('L01',.97),{surprise:0}],
  [T.w55,{surprise:.5}],[T.w55+.8,{surprise:0}],
  [T.L07+.1,{happy:.35}],[A('L07',.97),{happy:0}],
  [T.M05,{happy:.5}],[A('M05',.97),{happy:0}],
- [T.L08,{squint:.7}],[A('L08',.98),{squint:0}],
- [T.L09+.1,{happy:.6}],[A('L09',.97),{happy:0}],
+ [T.L08,{squint:1}],[A('L08',.98),{squint:0}],
+ [T.L09+.1,{happy:.5}],[A('L09',.97),{happy:0}],
  [T.L10+.1,{happy:.5}],[T.L11+.04,{happy:1,pouch:1}]];
 const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L11?.45:.32);
 const GZ=[[0,.2,.3]];TL.lines.forEach(l=>{if(!l.text)return; if(MOR(l.id)){GZ.push([l.t,.9,.3]);GZ.push([l.t+l.d+.2,0,0]);}  else {GZ.push([l.t,0,0]);}});

@@ -134,6 +134,7 @@ def eyes():
 # ---------------- 렌더 전 자동 점검 ----------------
 FRAME_JS = """(t)=>{render(t);const r={eyes:[]};document.querySelectorAll('#dori [id^=dEye]').forEach(g=>{
   r.eyes.push([...g.querySelectorAll('.open,.shut,.happy,.sq')].map(e=>+(e.getAttribute('opacity')??1)));});
+  const eo=document.querySelector('#dori #dEyeL .open');if(eo){const m=(eo.getAttribute('transform')||'').match(/scale\\(([\\d.]+)[ ,]+([\\d.]+)\\)/);r.eyeV=(+(eo.getAttribute('opacity')??1)>.5&&m)?+m[2]:null;}
   r.e=typeof expr==='function'?expr(t):{};const d=window.__dst||{};r.d={armL:d.armL||0,armR:d.armR||0,tilt:d.tilt||0,hop:d.hop||0};
   // 손 소품이 눈을 가리는지(눈 상자와 겹친 넓이 비율)
   r.prop=0;const eb=[...document.querySelectorAll('#dori [id^=dEye]')].map(e=>e.getBoundingClientRect());
@@ -172,7 +173,7 @@ LAYOUT_JS = """()=>{
 def qa():
     """렌더 전 자동 점검. 문제가 하나라도 있으면 코드 1 — 고치고 다시 돌린다(사람이 일일이 보지 않아도 되게)."""
     import re
-    n = int(FPS * DUR); probs = {}; prev = None
+    n = int(FPS * DUR); probs = {}; prev = None; flat_run = 0
     def add(k, t, m, box=None):
         probs.setdefault(k, []).append((round(t, 2), m, box))
     with sync_playwright() as p:
@@ -190,6 +191,10 @@ def qa():
             # 2) 눈: 한 눈에 모양 하나, 반투명 없음
             for vis in r["eyes"]:
                 if len([v for v in vis if v > .001]) != 1 or any(.001 < v < .999 for v in vis): add("눈 겹침·반투명", t, "눈 모양이 둘 이상 보이거나 반투명"); break
+            # 2-1) 납작한 눈(2026-11-11): 뜬 눈이 세로로 눌린 채(.22~.85) 0.25초 넘게 머물면 — 깜빡임·전환은 짧아서 안 걸린다
+            ev = r.get("eyeV"); sv = (ev / (1 + .14 * r["e"].get("surprise", 0))) if ev is not None else 1
+            flat_run = (flat_run + 1) if .22 < sv < .85 else 0
+            if flat_run == int(.25 * FPS): add("눈 납작", t, f"뜬 눈이 {sv:.2f}배로 눌린 채 머묾 — 그 시각 EX 의 happy·squint 중간 값(.55~.95)을 0 또는 1로")
             if r.get("prop", 0) > .25: add("소품이 눈을 가림", t, f"손 소품이 눈의 {r['prop']*100:.0f}%를 덮음 — 그 시각 팔(ARMR)을 덜 들거나 소품 없는 옷으로")
             # 3) 움직임: 표정·팔·기울기·점프가 한 프레임에 튀지 않게
             if prev:

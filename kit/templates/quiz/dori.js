@@ -71,9 +71,12 @@ const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 //  뜬 눈 → (세로로 눌리며) 감은 선 → 웃는 눈 ∩ / 찡그린 눈 >< 순서로 바뀐다. 웃는 눈 ↔ >< 은 납작한 선을 지나 바뀐다.
 function eyeDraw(g,st){
   const hp=cl(st.happy), sq=cl(st.squint), shut=cl(st.blink);
-  const c=Math.max(hp,sq);                         // 감은 모양 쪽으로 간 정도
+  const c0=Math.max(hp,sq);
+  // 2026-11-11 사용자: "설명할 때 눈을 이상하게 뜬다" — happy .35 같은 중간 값을 오래 두면 뜬 눈이 세로로 눌린 채(납작한 눈) 머물렀다.
+  // 0.5 이하는 '기분'(입·볼)만 바꾸고 눈은 다 뜬 채, 0.5→1 사이에서만 눌림 → 감은 선 → ∩/>< 로 빠르게 지나간다.
+  const c=c0<=.5?0:(c0-.5)*2;                      // 감은 모양 쪽으로 간 정도
   const v=(c<.5?1-2*c:0)*(1-shut);                 // 뜬 눈 세로 비율
-  const sep=c>0?Math.abs(hp-sq)/c:1;               // ∩ 와 >< 가 섞이면 0 → 납작하게 지나간다
+  const sep=c0>0?Math.abs(hp-sq)/c0:1;             // ∩ 와 >< 가 섞이면 0 → 납작하게 지나간다
   const a=(c>.5?2*c-1:0)*cl(sep*2);                // 감은 모양 크기
   const o=g.querySelector('.open'), sh=g.querySelector('.shut'), hy=g.querySelector('.happy'), sk=g.querySelector('.sq');
   const showOpen=v>=.16, showArc=!showOpen&&a>=.16;

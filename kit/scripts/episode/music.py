@@ -107,12 +107,11 @@ def make(style, G):
                     note(INST["bass"], 48, t, .16, 1.4)
                 continue
             if style == "P":
-                if s % 2 == 1 and not (calm and s in (1, 5)):   # 뒷박 피치카토 화음(통통) — 긴 설명 구간은 2·4박 뒤만
+                if s % 2 == 1:   # 뒷박 피치카토 화음(통통) — 긴 설명 구간도 박은 그대로(빼면 말 쉼과 겹쳐 침묵처럼 들림, 2026-11-11), 크기만 0.85배
                     for j, m in enumerate(ch[:3]): note(INST["ch"], m, t + j * .006, .05 * (.8 if sp else 1) * (.85 if calm else 1), .5, pan=.2 - .1 * j)
                 if s in (0, 4): note(INST["bass"], BS[ci] + 12 + (0 if s == 0 else 7 if ci != 2 else -5), t, .16 * (.85 if calm and s == 4 else 1), .55)
                 if s == 7 and k % 2 and k < SB - 1: note(INST["bass"], BS[ci_at(k + 1) ] + 12 - 1, t, .1, .25)   # 다음 마디로 걸어가는 반음
-                shaker(t, .012 * (.7 if calm else 1))
-                if not calm: shaker(t + E8 / 2, .007)
+                shaker(t, .012 * (.8 if calm else 1)); shaker(t + E8 / 2, .007 * (.6 if calm else 1))
                 if calm and s == 0: note("celesta", ch[-1] + 12, t, .022, 1.2, pan=.35)   # 숨 쉬는 구간: 마디 첫 박에 맑은 한 음
                 if s in (2, 6): snap(t, .045)
                 if mori and s in (1, 5): note("pizzicato_strings", BS[ci] + 24, t, .07, .3, pan=.35)   # 모리: 낮은 살금살금
@@ -177,6 +176,10 @@ def make(style, G):
         tb = SB * BAR if abs(SB * BAR - ts) < .5 else ts
         for j, m in enumerate(root): note(INST["ch"], m + 12, tb + j * .03, .05, 1.2, pan=-.2 + .1 * j)
     tp = T.get("pouch")
+    lastL = max(lines, key=lambda l: l["t"])
+    te = lastL["t"] + lastL["d"] - .05   # 마지막 말 끝: 으뜸화음 한 번 더 — 끝까지 울려 침묵으로 끝나지 않게(2026-11-11)
+    for j, m_ in enumerate(CH[0][:3]): note(INST["ch"], m_ + 12, te + j * .012, .05, 1.2, pan=.15 - .1 * j)
+    note(INST["bass"], 48, te, .12, 1.0)
     if tp is not None:
         note(INST["hi"], 84, tp + .35, .05, 1.6); note(INST["hi"], 88, tp + .45, .04, 1.6, pan=.3); note(INST["hi"], 91, tp + .55, .04, 1.6, pan=-.2)
-    f = int(1.0 * SR); bed[-f:] *= np.linspace(1, 0, f)[:, None]
+    f = int(.35 * SR); bed[-f:] *= np.linspace(1, 0, f)[:, None]

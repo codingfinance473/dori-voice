@@ -47,7 +47,7 @@ for lid, gap, scene in order:
     T[lid] = round(t, 3)
     lines.append({"id": lid, "t": T[lid], "d": meta[SRC(lid)]["dur"], "text": meta[SRC(lid)]["text"], "who": WHO.get(lid, "D")})
     t += meta[SRC(lid)]["dur"]
-T["END"] = round(t + 1.1, 3)
+T["END"] = round(t + .6, 3)   # 마지막 말 뒤 0.6초 — 1.1초는 끝에 화면만 남는 침묵이 됐다(2026-11-11 사용자)
 sys.path.insert(0, "voice")
 from asr import rec
 def words(lid):
