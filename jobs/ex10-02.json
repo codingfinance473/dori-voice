@@ -1,0 +1,60 @@
+{
+ "id": "ex10-02",
+ "note": "EX.10 다시 — 제안(제한으로 들림)·포럼 줄 말 바꿈",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 611,
+   "takes": 4,
+   "texts": [
+    "그건 의학 전문가들이, 올리자고 한 말이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 612,
+   "takes": 4,
+   "texts": [
+    "그건 전문가들이 내놓은 의견이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 613,
+   "takes": 4,
+   "texts": [
+    "뉴스에 났어도 정해진 건 아니네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 614,
+   "takes": 4,
+   "texts": [
+    "뉴스에 났다고 정해진 건 아니네. 인정."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L02c",
+  "L02d",
+  "M05c",
+  "M05d"
+ ]
+}
