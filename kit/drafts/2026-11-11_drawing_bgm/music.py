@@ -49,8 +49,10 @@ def make(style, G):
             if l["t"] - .2 <= t: w = l["who"]
         return w or "D"
 
+    QW = list(G.get("quiet", [])) + [(T["L09"] - .2, T["L09"] + .6)] if "L09" in T else list(G.get("quiet", []))
     def note(inst, m, at, g, L=1.2, pan=0.0, vel=1.0):
         if at < 0 or at >= END + 1: return
+        if any(a <= at < b for a, b in QW): g *= .35          # 핵심 첫마디(quiet 구간): 새 음은 아주 작게
         x = smp(inst, m)[: int(L * SR)].copy()
         r = min(len(x), int(.09 * SR)); x[-r:] *= np.linspace(1, 0, r)
         put(bed, x, at, g * vel, pan)
@@ -79,21 +81,39 @@ def make(style, G):
             "M": dict(ch="marimba", bass="acoustic_bass", hi="kalimba", lo="marimba")}[style]
     swing = .045 if style == "L" else 0.0
 
+    # 마디별 화음 계획 — 기본 4마디 반복, '검산 끝'부터는 끝맺음(I → IV·V → I)으로 갈아탄다(1판: 끝이 IV에 걸린 채 끊겨 어색했음)
+    SB = int(round(T["stamp"] / BAR)) if "stamp" in T else 10 ** 6
+    def ci_at(bar, half=0):
+        if bar < SB: return bar % 4
+        r = bar - SB
+        return 0 if r == 0 else (2 if half == 0 else 3) if r == 1 else 0
+    def chord_at(t): b_ = int(t // BAR); return CH[ci_at(b_, int((t - b_ * BAR) >= BAR / 2))]
+    S5, S8 = T.get("s5", 10 ** 6), T.get("s8", 10 ** 6)
+    LASTBAR = SB + 2
+
     # ---------- 바닥: 리듬 + 화음(0초부터 끝까지 끊지 않는다) ----------
     k, b = 0, 0.0
     while b < END - .05:
-        ci = k % 4; ch = CH[ci]
         for s in range(8):
+            ci = ci_at(k, int(s >= 4)); ch = CH[ci]
             t = b + s * E8 + (swing if s % 2 else 0)
             if t >= END - .05: break
             sp = speaking(t)
             mori = who_near(t) == "M"
+            calm = S5 - .1 <= t < S8 - .3          # 긴 설명 구간: 한 겹 덜어 숨 쉬게
+            if style == "P" and k >= LASTBAR:      # 마지막 마디: 으뜸화음 한 번 길게 + 베이스, 나머지는 비운다
+                if s == 0:
+                    for j, m in enumerate(CH[0][:3]): note(INST["ch"], m, t + j * .01, .06, 1.6, pan=.2 - .1 * j)
+                    note(INST["bass"], 48, t, .16, 1.4)
+                continue
             if style == "P":
-                if s % 2 == 1:   # 뒷박 피치카토 화음(통통)
-                    for j, m in enumerate(ch[:3]): note(INST["ch"], m, t + j * .006, .05 * (.8 if sp else 1), .5, pan=.2 - .1 * j)
-                if s in (0, 4): note(INST["bass"], BS[ci] + 12 + (0 if s == 0 else 7 if ci != 2 else -5), t, .16, .55)
-                if s == 7 and k % 2: note(INST["bass"], BS[(ci + 1) % 4] + 12 - 1, t, .1, .25)   # 다음 마디로 걸어가는 반음
-                shaker(t, .012); shaker(t + E8 / 2, .007)
+                if s % 2 == 1 and not (calm and s in (1, 5)):   # 뒷박 피치카토 화음(통통) — 긴 설명 구간은 2·4박 뒤만
+                    for j, m in enumerate(ch[:3]): note(INST["ch"], m, t + j * .006, .05 * (.8 if sp else 1) * (.85 if calm else 1), .5, pan=.2 - .1 * j)
+                if s in (0, 4): note(INST["bass"], BS[ci] + 12 + (0 if s == 0 else 7 if ci != 2 else -5), t, .16 * (.85 if calm and s == 4 else 1), .55)
+                if s == 7 and k % 2 and k < SB - 1: note(INST["bass"], BS[ci_at(k + 1) ] + 12 - 1, t, .1, .25)   # 다음 마디로 걸어가는 반음
+                shaker(t, .012 * (.7 if calm else 1))
+                if not calm: shaker(t + E8 / 2, .007)
+                if calm and s == 0: note("celesta", ch[-1] + 12, t, .022, 1.2, pan=.35)   # 숨 쉬는 구간: 마디 첫 박에 맑은 한 음
                 if s in (2, 6): snap(t, .045)
                 if mori and s in (1, 5): note("pizzicato_strings", BS[ci] + 24, t, .07, .3, pan=.35)   # 모리: 낮은 살금살금
             elif style == "L":
@@ -112,14 +132,14 @@ def make(style, G):
                 if s in (2, 6): snap(t, .04)
                 if s in (0, 4): kick(t, .09)
                 shaker(t, .008)
-        if k % 4 == 0 and style != "L": note(INST["hi"], 84 if style == "P" else 79, b, .03, 1.5, pan=.4)
+        if k % 4 == 0 and style != "L" and k < SB: note(INST["hi"], 84 if style == "P" else 79, b, .03, 1.5, pan=.4)
         b += BAR; k += 1
     if style == "L":   # 바이닐 잡음 한 겹
         cr = (rng.random(N) < .0009) * rng.standard_normal(N) * .5
         cr = hp(cr, 2000) + lp(rng.standard_normal(N), 1200) * .006
         bed[:, 0] += cr * .25; bed[:, 1] += cr * .25
 
-    def chord_at(t): return CH[int(t // BAR) % 4]
+
 
     # ---------- 대답(말 틈에만) ----------
     for i, l in enumerate(lines[:-1]):
@@ -130,6 +150,7 @@ def make(style, G):
         if l["who"] == "M":    # 모리 줄 뒤: 낮은 능청 두 음
             inst = INST["lo"]; ms = [ch[0] - 12, ch[0] - 5] if style == "P" else [ch[0] - 12, ch[2] - 12]
             ms = [m - 12 for m in ms] if style == "P" else ms
+            ms = [m + 12 * max(0, -((m - 40) // 12)) for m in ms]      # 바순 아주 낮은 음(F1 등)은 한 옥타브 올림
             for j, m in enumerate(ms[: 1 if room < .3 else 2]): note(inst, m, a + j * .15, .07 if style == "P" else .06, .28, pan=.3)
         else:                  # 도리 줄 뒤: 높고 반짝 1~3음(올라가며)
             n = 1 if room < .3 else 2 if room < .45 else 3
@@ -153,9 +174,9 @@ def make(style, G):
     ts = T.get("stamp")
     if ts is not None:
         root = CH[0] if style != "L" else (48, 52, 55, 59)
-        for j, m in enumerate(root): note(INST["ch"], m + 12, ts + j * .03, .05, 1.2, pan=-.2 + .1 * j)
+        tb = SB * BAR if abs(SB * BAR - ts) < .5 else ts
+        for j, m in enumerate(root): note(INST["ch"], m + 12, tb + j * .03, .05, 1.2, pan=-.2 + .1 * j)
     tp = T.get("pouch")
     if tp is not None:
-        note(INST["hi"], 84, tp + .35, .06, 1.6); note(INST["hi"], 91, tp + .45, .05, 1.6, pan=.3)
-        note(INST["bass"], 36 + 12, tp + .35, .14, 1.2)
-    f = int(.5 * SR); bed[-f:] *= np.linspace(1, 0, f)[:, None]
+        note(INST["hi"], 84, tp + .35, .05, 1.6); note(INST["hi"], 88, tp + .45, .04, 1.6, pan=.3); note(INST["hi"], 91, tp + .55, .04, 1.6, pan=-.2)
+    f = int(1.0 * SR); bed[-f:] *= np.linspace(1, 0, f)[:, None]

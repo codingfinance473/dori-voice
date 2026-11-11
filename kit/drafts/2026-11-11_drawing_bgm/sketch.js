@@ -13,7 +13,7 @@
   const CFG = {
     A: { hatch: .6, hw: 1.6, line: 4.2, freq: .032, dbl: .38, txt: 1.6, grain: 0, wash: 0, paper: .55, paperF: .85, doodle: .42, sat: 1 },
     B: { hatch: .55, hw: 2.6, line: 4.6, freq: .036, dbl: .30, txt: 1.8, grain: .34, wash: 0, paper: .70, paperF: .62, doodle: .45, sat: .96 },
-    C: { hatch: 0, line: 3.4, freq: .028, dbl: .20, txt: 1.4, grain: 0, wash: .34, paper: .80, paperF: .45, doodle: .30, sat: .92 },
+    C: { hatch: 0, pig: 1, line: 3.6, freq: .028, dbl: .22, txt: 1.4, grain: 0, wash: .42, paper: .80, paperF: .45, doodle: .30, sat: .92 },
   }[S];
   const turb = (id, f, seed, oct = 2) => `<feTurbulence class="skb" data-s0="${seed}" type="fractalNoise" baseFrequency="${f}" numOctaves="${oct}" seed="${seed}" result="${id}"/>`;
   const build = (fid, H) => {
@@ -50,7 +50,12 @@
     <feComposite in="m" in2="ga" operator="in" result="gm"/>
     <feComponentTransfer in="m" result="mt"><feFuncA type="linear" slope="${1 - CFG.grain}"/></feComponentTransfer>
     <feMerge result="m2"><feMergeNode in="mt"/><feMergeNode in="gm"/></feMerge>`;
-  art += `<feColorMatrix in="${CFG.grain ? 'm2' : 'm'}" type="saturate" values="${CFG.sat}"/></filter>`;
+  if (CFG.pig) art += `
+    <feTurbulence type="fractalNoise" baseFrequency=".011" numOctaves="3" seed="21" result="pg"/>
+    <feColorMatrix in="pg" type="matrix" values=".12 0 0 0 .9  .12 0 0 0 .9  .12 0 0 0 .91  0 0 0 0 1" result="pgl"/>
+    <feBlend in="m" in2="pgl" mode="multiply" result="pm0"/>
+    <feComposite in="pm0" in2="m" operator="in" result="pm"/>`;
+  art += `<feColorMatrix in="${CFG.pig ? 'pm' : CFG.grain ? 'm2' : 'm'}" type="saturate" values="${CFG.sat}"/></filter>`;
   return art; };
   const art = build('skArt', true) + build('skCard', false);
   // 글자 들어간 카드·말풍선·제목용(아주 작게)

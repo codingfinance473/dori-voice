@@ -159,7 +159,7 @@ duck = 1 - .62 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)  
 # 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
 NUM_LINES = ("L02", "L03", "L04", "L05", "L06", "L07", "L08", "L11", "M00", "M01", "M02", "M03", "M04", "M05")   # 이 편의 숫자·결론 줄
-WEAK = {}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
+WEAK = {"M00": .5, "L09": .5}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
 extra = np.ones(N)
 for l in TLL:
     if l["id"] in NUM_LINES:
@@ -175,4 +175,5 @@ import os
 os.environ.setdefault("BED_UNDER", "12.7")   # 2인 형식은 쉼이 짧아(0.2초) 쉼에서만 키우기 어렵다 → 전체를 조금 크게, 고르게 깐다
 from bedmix import finish
 bed *= 2.6   # 2판: 모리 줄에서 베이스·킥을 빼 전체가 얇아져 자동 배율(최대 8)로는 쉼이 너무 조용 → 원 소리를 키워 맞춘다
+if os.environ.get('STEM'): wavfile.write('stem_bed.wav', SR, (np.clip(bed,-1,1)*32767).astype(np.int16))
 finish(bed, sfx, v, env, sm, duck, (.05 if BED_STYLE in ("H", "P", "L", "M") else E["M01"] + .1), DUR - 1.2, SR, out=os.environ.get("OUT", "mix.wav"))
