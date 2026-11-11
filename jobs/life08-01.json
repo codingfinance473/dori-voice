@@ -1,0 +1,164 @@
+{
+ "id": "life08-01",
+ "note": "LIFE.08 학원비 할인카드",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 558,
+   "takes": 4,
+   "texts": [
+    "학원비 십 퍼센트 할인 카드, 실제론 이만 원만 깎아 줄 수도 있대!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 559,
+   "takes": 4,
+   "texts": [
+    "거짓말~ 십 퍼센트면 십 퍼센트지."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 560,
+   "takes": 4,
+   "texts": [
+    "사교육 받는 학생 한 명당, 한 달 평균 육십만 원쯤 든대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 561,
+   "takes": 4,
+   "texts": [
+    "근데 지난달 카드를 오십만 원 썼으면, 오 퍼센트에 이만 원까지래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 562,
+   "takes": 4,
+   "texts": [
+    "그럼~ 학원비로 실적 채우면 되잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 563,
+   "takes": 4,
+   "texts": [
+    "학원비는 실적에서 빠진대~"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 564,
+   "takes": 4,
+   "texts": [
+    "그럼 십 퍼센트는 누가 받아?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 565,
+   "takes": 4,
+   "texts": [
+    "학원비 말고, 이백만 원 넘게 쓴 사람이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 566,
+   "takes": 4,
+   "texts": [
+    "카드 말고, 돌려받는 길은 없어?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 567,
+   "takes": 4,
+   "texts": [
+    "초등 일 이 학년 예체능 학원비는, 올해부터 연말정산에서 십오 퍼센트 돌려받는대~"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 568,
+   "takes": 4,
+   "texts": [
+    "십 퍼센트가 다 십 퍼센트는 아니네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 569,
+   "takes": 4,
+   "texts": [
+    "너희 집은 학원비, 뭘로 내?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "M01",
+  "L02",
+  "L03",
+  "M02",
+  "L04",
+  "M03",
+  "L05",
+  "M04",
+  "L06",
+  "M05",
+  "L08"
+ ]
+}
