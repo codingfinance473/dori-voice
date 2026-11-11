@@ -2,6 +2,7 @@
 # 도리 쇼츠 작업 환경 준비(세션마다 한 번). 파이썬 패키지 · 한국어 받아쓰기 모델 · 글꼴(Jua, Pretendard — 둘 다 OFL)을 캐시에 받는다.
 # 사용: bash kit/scripts/setup.sh        캐시 위치는 DORI_CACHE(기본 ~/.cache/dori-shorts)
 set -euo pipefail
+SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CACHE="${DORI_CACHE:-$HOME/.cache/dori-shorts}"
 mkdir -p "$CACHE"
 
@@ -26,4 +27,5 @@ if [ ! -f "$F/jua/index.css" ] || [ ! -f "$F/pretendard/Pretendard-Bold.otf" ]; 
   npm pack -q pretendard@1.3.9 >/dev/null && tar -xzf pretendard-1.3.9.tgz && mkdir -p pretendard
   cp package/dist/public/static/Pretendard-{Regular,Medium,SemiBold,Bold,ExtraBold,Black}.otf pretendard/ && rm -rf package pretendard-1.3.9.tgz
 fi
+[ -f "${SFDIR:-/home/claude/sf}/pizzicato_strings/C4.wav" ] || bash "$SELF_DIR/fetch_sf.sh" || echo "악기 샘플을 못 받았어요 — 배경음(music.py) 없이 BED=N 으로 섞을 수 있어요"
 echo "준비 끝: $CACHE"

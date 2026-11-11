@@ -36,8 +36,13 @@ order = [  # (줄, 앞 쉼, 장면 시작 표시)
     ("L10", 0.35, None), ("L11", 0.20, None),
 ]
 T, lines, t = {}, [], 0.0
+import math
+QUANT = float(os.environ.get("BPM", "100"))   # 박자 맞춤(2026-11-11 시안): 줄 시작을 8분음표 격자에, 장면 시작을 박에 맞춘다
 for lid, gap, scene in order:
     t += gap
+    if QUANT:
+        g = 60 / QUANT * .5
+        t = math.ceil((t - .08) / g - 1e-9) * g
     if scene: T[scene] = round(t - (0.25 if scene != "s1" else 0.3), 3)
     T[lid] = round(t, 3)
     lines.append({"id": lid, "t": T[lid], "d": meta[SRC(lid)]["dur"], "text": meta[SRC(lid)]["text"], "who": WHO.get(lid, "D")})
@@ -93,7 +98,7 @@ def envelope(tr):
     mx = np.percentile(loud, 95) if loud else 1.0
     return [round(min(1.0, e / mx), 3) for e in env]
 env, envD, envM = envelope(track), envelope(trD), envelope(trM)
-open("timeline.js", "w", encoding="utf-8").write("window.TL=" + json.dumps({"T": T, "lines": lines, "env": env, "envD": envD, "envM": envM}, ensure_ascii=False) + ";")
+open("timeline.js", "w", encoding="utf-8").write("window.TL=" + json.dumps({"BPM": QUANT, "T": T, "lines": lines, "env": env, "envD": envD, "envM": envM}, ensure_ascii=False) + ";")
 print("END", T["END"])
 for l in lines: print(f'{l["t"]:6.2f}-{l["t"] + l["d"]:6.2f} {l["who"]} {l["id"]}')
 print({k: T[k] for k in ["s2", "s3", "s4", "s5", "s8", "stamp"]})

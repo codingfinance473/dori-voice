@@ -9,25 +9,23 @@
    "안경",
    "날아"
   ],
-  "note": "L01b 소리를 씀 — 1판 '무효'는 받아쓰기에서 늘 '무료'로 잡혀 '날아간대'로 바꿈(화면·자막엔 무효)",
-  "keep": true
+  "note": "L01b 소리를 씀 — 1판 '무효'는 받아쓰기에서 늘 '무료'로 잡혀 '날아간대'로 바꿈(화면·자막엔 무효)"
  },
  {
   "id": "M01",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-v3",
   "say": "거짓말. 안 켜면 그냥 안경이잖아.",
   "sub": "거짓말<br>안 켜면 그냥 안경이잖아",
   "keys": [
    "거짓말",
    "안경"
-  ],
-  "keep": true
+  ]
  },
  {
   "id": "M00",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-v3",
   "say": "난 모리. 근거 없는 말은 안 믿어.",
   "sub": "난 모리<br>근거 없는 말은 안 믿어",
   "keys": [
@@ -60,13 +58,12 @@
    "수능"
   ],
   "num": true,
-  "note": "L03b 소리를 씀 — 1판 '무효'는 받아쓰기에서 늘 '무료'로 잡혀 '날아간대'로 바꿈(화면·자막엔 무효)",
-  "keep": true
+  "note": "L03b 소리를 씀 — 1판 '무효'는 받아쓰기에서 늘 '무료'로 잡혀 '날아간대'로 바꿈(화면·자막엔 무효)"
  },
  {
   "id": "M02",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-v3",
   "say": "그럼 그냥 안경 쓴 사람은?",
   "sub": "그럼 그냥 안경 쓴<br>사람은?",
   "keys": [
@@ -89,14 +86,13 @@
  {
   "id": "M03",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-v3",
   "say": "뉴스엔 삼 년 못 본다던데?",
   "sub": "뉴스엔 3년<br>못 본다던데?",
   "keys": [
    "뉴스",
    "삼"
-  ],
-  "keep": true
+  ]
  },
  {
   "id": "L05",
@@ -113,7 +109,7 @@
  {
   "id": "M04",
   "who": "M",
-  "voice": "voices/mori",
+  "voice": "voices/mori-v3",
   "say": "그래서, 나랑 무슨 상관인데?",
   "sub": "그래서<br>나랑 무슨 상관인데?",
   "keys": [
@@ -131,8 +127,7 @@
    "오십오만",
    "전담"
   ],
-  "num": true,
-  "keep": true
+  "num": true
  },
  {
   "id": "L07",
@@ -144,20 +139,18 @@
    "교시",
    "전에"
   ],
-  "keep": true,
   "note": "00_0 은 안에 2.2초 쉼(10.7초) → 00_3"
  },
  {
   "id": "M05",
   "who": "M",
-  "voice": "voices/mori",
-  "say": "흐음, 인정.",
-  "sub": "흐음… 인정.",
+  "voice": "voices/mori-v3",
+  "say": "흠. 인정할게.",
+  "sub": "흠, 인정할게.",
   "keys": [
    "인정"
   ],
-  "note": "EX.08 ex08-04 t05 재사용",
-  "keep": true
+  "note": "EX.08 ex08-04 t05 재사용"
  },
  {
   "id": "L08",

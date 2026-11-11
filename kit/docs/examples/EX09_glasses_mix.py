@@ -79,13 +79,16 @@ end = DUR - 1.15                                               # 끝 화음
 strum(chords[0], end, .07); put(bed, tone(hz(79), 1.4, dec=.6), end + .05, .04)
 bed[-int(.4 * SR):] *= np.linspace(1, 0, int(.4 * SR))[:, None]
 
-BED_STYLE = os.environ.get("BED", "N")   # N = 배경음 없음 + 징글·효과음(2026-11-10 사용자 확정) · B 그루브 · H 훅 · OLD 도리 산책
+BED_STYLE = os.environ.get("BED", "P")   # P = 통통 피치카토(music.py, 2026-11-11 사용자 확정) · L 로파이 · M 마림바 · N 배경음 없음 + 징글 · B·H·OLD 옛 시안
 _old_default = os.environ.get("BED_OLD_DEFAULT", "B")   # 2026-11-10 사용자 선택: B 미니멀 그루브. BED= 로 비우면 예전 「도리 산책」
 BED_STYLE = "" if BED_STYLE == "OLD" else BED_STYLE
 #   # A·B·C 시안(beds.py), 비우면 「도리 산책」
 if BED_STYLE:
     bed[:] = 0
-    import beds; beds.make(BED_STYLE, globals())
+    if BED_STYLE in ("P", "L", "M"):   # 2026-11-11 시안: 말 박자를 따라가는 샘플 악기 배경음(music.py)
+        import music; music.make(BED_STYLE, globals())
+    else:
+        import beds; beds.make(BED_STYLE, globals())
     bed[-int(.4 * SR):] *= np.linspace(1, 0, int(.4 * SR))[:, None]
 
 # ---------- 효과음 ----------
@@ -136,6 +139,13 @@ if BED_STYLE == "N":
     room = lp(rng.standard_normal(N), 900) * .0016; room[:int(.2 * SR)] *= np.linspace(0, 1, int(.2 * SR)); room[-int(.3 * SR):] *= np.linspace(1, 0, int(.3 * SR))
     sfx[:, 0] += room; sfx[:, 1] += room                                                         # 줄 사이가 디지털 무음으로 뚝 끊기지 않게
 
+if BED_STYLE in ("P", "L", "M"):
+    sfx[:] = 0                         # 틈 '톡'·차임은 음악의 대답이 맡는다 — 장면 휘익·도장 쿵·볼주머니 뽀옹만 남김
+    for s_ in ("s2", "s3", "s4", "s5", "s8"): whoosh(T[s_], .025)
+    thump(T["stamp"] + .1, .10)
+    n_ = int(.16 * SR); t_ = np.arange(n_) / SR
+    put(sfx, np.sin(2 * np.pi * np.cumsum(500 + 900 * t_ / .16) / SR) * np.sin(np.pi * t_ / .16), T["L11"] - .42, .06)
+
 # ---------- 목소리 + 덕킹 ----------
 sr, v = wavfile.read("voice.wav"); v = v.astype(np.float32) / 32768
 v = v[:N] if len(v) >= N else np.pad(v, (0, N - len(v)))
@@ -149,7 +159,7 @@ duck = 1 - .62 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)  
 # 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
 NUM_LINES = ("L02", "L03", "L04", "L05", "L06", "L07", "L08", "L11", "M00", "M01", "M02", "M03", "M04", "M05")   # 이 편의 숫자·결론 줄
-WEAK = {}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
+WEAK = {"M00": .5, "L09": .5}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
 extra = np.ones(N)
 for l in TLL:
     if l["id"] in NUM_LINES:
@@ -162,7 +172,8 @@ duck = duck * extra
 # ---------- 배경음 크기 맞추기 + mix.wav (bedmix.py — 잔잔하게 들리게, 2026-11-05) ----------
 import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import os
-os.environ.setdefault("BED_UNDER", "12.7")   # 2인 형식은 쉼이 짧아(0.2초) 쉼에서만 키우기 어렵다 → 전체를 조금 크게, 고르게 깐다
+os.environ.setdefault("BED_UNDER", "13.5" if BED_STYLE in ("P", "L", "M") else "12.7")   # 2인 형식은 쉼이 짧아(0.2초) 쉼에서만 키우기 어렵다 → 전체를 조금 크게, 고르게 깐다
 from bedmix import finish
 bed *= 2.6   # 2판: 모리 줄에서 베이스·킥을 빼 전체가 얇아져 자동 배율(최대 8)로는 쉼이 너무 조용 → 원 소리를 키워 맞춘다
-finish(bed, sfx, v, env, sm, duck, (.05 if BED_STYLE == "H" else E["M01"] + .1), DUR - 1.2, SR)
+if os.environ.get('STEM'): wavfile.write('stem_bed.wav', SR, (np.clip(bed,-1,1)*32767).astype(np.int16))
+finish(bed, sfx, v, env, sm, duck, (.05 if BED_STYLE in ("H", "P", "L", "M") else E["M01"] + .1), DUR - 1.2, SR, out=os.environ.get("OUT", "mix.wav"))
