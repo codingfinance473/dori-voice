@@ -49,7 +49,7 @@ def make(style, G):
             if l["t"] - .2 <= t: w = l["who"]
         return w or "D"
 
-    QW = list(G.get("quiet", [])) + [(T["L09"] - .2, T["L09"] + .6)] if "L09" in T else list(G.get("quiet", []))
+    QW = list(G.get("quiet", [])) + [(T["L09"] - .25, T["L09"] + 1.3)] if "L09" in T else list(G.get("quiet", []))
     def note(inst, m, at, g, L=1.2, pan=0.0, vel=1.0):
         if at < 0 or at >= END + 1: return
         if any(a <= at < b for a, b in QW): g *= .35          # 핵심 첫마디(quiet 구간): 새 음은 아주 작게

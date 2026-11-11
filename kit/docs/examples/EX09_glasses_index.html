@@ -4,7 +4,7 @@
 <!--
   도리의 정보주머니 · 숫자 검산 EX.09 수능 날 스마트안경, 쓰기만 해도 무효일까? (2026-11-10)
   도리·모리 2인 형식: 콜드오픈(도리 주장) → 모리 의심·자기소개 → 근거(착용 = 사용 간주 → 무효 + 다음 해 정지) → 그냥 안경은?(벗어서 확인·거부 시 같은 처분)
-  → 3년?(추진 중, 올해 1년) → 나랑 상관?(지원자 55만 명 모두·시험장마다 전담·1교시 전 제출) → 모리 "인정" → 검산 끝.
+  → 3년?(추진 중, 올해 1년) → 전부 해당?(지원자 55만 명 모두·시험장마다 전담·1교시 전 제출) → 모리 "인정" → 검산 끝.
   숫자: 대조표 EX09_glasses_factsheet.md — 교육부·평가원 2027학년도 수능 수험생 유의사항 · 교육부 대응 계획(2026-10-29) · 평가원 응시원서 접수 결과(2026-09-08)
   지키는 것: 매체명·학교명 없음 · 기기 구분 요령 없음 · 상표 없는 안경 · AI 표시는 설명란 한 줄만 · 아래 420px·오른쪽 160px에 핵심 글자 없음
 -->
@@ -72,7 +72,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 .yl{position:absolute;left:96px;width:220px;font-family:Jua;font-size:36px;line-height:1.12;color:var(--ink)}
 .yl small{display:block;font-family:P;font-size:24px;font-weight:700;color:var(--sub)}
 #ax4{left:330px;top:872px;width:560px;height:40px}
-/* 5 나랑 상관? */
+/* 5 전부 해당? */
 #c5{left:60px;top:430px;width:860px;height:545px;padding:94px 44px 30px}
 #c5 .r{display:flex;justify-content:space-between;align-items:baseline;font-size:36px;font-weight:700;color:var(--ink);padding:8px 0;border-bottom:3px dashed #E6D6C8}
 #c5 .r .a{color:var(--sub);font-weight:700}
@@ -169,7 +169,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
     <div class="abs" id="ax4"></div>
   </div>
 
-  <!-- 5 나랑 상관? -->
+  <!-- 5 전부 해당? -->
   <div class="scene" id="s5">
     <div class="ttl tt" id="t5">나한테도 <em class="b">해당</em>될까?</div>
     <div class="uu" id="u5">한국교육과정평가원 · 응시원서 접수 결과(2026년 9월 8일) · 교육부 대응 계획</div>
@@ -463,7 +463,7 @@ function render(t){
   $('yr1').style.width=Math.max(0,180*clamp(g1,0,1.06))+'px'; $('yr1').style.opacity=(t>=T.wOne-.15?1:0)*(1-b4);
   pop('tg4',t,T.wPush-.05,o4,.35,-3,.5);
 
-  // 5 나랑 상관? — 지원자·시험장·계산, 이어서 제출 바구니
+  // 5 전부 해당? — 지원자·시험장·계산, 이어서 제출 바구니
   sv('s5',T.s5,T.s8+.3); const o5=T.s8-.1;
   fx('t5',t,T.s5+.05,.45,o5,.35,30); fx('u5',t,T.s5+.2,.45,o5,.35,20); fx('c5',t,T.s5+.1,.5,o5,.35,40);
   fx('r5a',t,T.s5+.3,.35,o5,.35,16,-20); fx('r5b',t,T.s5+.6,.35,o5,.35,16,-20);
