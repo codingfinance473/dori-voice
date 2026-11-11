@@ -1,0 +1,47 @@
+{
+ "id": "ex09-mori5",
+ "note": "EX.09 모리 인정 줄 — 첫 의심을 되받게",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 817,
+   "takes": 4,
+   "texts": [
+    "안 켜도 안 되는 거 맞네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 818,
+   "takes": 4,
+   "texts": [
+    "쓰기만 해도 안 되는 거 맞네~ 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 819,
+   "takes": 4,
+   "texts": [
+    "흠~ 안 켜도 걸리는 거 맞네. 인정."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "M05",
+  "M05b",
+  "M05c"
+ ]
+}
