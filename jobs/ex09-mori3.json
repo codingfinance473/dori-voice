@@ -1,0 +1,138 @@
+{
+ "id": "ex09-mori3",
+ "note": "EX.09 시안 — 모리 3판 목소리(리액션 자연스럽게)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 216,
+   "takes": 4,
+   "texts": [
+    "거짓말. 안 켜면 그냥 안경이잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 217,
+   "takes": 4,
+   "texts": [
+    "에이, 거짓말. 안 켜면 그냥 안경이잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 218,
+   "takes": 4,
+   "texts": [
+    "난 모리. 근거 없는 말은 안 믿어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 219,
+   "takes": 4,
+   "texts": [
+    "그럼 그냥 안경 쓴 사람은?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 220,
+   "takes": 4,
+   "texts": [
+    "뉴스엔 삼 년 못 본다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 221,
+   "takes": 4,
+   "texts": [
+    "그래서, 나랑 무슨 상관인데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 222,
+   "takes": 4,
+   "texts": [
+    "흐음, 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 223,
+   "takes": 4,
+   "texts": [
+    "흐음... 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 224,
+   "takes": 4,
+   "texts": [
+    "흠. 인정할게."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 225,
+   "takes": 4,
+   "texts": [
+    "음, 그래. 인정."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "M01",
+  "M01b",
+  "M00",
+  "M02",
+  "M03",
+  "M04",
+  "M05",
+  "M05b",
+  "M05c",
+  "M05d"
+ ]
+}
