@@ -50,7 +50,7 @@ if quiet or tail > .9:
 try:
     vsr, vv = wavfile.read("voice.wav"); vv = vv.astype(np.float32) / 32768
     if vv.ndim > 1: vv = vv.mean(1)
-    hv = int(.05 * vsr); gaps = []
+    hv = int(.05 * vsr); gaps = []; cuts = []
     for ln in TL["lines"]:
         a, b = int(ln["t"] * vsr), int((ln["t"] + ln["d"]) * vsr)
         e = [20 * np.log10(np.sqrt(np.mean(vv[i:i + hv] ** 2)) + 1e-9) for i in range(a, max(a, b - hv), hv)]
@@ -58,7 +58,18 @@ try:
         if not sp: continue
         runs = [(sp[k + 1] - sp[k]) * .05 for k in range(len(sp) - 1)] + [(len(e) - 1 - sp[-1]) * .05]
         if max(runs) > .7: gaps.append((ln["id"], round(max(runs), 2)))
+        # 끝 음절 잘림: 마지막 소리 덩어리가 0.08초 이하인데 그 앞이 0.1초 넘게 조용 — 끝 글자가 나오다 만 테이크(EX.09 L03 "못 봐"의 '봐'가 0.06초에서 잘림)
+        e2 = [20 * np.log10(np.sqrt(np.mean(vv[i:i + hv // 2] ** 2)) + 1e-9) for i in range(a, max(a, b - hv // 2), hv // 2)]
+        ld = [d > -30 for d in e2]; i = len(ld) - 1
+        while i >= 0 and not ld[i]: i -= 1
+        j = i
+        while j >= 0 and ld[j]: j -= 1
+        k = j
+        while k >= 0 and not ld[k]: k -= 1
+        if 0 < (i - j) * .025 <= .08 and (j - k) * .025 >= .1: cuts.append(ln["id"])
     print("줄 안 빈틈:", gaps or "없음")
+    print("끝 음절 잘림:", cuts or "없음")
+    if cuts: print("확인 — 그 줄은 끝 글자가 다 나온 다른 테이크로 바꾼다(끝 20개 구간의 소리 크기를 견줘 본다)")
     if gaps: print("확인 — 그 줄 테이크를 잘라(끝 군소리) 또는 tighten.py 로 줄이고 build_voice.py 부터 다시")
 except FileNotFoundError:
     print("줄 안 빈틈: voice.wav 가 없어 건너뜀")

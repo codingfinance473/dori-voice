@@ -92,7 +92,7 @@ function draw(st){
   // 몸: 점프·찌그러짐·숨
   const sx=1+st.squash*.10, sy=1-st.squash*.10+st.breath*.012;
   q('#dRoot').setAttribute('transform',`translate(0 ${-st.hop}) translate(200 410) scale(${sx} ${sy}) translate(-200 -410)`);
-  q('#dSh').setAttribute('rx',132-st.hop*.4); q('#dSh').setAttribute('opacity',1-st.hop/200);
+  q('#dSh').setAttribute('rx',132-st.hop*.4); q('#dSh').setAttribute('opacity',document.getElementById('dsh')?0:1-st.hop/200);   // 무대 바닥 그림자(#dsh)가 있으면 몸에 붙은 밝은 타원은 숨긴다 — 마루 위에서 '둥근 판'처럼 보였다(2026-11-11)
   q('#dHeadAll').setAttribute('transform',`rotate(${st.tilt} 200 300)`);
   q('#dEarL').setAttribute('transform',`rotate(${st.earL} 122 150)`);
   q('#dEarR').setAttribute('transform',`rotate(${-st.earR} 278 150)`);
