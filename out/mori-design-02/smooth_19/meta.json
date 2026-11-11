@@ -1,0 +1,37 @@
+{
+ "task": {
+  "id": "smooth_19",
+  "label": "말끔한 19살(맑은데 끝에 살짝 거침)",
+  "mode": "design",
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+  "seed": 203,
+  "takes": 2,
+  "texts": [
+   "거짓말. 안 켜면 그냥 안경이잖아. 난 모리. 근거 없는 말은 안 믿어. 그래서, 나랑 무슨 상관인데? 흐음, 인정. 이번엔 네 말이 맞았어."
+  ],
+  "instruct": "Nineteen-year-old guy, clean youthful voice with a touch of gravel at the ends of phrases. Mid pitch, relaxed and sly, slightly lazy drawl but brisk overall tempo, amused and a bit skeptical, very clear pronunciation. Feels like a cool classmate, fresh and young, not deep, not mature."
+ },
+ "load_s": 2.2,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 14.08,
+   "gen_s": 1416.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 15.68,
+   "gen_s": 960.9,
+   "sr": 24000
+  }
+ ]
+}
