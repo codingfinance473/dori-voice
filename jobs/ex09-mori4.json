@@ -1,0 +1,47 @@
+{
+ "id": "ex09-mori4",
+ "note": "EX.09 모리 다리 질문 바꿈(나랑 무슨 상관 → 수험생 전부 해당이야?)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 983,
+   "takes": 4,
+   "texts": [
+    "그거, 수험생 전부 해당이야?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 984,
+   "takes": 4,
+   "texts": [
+    "그럼 수험생 전부 해당돼?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 985,
+   "takes": 4,
+   "texts": [
+    "그럼~ 수험생 전부 해당이야?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "M04",
+  "M04b",
+  "M04c"
+ ]
+}
