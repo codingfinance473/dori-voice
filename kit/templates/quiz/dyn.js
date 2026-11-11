@@ -3,7 +3,7 @@
    ① 장면 들어올 때: 장면 판이 1.03배에서 1배로 0.4초에 내려앉음(카메라가 툭 다가갔다 자리 잡는 느낌)
    ② 장면 동안: 판이 위로 아주 천천히 흐름(최대 8px) — 정지 화면처럼 굳어 있지 않게
    ③ 핵심 단어(숫자·판정) 때: 판이 1.6% 짧게 '쿵'(0.07초 올라갔다 0.35초에 돌아옴)
-   ④ 말하는 캐릭터는 배경음 박(BPM)에 맞춰 3px 가볍게 들썩, 듣는 쪽은 1px
+   ④ 도리만 배경음 박(BPM)에 맞춰 말할 때 3px·들을 때 1px 들썩(정수 픽셀) — 모리는 들썩이지 않음(목 방울 M 이 떨려 보임)
    크기는 일부러 작다 — 글자 안전 영역(아래 420·오른쪽 160)을 넘지 않게. */
 (function () {
   const TLx = window.TL || {}; const T = TLx.T || {}; const L = TLx.lines || [];
@@ -31,8 +31,10 @@
     const w = who(t);
     for (const [id, c] of [['dori', 'D'], ['mori', 'M']]) {
       const el = document.getElementById(id); if (!el) continue;
-      const a = w === c ? 3 : 1;
-      if (!/translateY\(-?[\d.]+px\)\s*$/.test(el.style.transform || '')) el.style.transform = (el.style.transform || '') + ` translateY(${(-a * hop).toFixed(2)}px)`;
+      // 모리는 들썩이지 않는다(2026-11-11 사용자: "모리 목 방울의 M 이 너무 흔들린다"), 도리는 정수 픽셀로만(작은 글자·선이 반짝이며 떨리지 않게)
+      const a = c === 'M' ? 0 : (w === c ? 3 : 1);
+      if (!a) continue;
+      if (!/translateY\(-?[\d.]+px\)\s*$/.test(el.style.transform || '')) el.style.transform = (el.style.transform || '') + ` translateY(${Math.round(-a * hop)}px)`;
     }
   };
 })();
