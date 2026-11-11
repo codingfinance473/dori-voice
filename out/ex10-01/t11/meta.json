@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t11",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 988,
+  "takes": 4,
+  "texts": [
+   "담뱃값 이천오백 원이던 때, 기억나?"
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 3.1,
+ "cpu": 4,
+ "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+ "fast_bf16": false,
+ "dtype": "fp32",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 2.8,
+   "gen_s": 22.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 2.88,
+   "gen_s": 23.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 2.8,
+   "gen_s": 22.5,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 2.8,
+   "gen_s": 21.8,
+   "sr": 24000
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t04",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 981,
+  "takes": 4,
+  "texts": [
+   "복지부는, 지금 인상을 검토하지 않는대."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.4,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 2.88,
+   "gen_s": 16.0,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 3.92,
+   "gen_s": 19.7,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 3.12,
+   "gen_s": 16.3,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 3.68,
+   "gen_s": 18.2,
+   "sr": 24000
+  }
+ ]
+}
