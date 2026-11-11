@@ -1,0 +1,54 @@
+{
+ "id": "mori-design-02",
+ "note": "모리 목소리 다시 — 도리보다 너무 나이 들어 보인다는 의견(2026-11-11). 능글맞은 여우 같은 상대역 느낌으로, 굵기는 살짝 있되 젊게. 실존 배우 목소리는 흉내 내지 않는다(분위기만). 후보 4가지 × 2테이크.",
+ "tasks": [
+  {
+   "id": "sly_20s",
+   "label": "능글맞은 20대 초반(중저음 + 살짝 허스키)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 201,
+   "takes": 2,
+   "texts": [
+    "거짓말. 안 켜면 그냥 안경이잖아. 난 모리. 근거 없는 말은 안 믿어. 그래서, 나랑 무슨 상관인데? 흐음, 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Cartoon cat sidekick, a young man in his early twenties. Youthful mid-low voice with a light husky grain, not deep, not old. Laid-back and charming with an audible smirk, teasing the friend he likes, quick and easy conversational tempo, smooth confident delivery, clear Korean articulation. Playful sarcasm, never mean, never gruff."
+  },
+  {
+   "id": "street_smart",
+   "label": "재치 있는 20대(밝은 윗소리 + 거친 결 조금)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 202,
+   "takes": 2,
+   "texts": [
+    "거짓말. 안 켜면 그냥 안경이잖아. 난 모리. 근거 없는 말은 안 믿어. 그래서, 나랑 무슨 상관인데? 흐음, 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Street-smart young guy around twenty-two, quick-witted and cheeky. Light baritone that sits a little higher and brighter than average, with a slight raspy edge on stressed words. Fast relaxed pace, casual friendly sarcasm, half-smiling tone, crisp diction. Energetic but cool, sounds young and lively, not old or tired."
+  },
+  {
+   "id": "smooth_19",
+   "label": "말끔한 19살(맑은데 끝에 살짝 거침)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 203,
+   "takes": 2,
+   "texts": [
+    "거짓말. 안 켜면 그냥 안경이잖아. 난 모리. 근거 없는 말은 안 믿어. 그래서, 나랑 무슨 상관인데? 흐음, 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Nineteen-year-old guy, clean youthful voice with a touch of gravel at the ends of phrases. Mid pitch, relaxed and sly, slightly lazy drawl but brisk overall tempo, amused and a bit skeptical, very clear pronunciation. Feels like a cool classmate, fresh and young, not deep, not mature."
+  },
+  {
+   "id": "husky_tenor",
+   "label": "허스키한 젊은 테너(숨 섞인 결)",
+   "mode": "design",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+   "seed": 204,
+   "takes": 2,
+   "texts": [
+    "거짓말. 안 켜면 그냥 안경이잖아. 난 모리. 근거 없는 말은 안 믿어. 그래서, 나랑 무슨 상관인데? 흐음, 인정. 이번엔 네 말이 맞았어."
+   ],
+   "instruct": "Young tenor in his early twenties with a soft breathy husky texture. Friendly teasing tone, easygoing charm, lively rhythm with small playful lifts, smiling while talking, clear consonants. Youthful and warm, light rather than heavy, never sounds middle-aged."
+  }
+ ]
+}
