@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!--
+  도리의 정보주머니 · 생활 검산 LIFE.08 학원비 할인카드, 진짜 얼마나 아낄까? (2026-11-12)
+  도리·모리 2인 형식: 콜드오픈(10% 카드가 2만 원일 수도) → 모리 의심·자기소개 → 사교육비 월평균 60만 4천 원(10%면 6만 400원?)
+  → 할인율·한도는 지난달 카드 사용액에 따라(50만 원대 5%·2만 원) → 학원비는 실적에서 제외 → 10%는 학원비 말고 200만 원 이상
+  → 카드 말고: 초등 1·2학년 예체능 학원비 15% 세액공제 → 모리 "인정" → 검산 끝.
+  숫자: 대조표 LIFE08_hagwon_factsheet.md — 국가데이터처·교육부 2025년 초중고 사교육비조사 · 카드사 상품 안내(2026-11 확인) · 재정경제부 개정 소득세법 시행령
+  지키는 것: 카드 이름·상표 없음(광고 아님) · 조언 없음 · AI 표시는 설명란 한 줄만 · 아래 420px·오른쪽 160px에 핵심 글자 없음
+-->
+<meta charset="utf-8">
+<title>도리의 생활 검산 학원비 할인카드</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Medium.otf);font-weight:500}
+@font-face{font-family:P;src:url(fonts/Pretendard-SemiBold.otf);font-weight:600}
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--sub:#7E6B5C;--mint:#2E9C83;--red:#E2483A;--yel:#FFD45C;--line:#EBDDD0;--slate:#5E6F8C;--blue:#5B8CFF;--ora:#E8833A;--lav:#B9A3E3}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;word-break:keep-all}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;visibility:hidden}
+#hdr{left:64px;top:146px;display:flex;align-items:center;gap:12px}
+.pill{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:9px 20px;font-size:25px;font-weight:800;color:var(--ink);white-space:nowrap}
+.pill i{display:block;width:16px;height:16px;border-radius:50%}
+#hdr .brand{font-family:Jua;font-weight:400;font-size:29px;padding:8px 22px 8px 12px}
+#prog{left:72px;top:226px;width:840px;height:6px;border-radius:3px;background:#F0E2D6;overflow:hidden}
+#progf{height:100%;width:0;background:#E8833A;border-radius:3px}
+.card{position:absolute;background:linear-gradient(180deg,#FFFFFF 0%,#FFFAF3 100%);border-radius:36px;border:5px solid #4A3A33;box-shadow:0 12px 0 rgba(74,58,51,.16),0 22px 34px rgba(120,70,40,.10)}
+#stage>.scene,#stage>.abs,#stage>#hdr,#stage>#prog{z-index:2}
+.ttl{position:absolute;font-family:Jua;font-weight:400;color:var(--ink);line-height:1.18;-webkit-text-stroke:12px #FFF8F0;paint-order:stroke fill}
+.ttl em{font-style:normal;color:var(--red)}
+.ttl em.m{color:var(--mint)} .ttl em.b{color:var(--blue)}
+.tt{left:80px;top:290px;font-size:72px}
+.uu{position:absolute;left:84px;top:386px;font-size:25px;font-weight:700;color:var(--sub);white-space:nowrap;background:rgba(255,248,240,.85);border-radius:10px;padding:2px 8px}
+.chip{position:absolute;font-family:Jua;font-size:34px;color:#fff;border-radius:999px;padding:6px 22px;white-space:nowrap;border:4px solid #4A3A33;box-shadow:0 6px 0 rgba(74,58,51,.18)}
+.chip.red{background:var(--red)} .chip.mint{background:var(--mint)} .chip.slate{background:var(--slate)} .chip.yel{background:#FFD45C;color:var(--ink)} .chip.blue{background:var(--blue)} .chip.ora{background:var(--ora)}
+.src{position:absolute;font-size:22px;font-weight:700;color:var(--sub);white-space:nowrap}
+.up{color:var(--red)} .dn{color:var(--slate)} .gd{color:var(--mint)}
+/* 1 콜드오픈 — 공부방 책상 정물 */
+#t1{left:80px;top:300px;font-size:78px}
+#t1 span{display:block}
+#desk1{left:60px;top:518px;width:860px;height:430px;overflow:hidden}
+/* 2 사교육비 월평균 */
+#c2{left:60px;top:430px;width:860px;height:545px}
+#rc2{left:104px;top:470px}
+#lb2{left:352px;top:468px;font-family:Jua;font-size:40px;line-height:1.2;color:var(--ink)}
+#lb2 small{display:block;font-family:P;font-size:25px;font-weight:700;color:var(--sub);margin-top:4px}
+#n60{left:346px;top:596px;font-family:Jua;font-size:104px;line-height:1;color:var(--red);white-space:nowrap;transform-origin:20% 60%}
+#n60 small{font-size:60px;color:var(--ink)}
+#exp2{left:96px;top:790px;width:790px;height:158px;border-radius:26px;background:#FFF1EE;border:5px solid #4A3A33;display:flex;align-items:center;gap:22px;padding:0 24px}
+#exp2 .tx{font-family:Jua;font-size:38px;line-height:1.2;color:var(--ink);white-space:nowrap}
+#exp2 .tx small{display:block;font-family:P;font-size:25px;font-weight:700;color:var(--sub)}
+#exp2 .tx em{font-style:normal;color:var(--red)}
+/* 3 지난달 실적 따라 — 계단(막대는 0부터, 높이 = 할인율) */
+#c3{left:60px;top:430px;width:860px;height:545px}
+#ax3{left:96px;top:446px;font-size:25px;font-weight:800;color:var(--sub);white-space:nowrap}
+.col3{position:absolute;width:176px;bottom:0;display:flex;flex-direction:column;align-items:center}
+.bar3{position:absolute;width:150px;border-radius:18px 18px 6px 6px;border:5px solid #4A3A33;background:linear-gradient(180deg,#A9B8D6,#6E7FA8);transform-origin:50% 100%}
+.rt3{position:absolute;width:176px;text-align:center;font-family:Jua;font-size:54px;color:var(--ink);line-height:1}
+.lb3{position:absolute;width:190px;text-align:center;font-family:Jua;font-size:32px;color:var(--ink);top:872px;white-space:nowrap}
+.cp3{position:absolute;width:190px;text-align:center;font-size:24px;font-weight:800;color:var(--sub);top:916px;white-space:nowrap}
+#tg3{left:330px;top:560px}
+/* 4 학원비는 실적에서 제외 */
+#c4{left:60px;top:430px;width:860px;height:545px}
+#hd4{left:104px;top:452px;font-family:Jua;font-size:34px;color:var(--sub)}
+.row4{position:absolute;left:100px;width:780px;height:128px;border-radius:26px;border:5px solid #4A3A33;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px 0 22px;box-shadow:0 8px 0 rgba(74,58,51,.12)}
+.row4 .nm{display:flex;align-items:center;gap:18px;font-family:Jua;font-size:48px;color:var(--ink)}
+.row4 .pl{font-family:Jua;font-size:34px;color:#fff;background:var(--mint);border:4px solid #4A3A33;border-radius:999px;padding:6px 22px;white-space:nowrap}
+#r4c .pl{background:var(--red)} #r4c .pq{font-family:Jua;font-size:34px;color:var(--ink);background:#FFD45C;border:4px solid #4A3A33;border-radius:999px;padding:6px 26px;position:absolute;right:26px}
+#r4c .pl{position:absolute;right:26px}
+/* 5 10%는 누가? — 가로 막대(0부터, 길이 = 받는 돈) */
+#c5{left:60px;top:430px;width:860px;height:545px}
+#ax5{left:96px;top:448px;font-size:25px;font-weight:800;color:var(--sub);white-space:nowrap}
+.lb5{position:absolute;left:96px;width:196px;text-align:right;font-family:Jua;font-size:32px;color:var(--ink);white-space:nowrap}
+.bar5{position:absolute;left:306px;height:58px;border-radius:8px 18px 18px 8px;border:5px solid #4A3A33;background:linear-gradient(90deg,#A9B8D6,#6E7FA8)}
+#b5d{background:linear-gradient(90deg,#F08A7A,#E2483A)}
+.v5{position:absolute;font-family:Jua;font-size:36px;color:var(--ink);white-space:nowrap}
+#v5d{color:var(--red)}
+#tg5{left:326px;top:765px;font-family:Jua;font-size:32px;color:#fff;white-space:nowrap}
+#nt5{left:96px;top:852px;width:790px;height:96px;border-radius:22px;background:#F6EEE4;border:4px dashed #4A3A33;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:var(--ink);white-space:nowrap}
+#nt5 em{font-style:normal;color:var(--red);margin:0 6px}
+/* 6 연말정산 세액공제 */
+#c6{left:60px;top:430px;width:860px;height:545px}
+.pl6{position:absolute;top:462px;width:150px;height:150px;border-radius:50%;background:#F4FAF7;border:5px solid #4A3A33;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 0 rgba(74,58,51,.12)}
+#who6{left:96px;top:634px;font-family:Jua;font-size:46px;line-height:1.16;color:var(--ink);white-space:nowrap}
+#who6 em{font-style:normal;color:var(--mint)}
+#n15{left:612px;top:468px;font-family:Jua;font-size:150px;line-height:1;color:var(--mint);white-space:nowrap;transform-origin:50% 60%}
+#n15q{left:660px;top:468px;font-family:Jua;font-size:150px;line-height:1;color:#D9CBBB;white-space:nowrap}
+#lb15{left:630px;top:622px;font-family:Jua;font-size:50px;color:var(--ink);white-space:nowrap}
+#cap6{left:96px;top:762px;font-size:30px;font-weight:800;color:var(--ink);white-space:nowrap}
+#cap6 b{color:var(--red);font-weight:900}
+#no6{left:96px;top:838px;width:790px;height:104px;border-radius:22px;background:#FFF1EE;border:5px solid #4A3A33;display:flex;align-items:center;gap:16px;padding:0 22px;font-family:Jua;font-size:36px;color:var(--ink);white-space:nowrap}
+#no6 i{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;font-style:normal;font-size:38px;border:4px solid #4A3A33;flex:none}
+/* 8 정리 */
+#c8{left:60px;top:300px;width:860px;height:660px;display:flex;flex-direction:column;align-items:center;padding-top:40px}
+#c8 .stk{font-family:Jua;font-size:40px;color:#fff;background:#E8833A;border-radius:16px;padding:6px 30px;border:4px solid #4A3A33}
+#c8 .sum{font-family:Jua;font-size:56px;margin-top:22px;text-align:center;line-height:1.2}
+#c8 .sum b{color:var(--red);font-weight:400}
+#c8 .chk{margin-top:18px;font-size:28px;font-weight:800;color:var(--ink);align-self:flex-start;margin-left:50px;white-space:nowrap}
+#c8 .chk.warn{color:#2A8A72}
+#c8 .per{margin-top:22px;font-size:24px;font-weight:700;color:var(--sub)}
+#stamp8{left:560px;top:870px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
+/* 캐릭터 둘 — 도리 왼쪽, 모리 오른쪽, 발은 같은 마루(y 1468) */
+#cta9{left:400px;top:1296px;font-family:Jua;font-size:32px;color:var(--ink);background:#fff;border:4px solid #4A3A33;border-radius:999px;padding:7px 22px;box-shadow:0 6px 0 rgba(74,58,51,.16);white-space:nowrap}
+#fly{left:0;top:0;width:70px;height:70px}
+#dori{left:0;top:1118px;width:400px;height:415px}
+#dsh{left:50px;top:1466px;width:300px;height:38px}
+#mori{left:678px;top:1044px;width:311px;height:443px}
+#msh{left:700px;top:1466px;width:270px;height:38px}
+.bub{position:absolute;top:985px;max-width:600px;background:#fff;border-radius:32px;padding:20px 30px;font-family:Jua;font-size:38px;line-height:1.32;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;border:4px solid #4A3A33}
+.bub.d{left:60px;max-width:560px;transform-origin:20% 100%} .bub.m{right:395px;max-width:520px;transform-origin:90% 100%}
+.bub:before{content:"";position:absolute;bottom:-26px;border-width:26px 16px 0 16px;border-style:solid;border-color:#4A3A33 transparent transparent transparent}
+.bub:after{content:"";position:absolute;bottom:-18px;border-width:19px 11px 0 11px;border-style:solid;border-color:#fff transparent transparent transparent}
+.bub.d:before{left:92px} .bub.d:after{left:97px}
+.bub.m:before{right:34px} .bub.m:after{right:39px}
+#pre{position:absolute;left:-5000px;top:0;font-family:Jua}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="gLens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF4FC"/><stop offset="1" stop-color="#A9C8E8"/></linearGradient>
+  <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7B57E"/><stop offset="1" stop-color="#C98C55"/></linearGradient>
+  <linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAF1E4"/><stop offset="1" stop-color="#DCE8D2"/></linearGradient>
+  <linearGradient id="gPhone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6E7891"/><stop offset="1" stop-color="#3D4558"/></linearGradient>
+  <linearGradient id="gFlame" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5B8CFF"/><stop offset=".55" stop-color="#8FB7FF"/><stop offset="1" stop-color="#E3F0FF"/></linearGradient>
+  <linearGradient id="gHouse" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF4DC"/><stop offset="1" stop-color="#F2CFA0"/></linearGradient>
+  <linearGradient id="gRoof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F08A7A"/><stop offset="1" stop-color="#C94B3E"/></linearGradient>
+  <linearGradient id="gFac" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C9D6E6"/><stop offset="1" stop-color="#8FA3BD"/></linearGradient>
+  <linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3E9DD"/></linearGradient>
+  <radialGradient id="gCoin" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#FFF1B8"/><stop offset=".5" stop-color="#F4C64E"/><stop offset="1" stop-color="#C98F1E"/></radialGradient>
+  <linearGradient id="gCard" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9DB0DA"/><stop offset="1" stop-color="#5E6F9C"/></linearGradient>
+  <radialGradient id="gSh2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
+</defs></svg>
+<div id="stage">
+  <div class="abs" id="hdr">
+    <div class="pill brand"><span id="hdrDori"></span>도리의 정보주머니</div>
+    <div class="pill"><i style="background:#E8833A"></i>생활 검산</div>
+  </div>
+  <div class="abs" id="prog"><div id="progf"></div></div>
+
+  <!-- 1 콜드오픈 -->
+  <div class="scene" id="s1">
+    <div class="ttl" id="t1"><span>학원비 <em class="b">10% 할인</em> 카드,</span><span><em>진짜 10%</em>일까?</span></div>
+    <div class="card" id="desk1"></div>
+  </div>
+
+  <!-- 2 사교육비 월평균 60만 4천 원 → 10%면 6만 400원? -->
+  <div class="scene" id="s2">
+    <div class="ttl tt" id="t2">한 달 <em class="b">사교육비</em>는?</div>
+    <div class="uu" id="u2">국가데이터처·교육부 · 2025년 초중고 사교육비조사</div>
+    <div class="card" id="c2"></div>
+    <div class="abs" id="rc2"></div>
+    <div class="abs" id="lb2">사교육 받는 학생 한 명당<br>한 달 평균<small>학원·과외·학습지 등을 합친 사교육비</small></div>
+    <div class="abs" id="n60">60<small>만</small> 4<small>천 원</small></div>
+    <div class="abs" id="exp2"><div id="cp2"></div><div class="tx"><small>학원비가 60만 4천 원이라면 (계산)</small>10% 할인 = <em>6만 400원</em>?</div></div>
+  </div>
+
+  <!-- 3 할인율·한도는 지난달 카드 사용액에 따라 -->
+  <div class="scene" id="s3">
+    <div class="ttl tt" id="t3">할인은 <em>지난달 실적</em>따라</div>
+    <div class="uu" id="u3">카드사 상품 안내 · 2026년 11월 확인 · 조건은 카드마다 달라요</div>
+    <div class="card" id="c3"></div>
+    <div class="abs" id="ax3">지난달 카드 사용액별 학원비 할인율 · 월 한도</div>
+    <div id="cols3"></div>
+    <div class="chip red" id="tg3">2만 원까지</div>
+  </div>
+
+  <!-- 4 학원비는 실적에서 제외 -->
+  <div class="scene" id="s4">
+    <div class="ttl tt" id="t4"><em class="b">학원비</em>로 실적 채우면?</div>
+    <div class="uu" id="u4">같은 상품 안내 · 실적(지난달 이용금액)을 세는 기준</div>
+    <div class="card" id="c4"></div>
+    <div class="abs" id="hd4">지난달 카드 내역 — 실적으로 쳐 줄까?</div>
+    <div class="row4" id="r4a" style="top:508px"><div class="nm"><span id="i4a"></span>마트 장보기</div><div class="pl">✔ 실적 인정</div></div>
+    <div class="row4" id="r4b" style="top:658px"><div class="nm"><span id="i4b"></span>외식</div><div class="pl">✔ 실적 인정</div></div>
+    <div class="row4" id="r4c" style="top:808px"><div class="nm"><span id="i4c"></span>학원비</div><div class="pq" id="q4">?</div><div class="pl" id="x4">✖ 실적 제외</div></div>
+  </div>
+
+  <!-- 5 10%는 누가? -->
+  <div class="scene" id="s5">
+    <div class="ttl tt" id="t5"><em>10%</em>는 누가 받을까?</div>
+    <div class="uu" id="u5">(계산) 학원비 60만 4천 원일 때 받는 돈 · 같은 상품 안내 기준</div>
+    <div class="card" id="c5"></div>
+    <div class="abs" id="ax5">지난달 카드 사용액(학원비 빼고) → 이번 달 돌려받는 돈</div>
+    <div class="lb5" style="top:508px">30만 원대</div><div class="bar5" id="b5a" style="top:498px"></div><div class="v5" id="v5a" style="top:506px">1만 원</div>
+    <div class="lb5" style="top:594px">50만 원대</div><div class="bar5" id="b5b" style="top:584px"></div><div class="v5" id="v5b" style="top:592px">2만 원</div>
+    <div class="lb5" style="top:680px">100만 원대</div><div class="bar5" id="b5c" style="top:670px"></div><div class="v5" id="v5c" style="top:678px">4만 2천 원</div>
+    <div class="lb5" style="top:766px">200만 원 이상</div><div class="bar5" id="b5d" style="top:756px"></div><div class="v5" id="v5d" style="top:764px">6만 400원</div>
+    <div class="abs" id="tg5">10%를 다 받는 구간</div>
+    <div class="abs" id="nt5">10% 할인인데<em>월 한도 7천~1만 5천 원</em>인 카드도 있어요</div>
+  </div>
+
+  <!-- 6 연말정산: 초등 1·2학년 예체능 학원비 15% -->
+  <div class="scene" id="s6">
+    <div class="ttl tt" id="t6">카드 말고 <em class="m">연말정산</em></div>
+    <div class="uu" id="u6">재정경제부 · 개정 소득세법 시행령 · 2026년 지출분부터</div>
+    <div class="card" id="c6"></div>
+    <div class="pl6" id="p6a" style="left:96px"></div><div class="pl6" id="p6b" style="left:262px"></div><div class="pl6" id="p6c" style="left:428px"></div>
+    <div class="abs" id="who6"><em>초등 1·2학년</em><br>예체능 학원비</div>
+    <div class="abs" id="n15q">?%</div>
+    <div class="abs" id="n15">15%</div>
+    <div class="abs" id="lb15">세액공제</div>
+    <div class="abs" id="cap6">자녀 1명당 연 300만 원 한도 → <b>최대 45만 원</b> (계산)</div>
+    <div class="abs" id="no6"><i>✖</i>초3 이상 · 교과 학원비는 대상 아님</div>
+  </div>
+
+  <!-- 8 정리(끝까지 남는다) -->
+  <div class="scene" id="s8">
+    <div class="card" id="c8"><div class="stk">정리</div>
+      <div class="sum">10%가 <b>다 10%는</b> 아니다</div>
+      <div class="chk" id="k1">✔ 할인율·한도는 지난달 카드 사용액에 따라</div>
+      <div class="chk" id="k2">✔ 학원비는 실적 계산에서 빠짐</div>
+      <div class="chk" id="k3">✔ 초등 1·2학년 예체능 학원비는 15% 세액공제</div>
+      <div class="chk warn" id="k4">△ 조건은 카드마다 다름 · 상품설명서에 표로 나와 있음</div>
+      <div class="per">국가데이터처·교육부 · 카드사 상품 안내 · 재정경제부</div></div>
+    <div class="abs" id="stamp8">검산 끝!</div>
+  </div>
+
+
+  <div class="abs" id="cta9">구독 · 좋아요 👍</div>
+  <div class="abs" id="fly"></div>
+  <div class="abs" id="dsh"></div>
+  <div class="abs" id="msh"></div>
+  <div class="abs" id="dori"></div>
+  <div class="abs" id="mori"></div>
+  <div class="abs bub d" id="bub"><span id="bubT"></span></div>
+  <div class="abs chip" id="tagM" style="left:648px;top:1400px;background:var(--lav);color:#2B2140;font-size:40px;padding:6px 28px;opacity:0;z-index:5">모리</div>
+  
+  <div id="pre"></div>
+</div>
+
+<script src="timeline.js"></script>
+<script src="dori_outfits.js"></script>
+<script src="dori.js"></script>
+<script src="mori.js"></script>
+<script src="scenekit.js"></script>
+<script>
+// 무대: 공부방 — 잔무늬 벽 + 나무 마루(탁자 윗면 1468이 마루 선)
+const STAGE={awning:false,table:'wood',tableTop:1468};
+SK.stage(document.getElementById('stage'),STAGE);
+const T=TL.T, FPS=30, DUR=T.END;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,s,d)=>clamp((t-s)/d);
+const eOut=x=>1-Math.pow(1-x,3);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eBack=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);};
+const spring=x=>x<=0?0:x>=1?1:1-Math.exp(-6*x)*Math.cos(9*x);
+const lerp=(a,b,k)=>a+(b-a)*k;
+const $=id=>document.getElementById(id);
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+const K='#4A3A33';
+
+// ---------- 소품(상표 없음, 빛은 왼쪽 위, 외곽선 #4A3A33) ----------
+// 카드 — 어느 회사 것도 아닌 남색 카드(로고·이름 없음)
+const CARDP=(w)=>`<svg viewBox="0 0 320 212" width="${w}" height="${w*212/320}" style="overflow:visible">
+  <ellipse cx="160" cy="204" rx="150" ry="9" fill="url(#gSh2)"/>
+  <rect x="10" y="12" width="306" height="186" rx="22" fill="#4E5C82"/>
+  <rect x="4" y="4" width="306" height="186" rx="22" fill="url(#gCard)" stroke="${K}" stroke-width="7"/>
+  <rect x="32" y="58" width="60" height="46" rx="9" fill="url(#gCoin)" stroke="${K}" stroke-width="4"/><path d="M32 81 H92 M62 58 V104" stroke="#B57E14" stroke-width="3"/>
+  <path d="M32 138 H128 M148 138 H206 M32 164 H112" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".78"/>
+  <path d="M236 150 l10 18 l20 3 l-15 14 l4 20 l-19 -10 l-19 10 l4 -20 l-15 -14 l20 -3 z" fill="#FFD45C" stroke="${K}" stroke-width="4" stroke-linejoin="round" transform="translate(16 -22) scale(.8)"/>
+  <path d="M24 30 C70 15 150 11 216 15" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".45"/>
+</svg>`;
+const COUPON=(w,txt,c='#E2483A')=>`<svg viewBox="0 0 220 120" width="${w}" height="${w*120/220}" style="overflow:visible">
+  <path d="M16 14 H212 a8 8 0 0 1 8 8 V50 a16 16 0 0 0 0 32 V110 a8 8 0 0 1 -8 8 H16 a8 8 0 0 1 -8 -8 V82 a16 16 0 0 0 0 -32 V22 a8 8 0 0 1 8 -8 Z" fill="rgba(74,58,51,.2)"/>
+  <path d="M12 6 H208 a8 8 0 0 1 8 8 V42 a16 16 0 0 0 0 32 V102 a8 8 0 0 1 -8 8 H12 a8 8 0 0 1 -8 -8 V74 a16 16 0 0 0 0 -32 V14 a8 8 0 0 1 8 -8 Z" fill="${c}" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M60 14 V102" stroke="#fff" stroke-width="4" stroke-dasharray="8 8" opacity=".7"/>
+  <text x="138" y="79" text-anchor="middle" font-family="Jua" font-size="58" fill="#fff">${txt}</text>
+  <path d="M74 22 H150" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+</svg>`;
+const RCPT=(w,ttl='학원비')=>`<svg viewBox="0 0 200 270" width="${w}" height="${w*270/200}" style="overflow:visible">
+  <path d="M14 12 H194 V252 L176 264 L158 252 L140 264 L122 252 L104 264 L86 252 L68 264 L50 252 L32 264 L14 252 Z" fill="#D9CBBB"/>
+  <path d="M6 4 H186 V244 L168 256 L150 244 L132 256 L114 244 L96 256 L78 244 L60 256 L42 244 L24 256 L6 244 Z" fill="url(#gPaper)" stroke="${K}" stroke-width="5" stroke-linejoin="round"/>
+  <text x="96" y="46" text-anchor="middle" font-family="Jua" font-size="32" fill="${K}">${ttl}</text>
+  <path d="M24 64 H168" stroke="#C9B8A7" stroke-width="4" stroke-dasharray="6 6"/>
+  <path d="M24 94 H110 M24 124 H130 M24 154 H96" stroke="#C9B8A7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M134 94 H168 M146 124 H168 M126 154 H168" stroke="#E6D6C8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M24 186 H168" stroke="#C9B8A7" stroke-width="4"/>
+  <rect x="92" y="200" width="76" height="24" rx="6" fill="#F3B7AE"/>
+</svg>`;
+const BOOKS=w=>`<svg viewBox="0 0 240 200" width="${w}" height="${w*200/240}" style="overflow:visible">
+  <ellipse cx="112" cy="192" rx="106" ry="9" fill="url(#gSh2)"/>
+  <rect x="14" y="140" width="190" height="44" rx="8" fill="#5B8CFF" stroke="${K}" stroke-width="6"/><rect x="24" y="150" width="170" height="10" rx="4" fill="#fff" opacity=".7"/>
+  <rect x="28" y="96" width="170" height="44" rx="8" fill="#FFD45C" stroke="${K}" stroke-width="6"/><rect x="38" y="106" width="150" height="10" rx="4" fill="#fff" opacity=".7"/>
+  <rect x="20" y="52" width="176" height="44" rx="8" fill="#2E9C83" stroke="${K}" stroke-width="6"/><rect x="30" y="62" width="156" height="10" rx="4" fill="#fff" opacity=".7"/>
+  <g transform="rotate(-24 150 30)"><rect x="96" y="18" width="104" height="20" rx="4" fill="#F4C64E" stroke="${K}" stroke-width="5"/><path d="M200 18 L226 28 L200 38 Z" fill="#F6E3C8" stroke="${K}" stroke-width="5" stroke-linejoin="round"/><rect x="84" y="18" width="16" height="20" rx="4" fill="#F3B7AE" stroke="${K}" stroke-width="5"/></g>
+</svg>`;
+const DESK=()=>`<svg viewBox="0 0 860 430" width="860" height="430" style="position:absolute;left:0;top:0">
+  <rect x="0" y="0" width="860" height="230" fill="url(#gWall)"/>
+  ${[0,1,2,3,4,5,6,7,8].map(i=>`<path d="M${40+i*100} 40 l10 10 m-10 0 l10 -10" stroke="#C7D7BB" stroke-width="4" stroke-linecap="round"/>`).join('')}
+  <rect x="0" y="210" width="860" height="220" fill="url(#gWood)"/>
+  <path d="M0 212 H860" stroke="${K}" stroke-width="6"/>
+  <path d="M60 300 H300 M420 350 H760 M120 400 H380" stroke="#B57A48" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+  <path d="M20 226 H840" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".3"/>
+</svg>
+<div class="abs" style="left:40px;top:96px;transform:rotate(-7deg)">${RCPT(196)}</div>
+<div class="abs" style="left:604px;top:150px">${BOOKS(236)}</div>
+<div class="abs" id="cdDesk" style="left:262px;top:176px;transform:rotate(-6deg)">${CARDP(330)}</div>
+<div class="abs" id="cpDesk" style="left:440px;top:92px;transform:rotate(9deg)">${COUPON(220,'10%')}</div>
+<div class="abs" id="qDesk" style="left:664px;top:62px;width:72px;height:72px;border-radius:50%;background:#FFD45C;border:5px solid ${K};color:${K};font-family:Jua;font-size:48px;display:flex;align-items:center;justify-content:center">?</div>`;
+const ICO={
+ cart:`<svg viewBox="0 0 64 64" width="62" height="62"><path d="M6 12 H16 L24 42 H50 L56 22 H20" fill="#FFE9B8" stroke="${K}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="27" cy="52" r="5" fill="${K}"/><circle cx="47" cy="52" r="5" fill="${K}"/></svg>`,
+ dish:`<svg viewBox="0 0 64 64" width="62" height="62"><circle cx="34" cy="34" r="20" fill="#fff" stroke="${K}" stroke-width="5"/><circle cx="34" cy="34" r="10" fill="#FFD9A8" stroke="${K}" stroke-width="3"/><path d="M8 10 V30 M4 10 V22 Q8 28 12 22 V10 M8 30 V56" stroke="${K}" stroke-width="4" stroke-linecap="round" fill="none"/></svg>`,
+ book:`<svg viewBox="0 0 64 64" width="62" height="62"><path d="M32 16 C24 10 14 10 6 12 V50 C14 48 24 48 32 54 C40 48 50 48 58 50 V12 C50 10 40 10 32 16 Z" fill="#DCE9FF" stroke="${K}" stroke-width="5" stroke-linejoin="round"/><path d="M32 16 V54" stroke="${K}" stroke-width="4"/><path d="M13 22 H25 M13 31 H25 M39 22 H51 M39 31 H51" stroke="#5B8CFF" stroke-width="4" stroke-linecap="round"/></svg>`,
+ note:`<svg viewBox="0 0 100 100" width="96" height="96"><path d="M38 70 V24 L76 16 V62" fill="none" stroke="${K}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M38 36 L76 28" stroke="${K}" stroke-width="7"/><ellipse cx="28" cy="72" rx="14" ry="11" fill="#5B8CFF" stroke="${K}" stroke-width="6"/><ellipse cx="66" cy="64" rx="14" ry="11" fill="#5B8CFF" stroke="${K}" stroke-width="6"/></svg>`,
+ pal:`<svg viewBox="0 0 100 100" width="96" height="96"><path d="M50 14 C24 14 10 32 10 52 C10 74 30 86 48 84 C58 83 56 72 62 68 C70 63 90 70 90 48 C90 28 72 14 50 14 Z" fill="#F6E3C8" stroke="${K}" stroke-width="6" stroke-linejoin="round"/><circle cx="34" cy="38" r="8" fill="#E2483A" stroke="${K}" stroke-width="3"/><circle cx="56" cy="30" r="8" fill="#FFD45C" stroke="${K}" stroke-width="3"/><circle cx="74" cy="44" r="8" fill="#2E9C83" stroke="${K}" stroke-width="3"/><circle cx="30" cy="60" r="8" fill="#5B8CFF" stroke="${K}" stroke-width="3"/></svg>`,
+ ball:`<svg viewBox="0 0 100 100" width="96" height="96"><circle cx="50" cy="50" r="36" fill="#fff" stroke="${K}" stroke-width="6"/><path d="M50 32 L66 44 L60 62 H40 L34 44 Z" fill="${K}"/><path d="M50 32 V16 M66 44 L82 38 M60 62 L70 78 M40 62 L30 78 M34 44 L18 38" stroke="${K}" stroke-width="5" stroke-linecap="round"/></svg>`};
+const COIN=(w,txt)=>`<svg viewBox="0 0 140 140" width="${w}" height="${w}">
+  <circle cx="70" cy="74" r="58" fill="#C98F1E" stroke="${K}" stroke-width="6"/>
+  <circle cx="70" cy="66" r="58" fill="url(#gCoin)" stroke="${K}" stroke-width="6"/>
+  <circle cx="70" cy="66" r="44" fill="none" stroke="#B57E14" stroke-width="4" stroke-dasharray="6 6"/>
+  <text x="70" y="82" text-anchor="middle" font-family="Jua" font-size="44" fill="#7A5208">${txt}</text>
+  <path d="M34 44 C42 30 56 22 72 20" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7"/>
+</svg>`;
+$('desk1').innerHTML=DESK();
+$('rc2').innerHTML=RCPT(214,'사교육비');
+$('cp2').innerHTML=COUPON(190,'10%');
+// 3 계단: 막대 높이 = 할인율 × 30px (0부터)
+const C3=[[104,3,'30만 원~','월 한도 1만 원'],[302,5,'50만 원~','월 한도 2만 원'],[500,7,'100만 원~','월 한도 5만 원'],[698,10,'200만 원~','월 한도 9만 원']];
+$('cols3').innerHTML=C3.map(([x,r,lb,cp],i)=>{const h=r*30;return `<div class="bar3" id="b3${i}" style="left:${x+13}px;top:${862-h}px;height:${h}px"></div><div class="rt3" id="r3${i}" style="left:${x}px;top:${862-h-64}px">${r}%</div><div class="lb3" id="l3${i}" style="left:${x-7}px">${lb}</div><div class="cp3" id="p3${i}" style="left:${x-7}px">${cp}</div>`;}).join('');
+$('i4a').innerHTML=ICO.cart; $('i4b').innerHTML=ICO.dish; $('i4c').innerHTML=ICO.book;
+$('p6a').innerHTML=ICO.note; $('p6b').innerHTML=ICO.pal; $('p6c').innerHTML=ICO.ball;
+$('fly').innerHTML=COIN(70,'✔');
+$('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
+$('pre').textContent=TL.lines.map(l=>l.text.replace(/<br>/g,' ')).join(' ')+document.body.innerText;
+
+
+function sv(id,a,b){$(id).style.visibility=(gT>=a&&gT<b)?'visible':'hidden';}
+function fx(el,t,inS,inD,outS,outD,dy=40,dx=0,rot=0){if(typeof el==='string')el=$(el);const a=eOut(P(t,inS,inD)),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=a*(1-b);el.style.transform=`translate(${(1-a)*dx}px,${(1-a)*dy-b*dy*.7}px) rotate(${rot}deg)`;return a*(1-b);}
+function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);const k=P(t,s,.5),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=clamp(k*4)*(1-b);el.style.transform=`rotate(${rot}deg) scale(${k<=0?from:from+(1-from)*eBack(k)})`;}
+let gT=0;
+
+// ---------- 도리 연기: 졸업식 옷(trivia — 교육·학원비), 모리가 말할 땐 모리를 본다 ----------
+const OUTFIT='trivia';   // 교육 주제 — EX.08 winter · EX.09 detective 와 다르게
+Dori.mount($('dori'),{outfit:OUTFIT});
+const D={};TL.lines.forEach(l=>D[l.id]=l.d);
+const A=(id,f)=>T[id]+f*D[id];
+const MOR=id=>id[0]==='M';
+const EX=[[0,{happy:0}],[T.L01+.1,{surprise:.35}],[A('L01',.97),{surprise:0}],
+ [T.M01+.1,{think:.3}],[A('M01',.97),{think:0}],
+ [T.M00+.1,{surprise:.3}],[A('M00',.97),{surprise:0}],
+ [T.L02+.1,{think:.3}],[T.w60,{think:0,surprise:.45}],[A('L02',.97),{surprise:0}],
+ [T.L03+.1,{think:.35}],[T.wCap,{think:0,surprise:.5}],[A('L03',.97),{surprise:0}],
+ [T.M02+.1,{think:.4}],[A('M02',.97),{think:0}],
+ [T.L04+.1,{happy:.35}],[A('L04',.97),{happy:0}],
+ [T.M03+.1,{think:.35}],[A('M03',.97),{think:0}],
+ [T.w200,{surprise:.5}],[A('L05',.97),{surprise:0}],
+ [T.M04+.1,{think:.3}],[A('M04',.97),{think:0}],
+ [T.L06+.1,{happy:.35}],[T.w15,{happy:.5}],[A('L06',.97),{happy:0}],
+ [T.M05,{happy:.5}],[A('M05',.97),{happy:0}],
+ [T.L07,{squint:1}],[A('L07',.98),{squint:0}],
+ [T.L08+.1,{happy:.5}],[A('L08',.97),{happy:0}],
+ [T.L09+.1,{happy:.5}],[T.L10+.04,{happy:1,pouch:1}]];
+const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L10?.45:.32);
+const GZ=[[0,.2,.3]];TL.lines.forEach(l=>{if(!l.text)return; if(MOR(l.id)){GZ.push([l.t,.9,.3]);GZ.push([l.t+l.d+.2,0,0]);}  else {GZ.push([l.t,0,0]);}});
+const gzT=Dori.track(GZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
+function gaze(t){const g=gzT(t),m=Dori.micro(t);return [g.x+m[0]*.7,g.y+m[1]*.7];}
+const BL=Dori.blinks(DUR,EX.map(k=>k[0]),23);
+const blink=t=>Dori.blinkAt(BL,t);
+const EF=[];{const r=rng(7);let t=3.4;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=4.2+r()*5;}}
+function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
+const HOPS=[[T.M01+.08,9],[T.wCap,22],[T.L07,26],[T.L10+.04,30]];
+function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
+  if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
+  return [h,sq];}
+const ARMR=[[0,0],[T.L01+.1,.5],[A('L01',.9),0],[T.L02+.1,.4],[A('L02',.9),0],[T.L03+.1,.35],[T.wCap,.6],[A('L03',.9),0],[T.L04+.1,.35],[A('L04',.9),0],[T.L05+.1,.4],[A('L05',.9),0],[T.L06+.1,.4],[A('L06',.9),0],[T.L07,.7],[T.L07+1.0,0],[T.L09+.13,.45],[T.L09+1.43,0],[A('L10',.4),.9]];
+const ARML=[[0,0],[T.wCap,.45],[T.wCap+.9,0],[T.L07,.7],[T.L07+1.0,0],[T.L10+.04,.55],[T.L10+.89,0]];
+const ARMC=new Map();
+function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
+function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
+  for(const [a,b] of [[T.wCap,T.wCap+1.0]]){const v=on(a,b);if(v>o){o=v;m='!';}}
+  return [m,o];}
+
+// ---------- 모리 연기(3판): 둥근 눈꺼풀 반달 눈, 두 눈 같게, 받아친 뒤 입꼬리, 숫자엔 더 가늘게, 끝에 마지못해 인정 ----------
+const mori=Mori.mount($('mori'));   // 모리 그림 3판(능글맞은 고양이, 도리 1.5배, M 명찰)
+const SK1={lidL:.52,lidR:.26,browR:.75}, BASE={lidL:.42,lidR:.42,browL:0,browR:0};
+const MX=[[0,{...BASE,happy:0,surprise:0,smile:0,sweat:0}],
+ [T.M01,SK1],[A('M01',.98),BASE],
+ [T.M00,{lidL:.36,lidR:.36,browR:.35}],[A('M00',.98),BASE],
+ [T.w60,{lidL:.56,lidR:.56}],[A('L02',.97),BASE],
+ [T.wCap,{lidL:.4,lidR:.14,browR:1,browL:.3}],[A('L03',.97),BASE],
+ [T.M02,SK1],[A('M02',.98),BASE],
+ [T.wOut,{lidL:.56,lidR:.56}],[A('L04',.97),BASE],
+ [T.M03,SK1],[A('M03',.98),BASE],
+ [T.w200,{lidL:.56,lidR:.56}],[A('L05',.97),BASE],
+ [T.M04,SK1],[A('M04',.98),BASE],
+ [T.w15,{lidL:.56,lidR:.56}],[A('L06',.97),BASE],
+ [T.M05,{lidL:.55,lidR:.55,sweat:1}],[A('M05',.98)+.4,{...BASE,sweat:0}],
+ [T.L10+.04,{smile:1}]];
+const mexpr=Dori.track(MX,{...BASE,happy:0,surprise:0,smile:0,sweat:0},.3);
+const MGZ=[[0,-.6,.2]];TL.lines.forEach(l=>{if(!l.text)return; if(MOR(l.id)){MGZ.push([l.t,0,0]);}  else {MGZ.push([l.t,-.9,.25]);}});
+MGZ.push([T.M05+.06,.85,-.25]);MGZ.push([A('M05',.98)+.4,-.6,.2]);   // "인정"은 눈을 피하면서
+const NODS=[T.w60,T.wCap,T.w200,T.w15];
+function nod(t){let v=0;for(const n of NODS){const d=t-n;if(d>=0&&d<.6)v=Math.max(v,Math.sin(d/.6*Math.PI*2)*(1-d/.6));}return v;}
+const mgzT=Dori.track(MGZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
+const MBL=Dori.blinks(DUR,MX.map(k=>k[0]),37);
+const MARMR=[[0,0],[T.M01,.35],[A('M01',.95),0],[T.M00+.05,.5],[A('M00',.95),0],[T.M02,.4],[A('M02',.95),0],[T.M04,.4],[A('M04',.95),0],[T.M05,.2],[A('M05',.95),0],[T.L10+.04,.5],[T.L10+.9,0]];
+const MARML=[[0,0],[T.wCap,.4],[A('L03',.95),0],[T.M03,.4],[A('M03',.95),0]];
+const SMK=['M01','M00','M02','M03','M04'].map(id=>A(id,1)+.05);
+function smirk(t){for(const a of SMK){if(t>=a&&t<a+1.1)return 1;}return 0;}   // 받아친 뒤 1초쯤 한쪽 입꼬리
+
+function envAt(arr,t){const fr=Math.min(arr.length-1,Math.max(0,Math.round(t*FPS)));return Math.max(arr[fr],(arr[fr-1]||0)*.55);}
+function envSm(arr,t){const fr=Math.min(arr.length-1,Math.max(0,Math.round(t*FPS)));return (arr[fr]+(arr[fr-1]||0)+(arr[fr+1]||0))/3;}
+
+function renderChars(t){
+  const envD=envAt(TL.envD,t);
+  const e=expr(t),[gx,gy]=gaze(t),[h,sq]=hop(t);
+  const talk=clamp(envD*1.2-.05)*(1-.6*e.sad);const [mk,mo]=marks(t);
+  const spark=Math.max(clamp(P(t,T.wCap+.3,.2))*(1-P(t,T.wCap+1.4,.3))*.6,clamp(P(t,T.L07,.2))*(1-P(t,T.L07+1.1,.3))*.6,clamp(P(t,T.L10+.04,.2)));
+  const wv=A('L10',.4); let armR=arm(ARMR,t); if(t>wv) armR+=Math.sin((t-wv)*10)*.1*clamp(P(t,wv,.3));
+  const tilt=1.2*Math.sin(t*.6)+.6*Math.sin(t*1.7+.5)-e.think*7+e.sad*-4+e.surprise*Math.sin(t*22)*1.0;
+  Dori.draw({t,happy:e.happy,squint:e.squint,surprise:e.surprise,sad:e.sad,open:talk,blink:blink(t),gx:gx+e.think*.5,gy:gy-e.think*.7+e.sad*.4,
+    pouch:e.pouch,armL:arm(ARML,t),armR,earL:-flick(t,'L')*10-e.sad*18+e.surprise*6,earR:-flick(t,'R')*10-e.sad*18+e.surprise*6,
+    hop:h,squash:sq,breath:Math.sin(t*2*Math.PI*.24),tilt,sweat:0,sweatY:0,mark:mk,markO:mo,markY:Math.sin(t*5)*3,spark});
+  const ent=P(t,0,.8),x=lerp(-380,0,eOut(ent));
+  $('dori').style.transform=`translate(${x}px,0px)`;
+  if(!$('dsh').innerHTML) $('dsh').innerHTML=SK.ground(300,1);
+  $('dsh').style.transform=`translate(${x}px,0) scale(${1-Math.min(.45,h/180)})`; $('dsh').style.opacity=clamp(ent*2);
+  const m=mexpr(t), mg=mgzT(t), mm=Dori.micro(t+7.3);
+  const mtalk=clamp(envSm(TL.envM,t)*.95-.04);
+  const mtilt=-1.0*Math.sin(t*.5+1)+.5*Math.sin(t*1.3)-(m.browR>0.3?3:0)+nod(t)*2.5;
+  mori.draw({lidL:m.lidL,lidR:m.lidR,browL:m.browL,browR:m.browR,happy:0,smile:Math.max(m.smile,smirk(t)),surprise:0,sweat:m.sweat,open:mtalk,blink:Dori.blinkAt(MBL,t),
+    gx:mg.x+mm[0]*.6,gy:mg.y+mm[1]*.6,armL:clamp(Math.max(arm(MARML,t),arm(MARMR,t))*2.2),armR:0,tilt:mtilt,tail:Math.sin(t*1.1)*.6+(m.browR>0.3?.5:0),squash:0,hop:0});
+  const ment=P(t,.3,.8),mx=lerp(380,0,eOut(ment));
+  $('mori').style.transform=`translate(${mx}px,0px)`;
+  if(!$('msh').innerHTML) $('msh').innerHTML=SK.ground(270,1);
+  $('msh').style.transform=`translate(${mx}px,0)`; $('msh').style.opacity=clamp(ment*2);
+  let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
+  const bb=$('bub');
+  if(ln){const who=MOR(ln.id)?'m':'d'; if(!bb.classList.contains(who)){bb.className='abs bub '+who;}
+    if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
+    bb.style.opacity=clamp(a*4)*(1-o);bb.style.transform=`scale(${(a<=0?.7:.7+.3*eBack(a))*(1-.08*o)})`;}
+  else bb.style.opacity=0;
+}
+
+function render(t){
+  gT=t;
+  $('progf').style.width=(clamp(t/DUR)*100)+'%';
+  fx('hdr',t,0,.5,null,0,14); fx('prog',t,0,.5,null,0,0);
+
+  // 1 콜드오픈 — 책상 정물은 처음부터(빈 순간 없이), 쿠폰이 까딱
+  sv('s1',0,T.s2+.4); const o1=T.s2-.1;
+  document.querySelectorAll('#t1 span').forEach((el,i)=>fx(el,t,[.15,.55][i],.45,o1,.4,46));
+  fx('desk1',t,.1,.5,o1,.4,40);
+  $('cpDesk').style.transform=`translateY(${-7*Math.sin(t*1.6)}px) rotate(${9+2.5*Math.sin(t*1.1)}deg)`;
+  pop('qDesk',t,.9,null,0,8,.5);
+
+  // 2 사교육비 월평균 — 카드·영수증·설명은 처음부터, 숫자는 '육십만'에, 10% 쿠폰은 그 뒤
+  sv('s2',T.s2,T.s3+.3); const o2=T.s3-.1;
+  fx('t2',t,T.s2+.05,.45,o2,.35,30); fx('u2',t,T.s2+.2,.45,o2,.35,20); fx('c2',t,T.s2+.1,.5,o2,.35,40);
+  fx('rc2',t,T.s2+.2,.5,o2,.35,30,-30); fx('lb2',t,T.s2+.3,.45,o2,.35,20);
+  pop('n60',t,T.w60-.12,o2,.35,0,.6);
+  fx('exp2',t,T.s2+.6,.45,o2,.35,30); $('exp2').style.opacity=String(parseFloat($('exp2').style.opacity)*(.4+.6*clamp(P(t,T.w60+.7,.3))));
+
+  // 3 지난달 실적 따라 — 계단 막대는 처음부터 자라고, '오 퍼센트'에 50만 원 칸만 또렷하게
+  sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1, b3=eIO(P(t,o3,.35));
+  fx('t3',t,T.s3+.05,.45,o3,.35,30); fx('u3',t,T.s3+.2,.45,o3,.35,20); fx('c3',t,T.s3+.1,.5,o3,.35,40); fx('ax3',t,T.s3+.25,.4,o3,.35,10);
+  const hi3=clamp(P(t,T.wFive-.15,.3));
+  for(let i=0;i<4;i++){const g=spring(P(t,T.s3+.3+i*.12,.8)), dim=(i===1?1:1-.42*hi3)*(1-b3), on=t>=T.s3+.3+i*.12?1:0;
+    const b=$('b3'+i); b.style.transform=`scaleY(${clamp(g,0,1.05)})`; b.style.opacity=on*dim;
+    if(i===1){b.style.background=hi3>.5?'linear-gradient(180deg,#F08A7A,#E2483A)':''; $('r3'+i).style.color=hi3>.5?'#E2483A':'';}
+    ['r3','l3','p3'].forEach(p=>{$(p+i).style.opacity=clamp(P(t,T.s3+.5+i*.12,.3))*dim;});}
+  pop('tg3',t,T.wCap-.08,o3,.35,-4,.5);
+
+  // 4 학원비는 실적에서 제외 — 세 줄은 처음부터, 학원비 줄은 '?' → '빠진대'에 ✖
+  sv('s4',T.s4,T.s5+.3); const o4=T.s5-.1;
+  fx('t4',t,T.s4+.05,.45,o4,.35,30); fx('u4',t,T.s4+.2,.45,o4,.35,20); fx('c4',t,T.s4+.1,.5,o4,.35,40); fx('hd4',t,T.s4+.25,.4,o4,.35,10);
+  ['r4a','r4b','r4c'].forEach((id,i)=>fx(id,t,T.s4+.3+i*.15,.4,o4,.35,24,-24));
+  const x4=clamp(P(t,T.wOut-.1,.25)); $('q4').style.opacity=1-x4; $('x4').style.opacity=x4; $('x4').style.transform=`scale(${x4<=0?1.5:1.5-.5*eOut(x4)})`;
+  $('r4c').style.background=x4>.5?'#FFF1EE':'#fff';
+
+  // 5 10%는 누가? — 가로 막대(0부터), 세 줄은 처음부터, 맨 아래 줄은 '이백만'에
+  sv('s5',T.s5,T.s6+.3); const o5=T.s6-.1, b5=eIO(P(t,o5,.35));
+  fx('t5',t,T.s5+.05,.45,o5,.35,30); fx('u5',t,T.s5+.2,.45,o5,.35,20); fx('c5',t,T.s5+.1,.5,o5,.35,40); fx('ax5',t,T.s5+.25,.4,o5,.35,10);
+  document.querySelectorAll('#s5 .lb5').forEach((el,i)=>fx(el,t,T.s5+.3+i*.1,.35,o5,.35,0,-20));
+  [['a',66],['b',132],['c',280],['d',400]].forEach(([k,w],i)=>{const st=i<3?T.s5+.4+i*.14:T.w200-.2, g=spring(P(t,st,.8));
+    const ww=Math.max(0,w*clamp(g,0,1.04)); $('b5'+k).style.width=ww+'px'; $('b5'+k).style.opacity=(t>=st?1:0)*(1-b5);
+    const v=$('v5'+k); v.style.left=(306+w+18)+'px'; v.style.opacity=clamp(P(t,st+.45,.25))*(1-b5);});
+  fx('nt5',t,T.s5+.9,.45,o5,.35,24); $('nt5').style.opacity=String(parseFloat($('nt5').style.opacity)*(.45+.55*clamp(P(t,T.w200+1.0,.3))));
+  $('tg5').style.opacity=clamp(P(t,T.w200+.35,.25))*(1-b5);
+
+  // 6 연말정산 — 예체능 접시·대상은 처음부터, 15%는 '십오'에
+  sv('s6',T.s6,T.s8+.3); const o6=T.s8-.1;
+  fx('t6',t,T.s6+.05,.45,o6,.35,30); fx('u6',t,T.s6+.2,.45,o6,.35,20); fx('c6',t,T.s6+.1,.5,o6,.35,40);
+  ['p6a','p6b','p6c'].forEach((id,i)=>pop(id,t,T.s6+.25+i*.12,o6,.35,[-4,3,-2][i],.6));
+  fx('who6',t,T.s6+.4,.4,o6,.35,20,-20);
+  fx('n15q',t,T.s6+.45,.4,T.w15-.2,.15,14); fx('lb15',t,T.s6+.55,.4,o6,.35,14);
+  pop('n15',t,T.w15-.12,o6,.35,-3,.6);
+  fx('cap6',t,T.w15+.5,.4,o6,.35,16); fx('no6',t,T.s6+.8,.45,o6,.35,24); $('no6').style.opacity=String(parseFloat($('no6').style.opacity)*(.4+.6*clamp(P(t,T.w15+.9,.3))));
+
+  // 8 정리(카드는 끝까지 남는다)
+  sv('s8',T.s8,99);
+  fx('c8',t,T.s8+.05,.5,null,0,50);
+  ['k1','k2','k3','k4'].forEach((id,i)=>fx(id,t,T.s8+.3+i*.35,.4,null,0,20,-30));
+  const sk=P(t,T.stamp-.12,.3); $('stamp8').style.opacity=clamp(sk*5);
+  $('stamp8').style.transform=`rotate(-10deg) scale(${sk<=0?1.6:1.6-.6*eOut(sk)})`;
+
+  // 모리 명패: 자기소개 줄에서
+  pop('tagM',t,T.wMori-.05,T.L02+1.2,.35,4,.5);
+
+  // 끝: 구독·좋아요 칩(두 캐릭터 사이), 동전이 볼주머니로
+  pop('cta9',t,T.L09-.05,T.L10+.25,.3,-2,.6);
+  const fk=P(t,T.L10-.45,.55), fl=$('fly');
+  if(fk>0&&fk<1){const x=lerp(560,180,eIO(fk)),y=lerp(700,1260,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L10-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.5})`;}
+  else fl.style.opacity=0;
+
+
+  renderChars(t);
+}
+window.render=render;
+document.fonts.ready.then(()=>{render(0);setTimeout(()=>{document.fonts.ready.then(()=>{render(0);window.__ready=true;});},300);});
+</script>
+<script src="dyn.js"></script>
+</body>
+</html>
