@@ -1,0 +1,73 @@
+{
+ "id": "ex12-02",
+ "note": "EX.12 쌀 발음 다시(첫 줄·일본 슈퍼)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 908,
+   "takes": 4,
+   "texts": [
+    "일본 쌀이, 한국보다 일 점 오 배쯤 비싸~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 909,
+   "takes": 4,
+   "texts": [
+    "같은 무게면, 일본 쌀이 일 점 오 배쯤 비싸~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 910,
+   "takes": 4,
+   "texts": [
+    "거짓말~ 일본 쌀값이, 엄청 내렸다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 911,
+   "takes": 4,
+   "texts": [
+    "일본 슈퍼에선, 오 킬로에 이천팔백 엔쯤이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 912,
+   "takes": 4,
+   "texts": [
+    "일본은, 오 킬로에 이천팔백 엔쯤이래."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01b",
+  "L01c",
+  "M01b",
+  "L02b",
+  "L02c"
+ ]
+}
