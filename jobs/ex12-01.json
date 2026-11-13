@@ -1,0 +1,164 @@
+{
+ "id": "ex12-01",
+ "note": "EX.12 일본 쌀값 vs 한국(2인 형식)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 286,
+   "takes": 4,
+   "texts": [
+    "일본 쌀, 한국보다 일 점 오 배쯤 비싸~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 287,
+   "takes": 4,
+   "texts": [
+    "거짓말~ 일본 쌀값, 엄청 내렸다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 288,
+   "takes": 4,
+   "texts": [
+    "일본 슈퍼 평균이, 오 킬로에 이천팔백 엔쯤이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 289,
+   "takes": 4,
+   "texts": [
+    "그거, 원으로 치면 얼마야?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 290,
+   "takes": 4,
+   "texts": [
+    "오늘 환율로, 이만 삼천 원쯤이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 291,
+   "takes": 4,
+   "texts": [
+    "한국 쌀도 비싸잖아?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 292,
+   "takes": 4,
+   "texts": [
+    "한국은 이십 킬로에, 육만 삼천 원대래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 293,
+   "takes": 4,
+   "texts": [
+    "오 킬로로 바꾸면, 만 육천 원쯤이야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 294,
+   "takes": 4,
+   "texts": [
+    "그럼~ 내렸다는 말은 뭔데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 295,
+   "takes": 4,
+   "texts": [
+    "내린 건 맞아. 올해 일월 최고 때보다, 삼십육 퍼센트 내렸대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 296,
+   "takes": 4,
+   "texts": [
+    "많이 내렸는데도, 비싼 건 맞네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 297,
+   "takes": 4,
+   "texts": [
+    "너는 쌀, 몇 킬로짜리 사 먹어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "M01",
+  "L02",
+  "M02",
+  "L03",
+  "M03",
+  "L04",
+  "L05",
+  "M04",
+  "L06",
+  "M05",
+  "L09"
+ ]
+}
