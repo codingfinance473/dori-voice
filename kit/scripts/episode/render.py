@@ -102,6 +102,7 @@ def eyes():
             prev = r["e"]
         # 표정이 바뀌는 시각 앞뒤를 모아 본다
         keys = sorted({round(k, 2) for k in pg.evaluate("typeof EX!=='undefined'?EX.map(k=>k[0]).filter(x=>isFinite(x)):[]") if 0 < k < DUR})
+        pg.evaluate(f"render({DUR / 2})")   # 문제 프레임이 0초(도리가 화면 밖에서 들어오는 중)면 상자가 화면 밖으로 잡혀 캡처가 실패했다(2026-11-13)
         box = pg.evaluate("(()=>{const r=document.getElementById('dori').getBoundingClientRect();return [r.x,r.y,r.width,r.height]})()")
         out = HERE / "stills" / "eyes"; out.mkdir(parents=True, exist_ok=True)
         shots = []
@@ -222,6 +223,7 @@ def qa():
                 if len(flagged) >= 12: break
                 pg.evaluate(f"render({t})"); f = out / f"_fl{len(flagged):02d}.png"; pg.screenshot(path=str(f)); flagged.append((t, k, m, box, f))
         # 눈: 표정 전환 앞뒤
+        pg.evaluate(f"render({DUR / 2})")   # 문제 프레임이 0초(도리가 화면 밖에서 들어오는 중)면 상자가 화면 밖으로 잡혀 캡처가 실패했다(2026-11-13)
         box = pg.evaluate("(()=>{const r=document.getElementById('dori').getBoundingClientRect();return [r.x,r.y,r.width,r.height]})()")
         eyes_rows = []
         for k in keys[:24]:

@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!--
+  도리의 정보주머니 · 숫자 검산 EX.11 엔화 또 떨어졌다? 지금 엔화 환율 어디쯤일까? (2026-11-13)
+  도리 단독 설명형(사용자: "데이터 설명만 하는 거면 도리 단독도 좋겠다"): 콜드오픈(100엔 833원) → 2008년 이후 최저(긴 그래프)
+  → 올해 6월 965원에서 132원 내림(올해 그래프) → 엔만 약해서? 달러로 견줘 보면 엔은 조금 약해지고 원은 훨씬 강해짐
+  → 반대 신호: 역대 최저는 아님(2007년 7월 746원) → 계산: 10만 엔이면 1년 전보다 11만 4300원 덜 → 정리 → 검산 끝.
+  숫자: 대조표 EX11_yen_factsheet.md (한국은행 ECOS 731Y001·731Y002 매매기준율)
+  지키는 것: 환전 시점 조언·전망 없음 · 지폐는 실제 도안 없이 · 매체명 없음 · AI 표시는 설명란 한 줄만 · 아래 420px·오른쪽 160px에 핵심 글자 없음
+-->
+<meta charset="utf-8">
+<title>도리의 숫자 검산 엔화 환율</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Medium.otf);font-weight:500}
+@font-face{font-family:P;src:url(fonts/Pretendard-SemiBold.otf);font-weight:600}
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--sub:#7E6B5C;--mint:#2E9C83;--red:#E2483A;--yel:#FFD45C;--line:#EBDDD0;--slate:#5E6F8C;--blue:#5B8CFF;--ora:#E8833A;--lav:#B9A3E3}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--cream)}
+body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;word-break:keep-all}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;visibility:hidden}
+#hdr{left:64px;top:146px;display:flex;align-items:center;gap:12px}
+.pill{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:9px 20px;font-size:25px;font-weight:800;color:var(--ink);white-space:nowrap}
+.pill i{display:block;width:16px;height:16px;border-radius:50%}
+#hdr .brand{font-family:Jua;font-weight:400;font-size:29px;padding:8px 22px 8px 12px}
+#prog{left:72px;top:226px;width:840px;height:6px;border-radius:3px;background:#F0E2D6;overflow:hidden}
+#progf{height:100%;width:0;background:#5B8CFF;border-radius:3px}
+.card{position:absolute;background:linear-gradient(180deg,#FFFFFF 0%,#FFFAF3 100%);border-radius:36px;border:5px solid #4A3A33;box-shadow:0 12px 0 rgba(74,58,51,.16),0 22px 34px rgba(120,70,40,.10)}
+#stage>.scene,#stage>.abs,#stage>#hdr,#stage>#prog{z-index:2}
+.ttl{position:absolute;font-family:Jua;font-weight:400;color:var(--ink);line-height:1.18;-webkit-text-stroke:12px #FFF8F0;paint-order:stroke fill}
+.ttl em{font-style:normal;color:var(--red)}
+.ttl em.m{color:var(--mint)} .ttl em.b{color:var(--blue)}
+.tt{left:80px;top:290px;font-size:72px}
+.uu{position:absolute;left:84px;top:386px;font-size:25px;font-weight:700;color:var(--sub);white-space:nowrap;background:rgba(255,248,240,.85);border-radius:10px;padding:2px 8px}
+.chip{position:absolute;font-family:Jua;font-size:34px;color:#fff;border-radius:999px;padding:6px 22px;white-space:nowrap;border:4px solid #4A3A33;box-shadow:0 6px 0 rgba(74,58,51,.18)}
+.chip.red{background:var(--red)} .chip.mint{background:var(--mint)} .chip.slate{background:var(--slate)} .chip.yel{background:#FFD45C;color:var(--ink)} .chip.blue{background:var(--blue)} .chip.ora{background:var(--ora)}
+/* 1 콜드오픈 — 환전소 시세판 */
+#t1{left:80px;top:300px;font-size:84px}
+#t1 span{display:block}
+#board1{left:60px;top:518px;width:860px;height:440px;overflow:hidden}
+.cardsvg{position:absolute;left:0;top:0}
+/* 그래프 카드 공통 */
+.gcard{left:60px;top:430px;width:860px;height:545px;overflow:hidden}
+.glab{position:absolute;font-family:Jua;font-size:40px;line-height:1.05;white-space:nowrap;color:var(--ink);background:#fff;border:4px solid #4A3A33;border-radius:16px;padding:8px 16px 6px;box-shadow:0 6px 0 rgba(74,58,51,.16)}
+.glab small{display:block;font-family:P;font-weight:800;font-size:21px;color:var(--sub);margin-bottom:3px}
+.glab.r{color:var(--red)} .glab.b{color:var(--blue)}
+/* 4 달러로 견줘 보면 */
+.fx{position:absolute;top:430px;width:418px;height:470px;border-radius:32px;border:5px solid #4A3A33;background:linear-gradient(180deg,#fff,#FFFAF3);box-shadow:0 10px 0 rgba(74,58,51,.15);display:flex;flex-direction:column;align-items:center;padding-top:18px;font-family:Jua;text-align:center}
+#fxY{left:60px} #fxW{left:502px}
+.fx .h{font-size:36px;color:var(--ink)}
+.fx .h small{display:none}
+.fx .art{width:112px;height:112px;margin-top:2px;position:relative}
+.fx .row{display:flex;align-items:baseline;gap:12px;font-size:30px;color:var(--sub);margin-top:2px}
+.fx .row b{font-weight:400;font-size:44px;color:var(--ink)}
+.fx .row.now b{font-size:56px}
+.fx .arrow{font-size:30px;color:#4A3A33;line-height:1}
+.fx .tag{margin-top:8px}
+.fx .pc{font-family:P;font-weight:800;font-size:22px;color:var(--sub);margin-top:2px}
+#fxY .row.now b{color:var(--slate)} #fxW .row.now b{color:var(--red)}
+#big4w{left:0;top:908px;width:1080px;display:flex;justify-content:center}
+/* 6 10만 엔 바꾸면? */
+#c6{left:60px;top:430px;width:860px;height:330px;padding:24px 44px 24px}
+#c6 .r{display:flex;justify-content:space-between;align-items:baseline;font-size:34px;font-weight:700;color:var(--ink);padding:10px 0;border-bottom:3px dashed #E6D6C8}
+#c6 .r .a{color:var(--sub);font-weight:700}
+#c6 .r .a small{font-size:24px;margin-left:6px}
+#c6 .r .b{font-weight:900;white-space:nowrap}
+#c6 .tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;font-family:Jua;font-size:46px}
+#c6 .tot b{font-weight:400;color:var(--red);font-size:66px}
+#c6 .tot small{font-size:26px;color:var(--sub);font-family:P;font-weight:700}
+#note6{left:60px;top:784px;width:860px;height:190px;border-radius:28px;background:#F6EEE4;border:5px solid #4A3A33;display:flex;align-items:center;gap:20px;padding:0 26px}
+#note6 .tx{font-family:Jua;font-size:36px;line-height:1.2;color:var(--ink)}
+#note6 .tx em{font-style:normal;color:var(--blue)}
+#note6 .tx small{display:block;font-family:P;font-weight:800;font-size:23px;color:var(--sub)}
+/* 8 정리 */
+#c8{left:60px;top:300px;width:860px;height:660px;display:flex;flex-direction:column;align-items:center;padding-top:40px}
+#c8 .stk{font-family:Jua;font-size:40px;color:#fff;background:#5B8CFF;border-radius:16px;padding:6px 30px;border:4px solid #4A3A33}
+#c8 .sum{font-family:Jua;font-size:64px;margin-top:24px;text-align:center;line-height:1.2}
+#c8 .sum b{color:var(--red);font-weight:400}
+#c8 .chk{margin-top:24px;font-size:30px;font-weight:800;color:var(--ink);align-self:flex-start;margin-left:46px;white-space:nowrap}
+#c8 .chk.warn{color:#2A8A72}
+#c8 .per{margin-top:28px;font-size:24px;font-weight:700;color:var(--sub)}
+#stamp8{left:560px;top:870px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
+/* 도리 + 여행 가방 소품 */
+#cta9{left:400px;top:1296px;font-family:Jua;font-size:32px;color:var(--ink);background:#fff;border:4px solid #4A3A33;border-radius:999px;padding:7px 22px;box-shadow:0 6px 0 rgba(74,58,51,.16);white-space:nowrap}
+#fly{left:0;top:0;width:70px;height:70px}
+#dori{left:0;top:1118px;width:400px;height:415px}
+#dsh{left:50px;top:1466px;width:300px;height:38px}
+#deco{left:716px;top:1196px;width:250px;height:290px}
+.bub{position:absolute;top:985px;max-width:600px;background:#fff;border-radius:32px;padding:20px 30px;font-family:Jua;font-size:38px;line-height:1.32;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;border:4px solid #4A3A33}
+.bub.d{left:60px;max-width:600px;transform-origin:20% 100%}
+.bub:before{content:"";position:absolute;bottom:-26px;border-width:26px 16px 0 16px;border-style:solid;border-color:#4A3A33 transparent transparent transparent}
+.bub:after{content:"";position:absolute;bottom:-18px;border-width:19px 11px 0 11px;border-style:solid;border-color:#fff transparent transparent transparent}
+.bub.d:before{left:92px} .bub.d:after{left:97px}
+#pre{position:absolute;left:-5000px;top:0;font-family:Jua}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7B57E"/><stop offset="1" stop-color="#C98C55"/></linearGradient>
+  <linearGradient id="gBoard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3C4558"/><stop offset="1" stop-color="#262C3A"/></linearGradient>
+  <linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E8F0F7"/><stop offset="1" stop-color="#D6E3EE"/></linearGradient>
+  <linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3E9DD"/></linearGradient>
+  <linearGradient id="gBill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3EFE2"/><stop offset=".6" stop-color="#E4DCC6"/><stop offset="1" stop-color="#CFC3A6"/></linearGradient>
+  <linearGradient id="gCase" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ED3C1"/><stop offset=".6" stop-color="#4FB59A"/><stop offset="1" stop-color="#2E8F78"/></linearGradient>
+  <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B8CFF" stop-opacity=".28"/><stop offset="1" stop-color="#5B8CFF" stop-opacity="0"/></linearGradient>
+  <radialGradient id="gCoin" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#FFF1B8"/><stop offset=".5" stop-color="#F4C64E"/><stop offset="1" stop-color="#C98F1E"/></radialGradient>
+  <radialGradient id="gCoinS" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#D9DEE6"/><stop offset="1" stop-color="#9AA4B4"/></radialGradient>
+  <radialGradient id="gSh2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
+</defs></svg>
+<div id="stage">
+  <div class="abs" id="hdr">
+    <div class="pill brand"><span id="hdrDori"></span>도리의 정보주머니</div>
+    <div class="pill"><i style="background:#5B8CFF"></i>숫자 검산</div>
+  </div>
+  <div class="abs" id="prog"><div id="progf"></div></div>
+
+  <!-- 1 콜드오픈 — 환전소 시세판 -->
+  <div class="scene" id="s1">
+    <div class="ttl" id="t1"><span>엔화 <em>또</em> 떨어졌다?</span><span>지금 <em class="b">어디쯤</em>일까?</span></div>
+    <div class="card" id="board1"></div>
+  </div>
+
+  <!-- 2 2008년 이후 최저 -->
+  <div class="scene" id="s2">
+    <div class="ttl tt" id="t2"><em>2008년</em> 이후 최저</div>
+    <div class="uu" id="u2">한국은행 · 원/100엔 매매기준율(일별) · 2008년 1월 ~ 2026년 11월 13일</div>
+    <div class="card gcard" id="c2"></div>
+  </div>
+
+  <!-- 3 올해만 보면 -->
+  <div class="scene" id="s3">
+    <div class="ttl tt" id="t3">올해만 보면?</div>
+    <div class="uu" id="u3">한국은행 · 원/100엔 매매기준율(일별) · 2026년 1월 2일 ~ 11월 13일</div>
+    <div class="card gcard" id="c3"></div>
+  </div>
+
+  <!-- 4 엔만 약해져서일까? -->
+  <div class="scene" id="s4">
+    <div class="ttl tt" id="t4"><em class="b">엔만</em> 약해졌을까?</div>
+    <div class="uu" id="u4">한국은행 · 매매기준율 · 2025년 11월 13일 → 2026년 11월 13일 비교</div>
+    <div class="fx" id="fxY">
+      <div class="h">1달러 = ?엔<small>엔 ↔ 달러</small></div>
+      <div class="art" id="artY"></div>
+      <div class="row"><span>1년 전</span><b>154.7엔</b></div>
+      <div class="arrow">↓</div>
+      <div class="row now"><span>지금</span><b>159.9엔</b></div><div class="pc">엔/달러 +3.3%</div>
+      <span class="chip slate tag" id="tagY" style="position:relative">엔 조금 약해짐</span>
+    </div>
+    <div class="fx" id="fxW">
+      <div class="h">1달러 = ?원<small>원 ↔ 달러</small></div>
+      <div class="art" id="artW"></div>
+      <div class="row"><span>1년 전</span><b>1466원</b></div>
+      <div class="arrow">↓</div>
+      <div class="row now"><span>지금</span><b>1332원</b></div><div class="pc">원/달러 −9.1%</div>
+      <span class="chip red tag" id="tagW" style="position:relative">원 훨씬 강해짐</span>
+    </div>
+    <div class="abs" id="big4w"><span class="chip yel" id="big4" style="position:relative;left:auto;width:auto;top:auto;padding:6px 26px">원 쪽 변화가 3배 가까이 커 (계산)</span></div>
+  </div>
+
+  <!-- 5 역대 최저일까? -->
+  <div class="scene" id="s5">
+    <div class="ttl tt" id="t5"><em class="m">역대</em> 최저일까?</div>
+    <div class="uu" id="u5">한국은행 · 원/100엔 매매기준율(일별) · 2000년 1월 ~ 2026년 11월 13일</div>
+    <div class="card gcard" id="c5"></div>
+  </div>
+
+  <!-- 6 10만 엔 바꾸면? -->
+  <div class="scene" id="s6">
+    <div class="ttl tt" id="t6"><em>10만 엔</em> 바꾸면?</div>
+    <div class="uu" id="u6">(계산) 10만 엔 × 매매기준율 · 수수료 빼고 단순 환산</div>
+    <div class="card" id="c6">
+      <div class="r" id="r6a"><span class="a">1년 전<small>2025.11.13 · 947.75원</small></span><span class="b">94만 7750원</span></div>
+      <div class="r" id="r6b"><span class="a">지금<small>2026.11.13 · 833.45원</small></span><span class="b">83만 3450원</span></div>
+      <div class="tot" id="r6c"><span>덜 드는 돈</span><span><b>11만 4300원</b><small> (계산)</small></span></div>
+    </div>
+    <div class="abs" id="note6"><div id="billArt"></div><div class="tx"><small>실제 환전·카드 결제는</small>은행마다 <em>수수료·우대율</em>이<br>달라서 조금씩 달라요</div></div>
+  </div>
+
+  <!-- 8 정리(끝까지 남는다) -->
+  <div class="scene" id="s8">
+    <div class="card" id="c8"><div class="stk">정리</div>
+      <div class="sum">100엔 = <b>833원</b></div>
+      <div class="chk" id="k1">✔ 2008년 이후 가장 낮은 값 (11월 13일)</div>
+      <div class="chk" id="k2">✔ 올해 6월 965원에서 132원 내림</div>
+      <div class="chk" id="k3">✔ 1년 새 엔은 조금 약해지고, 원은 훨씬 강해짐</div>
+      <div class="chk warn" id="k4">△ 역대 최저는 아님 — 2007년 7월 746원</div>
+      <div class="per">한국은행 ECOS · 매매기준율</div></div>
+    <div class="abs" id="stamp8">검산 끝!</div>
+  </div>
+
+  <div class="abs" id="cta9">구독 · 좋아요 👍</div>
+  <div class="abs" id="fly"></div>
+  <div class="abs" id="deco"></div>
+  <div class="abs" id="dsh"></div>
+  <div class="abs" id="dori"></div>
+  <div class="abs bub d" id="bub"><span id="bubT"></span></div>
+  <div id="pre"></div>
+</div>
+
+<script src="timeline.js"></script>
+<script src="chartdata.js"></script>
+<script src="dori_outfits.js"></script>
+<script src="dori.js"></script>
+<script src="scenekit.js"></script>
+
+<script>
+// 무대 — 잔무늬 벽 + 나무 마루(탁자 윗면 1468이 마루 선)
+const STAGE={awning:false,table:'wood',tableTop:1468};
+SK.stage(document.getElementById('stage'),STAGE);
+const T=TL.T, FPS=30, DUR=T.END;
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,s,d)=>clamp((t-s)/d);
+const eOut=x=>1-Math.pow(1-x,3);
+const eIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eBack=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);};
+const lerp=(a,b,k)=>a+(b-a)*k;
+const $=id=>document.getElementById(id);
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+const K='#4A3A33';
+
+// ---------- 소품(상표·실제 지폐 도안 없음, 빛은 왼쪽 위, 외곽선 #4A3A33) ----------
+const COIN=(w,txt,silver)=>`<svg viewBox="0 0 140 140" width="${w}" height="${w}" style="overflow:visible">
+  <ellipse cx="70" cy="132" rx="56" ry="8" fill="url(#gSh2)"/>
+  <circle cx="70" cy="74" r="58" fill="${silver?'#8D97A8':'#C98F1E'}" stroke="${K}" stroke-width="6"/>
+  <circle cx="70" cy="66" r="58" fill="url(#${silver?'gCoinS':'gCoin'})" stroke="${K}" stroke-width="6"/>
+  <circle cx="70" cy="66" r="44" fill="none" stroke="${silver?'#8D97A8':'#B57E14'}" stroke-width="4" stroke-dasharray="6 6"/>
+  <text x="70" y="84" text-anchor="middle" font-family="Jua" font-size="50" fill="${silver?'#3D4558':'#7A5208'}">${txt}</text>
+  <path d="M34 44 C42 30 56 22 72 20" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7"/>
+</svg>`;
+// 지폐(실제 도안 없이 숫자·글자만)
+const BILL=(w,rot=0)=>`<svg viewBox="0 0 240 130" width="${w}" height="${w*130/240}" style="overflow:visible;transform:rotate(${rot}deg)">
+  <rect x="6" y="8" width="228" height="116" rx="12" fill="url(#gBill)" stroke="${K}" stroke-width="6"/>
+  <rect x="22" y="22" width="196" height="88" rx="8" fill="none" stroke="#B7A57E" stroke-width="4"/>
+  <circle cx="176" cy="66" r="30" fill="#EFE6CF" stroke="#B7A57E" stroke-width="4"/>
+  <text x="176" y="80" text-anchor="middle" font-family="Jua" font-size="38" fill="#8C7848">円</text>
+  <text x="34" y="62" font-family="P" font-weight="900" font-size="34" fill="#6E5D3A">10000</text>
+  <path d="M34 82 H130 M34 96 H104" stroke="#C9B994" stroke-width="6" stroke-linecap="round"/>
+  <path d="M16 20 H120" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+</svg>`;
+// 여행 가방(탁자 오른쪽 소품) — 스티커 셋, 손잡이, 바퀴
+const CASE=()=>`<svg viewBox="0 0 250 290" width="250" height="290" style="overflow:visible">
+  <ellipse cx="125" cy="282" rx="110" ry="11" fill="url(#gSh2)"/>
+  <path d="M92 64 V24 Q92 10 106 10 H144 Q158 10 158 24 V64" fill="none" stroke="${K}" stroke-width="12" stroke-linecap="round"/>
+  <path d="M92 64 V24 Q92 10 106 10 H144 Q158 10 158 24 V64" fill="none" stroke="#9AA4B4" stroke-width="5" stroke-linecap="round"/>
+  <rect x="26" y="60" width="198" height="206" rx="26" fill="url(#gCase)" stroke="${K}" stroke-width="7"/>
+  <path d="M60 70 V256 M190 70 V256" stroke="#2A7A66" stroke-width="5" opacity=".55"/>
+  <path d="M40 80 V170" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".5"/>
+  <circle cx="92" cy="122" r="26" fill="#fff" stroke="${K}" stroke-width="5"/><circle cx="92" cy="122" r="11" fill="#E2483A"/>
+  <rect x="120" y="150" width="78" height="44" rx="10" fill="#FFD45C" stroke="${K}" stroke-width="5" transform="rotate(8 159 172)"/>
+  <text x="159" y="181" text-anchor="middle" font-family="Jua" font-size="26" fill="#3E2F25" transform="rotate(8 159 172)">TRIP</text>
+  <path d="M72 210 l10 -20 l10 20 l-20 -12 h20 z" fill="#fff" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="64" cy="272" r="11" fill="#4A3A33"/><circle cx="186" cy="272" r="11" fill="#4A3A33"/>
+</svg>`;
+// 환전소 시세판(콜드오픈): 벽 + 어두운 시세판 + 계산대 + 동전·지폐
+const BOARD=()=>`<svg viewBox="0 0 860 440" width="860" height="440" class="cardsvg">
+  <rect x="0" y="0" width="860" height="300" fill="url(#gWall)"/>
+  <rect x="70" y="26" width="720" height="252" rx="22" fill="url(#gBoard)" stroke="${K}" stroke-width="7"/>
+  <text x="104" y="76" font-family="Jua" font-size="34" fill="#FFE9A8">환율 · 매매기준율</text>
+  <text x="756" y="76" text-anchor="end" font-family="P" font-weight="800" font-size="24" fill="#AEB8CC">11월 13일</text>
+  <path d="M96 94 H764" stroke="#5E6A82" stroke-width="3"/>
+  <rect x="96" y="108" width="668" height="86" rx="12" fill="#323A4C"/>
+  <text x="120" y="166" font-family="Jua" font-size="40" fill="#fff">JPY 100엔</text>
+  <text x="744" y="170" text-anchor="end" font-family="P" font-weight="900" font-size="58" fill="#FF8A7A" id="bdJ">833.45</text>
+  <text x="120" y="250" font-family="Jua" font-size="34" fill="#C9D1E0">USD 1달러</text>
+  <text x="744" y="252" text-anchor="end" font-family="P" font-weight="900" font-size="40" fill="#C9D1E0">1,332.40</text>
+  <path d="M84 40 H300" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".18"/>
+  <rect x="0" y="292" width="860" height="148" fill="url(#gWood)"/>
+  <path d="M0 294 H860" stroke="${K}" stroke-width="6"/>
+  <path d="M40 360 H300 M520 400 H820" stroke="#B57A48" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+</svg>
+<div class="abs" id="bill1" style="left:60px;top:300px">${BILL(230,-6)}</div>
+<div class="abs" id="bill1b" style="left:120px;top:322px">${BILL(230,4)}</div>
+<div class="abs" id="coin1" style="left:600px;top:282px">${COIN(110,'¥',true)}</div>
+<div class="abs" id="coin1b" style="left:690px;top:300px">${COIN(96,'¥')}</div>
+<div class="abs chip red" id="low1" style="left:330px;top:322px;font-size:36px">올해 최저 ▼</div>`;
+
+// ---------- 그래프 ----------
+// 카드 안 좌표(860×545). x: 연도(소수) → px, y: 원 → px. 선은 '그려지는' 클립으로 드러난다.
+function chartSVG(id,data,x0,x1,y0,y1,yt,xt,opt={}){
+  const L=90,R=830,TP=48,B=470;
+  const X=v=>L+(v-x0)/(x1-x0)*(R-L), Y=v=>B-(v-y0)/(y1-y0)*(B-TP);
+  const pts=data.filter(p=>p[0]>=x0-.01).map(p=>[X(p[0]).toFixed(1),Y(p[1]).toFixed(1)]);
+  const d='M'+pts.map(p=>p.join(' ')).join(' L');
+  const area=d+` L${pts[pts.length-1][0]} ${B} L${pts[0][0]} ${B} Z`;
+  const grid=yt.map(v=>`<path d="M${L} ${Y(v)} H${R}" stroke="#EADCCD" stroke-width="2"/><text x="${L-12}" y="${Y(v)+8}" text-anchor="end" font-family="P" font-weight="700" font-size="22" fill="#9C8A7B">${v}</text>`).join('');
+  const xl=xt.map(([v,s])=>`<text x="${X(v)}" y="${B+34}" text-anchor="middle" font-family="P" font-weight="700" font-size="22" fill="#9C8A7B">${s}</text>`).join('');
+  return {X,Y,svg:`<svg viewBox="0 0 860 545" width="860" height="545" class="cardsvg" style="overflow:visible">
+    <defs><clipPath id="cl${id}"><rect id="clr${id}" x="0" y="0" width="0" height="545"/></clipPath></defs>
+    ${grid}<path d="M${L} ${B} H${R}" stroke="${K}" stroke-width="4"/>${xl}
+    <g clip-path="url(#cl${id})"><path d="${area}" fill="url(#gArea)"/>
+    <path d="${d}" fill="none" stroke="#5B8CFF" stroke-width="${opt.w||4}" stroke-linejoin="round" stroke-linecap="round"/></g>
+    ${opt.extra||''}</svg>`};
+}
+const CD=CHART;   // chartdata.js: long(2000~, 12일 묶음의 최저·최고), y26(2026년 일별)
+const NOW=[2026.866,833.45];
+// s2: 2008~
+const c2=chartSVG(2,CD.long,2008,2026.95,700,1700,[800,1000,1200,1400,1600],[[2008,'2008'],[2012,'2012'],[2016,'2016'],[2020,'2020'],[2024,'2024']]);
+$('c2').innerHTML=c2.svg+`<svg viewBox="0 0 860 545" width="860" height="545" class="cardsvg" style="overflow:visible">
+  <path id="ln2" d="M90 ${c2.Y(833.45)} H830" stroke="#E2483A" stroke-width="4" stroke-dasharray="12 10"/>
+  <circle id="dot2" cx="${c2.X(NOW[0])}" cy="${c2.Y(NOW[1])}" r="13" fill="#E2483A" stroke="${K}" stroke-width="5"/></svg>
+  <div class="glab r" id="lab2" style="left:560px;top:330px"><small>11월 13일</small>833원</div>
+  <div class="chip red" id="tg2" style="left:300px;top:46px">이 선 아래로 간 적 없음</div>`;
+// s3: 2026년
+const c3=chartSVG(3,CD.y26,2026,2026.95,800,1000,[820,860,900,940,980],[[2026.04,'1월'],[2026.29,'4월'],[2026.54,'7월'],[2026.79,'10월']],{w:5});
+const PK=[2026.441,965.51];
+$('c3').innerHTML=c3.svg+`<svg viewBox="0 0 860 545" width="860" height="545" class="cardsvg" style="overflow:visible">
+  <circle id="dot3a" cx="${c3.X(PK[0])}" cy="${c3.Y(PK[1])}" r="12" fill="#5B8CFF" stroke="${K}" stroke-width="5"/>
+  <circle id="dot3b" cx="${c3.X(NOW[0])}" cy="${c3.Y(NOW[1])}" r="13" fill="#E2483A" stroke="${K}" stroke-width="5"/>
+  <g id="arr3"><path d="M${c3.X(NOW[0])+0} ${c3.Y(PK[1])} V${c3.Y(NOW[1])-26}" stroke="#E2483A" stroke-width="7" stroke-linecap="round" stroke-dasharray="4 12"/>
+  <path d="M${c3.X(PK[0])+20} ${c3.Y(PK[1])} H${c3.X(NOW[0])}" stroke="#E2483A" stroke-width="4" stroke-dasharray="8 8" opacity=".6"/></g></svg>
+  <div class="glab b" id="lab3a" style="left:240px;top:44px"><small>6월 9일 · 올해 최고</small>965원</div>
+  <div class="glab r" id="lab3b" style="left:560px;top:340px"><small>11월 13일</small>833원</div>
+  <div class="chip red" id="tg3" style="left:612px;top:130px;font-size:44px">−132원</div>`;
+// s5: 2000~ (2007년 아래로 더 내려간 곳)
+const c5=chartSVG(5,CD.long,2000,2026.95,600,1700,[700,900,1100,1300,1500],[[2000,'2000'],[2005,'2005'],[2010,'2010'],[2015,'2015'],[2020,'2020'],[2025,'2025']]);
+const LO=[2007.52,746.15];
+$('c5').innerHTML=c5.svg+`<svg viewBox="0 0 860 545" width="860" height="545" class="cardsvg" style="overflow:visible">
+  <path id="ln5" d="M90 ${c5.Y(833.45)} H830" stroke="#E2483A" stroke-width="4" stroke-dasharray="12 10"/>
+  <circle id="dot5a" cx="${c5.X(LO[0])}" cy="${c5.Y(LO[1])}" r="14" fill="#2E9C83" stroke="${K}" stroke-width="5"/>
+  <circle id="dot5b" cx="${c5.X(NOW[0])}" cy="${c5.Y(NOW[1])}" r="12" fill="#E2483A" stroke="${K}" stroke-width="5"/></svg>
+  <div class="glab" id="lab5a" style="left:330px;top:372px;color:#2E9C83"><small>2007년 7월 9일</small>746원</div>
+  <div class="glab r" id="lab5b" style="left:640px;top:250px"><small>지금</small>833원</div>`;
+$('board1').innerHTML=BOARD();
+$('artY').innerHTML=COIN(108,'¥',true);
+$('artW').innerHTML=COIN(108,'₩');
+$('billArt').innerHTML=`<div style="position:relative;width:200px;height:140px">${BILL(190,-8)}<div style="position:absolute;left:16px;top:22px">${BILL(190,5)}</div></div>`;
+$('deco').innerHTML=CASE();
+$('fly').innerHTML=COIN(70,'¥');
+$('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
+$('pre').textContent=TL.lines.map(l=>l.text.replace(/<br>/g,' ')).join(' ')+document.body.innerText;
+
+function sv(id,a,b){$(id).style.visibility=(gT>=a&&gT<b)?'visible':'hidden';}
+function fx(el,t,inS,inD,outS,outD,dy=40,dx=0,rot=0){if(typeof el==='string')el=$(el);const a=eOut(P(t,inS,inD)),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=a*(1-b);el.style.transform=`translate(${(1-a)*dx}px,${(1-a)*dy-b*dy*.7}px) rotate(${rot}deg)`;return a*(1-b);}
+function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);const k=P(t,s,.5),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=clamp(k*4)*(1-b);el.style.transform=`rotate(${rot}deg) scale(${k<=0?from:from+(1-from)*eBack(k)})`;}
+function op(id,v){$(id).style.opacity=String(v);}
+function clip(n,k){$('clr'+n).setAttribute('width',String(860*clamp(k)));}
+let gT=0;
+
+// ---------- 도리 연기: 여행 옷(travel — 환율·일본 여행 환전), 혼자 설명하는 편이라 장면이 열릴 때 그래프 쪽(오른쪽 위)을 본다 ----------
+const OUTFIT='travel';   // EX.07 news · EX.10 tax · LIFE.08 trivia 와 다르게
+Dori.mount($('dori'),{outfit:OUTFIT});
+const D={};TL.lines.forEach(l=>D[l.id]=l.d);
+const A=(id,f)=>T[id]+f*D[id];
+const EX=[[0,{happy:0}],[T.L01+.1,{surprise:.45}],[A('L01n',.97),{surprise:0}],
+ [T.L02+.1,{surprise:.3}],[A('L02',.97),{surprise:0}],
+ [T.L03+.1,{happy:.35}],[A('L03',.97),{happy:0}],
+ [T.L04+.1,{think:.5}],[A('L04',.97),{think:0}],
+ [T.L05+.1,{think:.25}],[A('L05',.97),{think:0}],
+ [T.wWon,{surprise:.5}],[A('L06',.97),{surprise:0}],
+ [T.L07+.1,{think:.3}],[A('L07',.97),{think:0}],
+ [T.w746,{surprise:.4}],[A('L08',.97),{surprise:0}],
+ [T.w11,{happy:.45}],[A('L09',.97),{happy:0}],
+ [T.L10,{squint:1}],[A('L10',.98),{squint:0}],
+ [T.L11+.1,{happy:.5}],[A('L11',.97),{happy:0}],
+ [T.L12+.1,{happy:.5}],[T.L13+.04,{happy:1,pouch:1}]];
+const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L13?.45:.32);
+// 시선: 장면이 열리면 0.9초 그래프(오른쪽 위)를 보고, 말할 땐 앞을 본다
+const GZ=[[0,0,0]];for(const s of ['s2','s3','s4','s5','s6']){GZ.push([T[s]+.15,.55,-.55]);GZ.push([T[s]+1.05,0,0]);}
+for(const w of ['w2008','w130','wWon','w746','w11']){GZ.push([T[w]-.1,.45,-.45]);GZ.push([T[w]+.7,0,0]);}
+GZ.sort((a,b)=>a[0]-b[0]);
+const gzT=Dori.track(GZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
+function gaze(t){const g=gzT(t),m=Dori.micro(t);return [g.x+m[0]*.7,g.y+m[1]*.7];}
+const BL=Dori.blinks(DUR,EX.map(k=>k[0]),23);
+const blink=t=>Dori.blinkAt(BL,t);
+const EF=[];{const r=rng(7);let t=3.4;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=4.2+r()*5;}}
+function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
+const HOPS=[[T.w833-.05,14],[T.wWon,18],[T.L10,26],[T.L13+.04,30]];
+function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
+  if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
+  return [h,sq];}
+const ARMR=[[0,0],[T.L01+.1,.5],[A('L01n',.9),0],[T.L02+.1,.45],[A('L02',.9),0],[T.L03+.1,.4],[A('L03',.9),0],[T.L05+.1,.35],[A('L05',.9),0],[T.L06+.1,.5],[A('L06',.9),0],[T.L08+.1,.4],[A('L08',.9),0],[T.L09+.1,.4],[A('L09',.9),0],[T.L10,.7],[T.L10+1.0,0],[T.L11+.1,.35],[A('L11',.9),0],[T.L12+.13,.45],[T.L12+1.43,0],[A('L13',.4),.9]];
+const ARML=[[0,0],[T.L04+.1,.3],[A('L04',.9),0],[T.wWon,.45],[T.wWon+.9,0],[T.L10,.7],[T.L10+1.0,0],[T.L13+.04,.55],[T.L13+.89,0]];
+const ARMC=new Map();
+function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
+function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
+  for(const [a,b,c] of [[T.wWon,T.wWon+1.0,'!'],[T.L04+.1,A('L04',.95),'?']]){const v=on(a,b);if(v>o){o=v;m=c;}}
+  return [m,o];}
+function envAt(arr,t){const fr=Math.min(arr.length-1,Math.max(0,Math.round(t*FPS)));return Math.max(arr[fr],(arr[fr-1]||0)*.55);}
+
+function renderChars(t){
+  const envD=envAt(TL.envD,t);
+  const e=expr(t),[gx,gy]=gaze(t),[h,sq]=hop(t);
+  const talk=clamp(envD*1.2-.05)*(1-.6*e.sad);const [mk,mo]=marks(t);
+  const spark=Math.max(clamp(P(t,T.wWon+.3,.2))*(1-P(t,T.wWon+1.4,.3))*.6,clamp(P(t,T.L10,.2))*(1-P(t,T.L10+1.1,.3))*.6,clamp(P(t,T.L13+.04,.2)));
+  const wv=A('L13',.4); let armR=arm(ARMR,t); if(t>wv) armR+=Math.sin((t-wv)*10)*.1*clamp(P(t,wv,.3));
+  const tilt=1.2*Math.sin(t*.6)+.6*Math.sin(t*1.7+.5)-e.think*7+e.sad*-4+e.surprise*Math.sin(t*22)*1.0;
+  Dori.draw({t,happy:e.happy,squint:e.squint,surprise:e.surprise,sad:e.sad,open:talk,blink:blink(t),gx:gx+e.think*.5,gy:gy-e.think*.7+e.sad*.4,
+    pouch:e.pouch,armL:arm(ARML,t),armR,earL:-flick(t,'L')*10-e.sad*18+e.surprise*6,earR:-flick(t,'R')*10-e.sad*18+e.surprise*6,
+    hop:h,squash:sq,breath:Math.sin(t*2*Math.PI*.24),tilt,sweat:0,sweatY:0,mark:mk,markO:mo,markY:Math.sin(t*5)*3,spark});
+  const ent=P(t,0,.8),x=lerp(-380,0,eOut(ent));
+  $('dori').style.transform=`translate(${x}px,0px)`;
+  if(!$('dsh').innerHTML) $('dsh').innerHTML=SK.ground(300,1);
+  $('dsh').style.transform=`translate(${x}px,0) scale(${1-Math.min(.45,h/180)})`; $('dsh').style.opacity=clamp(ent*2);
+  const de=P(t,.25,.8); $('deco').style.opacity=clamp(de*2); $('deco').style.transform=`translate(${lerp(300,0,eOut(de))}px,0)`;
+  let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
+  const bb=$('bub');
+  if(ln){if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
+    bb.style.opacity=clamp(a*4)*(1-o);bb.style.transform=`scale(${(a<=0?.7:.7+.3*eBack(a))*(1-.08*o)})`;}
+  else bb.style.opacity=0;
+}
+
+function render(t){
+  gT=t;
+  $('progf').style.width=(clamp(t/DUR)*100)+'%';
+  fx('hdr',t,0,.5,null,0,14); fx('prog',t,0,.5,null,0,0);
+
+  // 1 콜드오픈 — 시세판은 처음부터, 833.45 숫자가 '팔백삼십삼'에 반짝
+  sv('s1',0,T.s2+.4); const o1=T.s2-.1;
+  document.querySelectorAll('#t1 span').forEach((el,i)=>fx(el,t,[.15,.55][i],.45,o1,.4,46));
+  fx('board1',t,.1,.5,o1,.4,40);
+  const bl=P(t,T.w833-.1,.5); $('bdJ').setAttribute('fill',bl>0&&bl<1&&Math.floor(bl*6)%2===0?'#FFFFFF':'#FF8A7A');
+  pop('low1',t,T.w833+.3,null,0,-4,.5);
+  $('coin1').style.transform=`rotate(${-6+3*Math.sin(t*1.3)}deg)`; $('coin1b').style.transform=`rotate(${5+3*Math.sin(t*1.1+1)}deg)`;
+
+  // 2 2008년 이후 — 선이 왼쪽부터 그려지고, 지금 점과 833원 선
+  sv('s2',T.s2,T.s3+.3); const o2=T.s3-.1;
+  fx('t2',t,T.s2+.05,.45,o2,.35,30); fx('u2',t,T.s2+.2,.45,o2,.35,20); fx('c2',t,T.s2+.1,.5,o2,.35,40);
+  clip(2,eIO(P(t,T.s2+.2,1.3)));
+  op('dot2',clamp(P(t,T.s2+1.4,.2))); op('ln2',clamp(P(t,T.w2008-.2,.4)));
+  pop('lab2',t,T.s2+1.45,o2,.35,0,.6); pop('tg2',t,T.w2008+.1,o2,.35,-2,.5);
+
+  // 3 올해 — 6월 최고 → 지금, '백삼십'에 −132원
+  sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1;
+  fx('t3',t,T.s3+.05,.45,o3,.35,30); fx('u3',t,T.s3+.2,.45,o3,.35,20); fx('c3',t,T.s3+.1,.5,o3,.35,40);
+  clip(3,eIO(P(t,T.s3+.2,1.2)));
+  op('dot3a',clamp(P(t,T.w965-.2,.2))); pop('lab3a',t,T.w965-.25,o3,.35,0,.6);
+  op('dot3b',clamp(P(t,T.s3+1.3,.2))); pop('lab3b',t,T.s3+1.35,o3,.35,0,.6);
+  op('arr3',clamp(P(t,T.w130-.2,.3))); pop('tg3',t,T.w130,o3,.35,3,.5);
+
+  // 4 엔만 약해졌을까 — 두 카드는 장면이 열릴 때 흐리게, 엔 카드는 '조금'에, 원 카드는 '훨씬'에 또렷하게
+  sv('s4',T.s4,T.s5+.3); const o4=T.s5-.1;
+  fx('t4',t,T.s4+.05,.45,o4,.35,30); fx('u4',t,T.s4+.2,.45,o4,.35,20);
+  const aY=fx('fxY',t,T.s4+.15,.5,o4,.35,40), aW=fx('fxW',t,T.s4+.3,.5,o4,.35,40);
+  $('fxY').style.opacity=String(aY*(.45+.55*clamp(P(t,T.L05,.4))));
+  $('fxW').style.opacity=String(aW*(.45+.55*clamp(P(t,T.L06-.1,.4))));
+  pop('tagY',t,T.wYen,o4,.35,-2,.5); pop('tagW',t,T.wWon,o4,.35,2,.5);
+  const wk=P(t,T.wWon-.05,.4); $('fxW').style.transform+=` scale(${1+.04*Math.sin(clamp(wk)*Math.PI)})`;
+  pop('big4',t,T.wShare-.05,o4,.35,-2,.5);
+
+  // 5 역대 최저일까 — 2000년부터, 2007년 점은 '칠백'에
+  sv('s5',T.s5,T.s6+.3); const o5=T.s6-.1;
+  fx('t5',t,T.s5+.05,.45,o5,.35,30); fx('u5',t,T.s5+.2,.45,o5,.35,20); fx('c5',t,T.s5+.1,.5,o5,.35,40);
+  clip(5,eIO(P(t,T.s5+.2,1.3))); op('ln5',clamp(P(t,T.s5+1.2,.4)));
+  op('dot5b',clamp(P(t,T.s5+1.4,.2))); pop('lab5b',t,T.s5+1.45,o5,.35,0,.6);
+  op('dot5a',clamp(P(t,T.w746-.2,.2))); pop('lab5a',t,T.w746-.2,o5,.35,0,.6);
+
+  // 6 10만 엔 — 계산 줄은 차례로, 합계는 '십일만'에
+  sv('s6',T.s6,T.s8+.3); const o6=T.s8-.1;
+  fx('t6',t,T.s6+.05,.45,o6,.35,30); fx('u6',t,T.s6+.2,.45,o6,.35,20); fx('c6',t,T.s6+.1,.5,o6,.35,40);
+  fx('r6a',t,T.s6+.3,.35,o6,.35,16,-20); fx('r6b',t,T.s6+.5,.35,o6,.35,16,-20);
+  const r6=fx('r6c',t,T.s6+.6,.4,o6,.35,20); $('r6c').style.opacity=String(r6*(.35+.65*clamp(P(t,T.w11-.1,.3))));
+  fx('note6',t,T.s6+.8,.45,o6,.35,30);
+
+  // 8 정리(카드는 끝까지 남는다)
+  sv('s8',T.s8,99);
+  fx('c8',t,T.s8+.05,.5,null,0,50);
+  ['k1','k2','k3','k4'].forEach((id,i)=>fx(id,t,T.s8+.3+i*.3,.4,null,0,20,-30));
+  const sk=P(t,T.stamp-.12,.3); $('stamp8').style.opacity=clamp(sk*5);
+  $('stamp8').style.transform=`rotate(-10deg) scale(${sk<=0?1.6:1.6-.6*eOut(sk)})`;
+
+  // 끝: 구독·좋아요 칩, 엔 동전이 볼주머니로
+  pop('cta9',t,T.L12-.05,T.L13+.25,.3,-2,.6);
+  const fk=P(t,T.L13-.45,.55), fl=$('fly');
+  if(fk>0&&fk<1){const x=lerp(560,180,eIO(fk)),y=lerp(700,1260,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L13-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.5})`;}
+  else fl.style.opacity=0;
+
+  renderChars(t);
+}
+window.render=render;
+document.fonts.ready.then(()=>{render(0);setTimeout(()=>{document.fonts.ready.then(()=>{render(0);window.__ready=true;});},300);});
+</script>
+<script src="dyn.js"></script>
+</body>
+</html>

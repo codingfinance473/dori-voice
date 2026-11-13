@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>도리 썸네일</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--mint:#2E9C83;--red:#E2483A;--yel:#FFD45C;--blue:#5B8CFF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);font-family:P,sans-serif;color:var(--ink);word-break:keep-all}
+.frame{position:relative;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.J{font-family:Jua;font-weight:400}
+.blob{position:absolute;border-radius:50%}
+.title{isolation:isolate;font-family:Jua;line-height:1.08;letter-spacing:-2px;color:var(--ink)}
+.hl{position:relative;display:inline-block}
+.hl:before{content:"";position:absolute;left:-10px;right:-10px;bottom:6%;height:34%;background:var(--yel);border-radius:14px;z-index:-1;transform:rotate(-1.5deg)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="gLens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF4FC"/><stop offset="1" stop-color="#A9C8E8"/></linearGradient>
+  <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7B57E"/><stop offset="1" stop-color="#C98C55"/></linearGradient>
+  <linearGradient id="gBoard" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4E7A63"/><stop offset="1" stop-color="#355A48"/></linearGradient>
+  <linearGradient id="gFlame" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5B8CFF"/><stop offset=".55" stop-color="#8FB7FF"/><stop offset="1" stop-color="#E3F0FF"/></linearGradient>
+  <linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3E9DD"/></linearGradient>
+  <radialGradient id="gSh2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
+</defs></svg>
+<div id="root"></div>
+<script src="dori_outfits.js"></script>
+<script src="dori.js"></script>
+<script>
+const qs=new URLSearchParams(location.search), G=qs.get('guide')==='1';
+const W=1080, H=1920, K='#4A3A33';
+const base={t:1.2,blink:0,happy:0,squint:0,surprise:0,sad:0,open:0,gx:0,gy:0,pouch:0,armL:0,armR:0,earL:0,earR:0,hop:0,squash:0,breath:0,tilt:0};
+const root=document.getElementById('root');
+root.innerHTML=`<div class="frame" id="f" style="width:${W}px;height:${H}px"></div>`;
+const f=document.getElementById('f');
+const add=(html)=>{f.insertAdjacentHTML('beforeend',html);return f.lastElementChild;};
+function blobs(list){list.forEach(([x,y,s,c])=>add(`<div class="blob" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:radial-gradient(circle,${c} 0%,${c}00 68%)"></div>`));}
+function dori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*570/400}px"></div>`);Dori.mount(d,{outfit:CFG.outfit||''});Dori.draw({...base,...st});return d;}
+function mori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*570/400}px"></div>`);const m=Mori.mount(d,{variant:'cream'});m.draw(st);return d;}
+
+// ===== EX.11 엔화 환율 — 공항 환전소 장면: 위엔 '환전' 간판, 가운데 시세판 "100엔 = ?원 ▼", 앞엔 엔 동전·지폐, 도리(여행 옷)는 깜짝, 옆엔 여행 가방 =====
+// 핵심 띠 y 600~1320 · x 90~960: 제목 + 시세판 / 보조 y 380~1540: 간판·도리·가방 / 그 밖은 벽·바닥. 답(833원)은 드러내지 않는다.
+const CFG={outfit:'travel'};   // index.html 의 OUTFIT 과 같게
+document.querySelector('svg defs').insertAdjacentHTML('beforeend',`<linearGradient id="gBoard2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3C4558"/><stop offset="1" stop-color="#262C3A"/></linearGradient>
+<radialGradient id="gCoin" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#FFF1B8"/><stop offset=".5" stop-color="#F4C64E"/><stop offset="1" stop-color="#C98F1E"/></radialGradient>
+<radialGradient id="gCoinS" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#D9DEE6"/><stop offset="1" stop-color="#9AA4B4"/></radialGradient>
+<linearGradient id="gBill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3EFE2"/><stop offset=".6" stop-color="#E4DCC6"/><stop offset="1" stop-color="#CFC3A6"/></linearGradient>
+<linearGradient id="gCase" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ED3C1"/><stop offset=".6" stop-color="#4FB59A"/><stop offset="1" stop-color="#2E8F78"/></linearGradient>`);
+const COIN=(w,txt,silver)=>`<svg viewBox="0 0 140 140" width="${w}" height="${w}" style="overflow:visible">
+  <ellipse cx="70" cy="132" rx="56" ry="8" fill="url(#gSh2)"/>
+  <circle cx="70" cy="74" r="58" fill="${silver?'#8D97A8':'#C98F1E'}" stroke="${K}" stroke-width="6"/>
+  <circle cx="70" cy="66" r="58" fill="url(#${silver?'gCoinS':'gCoin'})" stroke="${K}" stroke-width="6"/>
+  <circle cx="70" cy="66" r="44" fill="none" stroke="${silver?'#8D97A8':'#B57E14'}" stroke-width="4" stroke-dasharray="6 6"/>
+  <text x="70" y="84" text-anchor="middle" font-family="Jua" font-size="50" fill="${silver?'#3D4558':'#7A5208'}">${txt}</text>
+  <path d="M34 44 C42 30 56 22 72 20" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7"/></svg>`;
+const BILL=(w,rot=0)=>`<svg viewBox="0 0 240 130" width="${w}" height="${w*130/240}" style="overflow:visible;transform:rotate(${rot}deg)">
+  <rect x="6" y="8" width="228" height="116" rx="12" fill="url(#gBill)" stroke="${K}" stroke-width="6"/>
+  <rect x="22" y="22" width="196" height="88" rx="8" fill="none" stroke="#B7A57E" stroke-width="4"/>
+  <circle cx="176" cy="66" r="30" fill="#EFE6CF" stroke="#B7A57E" stroke-width="4"/>
+  <text x="176" y="80" text-anchor="middle" font-family="Jua" font-size="38" fill="#8C7848">円</text>
+  <text x="34" y="62" font-family="P" font-weight="900" font-size="34" fill="#6E5D3A">10000</text>
+  <path d="M34 82 H130 M34 96 H104" stroke="#C9B994" stroke-width="6" stroke-linecap="round"/></svg>`;
+const CASE=(w)=>`<svg viewBox="0 0 250 290" width="${w}" height="${w*290/250}" style="overflow:visible">
+  <ellipse cx="125" cy="282" rx="110" ry="11" fill="url(#gSh2)"/>
+  <path d="M92 64 V24 Q92 10 106 10 H144 Q158 10 158 24 V64" fill="none" stroke="${K}" stroke-width="12" stroke-linecap="round"/>
+  <path d="M92 64 V24 Q92 10 106 10 H144 Q158 10 158 24 V64" fill="none" stroke="#9AA4B4" stroke-width="5" stroke-linecap="round"/>
+  <rect x="26" y="60" width="198" height="206" rx="26" fill="url(#gCase)" stroke="${K}" stroke-width="7"/>
+  <path d="M60 70 V256 M190 70 V256" stroke="#2A7A66" stroke-width="5" opacity=".55"/>
+  <path d="M40 80 V170" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".5"/>
+  <circle cx="92" cy="122" r="26" fill="#fff" stroke="${K}" stroke-width="5"/><circle cx="92" cy="122" r="11" fill="#E2483A"/>
+  <rect x="120" y="150" width="78" height="44" rx="10" fill="#FFD45C" stroke="${K}" stroke-width="5" transform="rotate(8 159 172)"/>
+  <path d="M72 210 l10 -20 l10 20 l-20 -12 h20 z" fill="#fff" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="64" cy="272" r="11" fill="#4A3A33"/><circle cx="186" cy="272" r="11" fill="#4A3A33"/></svg>`;
+f.style.background='linear-gradient(180deg,#DCE9F5 0%,#EEF4F8 40%,#FFF6EC 100%)';
+add(`<div class="abs" style="left:0;top:0;width:1080px;height:1920px;background-image:radial-gradient(rgba(74,58,51,.07) 2px,transparent 2.5px);background-size:46px 46px"></div>`);
+// 위: 공항 창문(배경, 글자 없음) — 비행기 실루엣 하나
+add(`<svg class="abs" style="left:0;top:40px" width="1080" height="360" viewBox="0 0 1080 360">
+  ${[0,1,2,3].map(i=>`<rect x="${30+i*262}" y="40" width="230" height="300" rx="26" fill="#BFDDF3" stroke="${K}" stroke-width="6"/><path d="M${50+i*262} 70 L${120+i*262} 70" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".7"/>`).join('')}
+  <g transform="translate(600 150) rotate(-12)"><path d="M0 0 L150 0 Q178 0 178 14 Q178 28 150 28 L0 28 Q-14 14 0 0Z" fill="#fff" stroke="${K}" stroke-width="5"/><path d="M60 14 L30 -40 L52 -40 L100 14Z M60 14 L30 68 L52 68 L100 14Z" fill="#fff" stroke="${K}" stroke-width="5" stroke-linejoin="round"/><path d="M4 14 L-10 -14 L6 -14 L22 10Z" fill="#fff" stroke="${K}" stroke-width="5"/></g>
+</svg>`);
+blobs([[-260,640,820,'#FFE7D6'],[520,700,720,'#FFF0C8']]);
+// 환전 간판(보조 영역)
+add(`<div class="abs J" style="left:330px;top:420px;width:420px;height:118px;border-radius:24px;background:#FFD45C;border:7px solid ${K};display:flex;align-items:center;justify-content:center;gap:18px;font-size:70px;box-shadow:0 10px 0 rgba(62,47,37,.16)"><span style="width:62px;height:62px;border-radius:50%;background:#fff;border:6px solid ${K};display:flex;align-items:center;justify-content:center;font-size:42px;color:#E2483A">¥</span>환전</div>`);
+// 제목 — 흰 테두리 스티커 글씨(질문, 답 없음)
+add(`<div class="abs title" style="left:96px;top:600px;font-size:136px;-webkit-text-stroke:16px #fff;paint-order:stroke fill;text-shadow:0 10px 0 rgba(62,47,37,.12)">엔화 <span style="color:#E2483A">또</span><br><span class="hl">떨어졌다?</span></div>`);
+// 시세판(핵심 그림): 100엔 = ?원 ▼
+add(`<div class="abs" style="left:110px;top:900px;width:850px;height:300px;border-radius:30px;background:linear-gradient(180deg,#3C4558,#262C3A);border:8px solid ${K};box-shadow:0 14px 0 rgba(62,47,37,.18)">
+  <div class="J" style="position:absolute;left:40px;top:22px;font-size:40px;color:#FFE9A8">오늘의 엔화 환율</div>
+  <div style="position:absolute;left:30px;top:84px;width:784px;height:180px;border-radius:20px;background:#323A4C;display:flex;align-items:center;padding:0 30px;gap:20px">
+    <span class="J" style="font-size:84px;color:#fff">100엔</span><span class="J" style="font-size:84px;color:#AEB8CC">=</span>
+    <span class="J" style="font-size:118px;color:#FF8A7A">?원</span>
+    <span class="J" style="margin-left:auto;width:120px;height:120px;border-radius:50%;background:#5B8CFF;border:6px solid #fff;color:#fff;font-size:76px;display:flex;align-items:center;justify-content:center">▼</span></div></div>`);
+// 앞: 지폐·동전(시세판 아래 계산대)
+add(`<div class="abs" style="left:0;top:1468px;width:1080px;height:452px;background:repeating-linear-gradient(90deg,rgba(74,58,51,.10) 0 4px,transparent 4px 180px),linear-gradient(180deg,#E7B57E 0%,#C98E5C 100%);border-top:8px solid ${K}"></div>`);
+add(`<div class="abs" style="left:400px;top:1338px">${BILL(250,-8)}</div>`);
+add(`<div class="abs" style="left:440px;top:1372px">${BILL(250,5)}</div>`);
+add(`<div class="abs" style="left:660px;top:1340px">${COIN(124,'¥',true)}</div>`);
+add(`<div class="abs" style="left:600px;top:1392px">${COIN(96,'¥')}</div>`);
+add(`<div class="abs" style="left:780px;top:1228px">${CASE(200)}</div>`);
+[[900,660,26],[70,900,22],[740,1250,18]].forEach(([x,y,r])=>add(`<svg class="abs" style="left:${x-r}px;top:${y-r}px" width="${2*r}" height="${2*r}" viewBox="-10 -10 20 20"><path d="M0 -10 Q1.6 -1.6 10 0 Q1.6 1.6 0 10 Q-1.6 1.6 -10 0 Q-1.6 -1.6 0 -10Z" fill="#FFD45C" stroke="#4A3A33" stroke-width="1.4"/></svg>`));
+dori(-30,950,540,{tilt:-6,gx:.8,gy:-.6,armL:.6,armR:.9,earL:4,earR:4,surprise:.8,open:.5});
+if(G){
+  add(`<div class="abs" style="left:0;top:0;width:1080px;height:380px;background:rgba(226,72,58,.18)"></div><div class="abs" style="left:0;top:1540px;width:1080px;height:380px;background:rgba(226,72,58,.18)"></div><div class="abs" style="left:960px;top:0;width:120px;height:1920px;background:rgba(226,72,58,.12)"></div><div class="abs" style="left:0;top:600px;width:1080px;height:720px;border-top:4px dashed #2E9C83;border-bottom:4px dashed #2E9C83"></div><div class="abs" style="left:0;top:285px;width:1080px;height:1350px;border-top:4px dotted #5B8CFF;border-bottom:4px dotted #5B8CFF"></div>`);
+}
+document.fonts.ready.then(()=>{setTimeout(()=>{window.__ready=true;},300);});
+</script>
+</body>
+</html>

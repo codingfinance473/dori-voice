@@ -157,14 +157,14 @@ def make(style, G):
             for j, m in enumerate(ms): note(INST["hi"], m, a + j * .1, .05, .6, pan=-.3 + .25 * j)
 
     # ---------- 장면이 바뀔 때: 올라가는 꾸밈 ----------
-    for s_ in ("s2", "s3", "s4", "s5", "s8"):
+    for s_ in ("s2", "s3", "s4", "s5", "s6", "s8"):
         if s_ not in T: continue
         t0 = T[s_]; ch = chord_at(t0 + .3)
         for j, m in enumerate([ch[0] + 12, ch[1] + 12, ch[2] + 12, ch[0] + 24]):
             note(INST["hi"], m, t0 - .32 + j * .075, .028, .5, pan=-.3 + .2 * j)
 
     # ---------- 숫자·핵심 단어: 작은 화음 한 번(16분음표 격자에) ----------
-    for w in ("wUse", "wNext", "wRefuse", "wOne", "w55", "wSubmit"):
+    for w in G.get("NUM_WORDS", ("wUse", "wNext", "wRefuse", "wOne", "w55", "wSubmit")):
         if w not in T: continue
         t = round(T[w] / (E8 / 2)) * (E8 / 2); ch = chord_at(t)
         for j, m in enumerate(ch[:3]): note(INST["ch"] if style != "M" else "celesta", m + 12, t + j * .008, .03, .5, pan=.15)
