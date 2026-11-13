@@ -1,0 +1,47 @@
+{
+ "id": "ex11-03",
+ "note": "EX.11 엔화 숫자 줄 다시(833 → 830원대)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 392,
+   "takes": 4,
+   "texts": [
+    "지금 백 엔이, 팔백삼십 원대래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 393,
+   "takes": 4,
+   "texts": [
+    "백 엔이 이제, 팔백삼십 원대야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 394,
+   "takes": 4,
+   "texts": [
+    "지금 백 엔이, 팔백 삼십 삼 원!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01g",
+  "L01h",
+  "L01i"
+ ]
+}
