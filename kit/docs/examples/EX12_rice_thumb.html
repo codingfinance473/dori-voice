@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>도리 썸네일</title>
+<link rel="stylesheet" href="jua/index.css">
+<style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.otf);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.otf);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.otf);font-weight:900}
+:root{--cream:#FFF6EC;--ink:#3E2F25;--mint:#2E9C83;--red:#E2483A;--yel:#FFD45C;--blue:#5B8CFF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);font-family:P,sans-serif;color:var(--ink);word-break:keep-all}
+.frame{position:relative;overflow:hidden;background:var(--cream)}
+.abs{position:absolute}
+.J{font-family:Jua;font-weight:400}
+.blob{position:absolute;border-radius:50%}
+.title{isolation:isolate;font-family:Jua;line-height:1.08;letter-spacing:-2px;color:var(--ink)}
+.hl{position:relative;display:inline-block}
+.hl:before{content:"";position:absolute;left:-10px;right:-10px;bottom:6%;height:34%;background:var(--yel);border-radius:14px;z-index:-1;transform:rotate(-1.5deg)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="gLens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF4FC"/><stop offset="1" stop-color="#A9C8E8"/></linearGradient>
+  <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7B57E"/><stop offset="1" stop-color="#C98C55"/></linearGradient>
+  <linearGradient id="gBoard" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4E7A63"/><stop offset="1" stop-color="#355A48"/></linearGradient>
+  <linearGradient id="gFlame" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5B8CFF"/><stop offset=".55" stop-color="#8FB7FF"/><stop offset="1" stop-color="#E3F0FF"/></linearGradient>
+  <linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3E9DD"/></linearGradient>
+  <radialGradient id="gSh2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".32"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient>
+</defs></svg>
+<div id="root"></div>
+<script src="dori_outfits.js"></script>
+<script src="dori.js"></script>
+<script src="mori.js"></script>
+<script>
+const qs=new URLSearchParams(location.search), G=qs.get('guide')==='1';
+const W=1080, H=1920, K='#4A3A33';
+const base={t:1.2,blink:0,happy:0,squint:0,surprise:0,sad:0,open:0,gx:0,gy:0,pouch:0,armL:0,armR:0,earL:0,earR:0,hop:0,squash:0,breath:0,tilt:0};
+const root=document.getElementById('root');
+root.innerHTML=`<div class="frame" id="f" style="width:${W}px;height:${H}px"></div>`;
+const f=document.getElementById('f');
+const add=(html)=>{f.insertAdjacentHTML('beforeend',html);return f.lastElementChild;};
+function blobs(list){list.forEach(([x,y,s,c])=>add(`<div class="blob" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;background:radial-gradient(circle,${c} 0%,${c}00 68%)"></div>`));}
+function dori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*570/400}px"></div>`);Dori.mount(d,{outfit:CFG.outfit||''});Dori.draw({...base,...st});return d;}
+function mori(x,y,w,st){const d=add(`<div class="abs" style="left:${x}px;top:${y}px;width:${w}px;height:${w*570/400}px"></div>`);const m=Mori.mount(d,{variant:'cream'});m.draw(st);return d;}
+
+// ===== EX.12 일본 쌀값 — 쌀 가게 장면: 뒤엔 쌀 포대 선반, 매대 위 일본 5kg·한국 20kg 포대(상표 없음, 국기 스티커)와 "?원" 가격표, 가운데 밥 한 공기. 도리(news 옷)는 깜짝, 모리는 의심 =====
+// 핵심 띠 y 600~1320 · x 90~960: 제목 + 포대·가격표 / 보조 y 380~1540: 도리·모리 / 그 밖은 벽·바닥. 답(몇 배인지)은 드러내지 않는다.
+const CFG={outfit:'news'};   // index.html 의 OUTFIT 과 같게
+document.querySelector('svg defs').insertAdjacentHTML('beforeend',`<linearGradient id="gSack" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFDF7"/><stop offset=".6" stop-color="#F2E8D6"/><stop offset="1" stop-color="#DCCBB0"/></linearGradient><linearGradient id="gSackK" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#EEF2F8"/><stop offset="1" stop-color="#CBD5E4"/></linearGradient><linearGradient id="gBowl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FB6E0"/><stop offset="1" stop-color="#5E78AE"/></linearGradient><radialGradient id="gRice" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EDE6DA"/></radialGradient><linearGradient id="gWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6EEDC"/><stop offset="1" stop-color="#EADFC6"/></linearGradient>`);
+const FLAG=f=>f==='jp'?`<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#C8102E"/>`
+ :`<rect width="30" height="20" fill="#fff"/><g transform="translate(15 10) rotate(-33)"><path d="M-5 0 A5 5 0 0 1 5 0 A2.5 2.5 0 0 1 0 0 A2.5 2.5 0 0 0 -5 0Z" fill="#CD2E3A"/><path d="M-5 0 A5 5 0 0 0 5 0 A2.5 2.5 0 0 0 0 0 A2.5 2.5 0 0 1 -5 0Z" fill="#0047A0"/></g>`+
+  [[5,4,33],[25,16,33],[25,4,-33],[5,16,-33]].map(([x,y,r])=>`<g transform="translate(${x} ${y}) rotate(${r})">${[-1.6,0,1.6].map(d=>`<rect x="-2.6" y="${d-.45}" width="5.2" height=".9" fill="#222"/>`).join('')}</g>`).join('');
+const SACK=(w,kg,fl)=>{const g=fl==='kr'?'url(#gSackK)':'url(#gSack)', band=fl==='kr'?'#5B8CFF':'#E2483A';
+ return `<svg viewBox="0 0 220 290" width="${w}" height="${w*290/220}" style="overflow:visible">
+  <ellipse cx="110" cy="280" rx="100" ry="11" fill="url(#gSh2)"/>
+  <path d="M70 46 Q110 30 150 46 L158 22 Q110 8 62 22 Z" fill="${g}" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M66 48 Q110 60 154 48" fill="none" stroke="${band}" stroke-width="10" stroke-linecap="round"/>
+  <path d="M60 52 C28 64 18 110 20 170 C22 238 40 272 110 272 C180 272 198 238 200 170 C202 110 192 64 160 52 Q110 66 60 52 Z" fill="${g}" stroke="${K}" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M40 100 C34 140 34 200 46 242" stroke="#fff" stroke-width="8" stroke-linecap="round" fill="none" opacity=".6"/>
+  <path d="M180 120 C186 170 182 216 168 246" stroke="#B9A88E" stroke-width="5" stroke-linecap="round" fill="none" opacity=".5"/>
+  <rect x="52" y="112" width="116" height="118" rx="16" fill="#fff" stroke="${K}" stroke-width="5"/>
+  <rect x="52" y="112" width="116" height="26" rx="12" fill="${band}" stroke="${K}" stroke-width="5"/>
+  <text x="110" y="190" text-anchor="middle" font-family="Jua" font-size="50" fill="#3E2F25">쌀</text>
+  <text x="110" y="220" text-anchor="middle" font-family="Jua" font-size="26" fill="#7E6B5C">${kg}</text>
+  ${[[78,164],[142,168],[90,206],[132,204]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="5" ry="8" transform="rotate(30 ${x} ${y})" fill="#EFE6D6" stroke="#B9A88E" stroke-width="2"/>`).join('')}
+  ${fl?`<g transform="translate(140 66)"><rect width="46" height="32" rx="5" fill="#fff" stroke="${K}" stroke-width="4"/><g transform="translate(4 4) scale(1.27 1.2)">${FLAG(fl)}</g><rect width="46" height="32" rx="5" fill="none" stroke="${K}" stroke-width="4"/></g>`:''}
+ </svg>`;};
+const BOWL=(w)=>`<svg viewBox="0 0 200 150" width="${w}" height="${w*.75}" style="overflow:visible">
+  <ellipse cx="100" cy="142" rx="80" ry="8" fill="url(#gSh2)"/>
+  <path d="M30 70 C30 30 170 30 170 70 Z" fill="url(#gRice)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  ${[[60,58],[80,48],[104,44],[128,50],[146,60],[92,62],[118,62]].map(([x,y])=>`<ellipse cx="${x}" cy="${y}" rx="5" ry="3" fill="#fff" stroke="#D8CFC0" stroke-width="1.5"/>`).join('')}
+  <path d="M20 70 H180 C176 112 146 134 100 134 C54 134 24 112 20 70 Z" fill="url(#gBowl)" stroke="${K}" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M36 84 C44 106 62 118 84 124" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".45"/>
+</svg>`;
+f.style.background='linear-gradient(180deg,#F6EEDC 0%,#FFF6EC 45%,#FFF3E6 100%)';
+add(`<div class="abs" style="left:0;top:0;width:1080px;height:1920px;background-image:radial-gradient(rgba(74,58,51,.07) 2px,transparent 2.5px);background-size:46px 46px"></div>`);
+// 뒤 선반(배경, 글자 없음) — 작은 쌀 포대 줄
+add(`<svg class="abs" style="left:0;top:90px" width="1080" height="520" viewBox="0 0 1080 520">
+  ${[0,1,2].map(r=>`<rect x="0" y="${150+r*160}" width="1080" height="18" fill="#C9A985" stroke="${K}" stroke-width="5"/>`).join('')}
+  ${[0,1,2].map(r=>[...Array(11)].map((_,i)=>{const h=84+((i*7+r*3)%3)*12;const x=18+i*98;const y=150+r*160;return `<path d="M${x} ${y} v-${h-16} q0 -16 16 -18 q24 -10 40 0 q16 2 16 18 v${h-16}z" fill="${(i+r)%2?'#F2E8D6':'#EEF2F8'}" stroke="${K}" stroke-width="5"/><path d="M${x+12} ${y-h+20} v${h-34}" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".6"/>`;}).join('')).join('')}
+</svg>`);
+blobs([[-260,560,800,'#FFE7D6'],[520,600,700,'#FFF0C8']]);
+// 매대(나무) — 화면 아래까지
+add(`<div class="abs" style="left:0;top:1330px;width:1080px;height:590px;background:
+  repeating-linear-gradient(90deg,rgba(74,58,51,.10) 0 4px,transparent 4px 180px),
+  linear-gradient(180deg,#E7B57E 0%,#C98E5C 100%);border-top:8px solid ${K}"></div>`);
+// 진열대
+add(`<div class="abs" style="left:96px;top:1252px;width:888px;height:26px;border-radius:8px;background:#C9A985;border:6px solid ${K};box-shadow:0 8px 0 rgba(62,47,37,.12)"></div>`);
+// 가운데: 일본 5kg · 밥 · 한국 20kg + "?원" 가격표
+add(`<div class="abs" style="left:96px;top:930px;transform:rotate(-4deg)">${SACK(220,'5kg','jp')}</div>`);
+add(`<div class="abs" style="left:584px;top:930px;transform:rotate(4deg)">${SACK(220,'20kg','kr')}</div>`);
+add(`<div class="abs" style="left:340px;top:1100px">${BOWL(230)}</div>`);
+add(`<div class="abs J" style="left:170px;top:1170px;transform:rotate(-6deg);background:#fff;border:6px solid ${K};border-radius:20px;padding:8px 22px 6px;font-size:58px;line-height:1.05;text-align:center;color:#E2483A;box-shadow:0 10px 0 rgba(62,47,37,.14)"><span style="font-size:26px;color:#7E6B5C">일본</span><br>?원</div>`);
+add(`<div class="abs J" style="left:630px;top:1170px;transform:rotate(5deg);background:#fff;border:6px solid ${K};border-radius:20px;padding:8px 22px 6px;font-size:58px;line-height:1.05;text-align:center;color:#5B8CFF;box-shadow:0 10px 0 rgba(62,47,37,.14)"><span style="font-size:26px;color:#7E6B5C">한국</span><br>?원</div>`);
+add(`<div class="abs J" style="left:300px;top:930px;transform:rotate(-3deg);background:#FFD45C;border:6px solid ${K};border-radius:999px;padding:8px 30px;font-size:50px;color:#3E2F25;box-shadow:0 8px 0 rgba(62,47,37,.16);white-space:nowrap">같은 5kg ▲?배</div>`);
+// 제목 — 흰 테두리 스티커 글씨(질문, 답 없음)
+add(`<div class="abs title" style="left:92px;top:604px;font-size:124px;-webkit-text-stroke:16px #fff;paint-order:stroke fill;text-shadow:0 10px 0 rgba(62,47,37,.12)"><span class="hl">일본 쌀값</span>,<br><span style="color:#E2483A">한국보다 비쌀까?</span></div>`);
+[[944,800,24],[80,880,22],[560,1300,16]].forEach(([x,y,r])=>add(`<svg class="abs" style="left:${x-r}px;top:${y-r}px" width="${2*r}" height="${2*r}" viewBox="-10 -10 20 20"><path d="M0 -10 Q1.6 -1.6 10 0 Q1.6 1.6 0 10 Q-1.6 1.6 -10 0 Q-1.6 -1.6 0 -10Z" fill="#FFD45C" stroke="#4A3A33" stroke-width="1.4"/></svg>`));
+dori(-30,1110,440,{tilt:-6,gx:.8,gy:-.3,armL:.6,armR:.9,earL:4,earR:4,surprise:.8,open:.5});
+mori(800,1060,300,{lid:.42,browR:1,gx:-.9,gy:-.1,tilt:-3,tail:.7,armL:0,smile:1});
+if(G){
+  add(`<div class="abs" style="left:0;top:0;width:1080px;height:380px;background:rgba(226,72,58,.18)"></div><div class="abs" style="left:0;top:1540px;width:1080px;height:380px;background:rgba(226,72,58,.18)"></div><div class="abs" style="left:960px;top:0;width:120px;height:1920px;background:rgba(226,72,58,.12)"></div><div class="abs" style="left:0;top:600px;width:1080px;height:720px;border-top:4px dashed #2E9C83;border-bottom:4px dashed #2E9C83"></div><div class="abs" style="left:0;top:285px;width:1080px;height:1350px;border-top:4px dotted #5B8CFF;border-bottom:4px dotted #5B8CFF"></div>`);
+}
+document.fonts.ready.then(()=>{setTimeout(()=>{window.__ready=true;},300);});
+</script>
+</body>
+</html>
