@@ -37,12 +37,14 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 .ttl em{font-style:normal;color:var(--red)}
 .ttl em.m{color:var(--mint)} .ttl em.b{color:var(--blue)}
 .tt{left:80px;top:290px;font-size:72px}
-.uu{position:absolute;left:84px;top:386px;font-size:25px;font-weight:700;color:var(--sub);white-space:nowrap;background:rgba(255,248,240,.85);border-radius:10px;padding:2px 8px}
+.uu{position:absolute;left:84px;top:384px;font-size:27px;font-weight:800;color:#6B5848;white-space:nowrap;background:rgba(255,248,240,.85);border-radius:10px;padding:2px 8px}
 .chip{position:absolute;font-family:Jua;font-size:34px;color:#fff;border-radius:999px;padding:6px 22px;white-space:nowrap;border:4px solid #4A3A33;box-shadow:0 6px 0 rgba(74,58,51,.18)}
 .chip.red{background:var(--red)} .chip.mint{background:var(--mint)} .chip.slate{background:var(--slate)} .chip.yel{background:#FFD45C;color:var(--ink)} .chip.blue{background:var(--blue)} .chip.ora{background:var(--ora)}
 .ptag{position:absolute;font-family:Jua;font-size:54px;line-height:1;color:var(--ink);background:#fff;border:5px solid #4A3A33;border-radius:16px;padding:14px 26px 12px 54px;white-space:nowrap;box-shadow:0 8px 0 rgba(74,58,51,.16)}
 .ptag:before{content:"";position:absolute;left:18px;top:50%;width:20px;height:20px;margin-top:-10px;border-radius:50%;background:#F3E6D8;border:4px solid #4A3A33}
-.ptag small{display:block;font-family:P;font-weight:800;font-size:22px;color:var(--sub);margin-bottom:4px}
+.ptag small{display:block;font-family:P;font-weight:800;font-size:26px;color:#6B5848;margin-bottom:6px}
+.ptag .nv{display:none}
+.ptag .qv,.ptag .nv{line-height:1.22}
 .ptag.q{color:var(--red)} .ptag.b{color:var(--blue)}
 /* 1 콜드오픈 — 쌀 가게 선반 */
 #t1{left:80px;top:300px;font-size:84px}
@@ -54,18 +56,21 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #tag2{left:452px;top:520px;transform:rotate(-3deg)}
 #tax2{left:476px;top:704px}
 #pos2{left:452px;top:790px;width:430px;height:150px;border-radius:24px;background:#F4FAF7;border:5px solid #4A3A33;display:flex;align-items:center;gap:16px;padding:0 20px;font-family:Jua;font-size:32px;line-height:1.2}
-#pos2 small{display:block;font-family:P;font-weight:800;font-size:22px;color:var(--sub)}
+#pos2 small{display:block;font-family:P;font-weight:800;font-size:25px;color:#6B5848;margin-top:4px}
 /* 3 원으로 바꾸면 */
 #c3{left:60px;top:430px;width:860px;height:545px}
 #fx3{left:100px;top:470px;width:780px;height:170px;border-radius:26px;background:#2F3A52;border:6px solid #4A3A33;display:flex;align-items:center;justify-content:center;gap:24px;font-family:Jua;color:#fff;box-shadow:0 10px 0 rgba(74,58,51,.18)}
 #fx3 .a{font-size:52px} #fx3 .eq{font-size:52px;color:#FFD45C} #fx3 .b{font-size:68px;color:#9FE3C9}
-#fx3 small{position:absolute;left:24px;top:12px;font-family:P;font-weight:800;font-size:21px;color:#C6D2E8}
+#fx3 small{position:absolute;left:26px;top:12px;font-family:P;font-weight:800;font-size:26px;color:#DCE4F2}
 #cv3{left:100px;top:672px;width:780px;height:276px;display:flex;align-items:center;justify-content:space-between}
-#cv3 .y{width:300px;height:250px;border-radius:26px;background:#fff;border:5px solid #4A3A33;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Jua;box-shadow:0 8px 0 rgba(74,58,51,.14)}
-#cv3 .y small{font-family:P;font-weight:800;font-size:23px;color:var(--sub)}
-#cv3 .y b{font-weight:400;font-size:66px;line-height:1.1}
+#cv3 .y{width:270px;height:250px;border-radius:26px;background:#fff;border:5px solid #4A3A33;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Jua;box-shadow:0 8px 0 rgba(74,58,51,.14)}
+#cv3 .y small{font-family:P;font-weight:800;font-size:27px;color:#6B5848;margin-bottom:6px}
+#cv3 .y b{font-weight:400;font-size:62px;line-height:1.1;white-space:nowrap}
+#cv3 .nv{display:none}
+#won3 b.nv{display:none}
 #cv3 .ar{font-family:Jua;font-size:60px;color:#4A3A33}
-#won3{width:380px!important;background:#FFF1EE!important}
+#won3{width:430px!important;background:#FFF1EE!important}
+#won3 b{font-size:56px!important}
 #won3 b{color:var(--red)}
 /* 4 한국은? */
 #c4{left:60px;top:430px;width:860px;height:545px}
@@ -75,11 +80,11 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #chip4{left:664px;top:584px}
 #bars4{left:96px;top:712px;width:790px;height:250px}
 .bar{position:absolute;left:150px;height:78px;border-radius:0 18px 18px 0;border:5px solid #4A3A33;display:flex;align-items:center;justify-content:flex-end;padding-right:18px;font-family:Jua;font-size:38px;color:#fff;white-space:nowrap;overflow:hidden}
-.blab{position:absolute;left:0;width:140px;font-family:Jua;font-size:34px;line-height:1.05;color:var(--ink);text-align:right}
-.blab small{display:block;font-family:P;font-weight:800;font-size:20px;color:var(--sub)}
+.blab{position:absolute;left:0;width:140px;font-family:Jua;font-size:38px;line-height:1.05;color:var(--ink);text-align:right}
+.blab small{display:block;font-family:P;font-weight:800;font-size:24px;color:#6B5848}
 #bJ{top:22px;background:linear-gradient(180deg,#F07A6E,#E2483A)} #bK{top:132px;background:linear-gradient(180deg,#86A9FF,#5B8CFF)}
 #lJ{top:30px} #lK{top:140px}
-.trk{position:absolute;left:150px;width:600px;height:78px;border-radius:0 18px 18px 0;border:4px dashed #CDB9A6;background:#FBF4EC;display:flex;align-items:center;justify-content:flex-end;padding-right:22px;font-family:Jua;font-size:40px;color:#CDB9A6}
+.trk{position:absolute;left:150px;width:600px;height:78px;border-radius:0 18px 18px 0;border:4px solid #CDB9A6;background:#F5ECE2;display:flex;align-items:center;justify-content:flex-end;padding-right:22px;font-family:Jua;font-size:42px;color:#8A7564}
 #tJ{top:22px} #tK{top:132px}
 #x4{left:590px;top:136px}
 /* 5 내렸다는 말은? */
@@ -87,16 +92,16 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #ch5{left:96px;top:456px;width:520px;height:480px}
 #d5{left:640px;top:520px}
 #n5{left:632px;top:640px;width:260px;height:290px;border-radius:24px;background:#F6EEE4;border:5px solid #4A3A33;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Jua;font-size:34px;line-height:1.2;text-align:center;padding:10px}
-#n5 small{font-family:P;font-weight:800;font-size:21px;color:var(--sub);margin-top:8px;line-height:1.3}
+#n5 small{font-family:P;font-weight:800;font-size:24px;color:#6B5848;margin-top:8px;line-height:1.3}
 #n5 em{font-style:normal;color:var(--red)}
 /* 8 정리 */
 #c8{left:60px;top:300px;width:860px;height:660px;display:flex;flex-direction:column;align-items:center;padding-top:40px}
 #c8 .stk{font-family:Jua;font-size:40px;color:#fff;background:#5B8CFF;border-radius:16px;padding:6px 30px;border:4px solid #4A3A33}
 #c8 .sum{font-family:Jua;font-size:62px;margin-top:26px;text-align:center;line-height:1.2}
 #c8 .sum b{color:var(--red);font-weight:400}
-#c8 .chk{margin-top:24px;font-size:30px;font-weight:800;color:var(--ink);align-self:flex-start;margin-left:46px;white-space:nowrap}
+#c8 .chk{margin-top:24px;font-size:31px;font-weight:800;color:var(--ink);align-self:flex-start;margin-left:46px;white-space:nowrap}
 #c8 .chk.warn{color:#2A8A72}
-#c8 .per{margin-top:28px;font-size:22px;font-weight:700;color:var(--sub)}
+#c8 .per{margin-top:30px;font-size:24px;font-weight:800;color:#6B5848}
 #stamp8{left:560px;top:870px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
 /* 캐릭터 둘 — 도리 왼쪽, 모리 오른쪽, 발은 같은 마루(y 1468) */
 #cta9{left:400px;top:1296px;font-family:Jua;font-size:32px;color:var(--ink);background:#fff;border:4px solid #4A3A33;border-radius:999px;padding:7px 22px;box-shadow:0 6px 0 rgba(74,58,51,.16);white-space:nowrap}
@@ -142,12 +147,12 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
   <!-- 2 일본 슈퍼 평균 -->
   <div class="scene" id="s2">
     <div class="ttl tt" id="t2"><em>일본</em> 슈퍼 평균은?</div>
-    <div class="uu" id="u2">일본 농림수산성 · 슈퍼 약 1,000곳 평균 · 2026년 10월 26일~11월 1일</div>
+    <div class="uu" id="u2">일본 농림수산성 · 슈퍼 약 1,000곳 평균 · 10월 26일~11월 1일</div>
     <div class="card" id="c2"></div>
     <div class="abs" id="bag2"></div>
-    <div class="abs ptag q" id="tag2"><small>쌀 5kg 평균</small>2,816엔</div>
+    <div class="abs ptag q" id="tag2"><small>쌀 5kg 평균</small><span class="qv">?엔</span><span class="nv">2,816엔</span></div>
     <div class="chip slate" id="tax2">소비세 8% 포함</div>
-    <div class="abs" id="pos2"><div id="pos2Art"></div><div>슈퍼 약 1,000곳<small>매주 계산대 판매 기록으로 집계</small></div></div>
+    <div class="abs" id="pos2"><div id="pos2Art"></div><div>슈퍼 약 1,000곳<small>매주 판매 기록으로 집계</small></div></div>
   </div>
 
   <!-- 3 원으로 바꾸면 -->
@@ -159,17 +164,17 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
     <div class="abs" id="cv3">
       <div class="y" id="yen3"><small>일본 쌀 5kg</small><b>2,816엔</b></div>
       <div class="ar" id="ar3">▶</div>
-      <div class="y" id="won3"><small>원으로 (계산)</small><b>약 2만 3470원</b></div>
+      <div class="y" id="won3"><small>원으로 바꾸면(계산)</small><b class="qv">?원</b><b class="nv">약 2만 3470원</b></div>
     </div>
   </div>
 
   <!-- 4 한국은? -->
   <div class="scene" id="s4">
     <div class="ttl tt" id="t4"><em class="b">한국</em> 쌀은?</div>
-    <div class="uu" id="u4">aT 농산물유통정보(KAMIS) · 2026년 10월 · 한국농촌경제연구원 정리</div>
+    <div class="uu" id="u4">aT KAMIS · 2026년 10월 평균 · 한국농촌경제연구원 정리</div>
     <div class="card" id="c4"></div>
     <div class="abs" id="bag4"></div>
-    <div class="abs ptag b" id="tag4"><small>쌀 20kg 소매가</small>6만 3577원</div>
+    <div class="abs ptag b" id="tag4"><small>쌀 20kg 소매가</small><span class="qv">?원</span><span class="nv">6만 3577원</span></div>
     <div class="abs" id="div4"></div>
     <div class="chip blue" id="chip4">÷4 → 5kg</div>
     <div class="abs" id="bars4">
@@ -283,7 +288,7 @@ const SHOP=()=>`<svg viewBox="0 0 860 440" width="860" height="440" style="posit
 // 계산대 영수증(슈퍼 집계)
 const REC=(w)=>`<svg viewBox="0 0 110 130" width="${w}" height="${w*130/110}"><path d="M14 8 H96 V118 L86 110 L76 118 L66 110 L56 118 L46 110 L36 118 L26 110 L14 118 Z" fill="url(#gPaper)" stroke="${K}" stroke-width="5" stroke-linejoin="round"/><path d="M28 32 H82 M28 50 H70 M28 68 H82 M28 86 H62" stroke="#C9B8A7" stroke-width="6" stroke-linecap="round"/></svg>`;
 // 5kg 포대 막대 그래프(1월 최고 vs 지금) — 0부터
-const CHART5=()=>{const H=330,base=420,top=base-H,mx=4416, hP=H, hN=H*2816/mx;
+const CHART5=()=>{const H=300,base=384,top=base-H,mx=4416, hP=H, hN=H*2816/mx;
  return `<svg viewBox="0 0 520 480" width="520" height="480" style="overflow:visible">
   <path d="M40 ${base} H500" stroke="${K}" stroke-width="6" stroke-linecap="round"/>
   <g id="g5p"><rect x="80" y="${base-hP}" width="150" height="${hP}" rx="14" fill="#F0A094" stroke="${K}" stroke-width="6"/>
@@ -293,10 +298,10 @@ const CHART5=()=>{const H=330,base=420,top=base-H,mx=4416, hP=H, hN=H*2816/mx;
    <path d="M318 ${base-hN+20} V${base-20}" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".45"/>
    <text x="375" y="${base-hN-18}" text-anchor="middle" font-family="Jua" font-size="44" fill="#E2483A">2,816엔</text></g>
   <path id="arr5" d="M236 ${base-hP+24} C 290 ${base-hP+10} 300 ${base-hN-70} 330 ${base-hN-62}" fill="none" stroke="#5B8CFF" stroke-width="8" stroke-linecap="round" stroke-dasharray="14 10"/>
-  <text x="155" y="${base+40}" text-anchor="middle" font-family="Jua" font-size="30" fill="#3E2F25">올해 1월 최고</text>
-  <text x="155" y="${base+68}" text-anchor="middle" font-family="P" font-weight="800" font-size="20" fill="#7E6B5C">12월 29일~1월 4일</text>
-  <text x="375" y="${base+40}" text-anchor="middle" font-family="Jua" font-size="30" fill="#3E2F25">지금</text>
-  <text x="375" y="${base+68}" text-anchor="middle" font-family="P" font-weight="800" font-size="20" fill="#7E6B5C">10월 26일~11월 1일</text>
+  <text x="155" y="${base+40}" text-anchor="middle" font-family="Jua" font-size="33" fill="#3E2F25">올해 1월 최고</text>
+  <text x="155" y="${base+70}" text-anchor="middle" font-family="P" font-weight="800" font-size="24" fill="#6B5848">12월 29일~</text><text x="155" y="${base+98}" text-anchor="middle" font-family="P" font-weight="800" font-size="24" fill="#6B5848">1월 4일</text>
+  <text x="375" y="${base+40}" text-anchor="middle" font-family="Jua" font-size="33" fill="#3E2F25">지금</text>
+  <text x="375" y="${base+70}" text-anchor="middle" font-family="P" font-weight="800" font-size="24" fill="#6B5848">10월 26일~</text><text x="375" y="${base+98}" text-anchor="middle" font-family="P" font-weight="800" font-size="24" fill="#6B5848">11월 1일</text>
  </svg>`;};
 const COIN=(w,txt)=>`<svg viewBox="0 0 140 140" width="${w}" height="${w}">
   <circle cx="70" cy="74" r="58" fill="#C98F1E" stroke="${K}" stroke-width="6"/>
@@ -309,7 +314,7 @@ $('desk1').innerHTML=SHOP();
 $('bag2').innerHTML=SACK(330,'5kg','jp');
 $('pos2Art').innerHTML=REC(84);
 $('bag4').innerHTML=SACK(180,'20kg','kr');
-$('div4').innerHTML=[0,1,2,3].map(i=>`<div class="s4m" style="width:58px">${SACK(58,'5kg','')}</div>`).join('');
+$('div4').innerHTML=[0,1,2,3].map(i=>`<div class="s4m" style="width:60px">${SACK(60,'5kg','')}</div>`).join('');
 $('ch5').innerHTML=CHART5();
 $('fly').innerHTML=COIN(70,'✔');
 $('hdrDori').innerHTML=`<svg viewBox="40 60 320 240" width="40" height="30"><circle cx="122" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><circle cx="278" cy="118" r="38" fill="#C2BBB6" stroke="#4A3A33" stroke-width="10"/><path d="M200,86 C282,86 338,134 346,200 C350,250 330,290 200,290 C70,290 50,250 54,200 C62,134 118,86 200,86 Z" fill="#B5AEA9" stroke="#4A3A33" stroke-width="10"/><ellipse cx="200" cy="250" rx="110" ry="42" fill="#FFFDFB"/><ellipse cx="148" cy="214" rx="17" ry="19" fill="#271B17"/><ellipse cx="252" cy="214" rx="17" ry="19" fill="#271B17"/></svg>`;
@@ -319,6 +324,10 @@ function sv(id,a,b){$(id).style.visibility=(gT>=a&&gT<b)?'visible':'hidden';}
 function fx(el,t,inS,inD,outS,outD,dy=40,dx=0,rot=0){if(typeof el==='string')el=$(el);const a=eOut(P(t,inS,inD)),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=a*(1-b);el.style.transform=`translate(${(1-a)*dx}px,${(1-a)*dy-b*dy*.7}px) rotate(${rot}deg)`;return a*(1-b);}
 function pop(el,t,s,outS,outD,rot=0,from=.6){if(typeof el==='string')el=$(el);const k=P(t,s,.5),b=outS==null?0:eIO(P(t,outS,outD));el.style.opacity=clamp(k*4)*(1-b);el.style.transform=`rotate(${rot}deg) scale(${k<=0?from:from+(1-from)*eBack(k)})`;}
 let gT=0;
+function flip(id,t,inS,at,outS,rot){const el=$(id);const a=eOut(P(t,inS,.4)),b=eIO(P(t,outS,.35));el.style.opacity=a*(1-b);
+  const k=P(t,at,.36), on=t>=at+.18;el.querySelectorAll('.qv').forEach(e=>e.style.display=on?'none':'block');el.querySelectorAll('.nv').forEach(e=>e.style.display=on?'block':'none');
+  const sx=k>0&&k<1?Math.abs(Math.cos(k*Math.PI)):1, pu=k>0&&k<1.4?1+.08*Math.sin(Math.min(1,k)*Math.PI):1;
+  el.style.transform=`translate(0,${(1-a)*30}px) rotate(${rot+(rot?1.2*Math.sin(t*2):0)}deg) scale(${sx*pu},${pu})`;}
 
 // ---------- 도리 연기: 경제 뉴스 옷(news — 사용자 "정보 알려주는 느낌으로"), 모리가 말할 땐 모리를 본다 ----------
 const OUTFIT='news';   // EX.11 travel · EX.10 tax · LIFE.08 trivia 와 다르게
@@ -439,21 +448,21 @@ function render(t){
   sv('s2',T.s2,T.s3+.3); const o2=T.s3-.1;
   fx('t2',t,T.s2+.05,.45,o2,.35,30); fx('u2',t,T.s2+.2,.45,o2,.35,20); fx('c2',t,T.s2+.1,.5,o2,.35,40);
   fx('bag2',t,T.s2+.2,.5,o2,.35,30,-30); fx('pos2',t,T.s2+.45,.45,o2,.35,30);
-  const tg2=P(t,T.w2800-.15,.5); $('tag2').style.opacity=clamp(.35+tg2*4)*(1-eIO(P(t,o2,.35))); $('tag2').style.transform=`rotate(${-3+1.5*Math.sin(t*2)}deg) scale(${tg2<=0?.9:.9+.1*eBack(tg2)})`;
+  flip('tag2',t,T.s2+.35,T.w2800-.12,o2,-3);
   pop('tax2',t,T.w2800+.5,o2,.35,-2,.5);
 
   // 3 원으로 바꾸면 — 환율판은 처음부터, 원 값은 '이만'에
   sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1;
   fx('t3',t,T.s3+.05,.45,o3,.35,30); fx('u3',t,T.s3+.2,.45,o3,.35,20); fx('c3',t,T.s3+.1,.5,o3,.35,40);
   fx('fx3',t,T.s3+.2,.45,o3,.35,30); fx('yen3',t,T.s3+.35,.45,o3,.35,30,-30); fx('ar3',t,T.s3+.5,.4,o3,.35,0,-20);
-  const w3=P(t,T.w23-.15,.5); $('won3').style.opacity=clamp(.3+w3*4)*(1-eIO(P(t,o3,.35))); $('won3').style.transform=`scale(${w3<=0?.92:.92+.08*eBack(w3)})`;
+  flip('won3',t,T.s3+.65,T.w23-.12,o3,0);
 
   // 4 한국은? — 20kg 포대·가격표 → 5kg 넷 → 같은 5kg 막대(0부터, 일본 23470 = 600px)
   sv('s4',T.s4,T.s5+.3); const o4=T.s5-.1;
   fx('t4',t,T.s4+.05,.45,o4,.35,30); fx('u4',t,T.s4+.2,.45,o4,.35,20); fx('c4',t,T.s4+.1,.5,o4,.35,40);
   fx('bag4',t,T.s4+.2,.5,o4,.35,30,-30);
-  const tg4=P(t,T.w63-.15,.5); $('tag4').style.opacity=clamp(.35+tg4*4)*(1-eIO(P(t,o4,.35))); $('tag4').style.transform=`rotate(${-3+1.5*Math.sin(t*2)}deg) scale(${tg4<=0?.9:.9+.1*eBack(tg4)})`;
-  document.querySelectorAll('.s4m').forEach((el,i)=>{fx(el,t,T.s4+.5+i*.08,.35,o4,.35,26); el.style.opacity=String(parseFloat(el.style.opacity)*(.35+.65*clamp(P(t,T.L05-.1+i*.12,.3))));});
+  flip('tag4',t,T.s4+.35,T.w63-.12,o4,-3);
+  document.querySelectorAll('.s4m').forEach((el,i)=>fx(el,t,T.L05-.1+i*.1,.3,o4,.35,26));
   pop('chip4',t,T.L05+.3,o4,.35,-3,.5);
   ['lJ','lK','tJ','tK'].forEach((id,i)=>fx(id,t,T.s4+.4+(i%2)*.12,.4,o4,.35,0,-20));
   $('qJ').style.visibility=t<T.L05+.25?'visible':'hidden'; $('qK').style.visibility=t<T.L05+.4?'visible':'hidden';
