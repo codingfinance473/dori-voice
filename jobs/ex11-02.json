@@ -1,0 +1,60 @@
+{
+ "id": "ex11-02",
+ "note": "EX.11 엔화 첫 줄 다시(833원 뭉개짐)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 190,
+   "takes": 4,
+   "texts": [
+    "엔화가 또 떨어졌대~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 191,
+   "takes": 4,
+   "texts": [
+    "백 엔에, 팔백 삼십삼 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 192,
+   "takes": 4,
+   "texts": [
+    "지금 백 엔이, 팔백삼십삼 원이야!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 193,
+   "takes": 4,
+   "texts": [
+    "엔화가 또 떨어졌대~! 지금 백 엔이, 팔백 삼십삼 원!"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01c",
+  "L01d",
+  "L01e",
+  "L01f"
+ ]
+}
