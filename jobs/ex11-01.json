@@ -1,0 +1,164 @@
+{
+ "id": "ex11-01",
+ "note": "EX.11 엔화 환율(도리 단독)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 664,
+   "takes": 4,
+   "texts": [
+    "엔화가 또 떨어졌대~! 백 엔에, 팔백삼십삼 원!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 665,
+   "takes": 4,
+   "texts": [
+    "이천팔 년 이후로, 가장 낮은 값이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 666,
+   "takes": 4,
+   "texts": [
+    "올해 유월엔 구백육십오 원이었는데, 백삼십 원 넘게 내렸어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 667,
+   "takes": 4,
+   "texts": [
+    "근데 이거, 엔만 약해져서일까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 668,
+   "takes": 4,
+   "texts": [
+    "달러로 견줘 보면, 엔은 조금 약해졌는데,"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 669,
+   "takes": 4,
+   "texts": [
+    "원은 훨씬 더 강해졌어~! 이 몫이 더 커."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 670,
+   "takes": 4,
+   "texts": [
+    "그렇다고, 역대 최저는 아니야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 671,
+   "takes": 4,
+   "texts": [
+    "이천칠 년엔, 칠백사십육 원까지 내려갔었대~"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 672,
+   "takes": 4,
+   "texts": [
+    "십만 엔이면, 일 년 전보다 십일만 원 넘게 덜 들어."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 673,
+   "takes": 4,
+   "texts": [
+    "너는 엔화, 얼마에 바꿔 봤어?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 674,
+   "takes": 4,
+   "texts": [
+    "엔화가 또 떨어졌대~! 백 엔이, 팔백삼십삼 원이래!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 675,
+   "takes": 4,
+   "texts": [
+    "십만 엔 바꾸는 데, 일 년 전보다 십일만 원 넘게 덜 들어."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "L02",
+  "L03",
+  "L04",
+  "L05",
+  "L06",
+  "L07",
+  "L08",
+  "L09",
+  "L11",
+  "L01b",
+  "L09b"
+ ]
+}
