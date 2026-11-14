@@ -1,0 +1,86 @@
+{
+ "id": "ex13-03",
+ "note": "EX.13 티키타카 다시(모리 자기소개 빼기)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 255,
+   "takes": 4,
+   "texts": [
+    "모리네 집, 얼마나 넓은데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 256,
+   "takes": 4,
+   "texts": [
+    "흠~ 좀 넓긴 하지."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 257,
+   "takes": 4,
+   "texts": [
+    "이십오만 원은, 국민 평형 기준이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 258,
+   "takes": 4,
+   "texts": [
+    "그럼 우리 집은, 더 내는 게 당연하네?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 259,
+   "takes": 4,
+   "texts": [
+    "그럼 우리 집도, 나눠 봐야겠네~."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 260,
+   "takes": 4,
+   "texts": [
+    "우리 집도, 한번 나눠 봐야겠네~."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01d",
+  "M06",
+  "L02c",
+  "M07",
+  "M08",
+  "M08b"
+ ]
+}
