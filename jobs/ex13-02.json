@@ -1,0 +1,73 @@
+{
+ "id": "ex13-02",
+ "note": "EX.13 발음 다시(제곱미터·면적·인정)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 909,
+   "takes": 4,
+   "texts": [
+    "일 제곱 미터마다, 삼천 원쯤이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 910,
+   "takes": 4,
+   "texts": [
+    "넓이 일 제곱미터에, 삼천 원쯤이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 911,
+   "takes": 4,
+   "texts": [
+    "고지서 금액을, 우리 집 면적으로 나눠 봐."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 912,
+   "takes": 4,
+   "texts": [
+    "총액 말고, 면적으로 봐야겠네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 913,
+   "takes": 4,
+   "texts": [
+    "총액만 보면, 안 되는 거네. 인정."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L03b",
+  "L03c",
+  "L06b",
+  "M05b",
+  "M05c"
+ ]
+}
