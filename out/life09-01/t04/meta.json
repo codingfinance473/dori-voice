@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t04",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+  "voice": "voices/dori",
+  "seed": 251,
+  "takes": 4,
+  "texts": [
+   "맞아. 근데 한 달에 한 번 받을 때보다, 일 년에 백 원 남짓 더래."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 2.1,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+ "fast_bf16": true,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 6.4,
+   "gen_s": 21.6,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 6.0,
+   "gen_s": 20.2,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 5.6,
+   "gen_s": 18.8,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 5.2,
+   "gen_s": 17.2,
+   "sr": 24000
+  }
+ ]
+}
