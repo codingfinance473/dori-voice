@@ -1,0 +1,53 @@
+{
+ "task": {
+  "id": "t01",
+  "mode": "clone",
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+  "voice": "voices/mori-v3",
+  "seed": 237,
+  "takes": 4,
+  "texts": [
+   "흠, 좀 넓긴 하지."
+  ],
+  "dtype": "auto"
+ },
+ "load_s": 29.1,
+ "cpu": 4,
+ "cpu_model": "AMD EPYC 7763 64-Core Processor",
+ "fast_bf16": false,
+ "dtype": "bf16",
+ "outputs": [
+  {
+   "file": "00_0.wav",
+   "text_index": 0,
+   "take": 0,
+   "sec": 1.76,
+   "gen_s": 607.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_1.wav",
+   "text_index": 0,
+   "take": 1,
+   "sec": 1.92,
+   "gen_s": 554.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_2.wav",
+   "text_index": 0,
+   "take": 2,
+   "sec": 1.76,
+   "gen_s": 572.9,
+   "sr": 24000
+  },
+  {
+   "file": "00_3.wav",
+   "text_index": 0,
+   "take": 3,
+   "sec": 1.84,
+   "gen_s": 734.3,
+   "sr": 24000
+  }
+ ]
+}
