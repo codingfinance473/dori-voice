@@ -1,0 +1,99 @@
+{
+ "id": "life09-03",
+ "note": "LIFE.09 2판 도리 단독(새 줄)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 639,
+   "takes": 4,
+   "texts": [
+    "하루 이자는, 넣은 돈에 금리를 곱하고 삼백육십오로 나눈 거래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 640,
+   "takes": 4,
+   "texts": [
+    "하루 이자는, 넣은 돈 곱하기 금리, 나누기 삼백육십오래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 641,
+   "takes": 4,
+   "texts": [
+    "매일 받으면, 이자에 이자가 붙어서 더 많아질까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 642,
+   "takes": 4,
+   "texts": [
+    "그럼 연 팔 퍼센트 통장이면, 네 배일까?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 643,
+   "takes": 4,
+   "texts": [
+    "이자를 키우는 건, 받는 횟수보다 금리래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 644,
+   "takes": 4,
+   "texts": [
+    "금리가 일 퍼센트만 높아도, 일 년에 팔만 원 넘게 더 붙어~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 645,
+   "takes": 4,
+   "texts": [
+    "금리가 일 퍼센트만 높아도, 일 년에 팔만 원 넘게 더야."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "D02",
+  "D02b",
+  "D04",
+  "D06",
+  "D09",
+  "D10",
+  "D10b"
+ ]
+}
