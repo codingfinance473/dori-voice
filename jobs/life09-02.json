@@ -1,0 +1,99 @@
+{
+ "id": "life09-02",
+ "note": "LIFE.09 발음 다시(모리 첫 의심·인정, 천만 원이면, 끝 질문)",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 981,
+   "takes": 4,
+   "texts": [
+    "거짓말~ 매일 받으면, 이자가 쑥쑥 늘어난다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 982,
+   "takes": 4,
+   "texts": [
+    "거짓말~ 매일 받으면, 복리로 쑥쑥 큰다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 983,
+   "takes": 4,
+   "texts": [
+    "매일 받아도 쑥쑥은 아니네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 984,
+   "takes": 4,
+   "texts": [
+    "쑥쑥은 아니네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 985,
+   "takes": 4,
+   "texts": [
+    "천만 원이면, 하루 백사십 원쯤이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 986,
+   "takes": 4,
+   "texts": [
+    "너는 통장 이자, 매일 받고 있어?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 987,
+   "takes": 4,
+   "texts": [
+    "너는 이자, 매일 받아 봤어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "M01b",
+  "M01c",
+  "M04b",
+  "M04c",
+  "L05b",
+  "L07b",
+  "L07c"
+ ]
+}
