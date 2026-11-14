@@ -111,7 +111,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #c8 .per{margin-top:30px;font-size:24px;font-weight:800;color:#6B5848}
 #stamp8{left:600px;top:884px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
 /* 캐릭터 둘 — 도리 왼쪽, 모리 오른쪽, 발은 같은 마루(y 1468) */
-#cta9{left:400px;top:1296px;font-family:Jua;font-size:32px;color:var(--ink);background:#fff;border:4px solid #4A3A33;border-radius:999px;padding:7px 22px;box-shadow:0 6px 0 rgba(74,58,51,.16);white-space:nowrap}
+#cta9{left:352px;top:1262px;font-family:Jua;font-size:32px;color:var(--ink);background:#fff;border:4px solid #4A3A33;border-radius:999px;padding:7px 22px;box-shadow:0 6px 0 rgba(74,58,51,.16);white-space:nowrap}
 #fly{left:0;top:0;width:70px;height:70px}
 #dori{left:0;top:1118px;width:400px;height:415px}
 #dsh{left:50px;top:1466px;width:300px;height:38px}
@@ -227,6 +227,114 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 <script src="dori_outfits.js"></script>
 <script src="dori.js"></script>
 <script src="scenekit.js"></script>
+<script>/* 도리 옆 작업 책상(C) — 2026-11-14 */
+// 시안용 소품 — 외곽선 #4A3A33 4px, 빛은 왼쪽 위, 차분한 색, 바닥(y 315 = 마루 1465)에 그림자
+const DECO_K='#4A3A33';
+const DECO={
+A:'',
+B:`<svg viewBox="0 0 330 330" width="330" height="330" style="overflow:visible">
+ <defs><linearGradient id="dPot" x1="0" x2="1"><stop offset="0" stop-color="#FBF7F1"/><stop offset="1" stop-color="#DCD3C6"/></linearGradient>
+ <linearGradient id="dLeaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8DB79A"/><stop offset="1" stop-color="#4E7D63"/></linearGradient>
+ <linearGradient id="dShade" x1="0" x2="1"><stop offset="0" stop-color="#F3E6CF"/><stop offset="1" stop-color="#D9C3A0"/></linearGradient>
+ <radialGradient id="dGlow" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#FFE9B8" stop-opacity=".55"/><stop offset="1" stop-color="#FFE9B8" stop-opacity="0"/></radialGradient>
+ <radialGradient id="dSh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".28"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient></defs>
+ <path d="M150 58 L60 300 L250 300 Z" fill="url(#dGlow)"/>
+ <ellipse cx="96" cy="316" rx="70" ry="9" fill="url(#dSh)"/><ellipse cx="262" cy="316" rx="46" ry="7" fill="url(#dSh)"/>
+ <path d="M262 312 L262 70 Q262 20 210 22 Q172 24 160 46" fill="none" stroke="${DECO_K}" stroke-width="7" stroke-linecap="round"/>
+ <path d="M262 312 L262 70 Q262 20 210 22 Q172 24 160 46" fill="none" stroke="#9AA1AE" stroke-width="3" stroke-linecap="round"/>
+ <ellipse cx="262" cy="312" rx="34" ry="8" fill="#9AA1AE" stroke="${DECO_K}" stroke-width="4"/>
+ <path d="M118 78 Q122 40 160 38 Q198 40 202 78 Z" fill="url(#dShade)" stroke="${DECO_K}" stroke-width="4" stroke-linejoin="round"/>
+ <path d="M134 72 Q140 52 160 50" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+ ${[[96,236,-58,92,26],[96,236,-24,104,30],[96,236,12,98,28],[96,236,44,88,24],[96,236,-88,70,20],[96,236,76,66,18]].map(([x,y,a,l,w])=>`<g transform="translate(${x} ${y}) rotate(${a})"><path d="M0 0 L0 ${-l*.55}" stroke="#4E7D63" stroke-width="4"/><path d="M0 ${-l*.35} C${w} ${-l*.55} ${w*.8} ${-l} 0 ${-l*1.08} C${-w*.8} ${-l} ${-w} ${-l*.55} 0 ${-l*.35}Z" fill="url(#dLeaf)" stroke="${DECO_K}" stroke-width="3.5"/><path d="M0 ${-l*.4} L0 ${-l}" stroke="#DCEBDD" stroke-width="2" opacity=".7"/></g>`).join('')}
+ <path d="M50 236 L142 236 L132 312 Q96 320 60 312 Z" fill="url(#dPot)" stroke="${DECO_K}" stroke-width="4" stroke-linejoin="round"/>
+ <path d="M46 228 H146 V240 H46 Z" fill="#EFE8DE" stroke="${DECO_K}" stroke-width="4" stroke-linejoin="round"/>
+ <path d="M62 252 L58 300" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+</svg>`,
+C:`<svg viewBox="0 0 330 330" width="330" height="330" style="overflow:visible">
+ <defs><linearGradient id="dTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B98B62"/><stop offset="1" stop-color="#9C7049"/></linearGradient>
+ <linearGradient id="dLap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D6DAE1"/><stop offset="1" stop-color="#A9B0BC"/></linearGradient>
+ <linearGradient id="dMug" x1="0" x2="1"><stop offset="0" stop-color="#F7F3EC"/><stop offset="1" stop-color="#D8CFC2"/></linearGradient>
+ <radialGradient id="dSh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".28"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient></defs>
+ <ellipse cx="165" cy="316" rx="150" ry="10" fill="url(#dSh)"/>
+ <path d="M40 196 L48 314 M290 196 L282 314" stroke="${DECO_K}" stroke-width="10" stroke-linecap="round"/>
+ <path d="M40 196 L48 314 M290 196 L282 314" stroke="#7A5A3E" stroke-width="5" stroke-linecap="round"/>
+ <rect x="18" y="180" width="294" height="22" rx="8" fill="url(#dTop)" stroke="${DECO_K}" stroke-width="4"/>
+ <path d="M30 186 H200" stroke="#E2C29E" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+ <path d="M70 178 L92 92 L214 92 L196 178 Z" fill="url(#dLap)" stroke="${DECO_K}" stroke-width="4" stroke-linejoin="round"/>
+ <path d="M60 180 H222" stroke="${DECO_K}" stroke-width="6" stroke-linecap="round"/>
+ <path d="M100 104 L94 128" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+ <rect x="232" y="132" width="40" height="48" rx="8" fill="url(#dMug)" stroke="${DECO_K}" stroke-width="4"/>
+ <path d="M272 144 q16 2 14 14 q-2 10 -14 10" fill="none" stroke="${DECO_K}" stroke-width="4"/>
+ <path d="M244 120 q-6 -10 2 -18 M258 122 q-6 -10 2 -18" fill="none" stroke="#B9AFA3" stroke-width="3" stroke-linecap="round"/>
+ <g transform="rotate(-6 30 170)"><rect x="22" y="160" width="40" height="18" rx="3" fill="#F4EEE4" stroke="${DECO_K}" stroke-width="3"/><rect x="26" y="150" width="40" height="14" rx="3" fill="#E9F1EC" stroke="${DECO_K}" stroke-width="3"/></g>
+</svg>`};
+
+</script>
+<script>/* 첫 장면: 휴대폰 화면(P1) — 2026-11-14 */
+// 첫 장면 시안 — 같은 860×440 카드 안. render 코드가 쓰는 id(ps1·cal1·st1·tag1·x1)는 그대로 둔다(빈 것도).
+const OK='#4A3A33';
+const HID='<div class="abs" id="ps1"></div><div class="abs" id="cal1"></div><div class="abs" id="st1"></div>';
+const OPEN={
+// 1 휴대폰 화면: 상표 없는 일반 통장 앱 화면 — 잔액·오늘 이자 줄이 ?원 → 463원
+P1:()=>`<svg viewBox="0 0 860 440" width="860" height="440" style="position:absolute;left:0;top:0">
+ <defs><linearGradient id="oBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4EEE6"/><stop offset="1" stop-color="#E7DED2"/></linearGradient>
+ <linearGradient id="oPh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B4252"/><stop offset="1" stop-color="#262B36"/></linearGradient>
+ <radialGradient id="oSh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5A3A28" stop-opacity=".25"/><stop offset="1" stop-color="#5A3A28" stop-opacity="0"/></radialGradient></defs>
+ <rect width="860" height="440" fill="url(#oBg)"/>
+ ${[...Array(8)].map((_,i)=>`<line x1="${i*120-40}" y1="440" x2="${i*120+200}" y2="0" stroke="#fff" stroke-width="2" opacity=".35"/>`).join('')}
+ <ellipse cx="330" cy="424" rx="170" ry="14" fill="url(#oSh)"/>
+ <g transform="rotate(-5 330 220)">
+  <rect x="210" y="18" width="240" height="410" rx="34" fill="url(#oPh)" stroke="${OK}" stroke-width="5"/>
+  <rect x="224" y="40" width="212" height="368" rx="22" fill="#FBFAF8"/>
+  <rect x="300" y="28" width="60" height="8" rx="4" fill="#5B6273"/>
+  <text x="244" y="82" font-family="P" font-weight="800" font-size="20" fill="#7E6B5C">내 통장</text>
+  <text x="244" y="124" font-family="P" font-weight="900" font-size="30" textLength="178" lengthAdjust="spacingAndGlyphs" fill="#3E2F25">10,000,000원</text>
+  <line x1="244" y1="148" x2="416" y2="148" stroke="#EBDDD0" stroke-width="2"/>
+  <text x="244" y="186" font-family="P" font-weight="800" font-size="19" fill="#7E6B5C">연 2% · 세금 뗀 뒤</text>
+  <rect x="244" y="330" width="172" height="48" rx="24" fill="#2E9C83"/>
+  <text x="330" y="361" text-anchor="middle" font-family="P" font-weight="800" font-size="21" fill="#fff">오늘 이자 받기</text>
+ </g></svg>${HID}
+ <div class="abs" id="tag1" style="left:252px;top:204px;transform:rotate(-5deg);font-family:P;font-weight:900;font-size:22px;color:#7E6B5C;width:180px"><div style="font-size:21px">오늘 받은 이자</div><span class="qv" style="font-size:52px;color:#E8833A;font-family:Jua;font-weight:400">?원</span><span class="nv" style="font-size:52px;color:#E8833A;font-family:Jua;font-weight:400">+463원</span></div>
+ <div class="abs chip slate" id="x1" style="left:540px;top:310px;font-size:30px">(계산) 연 2%라면</div>
+ <div class="abs" style="left:520px;top:110px;font-family:Jua;font-size:44px;line-height:1.3;color:#3E2F25">천만 원<br><span style="color:#E8833A">매일 이자</span></div>`,
+// 2 책상 정물: 같은 작업 책상 톤 — 노트북 화면에 막대 그래프, 옆에 통장·머그, 가격표
+P2:()=>`<svg viewBox="0 0 860 440" width="860" height="440" style="position:absolute;left:0;top:0">
+ <defs><linearGradient id="oW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3ECE2"/><stop offset="1" stop-color="#E6DCCD"/></linearGradient>
+ <linearGradient id="oT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B98B62"/><stop offset="1" stop-color="#946A45"/></linearGradient>
+ <linearGradient id="oL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D6DAE1"/><stop offset="1" stop-color="#A9B0BC"/></linearGradient>
+ <linearGradient id="oM" x1="0" x2="1"><stop offset="0" stop-color="#F7F3EC"/><stop offset="1" stop-color="#D8CFC2"/></linearGradient>
+ <linearGradient id="oB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6FB8A3"/><stop offset="1" stop-color="#2E8C75"/></linearGradient></defs>
+ <rect width="860" height="300" fill="url(#oW)"/>
+ <rect x="560" y="40" width="200" height="150" rx="10" fill="#FBF8F3" stroke="${OK}" stroke-width="4"/>
+ <rect x="576" y="56" width="168" height="118" rx="6" fill="#E9EFEA"/>
+ <path d="M576 150 Q620 120 650 132 T744 92 L744 174 L576 174Z" fill="#CFE1D6"/>
+ <rect x="0" y="292" width="860" height="148" fill="url(#oT)"/><path d="M0 294 H860" stroke="${OK}" stroke-width="6"/>
+ <path d="M40 330 H360 M500 380 H820" stroke="#7E5534" stroke-width="4" stroke-linecap="round" opacity=".35"/>
+ <path d="M110 290 L140 120 L400 120 L372 290 Z" fill="url(#oL)" stroke="${OK}" stroke-width="5" stroke-linejoin="round"/>
+ <path d="M150 140 L132 270 L362 270 L380 140 Z" fill="#FBFAF8"/>
+ ${[0,1,2,3,4,5,6].map(i=>`<rect x="${166+i*28}" y="${250-(i*14+20)}" width="16" height="${i*14+20}" rx="3" fill="${i==6?'#E8833A':'#9FCBBE'}" transform="skewX(-8)"/>`).join('')}
+ <path d="M96 292 H404" stroke="${OK}" stroke-width="8" stroke-linecap="round"/>
+ <g transform="rotate(-8 470 268)"><rect x="420" y="240" width="120" height="44" rx="8" fill="url(#oB)" stroke="${OK}" stroke-width="4"/><text x="480" y="270" text-anchor="middle" font-family="Jua" font-size="22" fill="#fff">통장</text></g>
+ <rect x="560" y="226" width="48" height="58" rx="9" fill="url(#oM)" stroke="${OK}" stroke-width="4"/>
+ <path d="M608 240 q18 2 16 16 q-2 12 -16 12" fill="none" stroke="${OK}" stroke-width="4"/>
+ <path d="M574 212 q-6 -10 2 -18 M590 214 q-6 -10 2 -18" fill="none" stroke="#B9AFA3" stroke-width="3" stroke-linecap="round"/>
+</svg>${HID}
+ <div class="abs ptag q" id="tag1" style="left:610px;top:262px;font-size:48px;transform:rotate(-3deg)"><small>천만 원 · 하루</small><span class="qv">?원</span><span class="nv">약 463원</span></div>
+ <div class="abs chip slate" id="x1" style="left:420px;top:40px;font-size:30px">(계산) 연 2%라면</div>`,
+// 3 숫자 판: 그림 없이 식과 숫자만, 차분한 타이포
+P3:()=>`<svg viewBox="0 0 860 440" width="860" height="440" style="position:absolute;left:0;top:0">
+ <rect width="860" height="440" fill="#2F3B4F"/>
+ ${[...Array(12)].map((_,i)=>`<line x1="0" y1="${i*40}" x2="860" y2="${i*40}" stroke="#fff" stroke-width="1" opacity=".05"/>`).join('')}
+ ${[...Array(22)].map((_,i)=>`<line x1="${i*40}" y1="0" x2="${i*40}" y2="440" stroke="#fff" stroke-width="1" opacity=".05"/>`).join('')}
+ <path d="M60 360 L180 340 L300 330 L420 300 L540 290 L660 250 L800 200" fill="none" stroke="#9FE3C9" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+</svg>${HID}
+ <div class="abs" style="left:60px;top:46px;font-family:P;font-weight:800;font-size:28px;color:#C9D3E3">파킹통장 1000만 원 · 연 2% · 세금 뗀 뒤</div>
+ <div class="abs" style="left:60px;top:110px;font-family:Jua;font-size:56px;color:#fff">매일 받는 이자는</div>
+ <div class="abs" id="tag1" style="left:60px;top:190px;font-family:Jua;font-size:132px;line-height:1.1;color:#FFC37A"><span class="qv">?원</span><span class="nv">463원</span></div>
+ <div class="abs chip slate" id="x1" style="left:560px;top:340px;font-size:28px;background:#4D5C77">(계산)</div>`
+};
+
+</script>
 
 <script>
 // 무대 — 잔무늬 벽 + 나무 마루(탁자 윗면 1468이 마루 선)
@@ -300,7 +408,7 @@ const DESK=()=>`<svg viewBox="0 0 860 440" width="860" height="440" style="posit
 <div class="abs" id="st2" style="left:520px;top:190px">${STACK(3,72)}</div>
 <div class="abs ptag q" id="tag1" style="left:556px;top:262px;font-size:50px;transform:rotate(-4deg)"><small>천만 원 · 하루</small><span class="qv">?원</span><span class="nv">약 463원</span></div>
 <div class="abs chip slate" id="x1" style="left:300px;top:50px;font-size:30px">(계산) 연 2%라면</div>`;
-$('desk1').innerHTML=DESK();
+$('desk1').innerHTML=OPEN['P1']();
 $('ic3a').innerHTML=CAL(150,'day');
 $('ic3b').innerHTML=CAL(150,'month');
 $('fly').innerHTML=COIN(70,'✔');
@@ -359,7 +467,7 @@ function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=nul
 function envAt(arr,t){const fr=Math.min(arr.length-1,Math.max(0,Math.round(t*FPS)));return Math.max(arr[fr],(arr[fr-1]||0)*.55);}
 
 // 오른쪽 마루 소품: 동전 더미 둘 + 달력(빛은 왼쪽 위, 바닥 그림자)
-$('deco').innerHTML=`<div class="abs" style="left:190px;top:182px">${CAL(150,'day')}</div><div class="abs" style="left:0;top:160px">${STACK(5,110)}</div><div class="abs" style="left:104px;top:188px">${STACK(3,90)}</div>`;
+$('deco').innerHTML=DECO['C'];
 
 function renderChars(t){
   const envD=envAt(TL.envD,t);
