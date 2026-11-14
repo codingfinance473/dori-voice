@@ -26,11 +26,12 @@ def mori_fx(x):
     x = np.tanh(x * 1.1) / 1.1; x = x * (DORI_RMS / (_act(x) + 1e-9))
     return np.clip(x, -.97, .97).astype(np.float32)   # 올린 만큼 넘치는 봉우리만 부드럽게 누른다
 GAP, SCENE = 0.30, 0.32   # 배경음 없는 판(2026-11-10): 쉼이 그대로 무음이라 조금 더 촘촘하게
-order = [  # (줄, 앞 쉼, 장면 시작 표시) — LIFE.09 파킹통장 매일 이자(2026-11-14)
-    ("L01", 0.30, "s1"), ("M01", 0.18, None), ("M00", 0.15, None),
-    ("L02", SCENE, "s2"), ("M02", 0.18, None),
-    ("L03", SCENE, "s3"), ("M03", 0.18, None),
-    ("L04", SCENE, "s4"), ("L05", GAP, None), ("M04", 0.18, None),
+order = [  # (줄, 앞 쉼, 장면 시작 표시) — LIFE.09 2판 도리 단독(2026-11-14)
+    ("L01", 0.30, "s1"),
+    ("D02", SCENE, "s2"), ("L02", GAP, None),
+    ("D04", SCENE, "s3"), ("L03", GAP, None),
+    ("D06", SCENE, "s4"), ("L04", GAP, None), ("L05", GAP, None),
+    ("D09", SCENE, "s5"), ("D10", GAP, None),
     ("L06", 0.40, "s8"), ("L07", 0.30, None),
     ("L08", 0.35, None), ("L09", 0.20, None),
 ]
@@ -56,13 +57,13 @@ def words(lid):
     return list(zip(s.result.tokens, s.result.timestamps))
 WORD = {  # 이름: (줄, 찾을 글자 후보, 몇 번째, 못 찾을 때 비율)
     "w460": ("L01", ["사백", "460", "4백"], 1, .62),
-    "wMori": ("M00", ["모리", "머리", "몰이"], 1, .12),
     "w548": ("L02", ["오백", "550", "5백"], 1, .22),
     "wTax": ("L02", ["세금"], 1, .55),
     "w463": ("L02", ["사백", "460", "4백"], 1, .72),
     "w117": ("L03", ["백", "100"], 1, .70),
     "w30": ("L04", ["삼십", "30"], 1, .45),
     "w142": ("L05", ["백사십", "140", "백"], 1, .55),
+    "w8man": ("D10", ["팔만", "8만"], 1, .60),
     "stamp": ("L06", "끝", 1, .45), "pouch": ("L09", "볼", 1, .03)}
 cache = {}
 for k, (lid, tgt, nth, frac) in WORD.items():
@@ -102,4 +103,4 @@ env, envD, envM = envelope(track), envelope(trD), envelope(trM)
 open("timeline.js", "w", encoding="utf-8").write("window.TL=" + json.dumps({"BPM": QUANT, "T": T, "lines": lines, "env": env, "envD": envD, "envM": envM}, ensure_ascii=False) + ";")
 print("END", T["END"])
 for l in lines: print(f'{l["t"]:6.2f}-{l["t"] + l["d"]:6.2f} {l["who"]} {l["id"]}')
-print({k: T[k] for k in ["s2", "s3", "s4", "s8", "stamp"]})
+print({k: T[k] for k in ["s2", "s3", "s4", "s5", "s8", "stamp"]})

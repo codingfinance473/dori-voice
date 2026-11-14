@@ -53,18 +53,18 @@ def strum(ch, at, g, down=True):
         key = m
         if key not in pluck_cache: pluck_cache[key] = pluck(hz(m), .8)
         put(bed, pluck_cache[key], at + j * .012, g, pan=-.2 + j * .12)
-quiet = [(T["L01"] - .2, T["L01"] + .7), (T["wMori"] - .2, T["wMori"] + .5), (T["w548"] - .15, T["w548"] + .7), (T["w463"] - .15, T["w463"] + .7), (T["w117"] - .15, T["w117"] + .7), (T["w30"] - .15, T["w30"] + .7), (T["w142"] - .15, T["w142"] + .7), (T["M04"] - .2, E["M04"] + .05), (T["L07"] - .2, T["L07"] + .9)]   # 핵심 단어 0.5~0.7초만 새 음을 쉰다
+quiet = [(T["L01"] - .2, T["L01"] + .7), (T["w548"] - .15, T["w548"] + .7), (T["w463"] - .15, T["w463"] + .7), (T["w117"] - .15, T["w117"] + .7), (T["w30"] - .15, T["w30"] + .7), (T["w142"] - .15, T["w142"] + .7), (T["D10"] - .2, E["D10"] + .05), (T["L07"] - .2, T["L07"] + .9)]   # 핵심 단어 0.5~0.7초만 새 음을 쉰다
 def q(t): return any(a <= t < b for a, b in quiet)
-thin = [(T[i] - .15, E[i] + .1) for i in ("L02", "L03", "L04", "L05", "L06", "L07", "M04", "L09")]   # 숫자·핵심어 줄
+thin = [(T[i] - .15, E[i] + .1) for i in ("L02", "L03", "L04", "L05", "D02", "D10", "L06", "L07", "L09")]   # 숫자·핵심어 줄
 def th(t): return any(a <= t < b for a, b in thin)
-MORI = [(T[i] - .25, E[i] + .15) for i in ("M01", "M00", "M02", "M03", "M04")]   # 모리 줄
+MORI = []   # 2판: 도리 단독   # 모리 줄
 def mo(t): return any(a <= t < b for a, b in MORI)
 b = 0.0; k = 0
 while b < DUR - 1.2:
     ci = k % 4
     for s8 in range(8):
         tt = b + s8 * BEAT / 2
-        if tt >= DUR - 1.2 or q(tt) or tt < E["M01"] + .1: continue   # 배경음은 콜드오픈 두 줄 뒤에 들어온다
+        if tt >= DUR - 1.2 or q(tt) or tt < E["L01"] + .1: continue   # 배경음은 콜드오픈 두 줄 뒤에 들어온다
         if s8 in (0, 3, 4, 6): strum(chords[ci], tt, (.05 if s8 in (0, 4) else .035) * (.55 if mo(tt) else 1), down=s8 != 3)
         if s8 in (0, 4) and not mo(tt): put(bed, lp(tone(hz(bass[ci]), .5, a=.01, dec=.25, harm=(1, .25)), 500), tt, .16)
         if s8 in (0, 4) and tt > 3.0 and not th(tt) and not mo(tt):
@@ -79,7 +79,7 @@ end = DUR - 1.15                                               # 끝 화음
 strum(chords[0], end, .07); put(bed, tone(hz(79), 1.4, dec=.6), end + .05, .04)
 bed[-int(.4 * SR):] *= np.linspace(1, 0, int(.4 * SR))[:, None]
 
-NUM_WORDS = ("w460", "w548", "w463", "w117", "w30", "w142")   # 이 편의 숫자 단어(music.py 작은 화음)
+NUM_WORDS = ("w460", "w548", "w463", "w117", "w30", "w142", "w8man")   # 이 편의 숫자 단어(music.py 작은 화음)
 BED_STYLE = os.environ.get("BED", "P")   # P = 통통 피치카토(music.py, 2026-11-11 사용자 확정) · L 로파이 · M 마림바 · N 배경음 없음 + 징글 · B·H·OLD 옛 시안
 _old_default = os.environ.get("BED_OLD_DEFAULT", "B")   # 2026-11-10 사용자 선택: B 미니멀 그루브. BED= 로 비우면 예전 「도리 산책」
 BED_STYLE = "" if BED_STYLE == "OLD" else BED_STYLE
@@ -109,7 +109,7 @@ def thump(at, g=.2):
 def sad(at, g=.06):
     for i, m in enumerate((67, 65, 62)): put(sfx, tone(hz(m), .5, dec=.25, harm=(1, .5, .2), bend=-.02), at + i * .16, g)
 
-for s in ("s2", "s3", "s4", "s8"): whoosh(T[s], .04)
+for s in ("s2", "s3", "s4", "s5", "s8"): whoosh(T[s], .04)
 # (EX.10) 줄 끝 효과음은 음악의 대답이 맡는다(BED=P) — 장면 휘익·도장·볼주머니만
 thump(T["stamp"] + .1, .12); chime(T["stamp"] + .6, [76, 79, 83], .04, .08)
 n = int(.16 * SR); t = np.arange(n) / SR                                          # 볼주머니 '뽀옹'
@@ -125,7 +125,7 @@ if BED_STYLE == "N":
     for i, l in enumerate(TLL0):                                                                # 말하는 쪽이 바뀌는 순간: 모리 = 낮은 톡, 도리 = 높은 톡
         if i and l["who"] != TLL0[i - 1]["who"]:
             put(sfx, tone(hz(55 if l["who"] == "M" else 79), .12, a=.002, dec=.035, harm=(1, .2), bend=-.3), l["t"] - .17, .026 if l["who"] == "M" else .02, pan=.35 if l["who"] == "M" else -.35)
-    for s_ in ("s2", "s3", "s4", "s8"): whoosh(T[s_], .03); put(sfx, bp(noise(.06, .012), 1800, 5200), T[s_] + .02, .03)   # 장면 전환을 또렷하게
+    for s_ in ("s2", "s3", "s4", "s5", "s8"): whoosh(T[s_], .03); put(sfx, bp(noise(.06, .012), 1800, 5200), T[s_] + .02, .03)   # 장면 전환을 또렷하게
     for i, m in enumerate((79, 86)): bell(m, T["w142"] + .9 + i * .08, .035, .2)                 # 12만 원 "띵"
     for i, m in enumerate((71, 74, 79)): bell(m, E["L09"] + .22 + i * .1, .06, -.2 + i * .2)     # 끝 징글(시작과 같은 음에서 올라가며 닫는다)
     put(sfx, lp(tone(hz(43), .9, a=.005, dec=.4, harm=(1, .3)), 600), E["L09"] + .22, .1)
@@ -134,7 +134,7 @@ if BED_STYLE == "N":
 
 if BED_STYLE in ("P", "L", "M"):
     sfx[:] = 0                         # 틈 '톡'·차임은 음악의 대답이 맡는다 — 장면 휘익·도장 쿵·볼주머니 뽀옹만 남김
-    for s_ in ("s2", "s3", "s4", "s8"): whoosh(T[s_], .025)
+    for s_ in ("s2", "s3", "s4", "s5", "s8"): whoosh(T[s_], .025)
     thump(T["stamp"] + .1, .10)
     n_ = int(.16 * SR); t_ = np.arange(n_) / SR
     put(sfx, np.sin(2 * np.pi * np.cumsum(500 + 900 * t_ / .16) / SR) * np.sin(np.pi * t_ / .16), T["L09"] - .42, .06)
@@ -151,8 +151,8 @@ duck = 1 - .62 * np.clip(sm / (np.percentile(sm[sm > 1e-4], 90) + 1e-9), 0, 1)  
 # 숫자·짧은 정답 줄만 그 줄 동안 배경음을 조금 더 낮춘다 — 기본 0.7(-3dB), 완성 믹스 받아쓰기에서 실제로 덜 들린 줄만 0.5(-6dB)까지.
 # 0.5 아래로 내리지 않는다: 그래도 덜 들리면 thin(멜로디·박수·킥 빼기)·quiet(그 줄 동안 새 음 쉬기)로 편곡을 비운다.
 TLL = json.loads(re.search(r"window.TL=(.*);$", open("timeline.js", encoding="utf-8").read(), re.S).group(1))["lines"]
-NUM_LINES = ("L01", "L02", "L03", "L04", "L05", "L06", "L07", "L09", "M00", "M01", "M02", "M03", "M04")   # 이 편의 숫자·결론 줄
-WEAK = {"M00": .5, "L04": .5}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
+NUM_LINES = ("L01", "D02", "L02", "D04", "L03", "D06", "L04", "L05", "D09", "D10", "L06", "L07", "L09")   # 이 편의 숫자·결론 줄
+WEAK = {"L04": .5, "D10": .5}   # 모리 줄은 도리 줄과 같은 깊이(.7)로만 — 모리 때만 음악이 꺼지는 느낌이 없게                                          # 완성 믹스 받아쓰기에서 덜 들린 줄(첫마디가 덮임)
 extra = np.ones(N)
 for l in TLL:
     if l["id"] in NUM_LINES:
@@ -169,4 +169,4 @@ os.environ.setdefault("BED_UNDER", "13.5" if BED_STYLE in ("P", "L", "M") else "
 from bedmix import finish
 bed *= 2.6   # 2판: 모리 줄에서 베이스·킥을 빼 전체가 얇아져 자동 배율(최대 8)로는 쉼이 너무 조용 → 원 소리를 키워 맞춘다
 if os.environ.get('STEM'): wavfile.write('stem_bed.wav', SR, (np.clip(bed,-1,1)*32767).astype(np.int16))
-finish(bed, sfx, v, env, sm, duck, (.05 if BED_STYLE in ("H", "P", "L", "M") else E["M01"] + .1), DUR - 1.2, SR, out=os.environ.get("OUT", "mix.wav"))
+finish(bed, sfx, v, env, sm, duck, (.05 if BED_STYLE in ("H", "P", "L", "M") else E["L01"] + .1), DUR - 1.2, SR, out=os.environ.get("OUT", "mix.wav"))

@@ -2,13 +2,13 @@
 <html lang="ko">
 <head>
 <!--
-  도리의 정보주머니 · 생활 검산 LIFE.09 파킹통장 이자, 매일 받으면 진짜 얼마일까? (2026-11-14)
-  도리·모리 2인 형식: 콜드오픈(도리 "천만 원, 매일 이자 받으면 하루 460원쯤") → 모리 의심("매일 받으면 쑥쑥 늘어난다던데?")·자기소개
-  → 하루 이자 계산(천만 원 × 연 2% ÷ 365 = 548원 → 이자소득세 15.4% 떼면 463원)
-  → 매일 vs 한 달에 한 번(1년 세후 17만 635원 vs 17만 518원, 차이 117원 — 막대 0부터)
-  → 8% 통장이면?(최고 8%는 앞 30만 원까지, 넘는 돈 0.6%·0.3% → 천만 원이면 하루 142원) → 모리 인정 → 검산 끝.
+  도리의 정보주머니 · 생활 검산 LIFE.09 파킹통장 이자, 매일 받으면 진짜 얼마일까? — 2판 도리 단독 설명형(2026-11-14)
+  사용자: "난 모리~랑 인정 포맷은 유치 — 이 내용은 단순 설명이니 도리 혼자, 내용을 더 알차게" → 모리 빼고 장면 하나 더.
+  콜드오픈(하루 460원쯤) → 하루 이자 계산법(넣은 돈 × 금리 ÷ 365, 548원 → 세금 15.4% 떼면 463원)
+  → 매일 받으면 더 많아질까?(1년 세후 17만 635원 vs 17만 518원, 117원) → 8% 통장이면 네 배?(30만 원까지만 → 하루 142원)
+  → 이자를 키우는 건?(매일 받기 +117원 vs 금리 +1%p +8만 6404원, 막대 0부터) → 검산 끝.
   숫자: 대조표 LIFE09_parking_factsheet.md
-  지키는 것: 상품·은행 이름 없음(대조표에만) · 가입 권유 없음 · 매체명 없음 · AI 표시는 설명란 한 줄만 · 아래 420px·오른쪽 160px에 핵심 글자 없음
+  지키는 것: 상품·은행 이름 없음 · 가입 권유 없음 · 매체명 없음 · AI 표시는 설명란 한 줄만 · 아래 420px·오른쪽 160px에 핵심 글자 없음
 -->
 <meta charset="utf-8">
 <title>도리의 생활 검산 파킹통장 매일 이자</title>
@@ -89,24 +89,35 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 #l4a{top:820px} #l4b{top:898px}
 .trk4{position:absolute;left:280px;width:560px;height:66px;border-radius:0 16px 16px 0;border:4px solid #CDB9A6;background:#F5ECE2;display:flex;align-items:center;justify-content:flex-end;padding-right:18px;font-family:Jua;font-size:36px;color:#8A7564}
 #k4a{top:808px} #k4b{top:886px}
+/* 5 이자를 키우는 건? */
+#c5{left:60px;top:430px;width:860px;height:545px}
+.r5{position:absolute;left:96px;width:790px;height:200px}
+#r5a{top:478px} #r5b{top:700px}
+.r5 .lb{position:absolute;left:0;top:0;font-family:Jua;font-size:40px;color:var(--ink);white-space:nowrap}
+.r5 .lb small{font-family:P;font-weight:800;font-size:26px;color:#6B5848;margin-left:10px}
+.r5 .trk{position:absolute;left:0;top:62px;width:780px;height:96px;border-radius:0 20px 20px 0;border:4px solid #CDB9A6;background:#F5ECE2}
+.r5 .bar{position:absolute;left:0;top:62px;height:96px;border-radius:0 20px 20px 0;border:5px solid #4A3A33;font-family:Jua;font-size:46px;color:#fff;white-space:nowrap;overflow:hidden;width:0;display:flex;align-items:center;justify-content:flex-end;padding-right:22px}
+#b5a{background:linear-gradient(180deg,#86A9FF,#5B8CFF);padding:0}
+#v5a{position:absolute;left:40px;top:84px;font-family:Jua;font-size:46px;color:#5B8CFF;white-space:nowrap}
+#b5b{background:linear-gradient(180deg,#F5A465,#E8833A)}
+#x5{left:600px;top:478px;font-size:38px}
 /* 8 정리 */
 #c8{left:60px;top:300px;width:860px;height:660px;display:flex;flex-direction:column;align-items:center;padding-top:40px}
 #c8 .stk{font-family:Jua;font-size:40px;color:#fff;background:#E8833A;border-radius:16px;padding:6px 30px;border:4px solid #4A3A33}
 #c8 .sum{font-family:Jua;font-size:60px;margin-top:26px;text-align:center;line-height:1.2}
 #c8 .sum b{color:var(--ora);font-weight:400}
-#c8 .chk{margin-top:24px;font-size:31px;font-weight:800;color:var(--ink);align-self:flex-start;margin-left:46px;white-space:nowrap}
+#c8 .chk{margin-top:20px;font-size:30px;font-weight:800;color:var(--ink);align-self:flex-start;margin-left:46px;white-space:nowrap}
 #c8 .chk.warn{color:#2A8A72}
 #c8 .per{margin-top:30px;font-size:24px;font-weight:800;color:#6B5848}
-#stamp8{left:570px;top:878px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
+#stamp8{left:600px;top:884px;padding:6px 28px;border:8px solid var(--red);border-radius:20px;background:#fff;color:var(--red);font-family:Jua;font-size:66px;line-height:1.2;transform-origin:50% 50%}
 /* 캐릭터 둘 — 도리 왼쪽, 모리 오른쪽, 발은 같은 마루(y 1468) */
 #cta9{left:400px;top:1296px;font-family:Jua;font-size:32px;color:var(--ink);background:#fff;border:4px solid #4A3A33;border-radius:999px;padding:7px 22px;box-shadow:0 6px 0 rgba(74,58,51,.16);white-space:nowrap}
 #fly{left:0;top:0;width:70px;height:70px}
 #dori{left:0;top:1118px;width:400px;height:415px}
 #dsh{left:50px;top:1466px;width:300px;height:38px}
-#mori{left:678px;top:1044px;width:311px;height:443px}
-#msh{left:700px;top:1466px;width:270px;height:38px}
+#deco{left:640px;top:1150px;width:330px;height:330px}
 .bub{position:absolute;top:985px;max-width:600px;background:#fff;border-radius:32px;padding:20px 30px;font-family:Jua;font-size:38px;line-height:1.32;color:var(--ink);box-shadow:0 14px 30px rgba(120,80,40,.16);opacity:0;border:4px solid #4A3A33}
-.bub.d{left:60px;max-width:560px;transform-origin:20% 100%} .bub.m{right:395px;max-width:520px;transform-origin:90% 100%}
+.bub.d{left:60px;max-width:600px;transform-origin:20% 100%} .bub.m{right:395px;max-width:520px;transform-origin:90% 100%}
 .bub:before{content:"";position:absolute;bottom:-26px;border-width:26px 16px 0 16px;border-style:solid;border-color:#4A3A33 transparent transparent transparent}
 .bub:after{content:"";position:absolute;bottom:-18px;border-width:19px 11px 0 11px;border-style:solid;border-color:#fff transparent transparent transparent}
 .bub.d:before{left:92px} .bub.d:after{left:97px}
@@ -145,7 +156,7 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
     <div class="card" id="c2"></div>
     <div class="abs" id="fx2"><small>하루 이자 = 넣은 돈 × 금리 ÷ 365</small><span class="a">1000만 원</span><span class="op">×</span><span class="a">2%</span><span class="op">÷</span><span class="a">365</span></div>
     <div class="abs" id="cv2">
-      <div class="y" id="pre2"><small>세금 떼기 전</small><b>548원</b></div>
+      <div class="y" id="pre2"><small>세금 떼기 전</small><b class="qv">?원</b><b class="nv">548원</b></div>
       <div class="ar" id="ar2">▶</div>
       <div class="y" id="net2"><small>세금 뗀 뒤</small><b class="qv">?원</b><b class="nv">463원</b></div>
     </div>
@@ -179,26 +190,35 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
     <div class="lab4" id="l4b">최고 8% 통장</div><div class="bar4" id="b4b">142원</div>
   </div>
 
+  <!-- 5 이자를 키우는 건? -->
+  <div class="scene" id="s5">
+    <div class="ttl tt" id="t5">이자를 <em>키우는</em> 건?</div>
+    <div class="uu" id="u5">(계산) 천만 원 · 1년 · 받은 이자 다시 넣기 · 세금 뗀 뒤</div>
+    <div class="card" id="c5"></div>
+    <div class="r5" id="r5a"><div class="lb">매일 받기<small>한 달에 한 번보다</small></div><div class="trk"></div><div class="bar" id="b5a"></div><div id="v5a">+117원</div></div>
+    <div class="r5" id="r5b"><div class="lb">금리 +1%p<small>연 2% → 3%</small></div><div class="trk"></div><div class="bar" id="b5b">+8만 6404원</div></div>
+    <div class="chip red" id="x5">약 740배</div>
+  </div>
+
   <!-- 8 정리(끝까지 남는다) -->
   <div class="scene" id="s8">
     <div class="card" id="c8"><div class="stk">정리</div>
-      <div class="sum">이자는 <b>금리 × 넣은 돈</b></div>
-      <div class="chk" id="k1">✔ 천만 원 · 연 2% → 하루 548원, 세금 떼면 463원</div>
-      <div class="chk" id="k2">✔ 매일 받기 vs 한 달에 한 번 → 1년에 117원 차이</div>
-      <div class="chk" id="k3">✔ 최고 8%는 앞 30만 원까지 → 천만 원이면 하루 142원</div>
-      <div class="chk warn" id="k4">△ 금리·구간은 상품마다 다르고 자주 바뀌어요</div>
-      <div class="per">(계산) · 소득세법 이자소득세 15.4% · 저축은행 상품 안내(2026년 9월)</div></div>
+      <div class="sum">이자는 <b>횟수보다 금리</b></div>
+      <div class="chk" id="k1">✔ 하루 이자 = 넣은 돈 × 금리 ÷ 365</div>
+      <div class="chk" id="k2">✔ 천만 원 · 연 2% → 하루 548원, 세금 떼면 463원</div>
+      <div class="chk" id="k3">✔ 매일 받기 vs 한 달에 한 번 → 1년에 117원</div>
+      <div class="chk" id="k4">✔ 최고 8%는 앞 30만 원까지 → 천만 원이면 하루 142원</div>
+      <div class="chk" id="k5">✔ 금리 1%p 차이 → 1년에 약 8만 6400원</div>
+      <div class="per">(계산) · 이자소득세 15.4% · 저축은행 상품 안내(2026년 9월)</div></div>
     <div class="abs" id="stamp8">검산 끝!</div>
   </div>
 
   <div class="abs" id="cta9">구독 · 좋아요 👍</div>
   <div class="abs" id="fly"></div>
   <div class="abs" id="dsh"></div>
-  <div class="abs" id="msh"></div>
+  <div class="abs" id="deco"></div>
   <div class="abs" id="dori"></div>
-  <div class="abs" id="mori"></div>
   <div class="abs bub d" id="bub"><span id="bubT"></span></div>
-  <div class="abs chip" id="tagM" style="left:648px;top:1400px;background:var(--lav);color:#2B2140;font-size:40px;padding:6px 28px;opacity:0;z-index:5">모리</div>
 
   <div id="pre"></div>
 </div>
@@ -206,7 +226,6 @@ body{font-family:P,'Noto Sans CJK KR',sans-serif;color:var(--ink);font-feature-s
 <script src="timeline.js"></script>
 <script src="dori_outfits.js"></script>
 <script src="dori.js"></script>
-<script src="mori.js"></script>
 <script src="scenekit.js"></script>
 
 <script>
@@ -297,78 +316,56 @@ function flip(id,t,inS,at,outS,rot){const el=$(id);const a=eOut(P(t,inS,.4)),b=e
   const sx=k>0&&k<1?Math.abs(Math.cos(k*Math.PI)):1, pu=k>0&&k<1.4?1+.08*Math.sin(Math.min(1,k)*Math.PI):1;
   el.style.transform=`translate(0,${(1-a)*30}px) rotate(${rot+(rot?1.2*Math.sin(t*2):0)}deg) scale(${sx*pu},${pu})`;}
 
-// ---------- 도리 연기: 세금·이자 옷(tax — 초록 바이저·안경·조끼), 모리가 말할 땐 모리를 본다 ----------
+// ---------- 도리 연기(단독): 세금·이자 옷(tax — 초록 바이저·안경·조끼), 숫자 카드가 뜨면 위를 본다 ----------
 const OUTFIT='tax';   // EX.12 news · EX.11 travel · LIFE.08 trivia 와 다르게
 Dori.mount($('dori'),{outfit:OUTFIT});
 const D={};TL.lines.forEach(l=>D[l.id]=l.d);
 const A=(id,f)=>T[id]+f*D[id];
-const MOR=id=>id[0]==='M';
 const EX=[[0,{happy:0}],[T.L01+.1,{surprise:.4}],[A('L01',.97),{surprise:0}],
- [T.M01+.1,{think:.3}],[A('M01',.97),{think:0}],
- [T.M00+.1,{surprise:.3}],[A('M00',.97),{surprise:0}],
- [T.L02+.1,{happy:.4}],[A('L02',.97),{happy:0}],
- [T.M02+.1,{think:.3}],[A('M02',.97),{think:0}],
+ [T.D02+.1,{happy:.4}],[A('D02',.97),{happy:0}],
+ [T.w463,{happy:.45}],[A('L02',.97),{happy:0}],
+ [T.D04+.1,{think:.45}],[A('D04',.97),{think:0}],
  [T.w117,{surprise:.45}],[A('L03',.97),{surprise:0}],
- [T.M03+.1,{think:.4}],[A('M03',.97),{think:0}],
+ [T.D06+.1,{think:.4}],[A('D06',.97),{think:0}],
  [T.L04+.1,{happy:.4}],[A('L04',.97),{happy:0}],
  [T.w142,{surprise:.45}],[A('L05',.97),{surprise:0}],
- [T.M04,{happy:.5}],[A('M04',.97),{happy:0}],
+ [T.D09+.1,{happy:.4}],[A('D09',.97),{happy:0}],
+ [T.w8man,{surprise:.5}],[A('D10',.97),{surprise:0}],
  [T.L06,{squint:1}],[A('L06',.98),{squint:0}],
  [T.L07+.1,{happy:.5}],[A('L07',.97),{happy:0}],
  [T.L08+.1,{happy:.5}],[T.L09+.04,{happy:1,pouch:1}]];
 const expr=Dori.track(EX,{happy:0,squint:0,surprise:0,sad:0,think:0,pouch:0},t=>t>=T.L09?.45:.32);
-const GZ=[[0,.2,.3]];TL.lines.forEach(l=>{if(!l.text)return; if(MOR(l.id)){GZ.push([l.t,.9,.3]);GZ.push([l.t+l.d+.2,0,0]);}  else {GZ.push([l.t,0,0]);}});
+// 시선: 말할 땐 앞, 숫자가 뜨는 순간엔 위 카드 쪽으로 살짝
+const LOOK=[T.w548,T.w463,T.w117,T.w30,T.w142,T.w8man];
+const GZ=[[0,.2,.3]];LOOK.forEach(t=>{GZ.push([t-.05,.35,-.7]);GZ.push([t+1.1,0,0]);});
+GZ.sort((a,b)=>a[0]-b[0]);
 const gzT=Dori.track(GZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
 function gaze(t){const g=gzT(t),m=Dori.micro(t);return [g.x+m[0]*.7,g.y+m[1]*.7];}
 const BL=Dori.blinks(DUR,EX.map(k=>k[0]),23);
 const blink=t=>Dori.blinkAt(BL,t);
 const EF=[];{const r=rng(9);let t=3.4;while(t<DUR){EF.push([t,r()<.5?'L':'R']);t+=4.2+r()*5;}}
 function flick(t,side){let v=0;for(const [b,s] of EF){if(s!==side)continue;const d=t-b;if(d>=0&&d<.4)v=Math.max(v,d<.1?d/.1:1-(d-.1)/.3);}return v;}
-const HOPS=[[T.L01+.1,10],[T.w142,18],[T.L06,26],[T.L09+.04,30]];
+const HOPS=[[T.L01+.1,10],[T.w142,14],[T.w8man,18],[T.L06,26],[T.L09+.04,30]];
 function hop(t){let h=0,sq=0;for(const [s,H] of HOPS){const d=t-s;
   if(d>=-.1&&d<0)sq=Math.max(sq,(d+.1)/.1*.55); else if(d>=0&&d<.42){const k=d/.42;h=Math.max(h,Math.sin(k*Math.PI)*H);sq=Math.min(sq,-.3*Math.sin(k*Math.PI));} else if(d>=.42&&d<.58)sq=Math.max(sq,.45*(1-(d-.42)/.16));}
   return [h,sq];}
-const ARMR=[[0,0],[T.L01+.1,.5],[A('L01',.9),0],[T.L02+.1,.4],[A('L02',.9),0],[T.L03+.1,.4],[A('L03',.9),0],[T.L04+.1,.35],[A('L04',.9),0],[T.L05+.1,.4],[A('L05',.9),0],[T.L06,.7],[T.L06+1.0,0],[T.L07+.1,.35],[A('L07',.9),0],[T.L08+.13,.45],[T.L08+1.43,0],[A('L09',.4),.9]];
-const ARML=[[0,0],[T.w142,.45],[T.w142+.9,0],[T.L06,.7],[T.L06+1.0,0],[T.L09+.04,.55],[T.L09+.89,0]];
+const ARMR=[[0,0],[T.L01+.1,.5],[A('L01',.9),0],[T.D02+.1,.4],[A('D02',.9),0],[T.L02+.1,.4],[A('L02',.9),0],[T.L03+.1,.4],[A('L03',.9),0],[T.L04+.1,.35],[A('L04',.9),0],[T.L05+.1,.4],[A('L05',.9),0],[T.D09+.1,.4],[A('D09',.9),0],[T.D10+.1,.5],[A('D10',.9),0],[T.L06,.7],[T.L06+1.0,0],[T.L07+.1,.35],[A('L07',.9),0],[T.L08+.13,.45],[T.L08+1.43,0],[A('L09',.4),.9]];
+const ARML=[[0,0],[T.D04+.1,.3],[A('D04',.9),0],[T.D06+.1,.3],[A('D06',.9),0],[T.w8man,.45],[T.w8man+.9,0],[T.L06,.7],[T.L06+1.0,0],[T.L09+.04,.55],[T.L09+.89,0]];
 const ARMC=new Map();
 function arm(Kf,t){let f=ARMC.get(Kf);if(!f){f=Dori.track(Kf.map(([t,v])=>[t,{v}]),{v:0},.3);ARMC.set(Kf,f);}return f(t).v;}
 function marks(t){const on=(a,b)=>clamp(P(t,a,.16))*(1-P(t,b-.22,.22));let m=null,o=0;
-  for(const [a,b] of [[T.w142,T.w142+1.0]]){const v=on(a,b);if(v>o){o=v;m='!';}}
+  for(const [a,b,c] of [[T.D04+.3,A('D04',1),'?'],[T.D06+.3,A('D06',1),'?'],[T.w8man,T.w8man+1.0,'!']]){const v=on(a,b);if(v>o){o=v;m=c;}}
   return [m,o];}
-
-// ---------- 모리 연기(3판): 둥근 눈꺼풀 반달 눈, 두 눈 같게, 받아친 뒤 입꼬리, 숫자엔 더 가늘게, 끝에 마지못해 인정 ----------
-const mori=Mori.mount($('mori'));
-const SK1={lidL:.52,lidR:.26,browR:.75}, BASE={lidL:.42,lidR:.42,browL:0,browR:0};
-const MX=[[0,{...BASE,happy:0,surprise:0,smile:0,sweat:0}],
- [T.M01,SK1],[A('M01',.98),BASE],
- [T.M00,{lidL:.36,lidR:.36,browR:.35}],[A('M00',.98),BASE],
- [T.w463,{lidL:.56,lidR:.56}],[A('L02',.97),BASE],
- [T.M02,SK1],[A('M02',.98),BASE],
- [T.w117,{lidL:.4,lidR:.14,browR:1,browL:.3}],[A('L03',.97),BASE],
- [T.M03,SK1],[A('M03',.98),BASE],
- [T.w30,{lidL:.56,lidR:.56}],[A('L04',.97),BASE],
- [T.w142,{lidL:.4,lidR:.14,browR:1,browL:.3}],[A('L05',.97),BASE],
- [T.M04,{lidL:.55,lidR:.55,sweat:1}],[A('M04',.98)+.4,{...BASE,sweat:0}],
- [T.L09+.04,{smile:1}]];
-const mexpr=Dori.track(MX,{...BASE,happy:0,surprise:0,smile:0,sweat:0},.3);
-const MGZ=[[0,-.6,.2]];TL.lines.forEach(l=>{if(!l.text)return; if(MOR(l.id)){MGZ.push([l.t,0,0]);}  else {MGZ.push([l.t,-.9,.25]);}});
-MGZ.push([T.M04+.06,.85,-.25]);MGZ.push([A('M04',.98)+.4,-.6,.2]);   // "인정"은 눈을 피하면서
-const NODS=[T.w548,T.w463,T.w117,T.w30,T.w142];
-function nod(t){let v=0;for(const n of NODS){const d=t-n;if(d>=0&&d<.6)v=Math.max(v,Math.sin(d/.6*Math.PI*2)*(1-d/.6));}return v;}
-const mgzT=Dori.track(MGZ.map(([t,x,y])=>[t,{x,y}]),{x:0,y:0},.25);
-const MBL=Dori.blinks(DUR,MX.map(k=>k[0]),37);
-const MARMR=[[0,0],[T.M01,.35],[A('M01',.95),0],[T.M00+.05,.5],[A('M00',.95),0],[T.M02,.3],[A('M02',.95),0],[T.M04,.2],[A('M04',.95),0],[T.L09+.04,.5],[T.L09+.9,0]];
-const MARML=[[0,0],[T.M03,.4],[A('M03',.95),0],[T.w142,.4],[T.w142+.9,0]];
-const SMK=['M01','M00','M02','M03'].map(id=>A(id,1)+.05);
-function smirk(t){for(const a of SMK){if(t>=a&&t<a+1.1)return 1;}return 0;}   // 받아친 뒤 1초쯤 한쪽 입꼬리
 function envAt(arr,t){const fr=Math.min(arr.length-1,Math.max(0,Math.round(t*FPS)));return Math.max(arr[fr],(arr[fr-1]||0)*.55);}
-function envSm(arr,t){const fr=Math.min(arr.length-1,Math.max(0,Math.round(t*FPS)));return (arr[fr]+(arr[fr-1]||0)+(arr[fr+1]||0))/3;}
+
+// 오른쪽 마루 소품: 동전 더미 둘 + 달력(빛은 왼쪽 위, 바닥 그림자)
+$('deco').innerHTML=`<div class="abs" style="left:190px;top:182px">${CAL(150,'day')}</div><div class="abs" style="left:0;top:160px">${STACK(5,110)}</div><div class="abs" style="left:104px;top:188px">${STACK(3,90)}</div>`;
 
 function renderChars(t){
   const envD=envAt(TL.envD,t);
   const e=expr(t),[gx,gy]=gaze(t),[h,sq]=hop(t);
   const talk=clamp(envD*1.2-.05)*(1-.6*e.sad);const [mk,mo]=marks(t);
-  const spark=Math.max(clamp(P(t,T.w142+.5,.2))*(1-P(t,T.w142+1.6,.3))*.6,clamp(P(t,T.L06,.2))*(1-P(t,T.L06+1.1,.3))*.6,clamp(P(t,T.L09+.04,.2)));
+  const spark=Math.max(clamp(P(t,T.w8man+.5,.2))*(1-P(t,T.w8man+1.6,.3))*.6,clamp(P(t,T.L06,.2))*(1-P(t,T.L06+1.1,.3))*.6,clamp(P(t,T.L09+.04,.2)));
   const wv=A('L09',.4); let armR=arm(ARMR,t); if(t>wv) armR+=Math.sin((t-wv)*10)*.1*clamp(P(t,wv,.3));
   const tilt=1.2*Math.sin(t*.6)+.6*Math.sin(t*1.7+.5)-e.think*7+e.sad*-4+e.surprise*Math.sin(t*22)*1.0;
   Dori.draw({t,happy:e.happy,squint:e.squint,surprise:e.surprise,sad:e.sad,open:talk,blink:blink(t),gx:gx+e.think*.5,gy:gy-e.think*.7+e.sad*.4,
@@ -378,19 +375,10 @@ function renderChars(t){
   $('dori').style.transform=`translate(${x}px,0px)`;
   if(!$('dsh').innerHTML) $('dsh').innerHTML=SK.ground(300,1);
   $('dsh').style.transform=`translate(${x}px,0) scale(${1-Math.min(.45,h/180)})`; $('dsh').style.opacity=clamp(ent*2);
-  const m=mexpr(t), mg=mgzT(t), mm=Dori.micro(t+7.3);
-  const mtalk=clamp(envSm(TL.envM,t)*.95-.04);
-  const mtilt=-1.0*Math.sin(t*.5+1)+.5*Math.sin(t*1.3)-(m.browR>0.3?3:0)+nod(t)*2.5;
-  mori.draw({lidL:m.lidL,lidR:m.lidR,browL:m.browL,browR:m.browR,happy:0,smile:Math.max(m.smile,smirk(t)),surprise:0,sweat:m.sweat,open:mtalk,blink:Dori.blinkAt(MBL,t),
-    gx:mg.x+mm[0]*.6,gy:mg.y+mm[1]*.6,armL:clamp(Math.max(arm(MARML,t),arm(MARMR,t))*2.2),armR:0,tilt:mtilt,tail:Math.sin(t*1.1)*.6+(m.browR>0.3?.5:0),squash:0,hop:0});
-  const ment=P(t,.3,.8),mx=lerp(380,0,eOut(ment));
-  $('mori').style.transform=`translate(${mx}px,0px)`;
-  if(!$('msh').innerHTML) $('msh').innerHTML=SK.ground(270,1);
-  $('msh').style.transform=`translate(${mx}px,0)`; $('msh').style.opacity=clamp(ment*2);
+  const de=P(t,.3,.8); $('deco').style.opacity=clamp(de*2); $('deco').style.transform=`translate(${lerp(300,0,eOut(de))}px,0)`;
   let ln=null;for(const l of TL.lines){if(!l.text)continue;if(t>=l.t-.05&&t<l.t+l.d+.4)ln=l;}
   const bb=$('bub');
-  if(ln){const who=MOR(ln.id)?'m':'d'; if(!bb.classList.contains(who)){bb.className='abs bub '+who;}
-    if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
+  if(ln){if($('bubT').innerHTML!==ln.text)$('bubT').innerHTML=ln.text;const a=P(t,ln.t-.05,.28),o=P(t,ln.t+ln.d+.18,.22);
     bb.style.opacity=clamp(a*4)*(1-o);bb.style.transform=`scale(${(a<=0?.7:.7+.3*eBack(a))*(1-.08*o)})`;}
   else bb.style.opacity=0;
 }
@@ -409,15 +397,15 @@ function render(t){
   flip('tag1',t,.35,T.w460-.12,o1,-4);
   pop('x1',t,.9,null,0,-3,.5);
 
-  // 2 하루 이자 — 식판은 처음부터, 세금 칩은 '세금'에, 세후 값은 '사백육십'에
+  // 2 하루 이자 — 식판은 장면이 열리면 바로, 548원은 '오백'에, 세금 칩은 '세금'에, 세후 값은 '사백육십'에
   sv('s2',T.s2,T.s3+.3); const o2=T.s3-.1;
   fx('t2',t,T.s2+.05,.45,o2,.35,30); fx('u2',t,T.s2+.2,.45,o2,.35,20); fx('c2',t,T.s2+.1,.5,o2,.35,40);
   fx('fx2',t,T.s2+.2,.45,o2,.35,30);
-  fx('pre2',t,T.w548-.15,.4,o2,.35,30,-30); fx('ar2',t,T.wTax-.1,.4,o2,.35,0,-20);
+  flip('pre2',t,T.s2+.45,T.w548-.12,o2,0); fx('ar2',t,T.s2+.55,.4,o2,.35,0,-20);
   pop('tax2',t,T.wTax-.05,o2,.35,-3,.5);
-  flip('net2',t,T.wTax+.1,T.w463-.12,o2,0);
+  flip('net2',t,T.s2+.6,T.w463-.12,o2,0);
 
-  // 3 매일 vs 한 달에 한 번 — 달력 둘과 빈 막대 길은 처음부터, 막대는 '한 달'부터 자란다(0부터, 17만 635원 = 600px)
+  // 3 매일 vs 한 달에 한 번 — 달력 둘과 빈 막대 길은 처음부터, 막대는 L03 에서 자란다(0부터, 17만 635원 = 600px)
   sv('s3',T.s3,T.s4+.3); const o3=T.s4-.1;
   fx('t3',t,T.s3+.05,.45,o3,.35,30); fx('u3',t,T.s3+.2,.45,o3,.35,20); fx('c3',t,T.s3+.1,.5,o3,.35,40);
   fx('rows3',t,T.s3+.25,.5,o3,.35,30); fx('n3',t,T.s3+.6,.4,o3,.35,20);
@@ -426,8 +414,8 @@ function render(t){
   ['b3a','b3b'].forEach((id,i)=>$(id).style.opacity=String(clamp(P(t,T.L03+.35+i*.2,.15))));
   pop('d3',t,T.w117-.05,o3,.35,-4,.5);
 
-  // 4 8% 통장이면? — 구간표는 처음부터, 8% 줄은 '삼십만'에 흔들, 하루 이자 막대는 L05 에(0부터, 463원 = 560px)
-  sv('s4',T.s4,T.s8+.3); const o4=T.s8-.1;
+  // 4 8% 통장이면? — 구간표·빈 막대는 처음부터, 8% 줄은 '삼십만'에 흔들, 하루 이자 막대는 L05 에(0부터, 463원 = 560px)
+  sv('s4',T.s4,T.s5+.3); const o4=T.s5-.1;
   fx('t4',t,T.s4+.05,.45,o4,.35,30); fx('u4',t,T.s4+.2,.45,o4,.35,20); fx('c4',t,T.s4+.1,.5,o4,.35,40);
   ['r4a','r4b','r4c'].forEach((id,i)=>fx(id,t,T.s4+.3+i*.15,.4,o4,.35,26,-30));
   const w30=P(t,T.w30-.05,.6); $('r4a').style.transform+=` scale(${1+.05*Math.sin(w30*Math.PI)})`;
@@ -438,17 +426,24 @@ function render(t){
   $('b4a').style.width=(560*clamp(g4a,0,1.02))+'px'; $('b4b').style.width=(Math.max(120,560*142/463)*clamp(g4b,0,1.02))+'px';
   [['b4a',T.L05+.1],['b4b',T.w142-.2]].forEach(([id,s])=>$(id).style.opacity=String(clamp(P(t,s,.15))*(1-eIO(P(t,o4,.35)))));
 
+  // 5 이자를 키우는 건? — 빈 막대 둘은 처음부터, '매일 받기' 막대(117원 — 0부터라 거의 안 보인다)는 D09 에, 금리 막대는 '팔만'에(8만 6404원 = 780px)
+  sv('s5',T.s5,T.s8+.3); const o5=T.s8-.1;
+  fx('t5',t,T.s5+.05,.45,o5,.35,30); fx('u5',t,T.s5+.2,.45,o5,.35,20); fx('c5',t,T.s5+.1,.5,o5,.35,40);
+  fx('r5a',t,T.s5+.3,.45,o5,.35,26,-30); fx('r5b',t,T.s5+.45,.45,o5,.35,26,-30);
+  const g5a=spring(P(t,T.D09+.6,.6)), g5b=spring(P(t,T.D10+.2,1.1));
+  $('b5a').style.width=(Math.max(14,780*117/86404)*clamp(g5a,0,1.02))+'px'; $('b5a').style.opacity=String(clamp(P(t,T.D09+.6,.15)));
+  $('v5a').style.opacity=String(clamp(P(t,T.D09+.8,.3))); $('v5a').style.transform=`translateX(${lerp(-20,0,eOut(P(t,T.D09+.8,.4)))}px)`;
+  $('b5b').style.width=(780*clamp(g5b,0,1.02))+'px'; $('b5b').style.opacity=String(clamp(P(t,T.D10+.2,.15)));
+  pop('x5',t,T.w8man+.5,o5,.35,-4,.5);
+
   // 8 정리(카드는 끝까지 남는다)
   sv('s8',T.s8,99);
   fx('c8',t,T.s8+.05,.5,null,0,50);
-  ['k1','k2','k3','k4'].forEach((id,i)=>fx(id,t,T.s8+.3+i*.35,.4,null,0,20,-30));
+  ['k1','k2','k3','k4','k5'].forEach((id,i)=>fx(id,t,T.s8+.3+i*.3,.4,null,0,20,-30));
   const sk=P(t,T.stamp-.12,.3); $('stamp8').style.opacity=clamp(sk*5);
   $('stamp8').style.transform=`rotate(-10deg) scale(${sk<=0?1.6:1.6-.6*eOut(sk)})`;
 
-  // 모리 명패: 자기소개 줄에서
-  pop('tagM',t,T.wMori-.05,T.L02+1.2,.35,4,.5);
-
-  // 끝: 구독·좋아요 칩(두 캐릭터 사이), 동전이 볼주머니로
+  // 끝: 구독·좋아요 칩, 동전이 볼주머니로
   pop('cta9',t,T.L08-.05,T.L09+.25,.3,-2,.6);
   const fk=P(t,T.L09-.45,.55), fl=$('fly');
   if(fk>0&&fk<1){const x=lerp(560,180,eIO(fk)),y=lerp(700,1260,eIO(fk))-Math.sin(fk*Math.PI)*120;fl.style.opacity=1-P(t,T.L09-.05,.12);fl.style.transform=`translate(${x}px,${y}px) rotate(${fk*300}deg) scale(${1-fk*.5})`;}
