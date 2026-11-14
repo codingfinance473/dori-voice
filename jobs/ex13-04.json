@@ -1,0 +1,86 @@
+{
+ "id": "ex13-04",
+ "note": "EX.13 모리 목소리 자연스럽게 — 1.7B Base 비교판",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 236,
+   "takes": 4,
+   "texts": [
+    "거짓말. 우리 집은, 훨씬 더 나오던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 237,
+   "takes": 4,
+   "texts": [
+    "흠, 좀 넓긴 하지."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 238,
+   "takes": 4,
+   "texts": [
+    "그럼 우리 집은, 더 내는 게 당연하네?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 239,
+   "takes": 4,
+   "texts": [
+    "그래도 겨울엔, 더 나오잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 240,
+   "takes": 4,
+   "texts": [
+    "그럼 우리 집이 많이 내는 건지, 어떻게 알아?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 241,
+   "takes": 4,
+   "texts": [
+    "그럼 우리 집도, 나눠 봐야겠네."
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "M01n",
+  "M06n",
+  "M07n",
+  "M03n",
+  "M04n",
+  "M08n"
+ ]
+}
