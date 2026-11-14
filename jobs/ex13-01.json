@@ -1,0 +1,177 @@
+{
+ "id": "ex13-01",
+ "note": "EX.13 아파트 관리비 평균",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 403,
+   "takes": 4,
+   "texts": [
+    "아파트 관리비, 한 달 평균 이십오만 원쯤이래~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 404,
+   "takes": 4,
+   "texts": [
+    "거짓말~ 우리 집은, 훨씬 더 나오던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 405,
+   "takes": 4,
+   "texts": [
+    "그건, 국민 평형 집 기준이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 406,
+   "takes": 4,
+   "texts": [
+    "일 제곱미터에, 삼천 원쯤이래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 407,
+   "takes": 4,
+   "texts": [
+    "그럼~ 집이 넓으면?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 408,
+   "takes": 4,
+   "texts": [
+    "넓은 만큼, 더 내지~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 409,
+   "takes": 4,
+   "texts": [
+    "그래도 겨울엔, 더 나오잖아."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 410,
+   "takes": 4,
+   "texts": [
+    "맞아. 올해 일월엔, 국민 평형이 이십팔만 원이었대."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 411,
+   "takes": 4,
+   "texts": [
+    "그럼 우리 집이 많이 내는 건지, 어떻게 알아?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 412,
+   "takes": 4,
+   "texts": [
+    "고지서 금액을, 우리 집 넓이로 나눠 봐."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t10",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 413,
+   "takes": 4,
+   "texts": [
+    "그걸 같은 달 평균이랑, 견주면 돼~."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t11",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 414,
+   "takes": 4,
+   "texts": [
+    "총액 말고, 넓이로 봐야 하네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t12",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 415,
+   "takes": 4,
+   "texts": [
+    "너희 집 관리비는, 지난달 얼마 나왔어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "M01",
+  "L02",
+  "L03",
+  "M02",
+  "L04",
+  "M03",
+  "L05",
+  "M04",
+  "L06",
+  "L07",
+  "M05",
+  "L09"
+ ]
+}
