@@ -1,0 +1,138 @@
+{
+ "id": "life09-01",
+ "note": "LIFE.09 파킹통장 매일 이자",
+ "tasks": [
+  {
+   "id": "t00",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 247,
+   "takes": 4,
+   "texts": [
+    "천만 원 넣고 매일 이자 받으면, 하루 사백육십 원쯤이래~!"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t01",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 248,
+   "takes": 4,
+   "texts": [
+    "거짓말~ 매일 받으면, 이자가 쑥쑥 불어난다던데?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t02",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 249,
+   "takes": 4,
+   "texts": [
+    "연 이 퍼센트면 하루 오백오십 원쯤, 세금을 떼면 사백육십 원쯤이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t03",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 250,
+   "takes": 4,
+   "texts": [
+    "그래도 매일 받으면, 이자에 이자가 붙잖아~"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t04",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 251,
+   "takes": 4,
+   "texts": [
+    "맞아. 근데 한 달에 한 번 받을 때보다, 일 년에 백 원 남짓 더래."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t05",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 252,
+   "takes": 4,
+   "texts": [
+    "그럼~ 팔 퍼센트 통장이면, 네 배 받겠네?"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t06",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 253,
+   "takes": 4,
+   "texts": [
+    "팔 퍼센트는, 앞 삼십만 원까지만이래~"
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t07",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 254,
+   "takes": 4,
+   "texts": [
+    "천만 원을 넣으면, 하루 백사십 원쯤이야."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t08",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/mori-v3",
+   "seed": 255,
+   "takes": 4,
+   "texts": [
+    "매일 받아도, 쑥쑥은 아니네. 인정."
+   ],
+   "dtype": "auto"
+  },
+  {
+   "id": "t09",
+   "mode": "clone",
+   "model": "Qwen/Qwen3-TTS-12Hz-0.6B-Base",
+   "voice": "voices/dori",
+   "seed": 256,
+   "takes": 4,
+   "texts": [
+    "너는 파킹 통장 이자, 매일 받고 있어?"
+   ],
+   "dtype": "auto"
+  }
+ ],
+ "lines": [
+  "L01",
+  "M01",
+  "L02",
+  "M02",
+  "L03",
+  "M03",
+  "L04",
+  "L05",
+  "M04",
+  "L07"
+ ]
+}
